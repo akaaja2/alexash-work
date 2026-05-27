@@ -1,0 +1,17 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Netlify
+.netlify/
+
+# Working docs (not part of the site)
+*.md
+interactive-features.md
+linkedin-tracker.md
+portfolio-todo.md
+roles.md

@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alexander J. — D2: Signal & Noise</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f1eb;
+    --bg-dark: #111010;
+    --text: #111010;
+    --text-muted: #6b6560;
+    --accent: #c41a1a;
+    --rule: #d8d0c5;
+    --rule-dark: #2a2826;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+  }
+
+  .page { position: relative; z-index: 1; }
+
+  /* ── SCAN LINE animate ── */
+  #scanline {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0.15;
+    z-index: 999;
+    pointer-events: none;
+    animation: scan 8s linear infinite;
+  }
+  @keyframes scan {
+    0%   { top: -2px; }
+    100% { top: 100vh; }
+  }
+
+  /* ── NAV ── */
+  nav {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    padding: 1.6rem 3rem;
+    border-bottom: 2px solid var(--text);
+    gap: 2rem;
+  }
+  .logo {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    color: var(--text);
+  }
+  .nav-line {
+    height: 1px;
+    background: var(--rule);
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    justify-content: flex-end;
+  }
+  nav a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  nav a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 85vh;
+    border-bottom: 2px solid var(--text);
+  }
+  .hero-left {
+    padding: 5rem 3rem;
+    border-right: 2px solid var(--text);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .hero-right {
+    padding: 5rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: var(--bg-dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* noise canvas */
+  #noise-canvas {
+    position: absolute;
+    inset: 0;
+    opacity: 0.35;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .hero-eyebrow::before {
+    content: '▶';
+    font-size: 0.4rem;
+  }
+
+  .hero-name {
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(6rem, 13vw, 12rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    color: var(--text);
+    margin-top: 2rem;
+  }
+  .hero-name .red { color: var(--accent); }
+
+  .hero-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .hero-role {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .availability {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 0.4rem 0.8rem;
+  }
+
+  /* Right panel content */
+  .hero-right-content {
+    position: relative;
+    z-index: 1;
+  }
+  .big-stat {
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(5rem, 11vw, 10rem);
+    line-height: 0.9;
+    color: #f5f1eb;
+    opacity: 0.08;
+    letter-spacing: 0.05em;
+    position: absolute;
+    top: 3rem;
+    left: 3rem;
+  }
+  .hero-right-text {
+    color: #8a8278;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .hero-quote {
+    font-family: 'Barlow', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.6;
+    color: #d8cfc3;
+    max-width: 34ch;
+  }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-bottom: 2px solid var(--text);
+  }
+  .stat-cell {
+    padding: 2rem 3rem;
+    border-right: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .stat-cell:last-child { border-right: none; }
+  .stat-big {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 3.5rem;
+    line-height: 1;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+  }
+  .stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* ── SERVICES ── */
+  .section {
+    padding: 4rem 3rem;
+    border-bottom: 2px solid var(--text);
+  }
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .s-num {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.5rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+  .s-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 3rem;
+    letter-spacing: 0.05em;
+    color: var(--text);
+  }
+
+  .service-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .service-row {
+    display: grid;
+    grid-template-columns: 3rem 1fr 2fr auto;
+    align-items: start;
+    gap: 3rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--rule);
+    transition: background 0.2s;
+    cursor: default;
+  }
+  .service-row:hover { background: rgba(196,26,26,0.03); }
+  .service-row:first-child { border-top: 1px solid var(--rule); }
+  .srow-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    padding-top: 0.2rem;
+  }
+  .srow-name {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 2rem;
+    letter-spacing: 0.05em;
+    line-height: 1;
+  }
+  .srow-desc {
+    font-size: 0.82rem;
+    line-height: 1.75;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+  .srow-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 0.3rem 0.7rem;
+    white-space: nowrap;
+    align-self: start;
+  }
+
+  /* ── PHILOSOPHY ── */
+  .philosophy {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 2px solid var(--text);
+  }
+  .phil-left {
+    padding: 5rem 3rem;
+    border-right: 2px solid var(--text);
+    background: var(--bg-dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .phil-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2rem;
+  }
+  .phil-headline {
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 0.95;
+    color: #f5f1eb;
+    letter-spacing: 0.02em;
+    margin-bottom: 2rem;
+  }
+  .phil-body {
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.8;
+    color: #7a7268;
+    font-weight: 300;
+  }
+  .phil-right {
+    padding: 5rem 3rem;
+  }
+  .diff-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .diff-table thead th {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: left;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .diff-table tbody tr {
+    border-bottom: 1px solid var(--rule);
+  }
+  .diff-table td {
+    padding: 1rem 0;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--text);
+    vertical-align: top;
+  }
+  .diff-table td:first-child {
+    color: var(--text-muted);
+    padding-right: 2rem;
+    font-style: italic;
+  }
+  .diff-table td.red { color: var(--accent); font-weight: 400; }
+
+  /* ── CTA ── */
+  .cta-section {
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    border-bottom: 2px solid var(--text);
+  }
+  .cta-text {
+    padding: 5rem 3rem;
+    border-right: 2px solid var(--text);
+  }
+  .cta-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+  .cta-head {
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    color: var(--text);
+  }
+  .cta-head .red { color: var(--accent); }
+  .cta-actions {
+    padding: 5rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    min-width: 280px;
+  }
+  .btn {
+    display: block;
+    text-align: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .btn-red {
+    background: var(--accent);
+    color: white;
+  }
+  .btn-red:hover { background: #a31515; }
+  .btn-outline {
+    border: 2px solid var(--text);
+    color: var(--text);
+  }
+  .btn-outline:hover { background: var(--text); color: var(--bg); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer p {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+</style>
+</head>
+<body>
+<div id="scanline"></div>
+
+<div class="page">
+  <nav>
+    <div class="logo">Alexander J.</div>
+    <div class="nav-line"></div>
+    <ul>
+      <li><a href="#">Work</a></li>
+      <li><a href="#">Approach</a></li>
+      <li><a href="#">Writing</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-left">
+      <div>
+        <div class="hero-eyebrow">Product &amp; Design Consultant</div>
+        <h1 class="hero-name">ALEX<span class="red">AN</span>DER<br>J.</h1>
+      </div>
+      <div class="hero-bottom">
+        <div class="hero-role">Ex-Founder · SMB Focus · London</div>
+        <div class="availability">Available 2026</div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <canvas id="noise-canvas"></canvas>
+      <div class="big-stat">07</div>
+      <div class="hero-right-content">
+        <div class="hero-right-text">Core positioning</div>
+        <p class="hero-quote">"Product &amp; design thinking built from the founder's seat — for business owners who are done guessing."</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-cell">
+      <div class="stat-big">SMB</div>
+      <div class="stat-label">Exclusive focus</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-big">0</div>
+      <div class="stat-label">Slide decks without decisions</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-big">3</div>
+      <div class="stat-label">Core service lines</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-big">Mon</div>
+      <div class="stat-label">Actionable by</div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="section-head">
+      <div class="s-num">01</div>
+      <h2 class="s-title">WHAT I DO</h2>
+    </div>
+    <div class="service-list">
+      <div class="service-row">
+        <div class="srow-num">001</div>
+        <div class="srow-name">Product<br>Strategy</div>
+        <div class="srow-desc">Not just build things — build the right things. I bring founder-level judgment to every prioritisation decision, so you spend your energy on what actually moves the business.</div>
+        <div class="srow-tag">Core</div>
+      </div>
+      <div class="service-row">
+        <div class="srow-num">002</div>
+        <div class="srow-name">Design<br>Clarity</div>
+        <div class="srow-desc">Your user experience is a moat or a leaky bucket. I help you figure out which — and design the specific changes that convert confusion into confidence.</div>
+        <div class="srow-tag">Core</div>
+      </div>
+      <div class="service-row">
+        <div class="srow-num">003</div>
+        <div class="srow-name">Embedded<br>Partnership</div>
+        <div class="srow-desc">Not a deck-delivery service. I embed in how your business makes decisions, move at founder pace, and leave you with direction you can act on immediately.</div>
+        <div class="srow-tag">Advisory</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="philosophy">
+    <div class="phil-left">
+      <div class="phil-tag">The difference</div>
+      <h2 class="phil-headline">BUILT IT.<br>NOW I HELP<br>OTHERS<br>BUILD IT.</h2>
+      <p class="phil-body">I've shipped products that failed. I've made the call at 11pm with incomplete information. That's what makes the advice useful.</p>
+    </div>
+    <div class="phil-right">
+      <div class="section-head" style="margin-bottom:2rem; border-bottom-color:var(--rule);">
+        <div class="s-num" style="font-size:1rem;">02</div>
+        <h2 class="s-title" style="font-size:1.8rem;">THE DIFFERENCE</h2>
+      </div>
+      <table class="diff-table">
+        <thead><tr><th>Others</th><th>Alexander</th></tr></thead>
+        <tbody>
+          <tr><td>Big agency process</td><td class="red">Founder instincts, lean execution</td></tr>
+          <tr><td>Abstract frameworks</td><td class="red">Decisions from real building experience</td></tr>
+          <tr><td>Fixed deliverables</td><td class="red">Embedded, adaptive to how you run</td></tr>
+          <tr><td>Enterprise-optimised</td><td class="red">Designed for SMB pace and budget</td></tr>
+          <tr><td>Validation on demand</td><td class="red">Honest judgment — even when it stings</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <div class="cta-text">
+      <div class="cta-eyebrow">Ready to talk?</div>
+      <h2 class="cta-head">LESS<br>GUESSING.<br><span class="red">MORE</span><br>SHIPPING.</h2>
+    </div>
+    <div class="cta-actions">
+      <a href="mailto:alexj.ash@gmail.com" class="btn btn-red">Start a conversation</a>
+      <a href="#" class="btn btn-outline">See recent work</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 Alexander J.</p>
+    <p>alexj.ash@gmail.com</p>
+    <p>Product &amp; Design Consultant</p>
+  </footer>
+</div>
+
+<script>
+(function() {
+  const canvas = document.getElementById('noise-canvas');
+  const ctx = canvas.getContext('2d');
+  function resize() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width = rect.width;
+    canvas.height = rect.height;
+  }
+  // Animated simplex-like noise field
+  function fade(t) { return t * t * t * (t * (t * 6 - 15) + 10); }
+  function lerp(a, b, t) { return a + t * (b - a); }
+  function grad(hash, x, y) {
+    const h = hash & 3;
+    const u = h < 2 ? x : y;
+    const v = h < 2 ? y : x;
+    return ((h & 1) ? -u : u) + ((h & 2) ? -v : v);
+  }
+  const p = new Uint8Array(512);
+  for (let i = 0; i < 256; i++) p[i] = i;
+  for (let i = 255; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [p[i], p[j]] = [p[j], p[i]];
+  }
+  for (let i = 0; i < 256; i++) p[256 + i] = p[i];
+
+  function noise2d(x, y) {
+    const X = Math.floor(x) & 255;
+    const Y = Math.floor(y) & 255;
+    x -= Math.floor(x);
+    y -= Math.floor(y);
+    const u = fade(x), v = fade(y);
+    const a = p[X] + Y, b = p[X + 1] + Y;
+    return lerp(lerp(grad(p[a], x, y), grad(p[b], x - 1, y), u),
+                lerp(grad(p[a + 1], x, y - 1), grad(p[b + 1], x - 1, y - 1), u), v);
+  }
+
+  let t = 0;
+  function draw() {
+    if (!canvas.width) { requestAnimationFrame(draw); return; }
+    const w = canvas.width, h = canvas.height;
+    const img = ctx.createImageData(w, h);
+    const d = img.data;
+    const scale = 0.006;
+    for (let y = 0; y < h; y += 2) {
+      for (let x = 0; x < w; x += 2) {
+        const n = (noise2d(x * scale + t, y * scale + t * 0.5) + 1) / 2;
+        const c = Math.floor(n * 180);
+        for (let dy = 0; dy < 2; dy++) for (let dx = 0; dx < 2; dx++) {
+          const i = ((y + dy) * w + (x + dx)) * 4;
+          d[i] = d[i+1] = d[i+2] = c;
+          d[i+3] = 255;
+        }
+      }
+    }
+    ctx.putImageData(img, 0, 0);
+    t += 0.003;
+    requestAnimationFrame(draw);
+  }
+  resize();
+  draw();
+  window.addEventListener('resize', resize);
+  new ResizeObserver(resize).observe(canvas.parentElement);
+})();
+</script>
+</body>
+</html>

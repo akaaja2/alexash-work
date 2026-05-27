@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alexander J. — D4: Console</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,200;0,400;0,600;1,200;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:     #080b08;
+    --green:  #3ddc5a;
+    --green-dim: #1f6e30;
+    --green-faint: rgba(61,220,90,0.06);
+    --amber:  #ffb344;
+    --red:    #ff4a4a;
+    --muted:  #3a5c3e;
+    --rule:   #0f1f11;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--green);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 400;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* ── CUSTOM CURSOR ── */
+  #cursor {
+    position: fixed;
+    width: 16px; height: 16px;
+    border: 1px solid var(--green);
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.08s;
+    transform: translate(-50%, -50%);
+  }
+  #cursor::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 3px; height: 3px;
+    background: var(--green);
+    transform: translate(-50%, -50%);
+  }
+  body:hover #cursor { opacity: 1; }
+
+  /* ── SCANLINES ── */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.15) 2px,
+      rgba(0,0,0,0.15) 4px
+    );
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  /* ── AUTOMATA CANVAS ── */
+  #automata {
+    position: fixed;
+    inset: 0;
+    opacity: 0.18;
+    pointer-events: none;
+    z-index: 0;
+    image-rendering: pixelated;
+  }
+
+  /* ── VIGNETTE ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.7) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .page {
+    position: relative;
+    z-index: 2;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* ── NAV / HEADER ── */
+  .terminal-header {
+    border-bottom: 1px solid var(--rule);
+    padding: 1.2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .term-chrome {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .chrome-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+  }
+  .chrome-dot.r { background: #ff5f57; }
+  .chrome-dot.y { background: #febc2e; }
+  .chrome-dot.g { background: #28c840; }
+  .term-title {
+    font-size: 0.68rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    margin-left: 1rem;
+  }
+  .term-nav {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .term-nav a {
+    font-size: 0.68rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.15s;
+  }
+  .term-nav a::before { content: './'; color: var(--green-dim); }
+  .term-nav a:hover { color: var(--green); }
+
+  /* ── PROMPT LINE ── */
+  .prompt {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--green);
+  }
+  .prompt-user { color: var(--green-dim); }
+  .prompt-at { color: var(--muted); }
+  .prompt-host { color: var(--green-dim); }
+  .prompt-dir { color: var(--amber); }
+  .prompt-sym { color: var(--green); margin-right: 0.3rem; }
+  .caret {
+    display: inline-block;
+    width: 0.6em;
+    height: 1.1em;
+    background: var(--green);
+    vertical-align: bottom;
+    animation: blink 1.1s step-end infinite;
+  }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+  /* ── SECTIONS ── */
+  .term-section {
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* ── BOOT SEQUENCE / HERO ── */
+  .boot-output { padding: 2.5rem 0; }
+  .boot-line {
+    line-height: 1.8;
+    font-size: 0.8rem;
+    opacity: 0;
+    animation: reveal 0.05s forwards;
+  }
+  .boot-line.dim { color: var(--muted); }
+  .boot-line.bright { color: var(--green); }
+  .boot-line.amber { color: var(--amber); }
+  .boot-line.red-col { color: var(--red); }
+  .boot-line.big {
+    font-size: clamp(2rem, 6vw, 5rem);
+    font-weight: 200;
+    line-height: 1.05;
+    color: var(--green);
+    letter-spacing: -0.02em;
+  }
+  .boot-line.tagline {
+    font-style: italic;
+    font-weight: 200;
+    color: var(--amber);
+    font-size: 0.85rem;
+    max-width: 60ch;
+    line-height: 1.7;
+    border-left: 2px solid var(--green-dim);
+    padding-left: 1.2rem;
+  }
+
+  @keyframes reveal { to { opacity: 1; } }
+  /* Stagger delays applied inline */
+
+  /* ── TREE / SKILLS ── */
+  .tree-line {
+    font-size: 0.78rem;
+    line-height: 1.9;
+    color: var(--muted);
+  }
+  .tree-line .name { color: var(--green); }
+  .tree-line .tag {
+    color: var(--green-dim);
+    margin-left: 1rem;
+    font-size: 0.68rem;
+  }
+  .tree-line .val { color: var(--amber); }
+
+  /* ── TABLE ── */
+  .term-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+  }
+  .term-table th {
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    padding: 0.5rem 1rem 0.5rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .term-table td {
+    font-size: 0.78rem;
+    padding: 0.8rem 1rem 0.8rem 0;
+    border-bottom: 1px solid rgba(15,31,17,0.8);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  .term-table tr:hover td { background: var(--green-faint); }
+  .td-key { color: var(--green-dim); font-size: 0.68rem; }
+  .td-val { color: var(--green); }
+  .td-tag { color: var(--amber); font-size: 0.68rem; }
+  .td-note { color: var(--muted); font-size: 0.72rem; }
+
+  /* ── LOG BLOCK ── */
+  .log-block {
+    border: 1px solid var(--rule);
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    position: relative;
+  }
+  .log-block::before {
+    content: attr(data-title);
+    position: absolute;
+    top: -0.6rem;
+    left: 1rem;
+    background: var(--bg);
+    padding: 0 0.5rem;
+    font-size: 0.65rem;
+    color: var(--green-dim);
+    letter-spacing: 0.1em;
+  }
+  .log-entry {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    gap: 1rem;
+    align-items: baseline;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(15,31,17,0.6);
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+  .log-entry:last-child { border-bottom: none; }
+  .log-ts { color: var(--muted); font-size: 0.65rem; white-space: nowrap; }
+  .log-level { font-size: 0.65rem; padding: 0.1rem 0.4rem; }
+  .level-ok { color: var(--green); border: 1px solid var(--green-dim); }
+  .level-warn { color: var(--amber); border: 1px solid var(--amber); opacity: 0.7; }
+  .level-info { color: var(--muted); border: 1px solid var(--muted); }
+
+  /* ── COMMAND OUTPUT ── */
+  .cmd-block {
+    margin: 2rem 0;
+  }
+  .cmd-prompt { margin-bottom: 0.8rem; }
+  .output-box {
+    border: 1px solid var(--rule);
+    padding: 1.5rem;
+    background: rgba(61,220,90,0.02);
+  }
+  .output-line {
+    font-size: 0.78rem;
+    line-height: 1.8;
+    color: var(--green);
+  }
+  .output-line.muted { color: var(--muted); }
+  .output-line.highlight { color: var(--amber); }
+
+  /* ── CTA ── */
+  .cta-block {
+    padding: 4rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .input-line {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid var(--green-dim);
+    padding: 1rem 1.5rem;
+    max-width: 500px;
+    transition: border-color 0.2s;
+  }
+  .input-line:hover { border-color: var(--green); }
+  .input-line span { color: var(--muted); }
+  .input-field {
+    background: none;
+    border: none;
+    outline: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--green);
+    width: 280px;
+  }
+  .input-field::placeholder { color: var(--green-dim); }
+  .btn-terminal {
+    display: inline-block;
+    background: var(--green);
+    color: var(--bg);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 0.9rem 2rem;
+    border: none;
+    cursor: none;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-terminal:hover { background: #5aff78; }
+  .btn-ghost-term {
+    display: inline-block;
+    border: 1px solid var(--green-dim);
+    color: var(--green-dim);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    padding: 0.9rem 2rem;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-ghost-term:hover { border-color: var(--green); color: var(--green); }
+
+  /* ── STATUS BAR ── */
+  .status-bar {
+    border-top: 1px solid var(--rule);
+    padding: 0.7rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.62rem;
+    color: var(--muted);
+  }
+  .status-left { display: flex; gap: 2rem; }
+  .status-dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    margin-right: 0.5rem;
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* section headers */
+  .sec-head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .sec-prompt { color: var(--green-dim); font-size: 0.68rem; }
+  .sec-cmd { font-size: 0.68rem; color: var(--amber); letter-spacing: 0.05em; }
+  .sec-out { font-size: 0.68rem; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<canvas id="automata"></canvas>
+
+<div class="page">
+
+  <!-- TERMINAL CHROME -->
+  <div class="terminal-header">
+    <div style="display:flex;align-items:center;gap:1rem;">
+      <div class="term-chrome">
+        <div class="chrome-dot r"></div>
+        <div class="chrome-dot y"></div>
+        <div class="chrome-dot g"></div>
+      </div>
+      <div class="term-title">alexander-j — portfolio v1.0.0 — bash</div>
+    </div>
+    <ul class="term-nav">
+      <li><a href="#">work</a></li>
+      <li><a href="#">approach</a></li>
+      <li><a href="#">writing</a></li>
+      <li><a href="#">contact</a></li>
+    </ul>
+  </div>
+
+  <!-- BOOT / HERO -->
+  <div class="boot-output">
+    <div class="boot-line dim" style="animation-delay:0.1s">BIOS v2.6 — Initialising portfolio system...</div>
+    <div class="boot-line dim" style="animation-delay:0.4s">Loading consultant profile............... <span style="color:var(--green)">OK</span></div>
+    <div class="boot-line dim" style="animation-delay:0.7s">Mounting ex-founder experience........... <span style="color:var(--green)">OK</span></div>
+    <div class="boot-line dim" style="animation-delay:1.0s">Verifying SMB focus parameters........... <span style="color:var(--green)">OK</span></div>
+    <div class="boot-line amber" style="animation-delay:1.3s">WARNING: High judgment levels detected. Proceed with client engagements.</div>
+    <br>
+    <div class="boot-line big" style="animation-delay:1.6s">ALEXANDER<br>J.</div>
+    <br>
+    <div class="boot-line tagline" style="animation-delay:2.0s">
+      Product &amp; design thinking built from the founder's seat — for business owners who are done guessing and ready to build the right thing.
+    </div>
+    <br>
+    <div class="boot-line dim" style="animation-delay:2.4s">── <span style="color:var(--green)">Product &amp; Design Consultant</span> &nbsp;·&nbsp; Ex-Founder &nbsp;·&nbsp; Available 2026 ──</div>
+    <br>
+    <div class="prompt" style="animation-delay:2.7s; opacity:0; animation:reveal 0.05s 2.7s forwards;">
+      <span class="prompt-user">alex</span><span class="prompt-at">@</span><span class="prompt-host">portfolio</span>:<span class="prompt-dir">~/services</span><span class="prompt-sym">$</span>
+      ls -la<span class="caret"></span>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="term-section">
+    <div class="sec-head">
+      <span class="sec-prompt">output:</span>
+      <span class="sec-cmd">ls ~/services/</span>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:0;">
+      <div class="tree-line">drwxr-xr-x &nbsp;<span class="name">product-strategy/</span><span class="tag"># Not just build things — build the right things</span></div>
+      <div class="tree-line">drwxr-xr-x &nbsp;<span class="name">design-clarity/</span><span class="tag"># Your UX is a moat or a leaky bucket</span></div>
+      <div class="tree-line">drwxr-xr-x &nbsp;<span class="name">embedded-partnership/</span><span class="tag"># Work with how you actually run</span></div>
+    </div>
+
+    <div class="cmd-block">
+      <div class="prompt cmd-prompt">
+        <span class="prompt-user">alex</span><span class="prompt-at">@</span><span class="prompt-host">portfolio</span>:<span class="prompt-dir">~/services</span><span class="prompt-sym">$</span>
+        cat product-strategy/README.md
+      </div>
+      <div class="output-box">
+        <div class="output-line"># Product Strategy</div>
+        <div class="output-line muted">---</div>
+        <div class="output-line">I bring founder-level judgment to every prioritisation decision.</div>
+        <div class="output-line muted">Most SMBs don't have a product problem. They have a prioritisation</div>
+        <div class="output-line muted">problem. Too many ideas, not enough judgment about which one to</div>
+        <div class="output-line muted">bet on this quarter.</div>
+        <div class="output-line highlight">→ Output: decisions you can act on by Monday.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="term-section">
+    <div class="sec-head">
+      <span class="sec-prompt">output:</span>
+      <span class="sec-cmd">diff others.txt alexander.txt</span>
+    </div>
+    <table class="term-table">
+      <thead>
+        <tr>
+          <th>KEY</th>
+          <th>— others.txt</th>
+          <th>+ alexander.txt</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-key">process</td>
+          <td class="td-note">Big agency process</td>
+          <td class="td-val">Founder instincts, lean execution</td>
+        </tr>
+        <tr>
+          <td class="td-key">output</td>
+          <td class="td-note">Abstract frameworks</td>
+          <td class="td-val">Decisions from real building experience</td>
+        </tr>
+        <tr>
+          <td class="td-key">engagement</td>
+          <td class="td-note">Fixed deliverables</td>
+          <td class="td-val">Embedded, adaptive to how you actually run</td>
+        </tr>
+        <tr>
+          <td class="td-key">market</td>
+          <td class="td-note">Enterprise-optimised</td>
+          <td class="td-val">Designed for SMB pace and budget</td>
+        </tr>
+        <tr>
+          <td class="td-key">honesty</td>
+          <td class="td-note">Validation on demand</td>
+          <td class="td-val">Honest judgment — even when it stings</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- SYSTEM LOG / PILLARS -->
+  <section class="term-section">
+    <div class="sec-head">
+      <span class="sec-prompt">output:</span>
+      <span class="sec-cmd">journalctl --unit=philosophy</span>
+    </div>
+    <div class="log-block" data-title="PHILOSOPHY.LOG">
+      <div class="log-entry">
+        <span class="log-ts">2026-05-27 09:12:04</span>
+        <span class="log-level level-ok">CORE</span>
+        <span>Founder-first: every recommendation filtered through "would I make this call if it was my business?"</span>
+      </div>
+      <div class="log-entry">
+        <span class="log-ts">2026-05-27 09:12:05</span>
+        <span class="log-level level-ok">CORE</span>
+        <span>Clarity over complexity: clear direction, prioritised decisions, actionable by Monday.</span>
+      </div>
+      <div class="log-entry">
+        <span class="log-ts">2026-05-27 09:12:05</span>
+        <span class="log-level level-ok">CORE</span>
+        <span>Commercial realism: good thinking that works within your budget, team, and time pressure.</span>
+      </div>
+      <div class="log-entry">
+        <span class="log-ts">2026-05-27 09:12:06</span>
+        <span class="log-level level-warn">WARN</span>
+        <span>Honest partnership: if an idea won't work, will say so. Client may experience discomfort.</span>
+      </div>
+      <div class="log-entry">
+        <span class="log-ts">2026-05-27 09:12:06</span>
+        <span class="log-level level-info">INFO</span>
+        <span>I've shipped products that failed. That's what makes the advice useful.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="term-section" style="border-bottom:none;">
+    <div class="sec-head">
+      <span class="sec-prompt">input:</span>
+      <span class="sec-cmd">./contact --start-conversation</span>
+    </div>
+    <div class="cta-block">
+      <div>
+        <div class="output-line" style="font-size:0.85rem; margin-bottom:0.5rem;">Ready to start?</div>
+        <div class="output-line highlight" style="font-size:1.5rem; font-weight:200; letter-spacing:-0.01em;">Less guessing, more shipping.</div>
+      </div>
+      <div class="input-line">
+        <span>$</span>
+        <input class="input-field" type="email" placeholder="your@email.com" />
+      </div>
+      <div style="display:flex; gap:1rem;">
+        <a href="mailto:alexj.ash@gmail.com" class="btn-terminal">EXECUTE ./contact</a>
+        <a href="#" class="btn-ghost-term">--help</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATUS BAR -->
+  <div class="status-bar">
+    <div class="status-left">
+      <span><span class="status-dot"></span>available</span>
+      <span>branch: main</span>
+      <span>node: alexander-j</span>
+    </div>
+    <div>alexj.ash@gmail.com &nbsp;·&nbsp; © 2026</div>
+  </div>
+
+</div>
+
+<script>
+// ── Custom cursor ──
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});
+
+// ── Conway's Game of Life ──
+(function() {
+  const canvas = document.getElementById('automata');
+  const ctx = canvas.getContext('2d');
+  const CELL = 8;
+  let cols, rows, grid, next;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    cols = Math.ceil(canvas.width / CELL);
+    rows = Math.ceil(canvas.height / CELL);
+    grid = new Uint8Array(cols * rows);
+    next = new Uint8Array(cols * rows);
+    // seed
+    for (let i = 0; i < grid.length; i++) {
+      grid[i] = Math.random() < 0.18 ? 1 : 0;
+    }
+  }
+
+  function idx(c, r) {
+    return ((r + rows) % rows) * cols + ((c + cols) % cols);
+  }
+
+  function step() {
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        let n = 0;
+        for (let dr = -1; dr <= 1; dr++) {
+          for (let dc = -1; dc <= 1; dc++) {
+            if (dr === 0 && dc === 0) continue;
+            n += grid[idx(c + dc, r + dr)];
+          }
+        }
+        const alive = grid[idx(c, r)];
+        next[idx(c, r)] = alive
+          ? (n === 2 || n === 3 ? 1 : 0)
+          : (n === 3 ? 1 : 0);
+      }
+    }
+    [grid, next] = [next, grid];
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#3ddc5a';
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        if (grid[idx(c, r)]) {
+          ctx.fillRect(c * CELL + 1, r * CELL + 1, CELL - 2, CELL - 2);
+        }
+      }
+    }
+  }
+
+  let frameCount = 0;
+  function loop() {
+    frameCount++;
+    if (frameCount % 4 === 0) step(); // slow it down
+    draw();
+    requestAnimationFrame(loop);
+  }
+
+  resize();
+  loop();
+  window.addEventListener('resize', resize);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alexander J. — D3: Portfolio as Canvas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,400;1,9..144,200;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream:   #f2ece2;
+    --ink:     #1a1714;
+    --muted:   #8c7d6a;
+    --sage:    #4a6053;
+    --ochre:   #c8893a;
+    --teal:    #2d5a52;
+    --blush:   #d4937a;
+    --rule:    #ddd4c5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── GENERATIVE BACKGROUNDS ── */
+  .gen-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(242,236,226,0.9);
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem 4rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    font-weight: 200;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .logo em { font-style: italic; color: var(--ochre); }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+  }
+  nav a {
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--ink); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    padding: 6rem 4rem;
+    overflow: hidden;
+  }
+  .hero-canvas {
+    position: absolute;
+    inset: 0;
+    opacity: 0.6;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+  }
+  .hero-pre {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .hero-pre::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--ochre);
+  }
+  .hero-name {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(4rem, 11vw, 10rem);
+    font-weight: 200;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    margin-bottom: 0.1em;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--ochre);
+  }
+  .hero-tagline {
+    margin-top: 3.5rem;
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    font-weight: 200;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--teal);
+    max-width: 42ch;
+    padding-left: 3rem;
+    border-left: 2px solid var(--teal);
+    margin-left: 2rem;
+  }
+  .hero-badges {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 3rem;
+    margin-left: 2rem;
+    flex-wrap: wrap;
+  }
+  .badge {
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    padding: 0.45rem 1.1rem;
+    border: 1px solid var(--rule);
+    color: var(--muted);
+    background: rgba(242,236,226,0.6);
+    border-radius: 100px;
+  }
+  .badge.highlight {
+    border-color: var(--ochre);
+    color: var(--ochre);
+  }
+
+  /* ── SCROLL MORPH SECTIONS ── */
+  .morph-section {
+    position: relative;
+    padding: 6rem 4rem;
+    overflow: hidden;
+  }
+  .morph-canvas {
+    position: absolute;
+    inset: 0;
+    opacity: 0.45;
+  }
+  .morph-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── WORK SECTION ── */
+  .work-section {
+    background: var(--teal);
+  }
+  .section-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .section-eyebrow-light { color: rgba(242,236,226,0.5); }
+  .section-eyebrow-dark { color: var(--muted); }
+  .section-title-large {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 200;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 4rem;
+  }
+  .section-title-light { color: var(--cream); }
+  .section-title-dark { color: var(--ink); }
+  .section-title-large em { font-style: italic; }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5px;
+    background: rgba(255,255,255,0.1);
+  }
+  .work-card {
+    background: rgba(45,90,82,0.95);
+    padding: 2.5rem;
+    transition: background 0.3s;
+    cursor: default;
+  }
+  .work-card:hover { background: rgba(74,96,83,0.98); }
+  .work-card-num {
+    font-family: 'Fraunces', serif;
+    font-size: 3rem;
+    font-weight: 200;
+    font-style: italic;
+    color: rgba(242,236,226,0.15);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .work-card-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-weight: 200;
+    font-style: italic;
+    color: var(--cream);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .work-card-body {
+    font-size: 0.78rem;
+    line-height: 1.8;
+    color: rgba(242,236,226,0.6);
+  }
+  .work-card-tag {
+    display: inline-block;
+    margin-top: 1.5rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    border-bottom: 1px solid var(--ochre);
+    padding-bottom: 0.15rem;
+  }
+
+  /* ── PHILOSOPHY SECTION ── */
+  .phil-section {
+    background: var(--cream);
+  }
+  .phil-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .phil-left p {
+    font-family: 'Fraunces', serif;
+    font-size: 1.45rem;
+    font-weight: 200;
+    line-height: 1.6;
+    color: var(--ink);
+    margin-bottom: 2rem;
+  }
+  .phil-left p em { font-style: italic; color: var(--ochre); }
+  .phil-left .body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.83rem;
+    line-height: 1.9;
+    color: var(--muted);
+  }
+  .pillar-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .pillar-card {
+    padding: 1.8rem;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    transition: border-color 0.3s, transform 0.3s;
+    background: rgba(242,236,226,0.5);
+  }
+  .pillar-card:hover {
+    border-color: var(--ochre);
+    transform: translateX(4px);
+  }
+  .pillar-icon {
+    font-family: 'Fraunces', serif;
+    font-size: 1.6rem;
+    font-weight: 200;
+    font-style: italic;
+    color: var(--ochre);
+    margin-bottom: 0.6rem;
+  }
+  .pillar-card h4 {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .pillar-card p {
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  /* ── QUOTE BAND ── */
+  .quote-section {
+    background: var(--ochre);
+    padding: 5rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .quote-canvas {
+    position: absolute;
+    inset: 0;
+    opacity: 0.2;
+  }
+  .quote-inner {
+    position: relative;
+    z-index: 1;
+  }
+  blockquote {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: 200;
+    font-style: italic;
+    line-height: 1.3;
+    color: white;
+    max-width: 28ch;
+    margin-bottom: 2rem;
+  }
+  cite {
+    font-style: normal;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--ink);
+    padding: 7rem 4rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .cta-canvas {
+    position: absolute;
+    inset: 0;
+    opacity: 0.25;
+  }
+  .cta-inner { position: relative; z-index: 1; }
+  .cta-pre {
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 2rem;
+  }
+  .cta-head {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.5rem, 7vw, 6rem);
+    font-weight: 200;
+    font-style: italic;
+    line-height: 1.05;
+    color: var(--cream);
+    max-width: 16ch;
+    margin: 0 auto 3rem;
+    letter-spacing: -0.03em;
+  }
+  .cta-head em { color: var(--ochre); font-style: normal; }
+  .cta-buttons {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-warm {
+    display: inline-block;
+    background: var(--ochre);
+    color: white;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+  .btn-warm:hover { background: #b5782f; }
+  .btn-ghost-light {
+    display: inline-block;
+    border: 1px solid rgba(242,236,226,0.25);
+    color: rgba(242,236,226,0.6);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .btn-ghost-light:hover { border-color: var(--cream); color: var(--cream); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer p {
+    font-size: 0.68rem;
+    color: rgba(242,236,226,0.3);
+    letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Alexander <em>J.</em></div>
+  <ul>
+    <li><a href="#">Work</a></li>
+    <li><a href="#">Approach</a></li>
+    <li><a href="#">Writing</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <canvas class="hero-canvas" id="hero-canvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-pre">Product &amp; Design Consultant</div>
+    <h1 class="hero-name">Alex<em>ander</em><br>J.</h1>
+    <p class="hero-tagline">For business owners who are done guessing and ready to build the right thing.</p>
+    <div class="hero-badges">
+      <span class="badge highlight">Ex-Founder</span>
+      <span class="badge">SMB &amp; Owner-led</span>
+      <span class="badge">Product Strategy</span>
+      <span class="badge">Design Clarity</span>
+      <span class="badge">Available 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="morph-section work-section">
+  <canvas class="morph-canvas" id="work-canvas"></canvas>
+  <div class="morph-inner">
+    <div class="section-eyebrow section-eyebrow-light">01 — Services</div>
+    <h2 class="section-title-large section-title-light">What I <em>do</em></h2>
+    <div class="work-grid">
+      <div class="work-card">
+        <div class="work-card-num">01</div>
+        <h3 class="work-card-title">Product Strategy</h3>
+        <p class="work-card-body">Not just build things — build the right things. I bring founder-level judgment to every prioritisation decision, so you spend your energy on what actually moves the business.</p>
+        <span class="work-card-tag">Core service</span>
+      </div>
+      <div class="work-card">
+        <div class="work-card-num">02</div>
+        <h3 class="work-card-title">Design Clarity</h3>
+        <p class="work-card-body">Your user experience is a moat or a leaky bucket. I help you figure out which — and design the specific changes that turn confusion into confidence.</p>
+        <span class="work-card-tag">Core service</span>
+      </div>
+      <div class="work-card">
+        <div class="work-card-num">03</div>
+        <h3 class="work-card-title">Embedded Partnership</h3>
+        <p class="work-card-body">Not a deck-delivery service. I embed in how your business makes decisions, move at founder pace, and leave you with direction you can act on immediately.</p>
+        <span class="work-card-tag">Advisory</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="morph-section phil-section">
+  <canvas class="morph-canvas" id="phil-canvas"></canvas>
+  <div class="morph-inner">
+    <div class="section-eyebrow section-eyebrow-dark">02 — Approach</div>
+    <h2 class="section-title-large section-title-dark">The <em>difference</em></h2>
+    <div class="phil-columns">
+      <div class="phil-left">
+        <p>I've been in the seat. I've shipped products that <em>failed</em>. That's what makes the advice useful.</p>
+        <p class="body">Most SMBs don't have a product problem. They have a prioritisation problem. Too many ideas, not enough judgment about which one to bet on this quarter. I've lived that pressure — and I help you cut through it without the big-agency process that was never designed for your pace.</p>
+      </div>
+      <div class="pillar-cards">
+        <div class="pillar-card">
+          <div class="pillar-icon">I.</div>
+          <h4>Founder-first perspective</h4>
+          <p>Every recommendation filtered through: would I make this call if it was my business?</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">II.</div>
+          <h4>Clarity over complexity</h4>
+          <p>Clear direction, prioritised decisions, actionable by Monday. Not a 50-slide deck.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">III.</div>
+          <h4>Commercial realism</h4>
+          <p>Good thinking that works within your budget, team size, and time pressure.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">IV.</div>
+          <h4>Honest partnership</h4>
+          <p>If an idea won't work, I'll say so. You're paying for judgment, not validation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <canvas class="quote-canvas" id="quote-canvas"></canvas>
+  <div class="quote-inner">
+    <blockquote>"Most SMBs don't have a product problem. They have a prioritisation problem."</blockquote>
+    <cite>— Alexander J., Product &amp; Design Consultant</cite>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <canvas class="cta-canvas" id="cta-canvas"></canvas>
+  <div class="cta-inner">
+    <div class="cta-pre">Let's work together</div>
+    <h2 class="cta-head">Less guessing,<br><em>more</em> shipping.</h2>
+    <div class="cta-buttons">
+      <a href="mailto:alexj.ash@gmail.com" class="btn-warm">Start a conversation</a>
+      <a href="#" class="btn-ghost-light">See recent work</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Alexander J.</p>
+  <p>alexj.ash@gmail.com</p>
+  <p>Product &amp; Design Consultant</p>
+</footer>
+
+<script>
+// ── Generative canvas textures for each section ──
+function makeNoise(canvas, opts) {
+  const { palette, speed = 0.002, scale = 0.004, style = 'flow' } = opts;
+  const ctx = canvas.getContext('2d');
+  let W, H, t = Math.random() * 100;
+  let particles = [];
+
+  function resize() {
+    const p = canvas.parentElement;
+    W = canvas.width = p.offsetWidth;
+    H = canvas.height = p.offsetHeight;
+    if (style === 'flow') spawnParticles();
+  }
+
+  function spawnParticles() {
+    particles = Array.from({ length: 600 }, () => ({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      life: Math.random() * 200,
+      maxLife: 180 + Math.random() * 120,
+    }));
+  }
+
+  function fieldAngle(x, y, t) {
+    const s = scale;
+    return (Math.sin(x * s + t) * Math.cos(y * s * 0.9 + t * 0.7) +
+            Math.sin(x * s * 0.5 - t * 0.4) * 0.5) * Math.PI;
+  }
+
+  function drawFlow() {
+    ctx.fillStyle = 'rgba(0,0,0,0.03)';
+    ctx.fillRect(0, 0, W, H);
+    for (const p of particles) {
+      const a = fieldAngle(p.x, p.y, t);
+      const ox = p.x, oy = p.y;
+      p.x += Math.cos(a) * 1.2;
+      p.y += Math.sin(a) * 1.2;
+      p.life++;
+      if (p.life > p.maxLife || p.x < 0 || p.x > W || p.y < 0 || p.y > H) {
+        p.x = Math.random() * W; p.y = Math.random() * H;
+        p.life = 0; p.maxLife = 180 + Math.random() * 120;
+      }
+      const alpha = Math.min(p.life / 40, 1) * (1 - p.life / p.maxLife) * 0.6;
+      ctx.globalAlpha = alpha;
+      ctx.strokeStyle = palette[Math.floor(p.life / 30) % palette.length];
+      ctx.lineWidth = 0.8;
+      ctx.beginPath(); ctx.moveTo(ox, oy); ctx.lineTo(p.x, p.y); ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function drawOrbs() {
+    ctx.clearRect(0, 0, W, H);
+    for (let i = 0; i < 6; i++) {
+      const x = W * (0.15 + 0.7 * ((i * 0.19 + Math.sin(t * 0.3 + i) * 0.08 + 1) % 1));
+      const y = H * (0.2 + 0.6 * ((i * 0.23 + Math.cos(t * 0.2 + i * 1.3) * 0.1 + 1) % 1));
+      const r = (W * 0.12) + Math.sin(t * 0.5 + i * 2.1) * W * 0.04;
+      const grad = ctx.createRadialGradient(x, y, 0, x, y, r);
+      grad.addColorStop(0, palette[i % palette.length] + '80');
+      grad.addColorStop(1, 'transparent');
+      ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2);
+      ctx.fillStyle = grad; ctx.fill();
+    }
+  }
+
+  function frame() {
+    if (!W) { requestAnimationFrame(frame); return; }
+    style === 'flow' ? drawFlow() : drawOrbs();
+    t += speed;
+    requestAnimationFrame(frame);
+  }
+
+  resize();
+  frame();
+  window.addEventListener('resize', resize);
+  new ResizeObserver(resize).observe(canvas.parentElement);
+}
+
+// Hero: warm cream flow
+makeNoise(document.getElementById('hero-canvas'), {
+  palette: ['#c8893a', '#d4937a', '#4a6053'],
+  style: 'flow', scale: 0.003, speed: 0.0018
+});
+
+// Work (teal): cooler flow
+makeNoise(document.getElementById('work-canvas'), {
+  palette: ['#7ab5ac', '#4a8070', '#c8d4d0'],
+  style: 'flow', scale: 0.0035, speed: 0.002
+});
+
+// Philosophy: ochre orbs
+makeNoise(document.getElementById('phil-canvas'), {
+  palette: ['#c8893a', '#e8d4b8', '#4a6053'],
+  style: 'orbs', speed: 0.003
+});
+
+// Quote: ochre warm orbs
+makeNoise(document.getElementById('quote-canvas'), {
+  palette: ['#f0d090', '#fff4d4', '#d4937a'],
+  style: 'orbs', speed: 0.0025
+});
+
+// CTA: dark cool orbs
+makeNoise(document.getElementById('cta-canvas'), {
+  palette: ['#2d5a52', '#4a8070', '#c8893a'],
+  style: 'orbs', speed: 0.002
+});
+</script>
+</body>
+</html>
