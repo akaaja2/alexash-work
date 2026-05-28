@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Econ Musings — Alex Ash</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&display=swap">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #0c0b09;
+      color: #ede3d0;
+      font-family: 'Courier New', monospace;
+      min-height: 100vh;
+    }
+
+    a { color: #c97b1a; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ---- Top bar ---- */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(12, 11, 9, 0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid #2a2520;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .back-link {
+      font-size: 12px;
+      color: #7a6d5a;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border: 1px solid #2a2520;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .back-link:hover {
+      color: #c97b1a;
+      border-color: #c97b1a;
+      text-decoration: none;
+    }
+    .topbar-title {
+      font-family: 'Bungee', sans-serif;
+      font-size: 18px;
+      color: #c97b1a;
+      letter-spacing: 0.02em;
+    }
+    .topbar-meta {
+      margin-left: auto;
+      font-size: 11px;
+      color: #4a3f31;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    /* ---- Page ---- */
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 56px 32px 120px;
+    }
+
+    .page-head { margin-bottom: 56px; }
+    .page-tag {
+      font-size: 11px;
+      color: #c97b1a;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+    .page-head h1 {
+      font-family: 'Bungee', sans-serif;
+      font-size: 54px;
+      color: #ede3d0;
+      margin: 8px 0 16px;
+      letter-spacing: 0.01em;
+      line-height: 1.05;
+    }
+    .page-head p {
+      color: #7a6d5a;
+      font-size: 14px;
+      line-height: 1.75;
+      max-width: 720px;
+    }
+
+    /* ---- Musing card ---- */
+    .musing {
+      background: rgba(20, 18, 15, 0.6);
+      border: 1px solid #2a2520;
+      border-radius: 12px;
+      padding: 36px;
+      margin-bottom: 28px;
+      transition: border-color 0.3s;
+    }
+    .musing:hover { border-color: #4a3f31; }
+
+    .musing-head {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+    .musing-num {
+      font-family: 'Bungee', sans-serif;
+      font-size: 14px;
+      color: #c97b1a;
+      letter-spacing: 0.2em;
+    }
+    .musing-title {
+      font-family: 'Bungee', sans-serif;
+      font-size: 30px;
+      color: #ede3d0;
+      letter-spacing: 0.01em;
+      line-height: 1.1;
+    }
+    .musing-status {
+      margin-left: auto;
+      font-size: 10px;
+      color: #7a6d5a;
+      letter-spacing: 0.18em;
+      padding: 3px 10px;
+      border: 1px solid #2a2520;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    .musing-body p {
+      color: #ede3d0;
+      font-size: 14px;
+      line-height: 1.85;
+      margin-bottom: 14px;
+    }
+    .musing-body p:last-child { margin-bottom: 0; }
+    .musing-body em { color: #c97b1a; font-style: italic; }
+
+    .resource-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .resource {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 16px 18px;
+      background: rgba(12, 11, 9, 0.6);
+      border: 1px solid #2a2520;
+      border-radius: 8px;
+      transition: all 0.2s;
+      color: inherit;
+    }
+    .resource:hover {
+      border-color: #c97b1a;
+      background: rgba(201, 123, 26, 0.05);
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+    .resource-label {
+      font-size: 10px;
+      color: #7a6d5a;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .resource-value { font-size: 13px; color: #ede3d0; }
+    .resource-meta { font-size: 10px; color: #4a3f31; letter-spacing: 0.12em; margin-top: 2px; }
+
+    .tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
+    .tag {
+      font-size: 10px;
+      padding: 4px 10px;
+      border: 1px solid #4a3f31;
+      border-radius: 20px;
+      color: #c97b1a;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #2a2520, transparent);
+      margin: 22px 0;
+    }
+
+    /* ---- Sub-structure within a musing ---- */
+    .musing-h3 {
+      font-family: 'Bungee', sans-serif;
+      font-size: 13px;
+      color: #c97b1a;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin: 30px 0 14px;
+      display: block;
+    }
+    .musing-h3:first-child { margin-top: 0; }
+    .musing-h3 .h3-prefix { color: #7a6d5a; margin-right: 10px; }
+
+    .pushback {
+      border-left: 2px solid #c97b1a;
+      padding: 14px 18px;
+      margin: 20px 0;
+      background: rgba(201, 123, 26, 0.045);
+      border-radius: 0 6px 6px 0;
+    }
+    .pushback-label {
+      display: block;
+      font-family: 'Bungee', sans-serif;
+      font-size: 10px;
+      color: #c97b1a;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .pushback p {
+      font-size: 13px;
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+    .pushback p:last-child { margin-bottom: 0; }
+
+    .eq {
+      font-family: 'Courier New', monospace;
+      color: #c97b1a;
+      background: rgba(12, 11, 9, 0.6);
+      border: 1px solid #2a2520;
+      padding: 1px 7px;
+      border-radius: 4px;
+      font-size: 12.5px;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .ref-list {
+      list-style: none;
+      padding: 0;
+      margin: 6px 0 14px;
+    }
+    .ref-list li {
+      color: #ede3d0;
+      font-size: 13px;
+      line-height: 1.65;
+      padding: 6px 0 6px 14px;
+      border-left: 1px solid #2a2520;
+      margin-bottom: 4px;
+    }
+    .ref-list li:hover { border-left-color: #c97b1a; }
+    .ref-list .cite { color: #c97b1a; }
+    .ref-list .detail { color: #7a6d5a; font-size: 12px; }
+
+    .scenario-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin: 18px 0 8px;
+    }
+    .scenario {
+      padding: 14px 16px;
+      background: rgba(12, 11, 9, 0.5);
+      border: 1px solid #2a2520;
+      border-radius: 8px;
+    }
+    .scenario-head {
+      font-family: 'Bungee', sans-serif;
+      font-size: 11px;
+      color: #c97b1a;
+      letter-spacing: 0.18em;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+    .scenario-body {
+      font-size: 12.5px;
+      color: #ede3d0;
+      line-height: 1.6;
+    }
+
+    .footer-note {
+      margin-top: 56px;
+      padding: 24px;
+      border-top: 1px solid #2a2520;
+      font-size: 12px;
+      color: #4a3f31;
+      letter-spacing: 0.12em;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <a class="back-link" href="index.html">← Back</a>
+    <span class="topbar-title">Econ Musings</span>
+    <span class="topbar-meta">DRAFTS · UPDATED OCCASIONALLY</span>
+  </div>
+
+  <div class="wrap">
+
+    <header class="page-head">
+      <div class="page-tag">05 / Side Quest</div>
+      <h1>Econ Musings</h1>
+      <p>Lorem ipsum — a working scratchpad for half-formed ideas at the intersection of economics, AI, and how value gets produced and priced. Most of these are toy models, sketches, or stray paragraphs that aren't quite ready for a proper blog post. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </header>
+
+    <!-- ===== Musing 01 ===== -->
+    <article class="musing">
+      <div class="musing-head">
+        <span class="musing-num">01</span>
+        <h2 class="musing-title">Cobb-Douglas AI</h2>
+        <span class="musing-status">Sketch · In Progress</span>
+      </div>
+
+      <div class="musing-body">
+
+        <p>The instinct, when adding a new input, is to bolt a third exponent onto Cobb-Douglas: <span class="eq">Y = A · L<sup>α</sup> · K<sup>β</sup> · T<sup>γ</sup></span> where <em>T</em> is tokens, or tasks, or "intelligence-on-demand". It's tempting and it's almost certainly wrong in a way worth being precise about. The interesting question isn't whether <em>T</em> belongs in the function — it's <em>how</em>, and that depends on the regime of AI capability you're modelling. I see two avenues, and most of the current debate confuses them.</p>
+
+        <div class="pushback">
+          <span class="pushback-label">⚠ Pushback · The functional form is doing unearned work</span>
+          <p>Cobb-Douglas assumes a constant elasticity of substitution between every pair of factors, and that elasticity equals 1. That assumption breaks immediately for AI. AI is a near-perfect substitute for labour in some tasks (ticket triage, first-draft copy, boilerplate code) and a near-zero substitute in others (judgment under genuine ambiguity, trust-laden sales conversations, escalations). Compressing that range into a single <em>γ</em> is dishonest.</p>
+          <p>Two more honest forms: <em>(a)</em> nested CES with task-level elasticities — <em>σ &lt; 1</em> between AI and human labour within a task, <em>σ &gt; 1</em> across the bundle; or <em>(b)</em> a task-based production function in the Acemoglu-Restrepo tradition, built up from tasks rather than imposed from above. I'll keep using "Cobb-Douglas" as shorthand because the <em>α, β, γ</em> labels are useful, but the functional form is a fiction. What matters is the story about the exponents.</p>
+        </div>
+
+        <span class="musing-h3"><span class="h3-prefix">A ·</span> Labour Productivity Lens · Pre / Limited-Agentic</span>
+
+        <p>In this regime AI isn't a factor at all. It's a technology shifter — either inside the Hicks-neutral <em>A</em> term, or, more usefully, a multiplier <em>φ</em> on the effective units of labour:</p>
+
+        <p style="text-align: center; margin: 18px 0;"><span class="eq" style="font-size: 14px;">Y = A · (φ · L)<sup>α</sup> · K<sup>β</sup>,&nbsp;&nbsp; φ ≥ 1</span></p>
+
+        <p>Tokens get bought; the buying just lets each worker get more done per hour. Model and inference flow are a <em>complement</em> to labour, not a substitute. This is where most of the current empirical evidence actually sits.</p>
+
+        <ul class="ref-list">
+          <li><span class="cite">Brynjolfsson, Li &amp; Raymond (2023)</span> — generative AI in customer support raised resolutions per hour by ~14%. Crucially, the largest gains went to <em>novice</em> workers. The model didn't replace them; it compressed the experience curve. <span class="detail">NBER WP 31161.</span></li>
+          <li><span class="cite">Noy &amp; Zhang (2023, <em>Science</em>)</span> — writing tasks completed ~40% faster with ChatGPT, output quality steady-to-improved. Same shape: augmentation, not substitution.</li>
+          <li><span class="cite">Peng et al. (2023)</span> — GitHub Copilot, ~55% speedup on a controlled coding task. Developer remains in the loop throughout.</li>
+          <li><span class="cite">Anthropic Economic Index (Feb 2025)</span> — task-level decomposition showing the <em>augmentation</em> share materially exceeds the <em>automation</em> share across most occupations sampled in the first release.</li>
+        </ul>
+
+        <p>The policy-relevant question inside Avenue A is the distribution of <em>φ</em>. Compression (novices catch up) or bifurcation (experts pull further away)? The evidence leans compression — which is itself a real result, and an uncomfortable one for the "AI will hollow out the middle" narrative that dominated 2023-2024.</p>
+
+        <div class="pushback">
+          <span class="pushback-label">⚠ Pushback · Treating φ as free</span>
+          <p>"AI as A-shifter" elides cost. Tokens have real marginal cost — paid per task, in opex, often a non-trivial fraction of gross margin. Modelling <em>φ</em> as pure TFP misrepresents the income statement. The cleaner formulation has each unit of task-labour as a bundle of "human-time + AI-tokens" jointly, with the bundle entering as effective L. That matters because it changes what the firm is optimising: not "how productive is my worker?" but "what's the cheapest mix to complete this task?"</p>
+        </div>
+
+        <span class="musing-h3"><span class="h3-prefix">B ·</span> Factor-of-Production Lens · Agentic Regime</span>
+
+        <p>When the agent runs autonomously — closes the ticket, writes the function, drafts the contract, joins the meeting — the production function genuinely changes shape and AI earns its own exponent. But "AI as capital" needs care, because three very different things get conflated under that label:</p>
+
+        <div class="scenario-grid">
+          <div class="scenario">
+            <div class="scenario-head">Model Weights</div>
+            <div class="scenario-body">Durable produced asset, depreciating as better models ship. <em style="color:#c97b1a; font-style:normal;">→ Capital.</em></div>
+          </div>
+          <div class="scenario">
+            <div class="scenario-head">Inference Flow</div>
+            <div class="scenario-body">Tokens consumed per task, variable cost, no stock to hold. <em style="color:#c97b1a; font-style:normal;">→ Intermediate input</em> (closer to electricity than to capital).</div>
+          </div>
+          <div class="scenario">
+            <div class="scenario-head">Agent Service</div>
+            <div class="scenario-body">Autonomous completion of a unit of work — the thing the firm is actually buying. <em style="color:#c97b1a; font-style:normal;">→ Labour</em>, priced as a service.</div>
+          </div>
+        </div>
+
+        <p>A Series B SaaS firm spending $400K/month on Anthropic and OpenAI isn't holding capital in the sense a factory holds a CNC machine. It's buying a service flow whose underlying asset sits on someone else's balance sheet. So the sharper Avenue B question isn't <em>"is AI capital?"</em> — it's <em>"for whom is AI capital?"</em> Foundation labs hold the capital. Customer firms buy a service that competes with labour at the task level. The aggregate story has to be assembled from both views, and a one-sector model that just swaps "AI" in for K will get the long-run incidence wrong.</p>
+
+        <div class="pushback">
+          <span class="pushback-label">⚠ Pushback · The "agents = capital" leap</span>
+          <p>The popular framing — agents are workers, agents are owned, therefore agents are capital — skips a step. What the firm <em>owns</em> is a contractual right to inference, not a stock of agents. Reclassifying that as capital risks importing capital-deepening dynamics (declining marginal product, accumulation paths, depreciation schedules) that don't actually apply to a service subscription. The economics of the lab and the economics of the customer firm need to be modelled separately before they're aggregated.</p>
+        </div>
+
+        <span class="musing-h3"><span class="h3-prefix">Arc ·</span> The Token Budget and the Hiring Tell</span>
+
+        <p>Here's where the question gets sharp. Picture a firm with a monthly token budget <em>B</em> and a headcount <em>L</em>. <em>B</em> triples over 18 months. What <em>else</em> changes is the tell:</p>
+
+        <div class="scenario-grid">
+          <div class="scenario">
+            <div class="scenario-head">Scenario A · Augmentation</div>
+            <div class="scenario-body"><em>B↑, L</em> steady-or-up, output ↑ roughly proportionally. <em style="color:#c97b1a; font-style:normal;">φ rose.</em> AI is multiplying labour.</div>
+          </div>
+          <div class="scenario">
+            <div class="scenario-head">Scenario B · Substitution</div>
+            <div class="scenario-body"><em>B↑, L↓</em>, output steady or modestly up. <em style="color:#c97b1a; font-style:normal;">Factor substitution at the margin.</em></div>
+          </div>
+          <div class="scenario">
+            <div class="scenario-head">Scenario C · Mixed</div>
+            <div class="scenario-body"><em>B↑</em>, <em>L</em> mixed by role, output ↑. The empirically common case in 2025-2026.</div>
+          </div>
+        </div>
+
+        <p>Now the tension the user is pointing at. <strong style="color:#ede3d0;">The accounting tells one story; the hiring decisions tell another.</strong> Token spend is booked as opex — cost of revenue, often — which behaves like a variable input. Labour-adjacent. But the <em>headcount</em> decisions — slowed hiring in customer support, junior copywriting, paralegal review, BPO-style code maintenance — behave like capital-labour substitution at a long-run margin.</p>
+
+        <p style="color:#c97b1a; font-size:15px; line-height:1.7; padding: 16px 0; border-top: 1px solid #2a2520; border-bottom: 1px solid #2a2520; margin: 22px 0;">Firms are treating AI as labour on the income statement and as capital in the org chart.</p>
+
+        <p>That gap <em>is</em> the research question. The accounting choice isn't a typo — opex is genuinely the right book entry for an inference subscription. But the <em>decision</em> it enables looks much more like the kind of multi-year factor swap that capital deepening describes. The two views can both be right at the same time, and that's what makes the dynamics worth modelling separately from either pure Avenue A or pure Avenue B.</p>
+
+        <p>My current hypothesis: <em>firms haven't decided which lens they're operating in</em>, and the inconsistency between the two is doing real damage to workforce planning. Token spend grows because each engineer "needs" it (Avenue A logic — productivity tool), and headcount freezes happen in parallel (Avenue B logic — substitute available). Both decisions feel locally rational. The aggregate is incoherent.</p>
+
+        <span class="musing-h3"><span class="h3-prefix">?</span> Open Questions · What Would Discriminate</span>
+
+        <p>Empirical work I'd want to see, roughly in order of tractability:</p>
+
+        <ul class="ref-list">
+          <li><span class="cite">Token spend per FTE</span> across cohorts of comparable firms, correlated with role-level hiring slowdowns. <span class="detail">Cross-firm panel, plausibly assemblable from public filings + LinkedIn data + provider disclosure.</span></li>
+          <li><span class="cite">Within-firm task allocation</span> — are tokens deployed <em>in support of</em> existing workers (A) or to <em>retire tasks entirely</em> (B)? The Anthropic Economic Index gets at this at the task level; the firm-level cut is harder and more revealing.</li>
+          <li><span class="cite">Wage dispersion within roles.</span> Avenue A predicts compression (novices catch up). Avenue B predicts bifurcation (the workers who remain are the ones whose tasks resist agent substitution).</li>
+          <li><span class="cite">The γ-vs-α-fall test.</span> Functionally similar, theoretically distinct: <em>γ</em> rising says AI is a new input; <em>α</em> falling says human labour just got better. The cleanest discriminator is whether AI spend co-moves with output (<em>γ</em>) or substitutes for L holding output constant (<em>α</em>↓).</li>
+        </ul>
+
+        <div class="pushback">
+          <span class="pushback-label">⚠ Pushback · Macro modest, micro brutal</span>
+          <p>Acemoglu (2024, "The Simple Macroeconomics of AI") argues aggregate impact is modest — well under 1% TFP per decade under reasonable parameter choices. That may be right at the macro level while role-level substitution is severe. "Macro modest, micro brutal" is a real possibility, and aggregate TFP measures will badly hide it. Anyone using top-line productivity numbers to dismiss labour-market concern is reading the wrong gauge.</p>
+        </div>
+
+      </div>
+
+      <div class="resource-row">
+        <a class="resource" href="#">
+          <span class="resource-label">Visualisation</span>
+          <span class="resource-value">Two-Mode Production Sandbox</span>
+          <span class="resource-meta">PLANNED · Avenue A↔B slider</span>
+        </a>
+        <a class="resource" href="#">
+          <span class="resource-label">Blog Post</span>
+          <span class="resource-value">A or B? The Token-Budget Tell</span>
+          <span class="resource-meta">DRAFT · ~2,400 words</span>
+        </a>
+        <a class="resource" href="#">
+          <span class="resource-label">Evidence Tracker</span>
+          <span class="resource-value">Augmentation vs Substitution</span>
+          <span class="resource-meta">LIVE · 14 studies indexed</span>
+        </a>
+      </div>
+
+      <div class="tag-row">
+        <span class="tag">Production Theory</span>
+        <span class="tag">CES &amp; Task-Based</span>
+        <span class="tag">Labour Augmentation</span>
+        <span class="tag">Factor Substitution</span>
+        <span class="tag">Empirical</span>
+      </div>
+    </article>
+
+    <!-- ===== Musing 02 ===== -->
+    <article class="musing">
+      <div class="musing-head">
+        <span class="musing-num">02</span>
+        <h2 class="musing-title">Agentic WTP</h2>
+        <span class="musing-status">Sketch · In Progress</span>
+      </div>
+
+      <div class="musing-body">
+        <p>Lorem ipsum dolor sit amet — willingness-to-pay (WTP) is, in most pricing literature, modelled as a property of <em>a human</em>: a distribution over reservation prices, shaped by income, preferences, framing, and the moment of decision. Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+        <p>What changes when the buyer is an agent acting on behalf of a human? Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. The agent doesn't experience the loss-aversion sting of paying. It doesn't get embarrassed by a price that "feels too high". It doesn't anchor on round numbers. But it <em>does</em> have a budget, a utility function, and a posterior over whether this purchase will be approved post-hoc.</p>
+
+        <p>Three asymmetries I keep coming back to: <em>(a)</em> the agent's price elasticity should be much sharper around the human-defined budget cap and almost flat elsewhere; <em>(b)</em> the agent will comparison-shop with far more breadth than a human ever would, collapsing brand premia; <em>(c)</em> the agent's reservation price reflects expected human approval, not expected human utility — and those can diverge quite a lot.</p>
+
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. The visualisation I want to build: a side-by-side simulator of human WTP vs agentic WTP under varying levels of agent autonomy, with the equilibrium price drift shown over a few hundred transactions. Excepteur sint occaecat cupidatat non proident.</p>
+      </div>
+
+      <div class="resource-row">
+        <a class="resource" href="#">
+          <span class="resource-label">Visualisation</span>
+          <span class="resource-value">WTP Simulator</span>
+          <span class="resource-meta">COMING SOON</span>
+        </a>
+        <a class="resource" href="#">
+          <span class="resource-label">Blog Post</span>
+          <span class="resource-value">Pricing for Agents</span>
+          <span class="resource-meta">OUTLINE</span>
+        </a>
+        <a class="resource" href="#">
+          <span class="resource-label">Reading List</span>
+          <span class="resource-value">Related papers &amp; posts</span>
+          <span class="resource-meta">12 entries</span>
+        </a>
+      </div>
+
+      <div class="tag-row">
+        <span class="tag">Pricing</span>
+        <span class="tag">Behavioural Econ</span>
+        <span class="tag">Agents</span>
+        <span class="tag">Market Design</span>
+      </div>
+    </article>
+
+    <div class="footer-note">
+      // More musings drift in here when they're ready · alexj.ash@gmail.com
+    </div>
+
+  </div>
+
+</body>
+</html>

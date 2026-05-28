@@ -4,28 +4,1171 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alex Ash — Product & Design Consultant</title>
+  <script src="https://cdn.jsdelivr.net/npm/opentype.js@1.3.4/dist/opentype.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&display=swap">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --banner-h: 192px; /* live-updated by JS to match real banner height */
+    }
+
     body {
       background: #0c0b09;
       color: #ede3d0;
       font-family: 'Courier New', monospace;
+    }
+
+    /* ===== Layout: sidebar + content ===== */
+    .layout {
+      display: flex;
+      align-items: flex-start;
+      min-height: calc(100vh - var(--banner-h));
+    }
+
+    /* ===== Sidebar ===== */
+    .sidebar {
+      position: sticky;
+      top: var(--banner-h);
+      width: 240px;
+      flex-shrink: 0;
+      height: calc(100vh - var(--banner-h));
+      background: rgba(20, 18, 15, 0.5);
+      border-right: 1px solid #2a2520;
+      padding: 20px 12px;
+      display: flex;
+      flex-direction: column;
+      z-index: 5;
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                  top 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                  height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+    }
+    .sidebar.collapsed { width: 64px; }
+
+    .sidebar-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 8px 16px 8px;
+      border-bottom: 1px solid #2a2520;
+      margin-bottom: 16px;
+    }
+    .sidebar-title {
+      font-size: 11px;
+      color: #7a6d5a;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: opacity 0.2s;
+    }
+    .sidebar.collapsed .sidebar-title { opacity: 0; pointer-events: none; }
+
+    .sidebar-toggle {
+      background: none;
+      border: 1px solid #2a2520;
+      color: #7a6d5a;
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 12px;
+      line-height: 1;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .sidebar-toggle:hover { color: #c97b1a; border-color: #c97b1a; }
+
+    .nav { display: flex; flex-direction: column; gap: 2px; }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      color: #7a6d5a;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      border-radius: 6px;
+      border-left: 2px solid transparent;
+      transition: all 0.18s ease;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .nav-item:hover {
+      color: #ede3d0;
+      background: rgba(201, 123, 26, 0.06);
+      text-decoration: none;
+    }
+    .nav-item.active {
+      color: #c97b1a;
+      background: rgba(201, 123, 26, 0.09);
+      border-left-color: #c97b1a;
+    }
+    .nav-icon {
+      font-size: 14px;
+      width: 20px;
+      flex-shrink: 0;
+      text-align: center;
+      opacity: 0.85;
+    }
+    .nav-label { transition: opacity 0.15s; }
+    .sidebar.collapsed .nav-label { opacity: 0; pointer-events: none; }
+
+    .sidebar-foot {
+      margin-top: auto;
+      padding: 12px 8px;
+      border-top: 1px solid #2a2520;
+      font-size: 10px;
+      color: #4a3f31;
+      letter-spacing: 0.15em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .status-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
+      flex-shrink: 0;
+    }
+    .sidebar.collapsed .sidebar-foot span:not(.status-dot) { opacity: 0; }
+
+    /* ===== Content ===== */
+    .content {
+      flex: 1;
+      padding: 40px 56px 120px;
+      max-width: 1100px;
+      min-width: 0;
+    }
+
+    .content-bar {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 10px 14px;
+      background: rgba(20, 18, 15, 0.5);
+      border: 1px solid #2a2520;
+      border-radius: 8px;
+      margin-bottom: 40px;
+      font-size: 12px;
+      color: #7a6d5a;
+      letter-spacing: 0.05em;
+    }
+    .breadcrumb-current { color: #ede3d0; }
+    .kbd {
+      margin-left: auto;
+      padding: 2px 8px;
+      background: rgba(12, 11, 9, 0.8);
+      border: 1px solid #2a2520;
+      border-radius: 4px;
+      font-size: 10px;
+      color: #7a6d5a;
+    }
+
+    .section {
+      margin-bottom: 88px;
+      scroll-margin-top: calc(var(--banner-h) + 20px);
+    }
+    .section-tag {
+      font-size: 11px;
+      color: #c97b1a;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+    .section h2 {
+      font-family: 'Bungee', sans-serif;
+      font-size: 38px;
+      color: #ede3d0;
+      margin: 6px 0 24px;
+      letter-spacing: 0.01em;
+    }
+
+    .card {
+      background: rgba(20, 18, 15, 0.6);
+      border: 1px solid #2a2520;
+      border-radius: 12px;
+      padding: 32px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .card + .card { margin-top: 16px; }
+    .card:hover { border-color: #4a3f31; }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .photo-div {
+      aspect-ratio: 1 / 1;
+      background:
+        linear-gradient(135deg, rgba(201, 123, 26, 0.08), transparent),
+        linear-gradient(135deg, #1a1714, #2a2520);
+      border: 1px dashed #4a3f31;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
+      color: #7a6d5a;
+      font-size: 10px;
+      letter-spacing: 0.2em;
     }
-    .container { text-align: center; }
-    h1 { font-size: 1.5rem; font-weight: normal; letter-spacing: 0.15em; margin-bottom: 1rem; }
+
+    .card-body p {
+      color: #ede3d0;
+      font-size: 14px;
+      line-height: 1.75;
+      letter-spacing: 0;
+      margin-bottom: 12px;
+    }
+    .card-body p:last-child { margin-bottom: 0; }
+
+    .tag-row {
+      display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px;
+    }
+    .tag {
+      font-size: 10px;
+      padding: 4px 10px;
+      border: 1px solid #4a3f31;
+      border-radius: 20px;
+      color: #c97b1a;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .stat {
+      padding: 16px;
+      background: rgba(12, 11, 9, 0.6);
+      border: 1px solid #2a2520;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+    .stat:hover { border-color: #c97b1a; transform: translateY(-2px); }
+    .stat-num {
+      font-family: 'Bungee', sans-serif;
+      font-size: 26px;
+      color: #c97b1a;
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 10px;
+      color: #7a6d5a;
+      letter-spacing: 0.15em;
+      margin-top: 6px;
+      text-transform: uppercase;
+    }
+
+    .project-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 18px;
+      background: rgba(12, 11, 9, 0.6);
+      border: 1px solid #2a2520;
+      border-radius: 8px;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .project-row:hover {
+      border-color: #c97b1a;
+      background: rgba(201, 123, 26, 0.04);
+      transform: translateX(4px);
+    }
+    .project-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #c97b1a;
+      box-shadow: 0 0 6px rgba(201, 123, 26, 0.6);
+      flex-shrink: 0;
+    }
+    .project-name { font-size: 13px; color: #ede3d0; flex: 1; }
+    .project-meta { font-size: 10px; color: #7a6d5a; letter-spacing: 0.1em; }
+
+    .book-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 18px;
+      margin-top: 8px;
+    }
+    .book-cover {
+      aspect-ratio: 2 / 3;
+      background:
+        linear-gradient(135deg, rgba(201, 123, 26, 0.06), transparent),
+        linear-gradient(160deg, #1a1714, #2a2520);
+      border: 1px dashed #4a3f31;
+      border-radius: 6px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .book-cover:hover {
+      transform: translateY(-6px);
+      border-color: #c97b1a;
+      border-style: solid;
+      box-shadow: 0 12px 30px rgba(201, 123, 26, 0.15);
+    }
+    .book-title {
+      font-family: 'Bungee', sans-serif;
+      font-size: 13px;
+      color: #c97b1a;
+      line-height: 1.2;
+    }
+    .book-meta {
+      font-size: 9px;
+      color: #7a6d5a;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .contact-row {
+      display: flex; flex-direction: column; gap: 4px;
+      padding: 16px 18px;
+      background: rgba(12, 11, 9, 0.6);
+      border: 1px solid #2a2520;
+      border-radius: 8px;
+      transition: all 0.2s;
+      cursor: pointer;
+      color: inherit;
+    }
+    .contact-row:hover {
+      border-color: #c97b1a;
+      background: rgba(201, 123, 26, 0.05);
+      text-decoration: none;
+    }
+    .contact-label {
+      font-size: 10px;
+      color: #7a6d5a;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .contact-value { font-size: 13px; color: #ede3d0; }
+
+    /* ---- Sticky banner ---- */
+    /* sticky already acts as a containing block for abs-positioned children */
+    #scroll-banner {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(12, 11, 9, 0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid #2a2520;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-height: 100px;
+      transition: padding 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                  min-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    #banner-svg {
+      width: 100%;
+      overflow: visible;
+      transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Shrunk state — banner reduces to ~80% of its original size on scroll.
+       Original ≈ 192px tall (156 SVG + 36 padding) → target ≈ 154px. */
+    #scroll-banner.shrunk {
+      padding: 14px 24px;
+      min-height: 154px;
+    }
+    #scroll-banner.shrunk #banner-svg {
+      height: 125px;
+    }
+    #scroll-banner.shrunk #scramble-overlay {
+      padding: 14px 24px;
+    }
+    #scroll-banner.shrunk #scramble-text {
+      font-size: clamp(26px, 6vw, 88px);
+    }
+    #scroll-banner.shrunk #alex-photo {
+      max-width: 176px;             /* 80% of 220px */
+      margin: -14px -24px -14px 0;  /* bleed lines up with reduced padding */
+    }
+
+    #scroll-pct {
+      font-size: 12px;
+      color: #7a6d5a;
+      margin-left: auto;
+      white-space: nowrap;
+      font-family: 'Courier New', monospace;
+      letter-spacing: 0.05em;
+    }
+
     p { color: #7a6d5a; font-size: 0.8rem; letter-spacing: 0.1em; }
     a { color: #c97b1a; text-decoration: none; }
     a:hover { text-decoration: underline; }
+
+    /* ---- Scramble overlay ---- */
+    #scramble-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      padding: 18px 24px;
+      z-index: 10;
+      pointer-events: none;
+      transition: opacity 0.85s ease;
+    }
+
+    #scramble-text {
+      font-family: 'Bungee', sans-serif;
+      font-size: clamp(32px, 7.5vw, 110px);
+      color: #c97b1a;
+      line-height: 1;
+      white-space: nowrap;
+      letter-spacing: 0.01em;
+    }
+
+    /* ---- Header photo — full banner height, flush to edges ---- */
+    #alex-photo {
+      align-self: stretch;
+      width: auto;
+      max-width: 220px;
+      object-fit: cover;
+      flex-shrink: 0;
+      display: block;
+      margin: -18px -24px -18px 0; /* bleed through banner padding */
+      opacity: 0;
+      transition: max-width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                  margin 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* SVG logo markers — smooth fade in/out as they pop on the trace */
+    #banner-svg image {
+      transition: opacity 0.55s ease;
+    }
+
+    /* Logo flyers — HTML pre-flight before the SVG reveals.
+       Sit above the scramble overlay so they're visible during the scramble. */
+    .logo-flyer {
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      top: 50%;
+      left: 50%;
+      margin-top: -14px;   /* half of MARKER_SIZE */
+      margin-left: -14px;
+      filter: brightness(0) invert(1); /* recolour to white to match SVG markers */
+      pointer-events: none;
+      opacity: 0;
+      transform: translate(0, 0);
+      z-index: 20;          /* above scramble overlay (z 10) */
+      transition: opacity 0.55s ease,
+                  transform 1.6s cubic-bezier(0.25, 0.8, 0.3, 1);
+      will-change: transform, opacity;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>ALEX ASH</h1>
-    <p>Product &amp; Design Consultant — <a href="mailto:alexj.ash@gmail.com">alexj.ash@gmail.com</a></p>
+
+  <div id="scroll-banner">
+    <div id="scramble-overlay"><span id="scramble-text"></span></div>
+    <svg id="banner-svg"></svg>
+    <img class="logo-flyer" data-idx="0" src="openai_transparent.png"    alt="" />
+    <img class="logo-flyer" data-idx="1" src="claudelogo_transparent.png" alt="" />
+    <img class="logo-flyer" data-idx="2" src="openai_transparent.png"    alt="" />
+    <div id="scroll-pct">0%</div>
+    <img id="alex-photo" src="alex.webp" alt="Alex Ash" />
   </div>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-head">
+        <span class="sidebar-title">Navigate</span>
+        <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">«</button>
+      </div>
+      <nav class="nav" id="nav">
+        <a href="#about"   class="nav-item active" data-section="about">
+          <span class="nav-icon">◉</span><span class="nav-label">About Me</span>
+        </a>
+        <a href="#ai-pm"   class="nav-item" data-section="ai-pm">
+          <span class="nav-icon">⌘</span><span class="nav-label">AI PM Work</span>
+        </a>
+        <a href="#books"   class="nav-item" data-section="books">
+          <span class="nav-icon">▤</span><span class="nav-label">Author / Books</span>
+        </a>
+        <a href="#contact" class="nav-item" data-section="contact">
+          <span class="nav-icon">✉</span><span class="nav-label">Contact</span>
+        </a>
+        <a href="#econ"    class="nav-item" data-section="econ">
+          <span class="nav-icon">∑</span><span class="nav-label">Econ Musings</span>
+        </a>
+      </nav>
+      <div class="sidebar-foot">
+        <span class="status-dot"></span><span>AVAILABLE · Q3 2026</span>
+      </div>
+    </aside>
+
+    <main class="content">
+
+      <div class="content-bar">
+        <span>workspace /</span>
+        <span class="breadcrumb-current" id="breadcrumb">About Me</span>
+        <span class="kbd">⌘K</span>
+      </div>
+
+      <!-- ===== About Me ===== -->
+      <section id="about" class="section">
+        <div class="section-tag">01 / About</div>
+        <h2>About Me</h2>
+
+        <div class="card">
+          <div class="card-grid">
+            <div class="photo-div">[ PORTRAIT ]</div>
+            <div class="card-body">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ex-founder turned product &amp; design consultant working with small and mid-sized teams. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+              <div class="tag-row">
+                <span class="tag">Product Strategy</span>
+                <span class="tag">Design</span>
+                <span class="tag">AI / LLMs</span>
+                <span class="tag">0→1</span>
+              </div>
+            </div>
+          </div>
+          <div class="stat-grid">
+            <div class="stat"><div class="stat-num">12+</div><div class="stat-label">Years shipping</div></div>
+            <div class="stat"><div class="stat-num">40</div><div class="stat-label">Engagements</div></div>
+            <div class="stat"><div class="stat-num">3</div><div class="stat-label">Companies founded</div></div>
+            <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Wireframes burned</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== AI PM Work ===== -->
+      <section id="ai-pm" class="section">
+        <div class="section-tag">02 / Engagements</div>
+        <h2>AI PM Work</h2>
+
+        <div class="card">
+          <div class="card-body">
+            <p>Lorem ipsum dolor sit amet — I help SMB product teams scope, validate, and ship AI-native features without burning the runway. Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+
+          <div class="project-row">
+            <span class="project-dot"></span>
+            <span class="project-name">LLM-powered support triage — Series B SaaS</span>
+            <span class="project-meta">2026 · ACTIVE</span>
+          </div>
+          <div class="project-row">
+            <span class="project-dot" style="background:#7a6d5a;box-shadow:none;"></span>
+            <span class="project-name">Internal RAG copilot rollout — Fintech</span>
+            <span class="project-meta">2025 · SHIPPED</span>
+          </div>
+          <div class="project-row">
+            <span class="project-dot" style="background:#7a6d5a;box-shadow:none;"></span>
+            <span class="project-name">Agent-first onboarding flow — Devtool</span>
+            <span class="project-meta">2025 · SHIPPED</span>
+          </div>
+          <div class="project-row">
+            <span class="project-dot" style="background:#7a6d5a;box-shadow:none;"></span>
+            <span class="project-name">Evals &amp; guardrails workshop — Healthtech</span>
+            <span class="project-meta">2025 · SHIPPED</span>
+          </div>
+
+          <div class="tag-row">
+            <span class="tag">Discovery</span>
+            <span class="tag">Evals</span>
+            <span class="tag">Prompt Eng.</span>
+            <span class="tag">UX for AI</span>
+            <span class="tag">Roadmaps</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Author / Books ===== -->
+      <section id="books" class="section">
+        <div class="section-tag">03 / Library</div>
+        <h2>Author &amp; Books</h2>
+
+        <div class="card">
+          <div class="card-body">
+            <p>Lorem ipsum — I write short, practical books for operators and PMs working through the messy middle of building with AI. Quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+          </div>
+
+          <div class="book-grid">
+            <div class="book-cover">
+              <div class="book-title">The PM's Field Guide to LLMs</div>
+              <div class="book-meta">2026 · Vol. I</div>
+            </div>
+            <div class="book-cover">
+              <div class="book-title">Shipping Small</div>
+              <div class="book-meta">2025 · Essays</div>
+            </div>
+            <div class="book-cover">
+              <div class="book-title">Evals First</div>
+              <div class="book-meta">2025 · Handbook</div>
+            </div>
+            <div class="book-cover">
+              <div class="book-title">Design for Agents</div>
+              <div class="book-meta">2024 · Pocket</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Contact ===== -->
+      <section id="contact" class="section">
+        <div class="section-tag">04 / Reach Out</div>
+        <h2>Contact</h2>
+
+        <div class="card">
+          <div class="card-body">
+            <p>Lorem ipsum — open to short-cycle advisory, fractional PM, and workshop work. Reply within ~2 business days.</p>
+          </div>
+
+          <div class="contact-grid">
+            <a class="contact-row" href="mailto:alexj.ash@gmail.com">
+              <span class="contact-label">Email</span>
+              <span class="contact-value">alexj.ash@gmail.com</span>
+            </a>
+            <a class="contact-row" href="https://github.com/akaaja2" target="_blank" rel="noopener">
+              <span class="contact-label">GitHub</span>
+              <span class="contact-value">@akaaja2</span>
+            </a>
+            <a class="contact-row" href="#">
+              <span class="contact-label">LinkedIn</span>
+              <span class="contact-value">/in/alex-ash</span>
+            </a>
+            <a class="contact-row" href="#">
+              <span class="contact-label">Calendar</span>
+              <span class="contact-value">Book a 30-min intro</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Econ Musings ===== -->
+      <section id="econ" class="section">
+        <div class="section-tag">05 / Side Quest</div>
+        <h2>Econ Musings</h2>
+
+        <div class="card">
+          <div class="card-body">
+            <p>Lorem ipsum — half-formed ideas at the intersection of economics, AI, and how value gets produced and priced when the marginal cost of intelligence keeps falling. Mostly toy models, scratch visualisations, and the occasional blog post.</p>
+            <p>Currently noodling on <em>Cobb-Douglas AI</em> (what happens to the labour-capital production function when "tokens" become a third input) and <em>Agentic WTP</em> (how willingness-to-pay re-shapes when the buyer is an agent acting on behalf of a human).</p>
+          </div>
+
+          <a class="project-row" href="econ-musings.html" style="text-decoration: none;">
+            <span class="project-dot"></span>
+            <span class="project-name">Read the musings &amp; explore the visualisations →</span>
+            <span class="project-meta">SEPARATE PAGE</span>
+          </a>
+
+          <div class="tag-row">
+            <span class="tag">Cobb-Douglas AI</span>
+            <span class="tag">Agentic WTP</span>
+            <span class="tag">Toy Models</span>
+            <span class="tag">Visualisations</span>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+
+  <script>
+    // ── Constants (TEXT hoisted so scramble can use it) ──────────
+    const TEXT      = "Alex Ash";
+
+    // ── Letter scramble ───────────────────────────────────────────
+    const SCRAMBLE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$!&*+~";
+
+    let scrambleDone = false;
+    let svgBuilt     = false;
+
+    function showLogos() {
+      const logosLayer = document.getElementById("logos-layer");
+      if (logosLayer) logosLayer.style.opacity = "1";
+    }
+
+    // ── HTML logo flyers — pre-flight before the SVG reveals ─────
+    // Sit above the scramble overlay (z-index 20 vs 10) so they're
+    // visible during the scramble. Start centred on the banner, fade
+    // in, then travel to the same screen positions the SVG logos will
+    // occupy at progress=0. Handoff happens in revealSVG().
+    function launchFlyers() {
+      const banner = document.getElementById("scroll-banner");
+      const flyers = document.querySelectorAll(".logo-flyer");
+      if (!banner || !flyers.length || !groups.length) return;
+
+      // Step 1: fade flyers in at centre (they're already CSS-centred via top/left 50%)
+      requestAnimationFrame(() => {
+        flyers.forEach(f => { f.style.opacity = "1"; });
+      });
+
+      // Step 2: after a short hold at centre, animate to target trace
+      // start positions. computeTargets reads getScreenCTM, which needs
+      // the SVG to be laid out — safe by this point.
+      setTimeout(() => {
+        const bannerRect = banner.getBoundingClientRect();
+        const cx = bannerRect.width  / 2;
+        const cy = bannerRect.height / 2;
+
+        groups.forEach((group, gi) => {
+          const flyer = flyers[gi];
+          if (!flyer) return;
+          const firstEl = group.traceEls.find(p => p);
+          if (!firstEl) return;
+          const ctm = firstEl.getScreenCTM();
+          if (!ctm) return;
+
+          const pt      = firstEl.getPointAtLength(0);
+          const screenX = pt.x * ctm.a + pt.y * ctm.c + ctm.e;
+          const screenY = pt.x * ctm.b + pt.y * ctm.d + ctm.f;
+          const dx      = (screenX - bannerRect.left) - cx;
+          const dy      = (screenY - bannerRect.top)  - cy;
+
+          flyer.style.transform = `translate(${dx}px, ${dy}px)`;
+        });
+      }, 450);
+    }
+
+    function fadeFlyersOut() {
+      document.querySelectorAll(".logo-flyer").forEach(f => {
+        f.style.opacity = "0";
+      });
+    }
+
+    function revealSVG() {
+      const overlay      = document.getElementById("scramble-overlay");
+      const lettersLayer = document.getElementById("letters-layer");
+      overlay.style.opacity = "0";
+      if (lettersLayer) lettersLayer.style.opacity = "1";
+      // Park SVG logos at start positions immediately, so as the HTML
+      // flyers fade out the SVG markers fade in at the same coordinates.
+      showLogos();
+      applyProgress();
+      fadeFlyersOut();
+      setTimeout(() => {
+        overlay.style.display = "none";
+      }, 900);
+    }
+
+    function checkReady() {
+      if (scrambleDone && svgBuilt) revealSVG();
+    }
+
+    function runScramble() {
+      const target  = TEXT.split("");
+      const el      = document.getElementById("scramble-text");
+      const settled = target.map(ch => ch === " "); // spaces need no scramble
+
+      // Note: SVG logos are revealed at handoff time inside revealSVG.
+      // The HTML logo flyers (launched by launchFlyers, after buildSVG)
+      // provide the early on-screen presence during the scramble.
+
+      // Each non-space letter settles in sequence with a stagger
+      let delay = 300;
+      target.forEach((ch, i) => {
+        if (ch === " ") return;
+        setTimeout(() => { settled[i] = true; }, delay);
+        delay += 280;
+      });
+
+      function tick() {
+        el.textContent = target.map((ch, i) => {
+          if (ch === " ")  return " "; // preserve space width
+          if (settled[i])  return ch;
+          return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+        }).join("");
+
+        if (settled.every(Boolean)) {
+          // All letters settled — hold briefly then hand off
+          setTimeout(() => { scrambleDone = true; checkReady(); }, 550);
+          return;
+        }
+        requestAnimationFrame(tick);
+      }
+
+      requestAnimationFrame(tick);
+    }
+
+    // Kick off scramble immediately (independent of font load)
+    runScramble();
+
+    // ─────────────────────────────────────────────────────────────
+    const FONT_URL  = "https://fonts.gstatic.com/s/bungee/v14/N0bU2SZBIuF2PU_ECn50Kd_PmA.ttf";
+    const FONT_SIZE = 120;
+    const COLOUR    = "#c97b1a";   // single colour for everything
+
+    // Cursors split for sequencing; each carries a logo marker
+    const MARKER_SIZE = 28; // px — size of the logo marker
+    const SPLITS = [
+      { chars: [0, 1, 2], logo: "openai_transparent.png"    },
+      { chars: [3, 4, 5], logo: "claudelogo_transparent.png" },
+      { chars: [6, 7],    logo: "openai_transparent.png"    },
+    ];
+    const NS = "http://www.w3.org/2000/svg";
+
+    let glyphData = null;
+    let progress  = 0;
+
+    const groups = SPLITS.map(split => ({
+      split,
+      traceEls: [],  // animated stroke paths
+      fillEls:  [],  // solid fill paths, revealed when letter done
+      dotEl:    null,
+      lengths:  [],
+    }));
+
+    // ── Banner shrink + live height sync ─────────────────────────
+    const bannerEl = document.getElementById("scroll-banner");
+    const rootEl   = document.documentElement;
+    const SHRINK_THRESHOLD = 80;
+
+    function syncBannerHeight() {
+      rootEl.style.setProperty("--banner-h", bannerEl.offsetHeight + "px");
+    }
+    // Keep --banner-h in sync with the real rendered height, including
+    // during the shrink transition and on resize / font load.
+    if (typeof ResizeObserver !== "undefined") {
+      new ResizeObserver(syncBannerHeight).observe(bannerEl);
+    }
+    window.addEventListener("resize", syncBannerHeight);
+    syncBannerHeight();
+
+    function applyShrink() {
+      if (window.scrollY > SHRINK_THRESHOLD) bannerEl.classList.add("shrunk");
+      else                                   bannerEl.classList.remove("shrunk");
+    }
+
+    // ── Scroll listener ──────────────────────────────────────────
+    let ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const doc        = document.documentElement;
+        const scrollable = doc.scrollHeight - window.innerHeight;
+        progress = scrollable > 0
+          ? Math.min(1, Math.max(0, window.scrollY / scrollable))
+          : 0;
+        document.getElementById("scroll-pct").textContent =
+          Math.round(progress * 100) + "%";
+        applyShrink();
+        applyProgress();
+        applyPhotoReveal();
+        ticking = false;
+      });
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    // ── Build SVG once font is ready ─────────────────────────────
+    function buildSVG() {
+      const { chars, totalWidth, height } = glyphData;
+      const svg = document.getElementById("banner-svg");
+      svg.setAttribute("viewBox", `0 0 ${totalWidth + 40} ${height}`);
+      svg.setAttribute("height", height);
+      svg.style.maxWidth = (totalWidth + 40) + "px";
+
+      // Glow filter — the blur bleeds outside the letter bounds
+      const defs   = document.createElementNS(NS, "defs");
+      const filter = document.createElementNS(NS, "filter");
+      filter.setAttribute("id",     "letter-glow");
+      filter.setAttribute("x",      "-40%");
+      filter.setAttribute("y",      "-40%");
+      filter.setAttribute("width",  "180%");
+      filter.setAttribute("height", "180%");
+      filter.setAttribute("color-interpolation-filters", "sRGB");
+
+      const blur = document.createElementNS(NS, "feGaussianBlur");
+      blur.setAttribute("in",           "SourceGraphic");
+      blur.setAttribute("stdDeviation", "6");
+      blur.setAttribute("result",       "blur");
+
+      const merge = document.createElementNS(NS, "feMerge");
+      ["blur", "SourceGraphic"].forEach(src => {
+        const mn = document.createElementNS(NS, "feMergeNode");
+        mn.setAttribute("in", src);
+        merge.appendChild(mn);
+      });
+
+      filter.appendChild(blur);
+      filter.appendChild(merge);
+      defs.appendChild(filter);
+
+      // White recolour filter — sets RGB to 1,1,1 while keeping alpha intact
+      const whiteFilter = document.createElementNS(NS, "filter");
+      whiteFilter.setAttribute("id", "white-logo");
+      const cm = document.createElementNS(NS, "feColorMatrix");
+      cm.setAttribute("type", "matrix");
+      cm.setAttribute("values", "0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0");
+      whiteFilter.appendChild(cm);
+      defs.appendChild(whiteFilter);
+
+      svg.appendChild(defs);
+
+      // Two independent opacity layers:
+      // letters-layer: hidden until scramble finishes, then fades in
+      // logos-layer:   hidden until halfway through scramble, then fades in
+      const lettersLayer = document.createElementNS(NS, "g");
+      lettersLayer.setAttribute("id", "letters-layer");
+      lettersLayer.style.opacity    = "0";
+      lettersLayer.style.transition = "opacity 0.85s ease";
+
+      const logosLayer = document.createElementNS(NS, "g");
+      logosLayer.setAttribute("id", "logos-layer");
+      logosLayer.style.opacity    = "0";
+      logosLayer.style.transition = "opacity 0.6s ease";
+
+      groups.forEach(group => {
+        const g = document.createElementNS(NS, "g");
+
+        group.split.chars.forEach((charIndex, i) => {
+          const ch = chars[charIndex];
+          if (!ch || !ch.d) return;
+
+          // Ghost outline — what's coming
+          const guide = document.createElementNS(NS, "path");
+          guide.setAttribute("d",               ch.d);
+          guide.setAttribute("fill",            "none");
+          guide.setAttribute("stroke",          COLOUR);
+          guide.setAttribute("stroke-opacity",  "0.18");
+          guide.setAttribute("stroke-width",    "1.5");
+          guide.setAttribute("stroke-linecap",  "round");
+          guide.setAttribute("stroke-linejoin", "round");
+          g.appendChild(guide);
+
+          // Animated trace stroke
+          const trace = document.createElementNS(NS, "path");
+          trace.setAttribute("d",               ch.d);
+          trace.setAttribute("fill",            "none");
+          trace.setAttribute("stroke",          COLOUR);
+          trace.setAttribute("stroke-width",    "3");
+          trace.setAttribute("stroke-linecap",  "round");
+          trace.setAttribute("stroke-linejoin", "round");
+          trace.style.transition = "opacity 0.3s ease";
+          g.appendChild(trace);
+          group.traceEls[i] = trace;
+
+          // Solid fill — hidden until trace finishes, then glows
+          const fill = document.createElementNS(NS, "path");
+          fill.setAttribute("d",      ch.d);
+          fill.setAttribute("fill",   COLOUR);
+          fill.setAttribute("stroke", "none");
+          fill.style.opacity    = "0";
+          fill.style.transition = "opacity 0.4s ease";
+          fill.style.filter     = "url(#letter-glow)";
+          g.appendChild(fill);
+          group.fillEls[i] = fill;
+        });
+
+        lettersLayer.appendChild(g);
+
+        // Logo marker lives in the separate logos layer
+        const dot = document.createElementNS(NS, "image");
+        dot.setAttribute("href",    group.split.logo);
+        dot.setAttribute("width",   MARKER_SIZE);
+        dot.setAttribute("height",  MARKER_SIZE);
+        dot.setAttribute("x",       "0");
+        dot.setAttribute("y",       "0");
+        dot.setAttribute("opacity", "0");
+        dot.style.filter = "url(#white-logo)";
+        logosLayer.appendChild(dot);
+        group.dotEl = dot;
+
+        // Measure lengths and initialise hidden
+        group.lengths = group.traceEls.map(p => p ? p.getTotalLength() : 0);
+        group.traceEls.forEach((p, i) => {
+          if (!p) return;
+          const len = group.lengths[i];
+          p.style.strokeDasharray  = len;
+          p.style.strokeDashoffset = len;
+        });
+      });
+
+      svg.appendChild(lettersLayer);
+      svg.appendChild(logosLayer);
+    }
+
+    // ── Photo reveal (30%→80% of scroll) ─────────────────────────
+    function applyPhotoReveal() {
+      const photo = document.getElementById("alex-photo");
+      if (!photo) return;
+
+      // Remap: starts from first scroll, fully revealed by 60%
+      const p = Math.max(0, Math.min(1, progress / 0.60));
+
+      // Opacity: 0 → 1
+      photo.style.opacity = p;
+
+      // Blur: starts heavy, clears as it reveals
+      const blur = (1 - p) * 12;
+
+      // Warm glow: grows in, then softens back to a gentle halo at full reveal
+      const glowSize  = p < 0.7 ? p * 40 : 40 - (p - 0.7) * 60;  // peaks mid-reveal
+      const glowAlpha = p < 0.7 ? p * 0.7 : 0.7 - (p - 0.7) * 1.4;
+      const glow      = glowSize > 0
+        ? ` drop-shadow(0 0 ${glowSize.toFixed(1)}px rgba(201,123,26,${Math.max(0,glowAlpha).toFixed(2)}))`
+        : "";
+
+      photo.style.filter = `blur(${blur.toFixed(1)}px)${glow}`;
+    }
+
+    // ── Animate based on scroll progress ─────────────────────────
+    function applyProgress() {
+      if (!glyphData) return;
+      groups.forEach(group => {
+        const lens     = group.lengths;
+        const totalLen = lens.reduce((s, n) => s + n, 0);
+        if (!totalLen) return;
+        const drawn = progress * totalLen;
+        let acc = 0, activeIdx = -1, activeLocal = 0;
+
+        group.traceEls.forEach((p, idx) => {
+          if (!p) return;
+          const len   = lens[idx];
+          const start = acc;
+          const end   = acc + len;
+          let draw    = 0;
+          if (drawn >= end)        draw = 1;
+          else if (drawn > start) {
+            draw        = (drawn - start) / len;
+            activeIdx   = idx;
+            activeLocal = draw;
+          }
+
+          const done = draw >= 1;
+          p.style.strokeDashoffset = len * (1 - draw);
+          p.style.opacity          = done ? "0" : "1"; // fade trace out when fill appears
+
+          if (group.fillEls[idx])
+            group.fillEls[idx].style.opacity = done ? "1" : "0";
+
+          acc = end;
+        });
+
+        const half = MARKER_SIZE / 2;
+        if (activeIdx >= 0 && activeLocal > 0 && activeLocal < 1) {
+          // Actively tracing — follow the path
+          const pt = group.traceEls[activeIdx]
+            .getPointAtLength(lens[activeIdx] * activeLocal);
+          group.dotEl.setAttribute("x",       pt.x - half);
+          group.dotEl.setAttribute("y",       pt.y - half);
+          group.dotEl.setAttribute("opacity", "1");
+        } else if (drawn <= 0) {
+          // 0% — park at the start of the group's first character
+          const firstEl = group.traceEls.find(p => p);
+          if (firstEl) {
+            const pt = firstEl.getPointAtLength(0);
+            group.dotEl.setAttribute("x",       pt.x - half);
+            group.dotEl.setAttribute("y",       pt.y - half);
+            group.dotEl.setAttribute("opacity", "1");
+          }
+        } else {
+          group.dotEl.setAttribute("opacity", "0");
+        }
+      });
+    }
+
+    // ── Sidebar + section nav ────────────────────────────────────
+    (function () {
+      const sidebar    = document.getElementById("sidebar");
+      const toggle     = document.getElementById("sidebar-toggle");
+      const navItems   = document.querySelectorAll(".nav-item");
+      const sections   = Array.from(document.querySelectorAll(".section"));
+      const breadcrumb = document.getElementById("breadcrumb");
+
+      const labelMap = {
+        about:   "About Me",
+        "ai-pm": "AI PM Work",
+        books:   "Author / Books",
+        contact: "Contact",
+        econ:    "Econ Musings",
+      };
+
+      toggle.addEventListener("click", () => {
+        sidebar.classList.toggle("collapsed");
+        toggle.textContent = sidebar.classList.contains("collapsed") ? "»" : "«";
+      });
+
+      navItems.forEach(item => {
+        item.addEventListener("click", e => {
+          e.preventDefault();
+          const target = document.getElementById(item.dataset.section);
+          if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+
+      function updateActiveSection() {
+        const scrollPos = window.scrollY + 180;
+        let current = sections[0]?.id;
+        for (const sec of sections) {
+          if (sec.offsetTop <= scrollPos) current = sec.id;
+        }
+        navItems.forEach(item => {
+          item.classList.toggle("active", item.dataset.section === current);
+        });
+        if (breadcrumb && labelMap[current]) breadcrumb.textContent = labelMap[current];
+      }
+      window.addEventListener("scroll", updateActiveSection, { passive: true });
+      updateActiveSection();
+
+      // ⌘K / Ctrl+K opens a quick section jump
+      document.addEventListener("keydown", e => {
+        if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+          e.preventDefault();
+          const labels = Object.entries(labelMap).map(([k, v], i) => `${i + 1}. ${v}`).join("\n");
+          const pick   = window.prompt(`Jump to section:\n${labels}\n\nEnter 1-5:`);
+          const keys   = Object.keys(labelMap);
+          const idx    = parseInt(pick, 10) - 1;
+          if (!isNaN(idx) && keys[idx]) {
+            document.getElementById(keys[idx])
+                    .scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }
+      });
+    })();
+
+    // ── Load font ─────────────────────────────────────────────────
+    opentype.load(FONT_URL, (err, font) => {
+      if (err || !font) {
+        document.getElementById("banner-svg").innerHTML =
+          `<text y="40" fill="#c00" font-size="14">Couldn't load Bungee: ${err?.message || "unknown"}</text>`;
+        return;
+      }
+      let x = 0;
+      const chars = TEXT.split("").map(ch => {
+        const path    = font.getPath(ch, x, FONT_SIZE, FONT_SIZE);
+        const d       = path.toPathData(2);
+        const glyph   = font.charToGlyph(ch);
+        const advance = (glyph.advanceWidth / font.unitsPerEm) * FONT_SIZE;
+        const entry   = { d, x, advance };
+        x += advance;
+        return entry;
+      });
+      glyphData = { chars, totalWidth: x, height: FONT_SIZE * 1.3 };
+      buildSVG();
+      svgBuilt = true;
+      // Kick off the HTML flyer pre-flight as soon as the SVG is in the
+      // DOM and laid out — they need getScreenCTM on the trace paths.
+      requestAnimationFrame(launchFlyers);
+      checkReady();
+    });
+  </script>
+
 </body>
 </html>

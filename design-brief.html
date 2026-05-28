@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alexander J. — Design Brief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,200;0,400;0,700;1,200&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+/* ── RESET & ROOT ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --bg:          #09090b;
+  --surface:     #111113;
+  --border:      rgba(255,255,255,0.07);
+  --border-mid:  rgba(255,255,255,0.12);
+  --text:        #e4e4e7;
+  --muted:       #52525b;
+  --accent:      #a1a1aa;
+  --highlight:   #fafafa;
+  --dot:         rgba(255,255,255,0.04);
+  --current-glow: rgba(190,242,100,0.06);
+  --current-line: #bef264;
+  --past-glow:   rgba(148,163,184,0.06);
+  --past-line:   #94a3b8;
+  --tag-bg:      rgba(255,255,255,0.05);
+  --mono:        'JetBrains Mono', monospace;
+  --sans:        'Inter', sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ── DOT GRID BACKGROUND ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── LOADING SCREEN ── */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+#loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-bar-wrap {
+  width: 220px;
+  height: 1px;
+  background: var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.loader-bar {
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, var(--highlight), transparent);
+  animation: loadSweep 1.4s ease forwards;
+}
+@keyframes loadSweep {
+  0%   { left: -100%; }
+  100% { left: 100%; }
+}
+
+.loader-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  text-transform: uppercase;
+  animation: fadeIn 0.4s ease forwards;
+}
+.loader-dots span {
+  display: inline-block;
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: var(--muted);
+  margin: 0 2px;
+  animation: dotPulse 1.2s ease-in-out infinite;
+}
+.loader-dots span:nth-child(2) { animation-delay: 0.2s; }
+.loader-dots span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes dotPulse {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.5); }
+}
+
+/* ── MAIN CONTENT ── */
+#main {
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+#main.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── HEADER / INTRO ── */
+header {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 80px 40px 60px;
+  border-bottom: 1px solid var(--border);
+}
+
+.header-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.header-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 16px; height: 1px;
+  background: var(--muted);
+}
+
+.name-line {
+  font-family: var(--mono);
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--highlight);
+  line-height: 1.1;
+  margin-bottom: 10px;
+  min-height: 1.2em;
+}
+
+.name-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 0.9em;
+  background: var(--highlight);
+  vertical-align: middle;
+  margin-left: 2px;
+  animation: cursorBlink 0.8s step-start infinite;
+}
+.name-cursor.done { animation: none; opacity: 0; }
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.title-line {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 200;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  margin-bottom: 28px;
+  min-height: 1.4em;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.title-line.visible { opacity: 1; }
+
+.header-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
+}
+.header-meta.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  background: var(--tag-bg);
+  color: var(--muted);
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+
+/* ── SECTION NAV ── */
+.section-nav {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  opacity: 0;
+  transition: opacity 0.5s ease 0.5s;
+}
+.section-nav.visible { opacity: 1; }
+
+.nav-btn {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: none;
+  border: none;
+  padding: 18px 24px 16px;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.25s ease;
+}
+.nav-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  height: 2px;
+  background: var(--highlight);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+.nav-btn.active { color: var(--highlight); }
+.nav-btn.active::after { transform: scaleX(1); }
+.nav-btn:hover:not(.active) { color: var(--accent); }
+
+.nav-dot {
+  display: inline-block;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--current-line);
+  margin-right: 7px;
+  vertical-align: middle;
+  opacity: 0.7;
+}
+.nav-btn[data-section="past"] .nav-dot { background: var(--past-line); }
+
+/* ── CONTENT AREA ── */
+.content-area {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 40px 100px;
+}
+
+/* ── SECTION PANELS ── */
+.section-panel {
+  display: none;
+  padding-top: 56px;
+}
+.section-panel.active {
+  display: block;
+  animation: panelIn 0.45s ease forwards;
+}
+@keyframes panelIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── SECTION LABEL ── */
+.section-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.section-panel[data-section="current"] .section-label { color: var(--current-line); opacity: 0.6; }
+.section-panel[data-section="past"] .section-label { color: var(--past-line); opacity: 0.6; }
+
+/* ── ROLE CARDS ── */
+.role-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.role-card {
+  position: relative;
+  padding: 28px 28px 28px 36px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: none;
+  border-radius: 0;
+  cursor: default;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  overflow: hidden;
+}
+.role-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: var(--current-line);
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+.section-panel[data-section="past"] .role-card::before {
+  background: var(--past-line);
+  opacity: 0.25;
+}
+.role-card:hover {
+  background: rgba(255,255,255,0.025);
+  border-color: var(--border-mid);
+}
+.role-card:hover::before { opacity: 1; }
+
+/* Glow on hover */
+.role-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--current-glow);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.role-card:hover::after { opacity: 1; }
+.section-panel[data-section="past"] .role-card::after {
+  background: var(--past-glow);
+}
+
+.role-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.role-title {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--highlight);
+  letter-spacing: -0.01em;
+}
+
+.role-period {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+
+.role-org {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.03em;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.role-org-dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--current-line);
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+.section-panel[data-section="past"] .role-org-dot {
+  background: var(--past-line);
+}
+
+.role-highlight {
+  font-size: 13px;
+  color: var(--accent);
+  line-height: 1.55;
+  font-weight: 300;
+}
+
+.role-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+}
+.role-tag {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  padding: 3px 8px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+.section-panel[data-section="current"] .role-tag {
+  border-color: rgba(190,242,100,0.15);
+  color: rgba(190,242,100,0.5);
+}
+.section-panel[data-section="past"] .role-tag {
+  border-color: rgba(148,163,184,0.15);
+  color: rgba(148,163,184,0.4);
+}
+
+/* ── STAT ROW ── */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: 1px;
+}
+.stat-cell {
+  padding: 20px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  text-align: center;
+}
+.stat-number {
+  font-family: var(--mono);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--highlight);
+  letter-spacing: -0.02em;
+  display: block;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── PAST: TIMELINE CONNECTOR ── */
+.timeline-line {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 1px;
+  background: var(--border);
+  display: none;
+}
+
+/* ── SECTION DIVIDER ── */
+.section-divider {
+  margin: 36px 0 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-divider span {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── EDUCATION STRIP ── */
+.edu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  margin-top: 1px;
+}
+.edu-cell {
+  padding: 18px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.edu-inst {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.edu-degree {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 300;
+}
+.edu-year {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--muted);
+  opacity: 0.5;
+  margin-top: 6px;
+  letter-spacing: 0.08em;
+}
+
+/* ── CERT STRIP ── */
+.cert-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-top: 1px;
+}
+.cert-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.cert-name {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.01em;
+}
+.cert-issuer {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 300;
+}
+.cert-year {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--muted);
+  opacity: 0.5;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+/* ── SCROLL FADE IN ── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  header, .section-nav, .content-area { padding-left: 20px; padding-right: 20px; }
+  header { padding-top: 52px; }
+  .stat-row { grid-template-columns: 1fr 1fr; }
+  .edu-grid { grid-template-columns: 1fr; }
+  .role-header { flex-direction: column; gap: 4px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ── LOADER ── -->
+<div id="loader">
+  <div class="loader-label">Loading brief</div>
+  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+  <div class="loader-dots"><span></span><span></span><span></span></div>
+</div>
+
+<!-- ── MAIN ── -->
+<div id="main">
+
+  <!-- Header -->
+  <header>
+    <div class="header-eyebrow">Design Brief · Body of Work</div>
+    <div class="name-line" id="nameLine"><span class="name-cursor" id="nameCursor"></span></div>
+    <div class="title-line" id="titleLine"></div>
+    <div class="header-meta" id="headerMeta">
+      <span class="tag">London</span>
+      <span class="tag">Product · Design · AI</span>
+      <span class="tag">Ex-Founder</span>
+      <span class="tag">Consultant</span>
+      <span class="tag">Author</span>
+    </div>
+  </header>
+
+  <!-- Section Nav -->
+  <nav class="section-nav" id="sectionNav">
+    <button class="nav-btn active" data-section="current">
+      <span class="nav-dot"></span>Current
+    </button>
+    <button class="nav-btn" data-section="past">
+      <span class="nav-dot"></span>Past
+    </button>
+  </nav>
+
+  <!-- Content -->
+  <div class="content-area">
+
+    <!-- ── CURRENT ── -->
+    <div class="section-panel active" data-section="current">
+      <div class="section-label">Active · Ongoing</div>
+
+      <div class="role-list">
+
+        <div class="role-card fade-up">
+          <div class="role-header">
+            <div class="role-title">Director</div>
+            <div class="role-period">Feb 2023 — Present</div>
+          </div>
+          <div class="role-org">
+            <span class="role-org-dot"></span>Ed-tech · Stealth Mode · London
+          </div>
+          <div class="role-highlight">
+            Spinout from a Tier 1 University and AI Lab. Building at the intersection of AI and educational infrastructure.
+          </div>
+          <div class="role-tags">
+            <span class="role-tag">AI</span>
+            <span class="role-tag">Ed-tech</span>
+            <span class="role-tag">Stealth</span>
+            <span class="role-tag">Spinout</span>
+          </div>
+        </div>
+
+        <div class="role-card fade-up">
+          <div class="role-header">
+            <div class="role-title">Author</div>
+            <div class="role-period">Oct 2010 — Present</div>
+          </div>
+          <div class="role-org">
+            <span class="role-org-dot"></span>Hachette Livre · London
+          </div>
+          <div class="role-highlight">
+            Writing <em>AI-KC: Machine Learned friend</em>. Ghostwriting for media and social outlets. 15+ years as a published author.
+          </div>
+          <div class="role-tags">
+            <span class="role-tag">Writing</span>
+            <span class="role-tag">Hachette</span>
+            <span class="role-tag">AI</span>
+            <span class="role-tag">Ghostwriting</span>
+          </div>
+        </div>
+
+        <div class="role-card fade-up">
+          <div class="role-header">
+            <div class="role-title">AI Consultant</div>
+            <div class="role-period">Jan 2021 — Present</div>
+          </div>
+          <div class="role-org">
+            <span class="role-org-dot"></span>Transatlantic Policy Network · Brussels
+          </div>
+          <div class="role-highlight">
+            Non-governmental network bridging politicians, business, civil society, and academia on transatlantic AI policy.
+          </div>
+          <div class="role-tags">
+            <span class="role-tag">Policy</span>
+            <span class="role-tag">AI</span>
+            <span class="role-tag">Transatlantic</span>
+            <span class="role-tag">NGO</span>
+          </div>
+        </div>
+
+      </div><!-- /role-list -->
+
+      <!-- Stats -->
+      <div class="stat-row fade-up" style="transition-delay: 0.2s">
+        <div class="stat-cell">
+          <span class="stat-number">15+</span>
+          <span class="stat-label">Years publishing</span>
+        </div>
+        <div class="stat-cell">
+          <span class="stat-number">3</span>
+          <span class="stat-label">Active roles</span>
+        </div>
+        <div class="stat-cell">
+          <span class="stat-number">EU·UK</span>
+          <span class="stat-label">Policy reach</span>
+        </div>
+      </div>
+
+    </div><!-- /current -->
+
+
+    <!-- ── PAST ── -->
+    <div class="section-panel" data-section="past">
+      <div class="section-label">Prior · Selected</div>
+
+      <div class="role-list">
+
+        <div class="role-card fade-up">
+          <div class="role-header">
+            <div class="role-title">AI Product Manager</div>
+            <div class="role-period">Jul 2024 — Jun 2025</div>
+          </div>
+          <div class="role-org">
+            <span class="role-org-dot"></span>Justice AI Unit · Ministry of Justice UK · London
+          </div>
+          <div class="role-highlight">
+            Service transformation for the UK justice system. AI product delivery at scale within government infrastructure.
+          </div>
+          <div class="role-tags">
+            <span class="role-tag">Government</span>
+            <span class="role-tag">AI PM</span>
+            <span class="role-tag">MoJ</span>
+            <span class="role-tag">Service Design</span>
+          </div>
+        </div>
+
+        <div class="role-card fade-up">
+          <div class="role-header">
+            <div class="role-title">EdTech Freelancer</div>
+            <div class="role-period">Jan 2018 — Jan 2022 · 4 yrs</div>
+          </div>
+          <div class="role-org">
+            <span class="role-org-dot"></span>Self-employed
+          </div>
+          <div class="role-highlight">
+            Early AI/ML solutions for educational productivity across public and private sector. Clients included Cottesmore School and Ideas Network 2030.
+          </div>
+          <div class="role-tags">
+            <span class="role-tag">ML</span>
+            <span class="role-tag">Ed-tech</span>
+            <span class="role-tag">Early AI</span>
+            <span class="role-tag">Freelance</span>
+          </div>
+        </div>
+
+        <div class="role-card fade-up">
+          <div class="role-header">
+            <div class="role-title">Associate</div>
+            <div class="role-period">Jan 2014 — Dec 2016 · 3 yrs</div>
+          </div>
+          <div class="role-org">
+            <span class="role-org-dot"></span>Toucan Ventures
+          </div>
+          <div class="role-highlight">
+            Venture Capital fund focused on creative industries. Portfolio evaluation, deal flow, founder support.
+          </div>
+          <div class="role-tags">
+            <span class="role-tag">VC</span>
+            <span class="role-tag">Creative Industries</span>
+            <span class="role-tag">Investing</span>
+          </div>
+        </div>
+
+        <div class="role-card fade-up">
+          <div class="role-header">
+            <div class="role-title">Director</div>
+            <div class="role-period">Jun 2010 — Mar 2015 · 4 yrs 10 mo</div>
+          </div>
+          <div class="role-org">
+            <span class="role-org-dot"></span>Russell Ash Ltd · Lewes, East Sussex
+          </div>
+          <div class="role-highlight">
+            Derivative works exceeded <strong style="color: var(--highlight)">1.3M unit sales</strong> worldwide. Led publishing operations for an established reference imprint.
+          </div>
+          <div class="role-tags">
+            <span class="role-tag">Publishing</span>
+            <span class="role-tag">Director</span>
+            <span class="role-tag">1.3M Sales</span>
+          </div>
+        </div>
+
+        <div class="role-card fade-up">
+          <div class="role-header">
+            <div class="role-title">Sales &amp; Marketing Associate</div>
+            <div class="role-period">May 2009 — Sep 2009</div>
+          </div>
+          <div class="role-org">
+            <span class="role-org-dot"></span>Everyday Models / The Student Marketing Agency · London
+          </div>
+          <div class="role-highlight">
+            One of the world's first influencer agencies. Won Board of Innovation's Most Innovative Business Concept of the Year (2009). Acquired 2011.
+          </div>
+          <div class="role-tags">
+            <span class="role-tag">Influencer</span>
+            <span class="role-tag">Award-winning</span>
+            <span class="role-tag">Early-stage</span>
+            <span class="role-tag">Acquired</span>
+          </div>
+        </div>
+
+      </div><!-- /role-list -->
+
+      <!-- Stats -->
+      <div class="stat-row fade-up" style="transition-delay: 0.15s">
+        <div class="stat-cell">
+          <span class="stat-number">1.3M</span>
+          <span class="stat-label">Units sold</span>
+        </div>
+        <div class="stat-cell">
+          <span class="stat-number">16+</span>
+          <span class="stat-label">Years experience</span>
+        </div>
+        <div class="stat-cell">
+          <span class="stat-number">5</span>
+          <span class="stat-label">Sectors</span>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="section-divider fade-up"><span>Education</span></div>
+
+      <div class="edu-grid fade-up">
+        <div class="edu-cell">
+          <div class="edu-inst">University College London</div>
+          <div class="edu-degree">BSc (Hons) Economics</div>
+          <div class="edu-year">2007 – 2010</div>
+        </div>
+        <div class="edu-cell">
+          <div class="edu-inst">The University of Law</div>
+          <div class="edu-degree">Graduate Diploma in Law</div>
+          <div class="edu-year">2011 – 2013</div>
+        </div>
+        <div class="edu-cell">
+          <div class="edu-inst">Harvard Business School Online</div>
+          <div class="edu-degree">Professional Certificate · Financial Accounting</div>
+          <div class="edu-year">2020</div>
+        </div>
+        <div class="edu-cell">
+          <div class="edu-inst">HarvardX</div>
+          <div class="edu-degree">CS for AI · Machine Learning in Python</div>
+          <div class="edu-year">Sep 2023</div>
+        </div>
+      </div>
+
+      <!-- Certs -->
+      <div class="section-divider fade-up"><span>Certifications</span></div>
+
+      <div class="cert-list fade-up">
+        <div class="cert-row">
+          <div>
+            <div class="cert-name">Model Context Protocol: Advanced Topics</div>
+            <div class="cert-issuer">Anthropic Education</div>
+          </div>
+          <div class="cert-year">May 2026</div>
+        </div>
+        <div class="cert-row">
+          <div>
+            <div class="cert-name">AI, Justice, and the Rule of Law</div>
+            <div class="cert-issuer">Saïd Business School · University of Oxford</div>
+          </div>
+          <div class="cert-year">May 2026</div>
+        </div>
+        <div class="cert-row">
+          <div>
+            <div class="cert-name">Oxford AI Summit: Towards AGI</div>
+            <div class="cert-issuer">Oxford Lifelong Learning · University of Oxford</div>
+          </div>
+          <div class="cert-year">Dec 2024</div>
+        </div>
+      </div>
+
+    </div><!-- /past -->
+
+  </div><!-- /content-area -->
+</div><!-- /main -->
+
+<script>
+/* ── LOADER ── */
+const loader = document.getElementById('loader');
+const main   = document.getElementById('main');
+
+setTimeout(() => {
+  loader.classList.add('hidden');
+  main.classList.add('visible');
+  startTyping();
+}, 1800);
+
+/* ── TYPEWRITER ── */
+function startTyping() {
+  const nameLine   = document.getElementById('nameLine');
+  const cursor     = document.getElementById('nameCursor');
+  const titleLine  = document.getElementById('titleLine');
+  const headerMeta = document.getElementById('headerMeta');
+  const sectionNav = document.getElementById('sectionNav');
+
+  const fullName  = 'Alexander J.';
+  const fullTitle = 'Product & Design Consultant  ·  Ex-Founder  ·  Author';
+
+  let nameIdx  = 0;
+  let titleIdx = 0;
+
+  // Type name
+  function typeName() {
+    if (nameIdx < fullName.length) {
+      const char = document.createTextNode(fullName[nameIdx]);
+      nameLine.insertBefore(char, cursor);
+      nameIdx++;
+      setTimeout(typeName, 55 + Math.random() * 35);
+    } else {
+      // Name done — pause then type title
+      setTimeout(() => {
+        cursor.classList.add('done');
+        titleLine.classList.add('visible');
+        setTimeout(typeTitle, 200);
+      }, 320);
+    }
+  }
+
+  // Type title
+  function typeTitle() {
+    if (titleIdx < fullTitle.length) {
+      titleLine.textContent = fullTitle.slice(0, titleIdx + 1);
+      titleIdx++;
+      setTimeout(typeTitle, 28 + Math.random() * 18);
+    } else {
+      // Title done — reveal meta + nav
+      setTimeout(() => {
+        headerMeta.classList.add('visible');
+        sectionNav.classList.add('visible');
+        revealCards();
+      }, 300);
+    }
+  }
+
+  typeName();
+}
+
+/* ── SECTION SWITCHING ── */
+const navBtns  = document.querySelectorAll('.nav-btn');
+const panels   = document.querySelectorAll('.section-panel');
+
+navBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.dataset.section;
+
+    navBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    panels.forEach(p => {
+      p.classList.remove('active');
+      if (p.dataset.section === target) p.classList.add('active');
+    });
+
+    // Animate cards in new panel
+    setTimeout(revealCards, 60);
+  });
+});
+
+/* ── SCROLL / REVEAL ── */
+function revealCards() {
+  const cards = document.querySelectorAll('.section-panel.active .fade-up');
+  cards.forEach((card, i) => {
+    card.classList.remove('visible');
+    void card.offsetWidth; // force reflow
+    setTimeout(() => card.classList.add('visible'), i * 80);
+  });
+}
+
+// Also observe on scroll
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

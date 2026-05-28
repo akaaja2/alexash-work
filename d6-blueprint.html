@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alexander J. — D6: The Blueprint</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #07111f;
+  --bg2:      #0a1628;
+  --bg3:      #050e1a;
+  --cyan:     #4fc3f7;
+  --cyan2:    #81d4fa;
+  --cdim:     rgba(79,195,247,0.4);
+  --cfaint:   rgba(79,195,247,0.06);
+  --cmid:     rgba(79,195,247,0.13);
+  --crule:    rgba(79,195,247,0.14);
+  --white:    #ddeeff;
+  --amber:    #ffd54f;
+  --red:      #ef9a9a;
+  --mono:     'Share Tech Mono', monospace;
+  --raj:      'Rajdhani', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(var(--crule) 1px, transparent 1px),
+    linear-gradient(90deg, var(--crule) 1px, transparent 1px),
+    linear-gradient(rgba(79,195,247,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79,195,247,0.045) 1px, transparent 1px);
+  background-size: 160px 160px, 160px 160px, 32px 32px, 32px 32px;
+  color: var(--cyan);
+  font-family: var(--mono);
+  font-size: 12px;
+  cursor: crosshair;
+  overflow-x: hidden;
+  transition: background-position 0.15s ease-out;
+}
+
+/* ── DRAWING FRAME ── */
+.frame {
+  position: fixed;
+  inset: 10px;
+  border: 1.5px solid var(--cdim);
+  pointer-events: none;
+  z-index: 200;
+}
+.frame::after {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border: 0.5px solid rgba(79,195,247,0.1);
+}
+.frame-corner {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+}
+.frame-corner::before, .frame-corner::after {
+  content: ''; position: absolute; background: var(--cyan);
+}
+.fc-tl { top: -2px; left: -2px; }
+.fc-tr { top: -2px; right: -2px; transform: scaleX(-1); }
+.fc-bl { bottom: -2px; left: -2px; transform: scaleY(-1); }
+.fc-br { bottom: -2px; right: -2px; transform: scale(-1); }
+.frame-corner::before { top: 0; left: 0; width: 24px; height: 1.5px; }
+.frame-corner::after  { top: 0; left: 0; width: 1.5px; height: 24px; }
+
+/* Center tick marks on frame edges */
+.frame-tick {
+  position: absolute;
+  background: var(--cdim);
+}
+.ft-t, .ft-b { width: 1px; height: 10px; left: 50%; }
+.ft-l, .ft-r { height: 1px; width: 10px; top: 50%; }
+.ft-t { top: -1px; }
+.ft-b { bottom: -1px; }
+.ft-l { left: -1px; }
+.ft-r { right: -1px; }
+
+/* ── PAGE WRAPPER ── */
+.page {
+  position: relative;
+  z-index: 1;
+  padding: 24px 36px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ── DRAWING HEADER ── */
+.dw-header {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--crule);
+  margin-bottom: 0;
+  gap: 2rem;
+}
+.dw-meta { font-size: 0.6rem; color: var(--cdim); line-height: 1.9; }
+.dw-meta span { color: var(--cyan); }
+.dw-center { text-align: center; }
+.dw-center h1 {
+  font-family: var(--raj);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: var(--white);
+  text-transform: uppercase;
+}
+.dw-center p { font-size: 0.55rem; letter-spacing: 0.18em; color: var(--cdim); margin-top: 3px; }
+nav ul { list-style: none; display: flex; gap: 2rem; justify-content: flex-end; }
+nav a {
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cdim);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+nav a::before { content: '→ '; opacity: 0.5; }
+nav a:hover { color: var(--cyan); }
+
+/* ── HERO ── */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 0;
+  border-bottom: 1px solid var(--crule);
+  min-height: 72vh;
+}
+.hero-main {
+  padding: 2.5rem 3rem 2.5rem 0;
+  border-right: 1px solid var(--crule);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.hero-side {
+  padding: 2rem 0 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.view-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  color: var(--cdim);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.view-label::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--cdim);
+}
+
+/* Dimension line SVG */
+.dim-wrap { position: relative; margin-bottom: 2px; height: 28px; }
+.dim-svg { position: absolute; inset: 0; overflow: visible; width: 100%; height: 28px; }
+
+.component-name {
+  font-family: var(--raj);
+  font-size: clamp(4.5rem, 11vw, 10rem);
+  font-weight: 700;
+  line-height: 0.86;
+  letter-spacing: 0.06em;
+  color: var(--white);
+  text-transform: uppercase;
+  display: block;
+}
+.component-name .thin { font-weight: 300; color: var(--cyan2); }
+
+.component-role {
+  font-family: var(--raj);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  color: var(--cyan);
+  text-transform: uppercase;
+  margin-top: 0.8rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 0.5px solid var(--crule);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.component-role::after {
+  content: 'EX-FOUNDER';
+  font-size: 0.55rem;
+  padding: 0.2rem 0.6rem;
+  border: 0.5px solid var(--cyan);
+  color: var(--cyan);
+  letter-spacing: 0.15em;
+}
+
+/* Callout list */
+.callouts { display: flex; flex-direction: column; flex: 1; }
+.callout-row {
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  gap: 1rem;
+  align-items: start;
+  padding: 1rem 0;
+  border-top: 0.5px solid var(--crule);
+  transition: background 0.2s;
+  position: relative;
+  padding-right: 0.5rem;
+}
+.callout-row:last-child { border-bottom: 0.5px solid var(--crule); }
+.callout-row:hover { background: var(--cfaint); }
+.callout-row:hover .c-tooltip { opacity: 1; pointer-events: auto; }
+.cbubble {
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--cyan);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  color: var(--cyan);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.ctext strong {
+  font-family: var(--raj);
+  font-weight: 600;
+  font-size: 0.88rem;
+  letter-spacing: 0.1em;
+  color: var(--white);
+  text-transform: uppercase;
+  display: block;
+}
+.ctext p { font-size: 0.67rem; color: var(--cdim); line-height: 1.7; margin-top: 2px; }
+.ctext .ref { font-size: 0.55rem; color: rgba(79,195,247,0.28); margin-top: 3px; letter-spacing: 0.06em; }
+.c-status {
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  color: var(--cyan);
+  border: 0.5px solid var(--cyan);
+  padding: 0.15rem 0.5rem;
+  align-self: start;
+  margin-top: 3px;
+  white-space: nowrap;
+}
+.c-tooltip {
+  position: absolute;
+  left: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--bg2);
+  border: 0.5px solid var(--cyan);
+  padding: 0.7rem 1rem;
+  font-size: 0.62rem;
+  color: var(--cyan);
+  line-height: 1.7;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+  z-index: 50;
+}
+.c-tooltip::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-right: 5px solid var(--cyan);
+}
+
+/* Side panel */
+.iso-wrap {
+  border: 0.5px solid var(--crule);
+  background: var(--bg3);
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+#iso { display: block; width: 100%; height: 100%; }
+.iso-label {
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  font-size: 0.52rem;
+  letter-spacing: 0.12em;
+  color: var(--cdim);
+}
+.iso-label2 {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-size: 0.52rem;
+  color: rgba(79,195,247,0.25);
+  letter-spacing: 0.08em;
+}
+
+.spec-table { margin-top: 1.5rem; border: 0.5px solid var(--crule); flex: 1; }
+.spec-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 0.5px solid var(--crule);
+  font-size: 0.62rem;
+}
+.spec-row:last-child { border-bottom: none; }
+.sk { padding: 0.55rem 0.8rem; color: var(--cdim); border-right: 0.5px solid var(--crule); }
+.sv { padding: 0.55rem 0.8rem; color: var(--white); }
+.sv.ok { color: var(--cyan); }
+.spec-table-head {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.52rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cdim);
+  border-bottom: 1px solid var(--cyan);
+  background: rgba(79,195,247,0.04);
+}
+
+/* Section cut marker */
+.section-cut-line {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.6rem 0;
+  margin: 0;
+  border-top: 1px solid var(--crule);
+  border-bottom: 1px dashed rgba(255,213,79,0.35);
+}
+.sc-mark {
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  color: var(--amber);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.sc-mark::before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 7px solid var(--amber);
+}
+.sc-mark.flip::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 7px solid var(--amber);
+}
+.sc-mark.flip { flex-direction: row-reverse; }
+.sc-line { height: 1px; background: rgba(255,213,79,0.3); }
+.sc-label { font-size: 0.58rem; letter-spacing: 0.1em; color: rgba(255,213,79,0.5); text-align: center; }
+
+/* ── BOM / PARTS LIST ── */
+.bom-section {
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--crule);
+}
+.sec-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.sec-num { font-size: 0.58rem; letter-spacing: 0.15em; color: var(--cdim); }
+.sec-title {
+  font-family: var(--raj);
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--white);
+  text-transform: uppercase;
+}
+.sec-aside { font-size: 0.58rem; letter-spacing: 0.1em; color: var(--cdim); margin-left: auto; }
+
+.bom {
+  width: 100%;
+  border-collapse: collapse;
+}
+.bom thead tr {
+  border-top: 1px solid var(--cyan);
+  border-bottom: 1px solid var(--cyan);
+}
+.bom thead th {
+  font-size: 0.56rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cdim);
+  text-align: left;
+  padding: 0.6rem 1rem 0.6rem 0;
+  font-weight: 400;
+}
+.bom thead th:first-child { width: 60px; }
+.bom tbody tr {
+  border-bottom: 0.5px solid var(--crule);
+  transition: background 0.18s;
+  cursor: default;
+}
+.bom tbody tr:hover { background: var(--cfaint); }
+.bom td { padding: 1.3rem 1rem 1.3rem 0; vertical-align: top; }
+.td-no { font-size: 0.75rem; color: var(--cdim); padding-top: 1.5rem !important; }
+.td-name {
+  font-family: var(--raj);
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: 0.1em;
+  color: var(--white);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 4px;
+}
+.td-desc { font-size: 0.67rem; color: var(--cdim); line-height: 1.7; }
+.td-spec { font-size: 0.65rem; color: var(--cyan2); line-height: 1.7; }
+.td-qty { font-size: 0.8rem; color: var(--cyan); text-align: right; padding-right: 2rem !important; }
+.td-unit { font-size: 0.62rem; color: var(--cdim); white-space: nowrap; }
+.td-note { font-size: 0.62rem; color: var(--cdim); line-height: 1.7; max-width: 200px; }
+.td-tag {
+  display: inline-block;
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 0.5px solid var(--cyan);
+  color: var(--cyan);
+  padding: 0.2rem 0.5rem;
+}
+.td-tag.avail { border-color: #80cbc4; color: #80cbc4; }
+
+/* ── SECTION A-A ── */
+.sec-aa {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--crule);
+}
+.aa-left {
+  padding: 2.5rem 3.5rem 2.5rem 0;
+  border-right: 1px solid var(--crule);
+}
+.aa-right { padding: 2.5rem 0 2.5rem 3.5rem; }
+
+.strata { border: 0.5px solid var(--crule); margin-top: 1.5rem; }
+.stratum {
+  padding: 1.1rem 1.4rem;
+  border-bottom: 0.5px solid var(--crule);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.2s;
+  cursor: default;
+}
+.stratum:last-child { border-bottom: none; }
+.stratum:hover { background: rgba(79,195,247,0.05); }
+.stratum::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.s1::before { background-image: repeating-linear-gradient(45deg, transparent, transparent 3px, rgba(79,195,247,0.055) 3px, rgba(79,195,247,0.055) 4px); }
+.s2::before { background-image: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(79,195,247,0.04) 5px, rgba(79,195,247,0.04) 6px); }
+.s3::before { background-image: repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(79,195,247,0.03) 8px, rgba(79,195,247,0.03) 9px); }
+.s4::before { background-image: repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(79,195,247,0.025) 10px, rgba(79,195,247,0.025) 11px); }
+.stratum-id {
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  color: var(--cdim);
+  margin-bottom: 0.3rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.stratum-id::before {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 1px;
+  background: var(--cdim);
+}
+.stratum-name {
+  font-family: var(--raj);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--white);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  position: relative;
+}
+.stratum-desc { font-size: 0.67rem; color: var(--cdim); line-height: 1.7; margin-top: 3px; position: relative; }
+.stratum-depth {
+  position: absolute;
+  right: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.55rem;
+  color: rgba(79,195,247,0.2);
+  letter-spacing: 0.08em;
+  pointer-events: none;
+}
+
+/* Diff table */
+.diff {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+}
+.diff thead tr {
+  border-top: 1px solid var(--cyan);
+  border-bottom: 1px solid var(--crule);
+}
+.diff thead th {
+  font-size: 0.56rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cdim);
+  font-weight: 400;
+  text-align: left;
+  padding: 0.5rem 1rem 0.5rem 0;
+}
+.diff tbody tr { border-bottom: 0.5px solid var(--crule); transition: background 0.15s; }
+.diff tbody tr:hover { background: var(--cfaint); }
+.diff td { padding: 0.75rem 1rem 0.75rem 0; font-size: 0.7rem; line-height: 1.5; }
+.diff td.dk { color: var(--cdim); font-style: italic; }
+.diff td.pass { color: var(--cyan2); }
+.diff td.fail { color: rgba(79,195,247,0.22); text-decoration: line-through; font-style: italic; }
+.diff td.param { color: rgba(79,195,247,0.5); font-size: 0.6rem; letter-spacing: 0.08em; }
+
+/* ── TITLE BLOCK + CTA ── */
+.cta-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0;
+  align-items: end;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+.cta-left { padding-right: 5rem; }
+.cta-note {
+  font-size: 0.6rem;
+  color: var(--cdim);
+  letter-spacing: 0.12em;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.cta-note::before { content: ''; display: block; width: 20px; height: 1px; background: var(--cdim); }
+.cta-head {
+  font-family: var(--raj);
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--white);
+  text-transform: uppercase;
+  line-height: 0.9;
+  margin-bottom: 1.8rem;
+}
+.cta-head span { color: var(--cyan); font-weight: 300; }
+.cta-sub { font-size: 0.68rem; color: var(--cdim); line-height: 1.8; max-width: 50ch; margin-bottom: 2rem; }
+.cta-buttons { display: flex; gap: 1rem; }
+.btn-bp {
+  display: inline-block;
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.9rem 2rem;
+  text-decoration: none;
+  transition: all 0.2s;
+  cursor: crosshair;
+}
+.btn-bp:hover { background: var(--cyan); color: var(--bg); }
+.btn-ghost {
+  border-color: var(--crule);
+  color: var(--cdim);
+}
+.btn-ghost:hover { border-color: var(--cdim); background: none; color: var(--cyan); }
+
+/* Engineering title block */
+.eng-tb {
+  border: 1px solid var(--cdim);
+  width: 340px;
+  font-size: 0.6rem;
+  flex-shrink: 0;
+}
+.etb-title-row {
+  padding: 0.8rem 1rem;
+  border-bottom: 0.5px solid var(--crule);
+  background: rgba(79,195,247,0.04);
+}
+.etb-title-label { font-size: 0.5rem; letter-spacing: 0.16em; color: var(--cdim); display: block; margin-bottom: 3px; }
+.etb-title-val {
+  font-family: var(--raj);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--white);
+  text-transform: uppercase;
+}
+.etb-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  border-bottom: 0.5px solid var(--crule);
+}
+.etb-row:last-child { border-bottom: none; }
+.etb-k {
+  padding: 0.5rem 0.8rem;
+  font-size: 0.52rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cdim);
+  border-right: 0.5px solid var(--crule);
+  display: flex;
+  align-items: center;
+}
+.etb-v {
+  padding: 0.5rem 0.8rem;
+  font-size: 0.68rem;
+  color: var(--cyan);
+  display: flex;
+  align-items: center;
+}
+.etb-v.white { color: var(--white); }
+
+/* General notes */
+.gen-notes {
+  margin-top: 1rem;
+  font-size: 0.58rem;
+  color: rgba(79,195,247,0.28);
+  line-height: 1.9;
+  border-top: 0.5px solid var(--crule);
+  padding-top: 0.8rem;
+}
+.gen-notes strong { color: rgba(79,195,247,0.45); font-weight: 400; }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--crule);
+  padding: 0.9rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+footer p { font-size: 0.55rem; color: rgba(79,195,247,0.25); letter-spacing: 0.1em; }
+</style>
+</head>
+<body>
+
+<!-- Drawing frame overlay -->
+<div class="frame">
+  <div class="frame-corner fc-tl"></div>
+  <div class="frame-corner fc-tr"></div>
+  <div class="frame-corner fc-bl"></div>
+  <div class="frame-corner fc-br"></div>
+  <div class="frame-tick ft-t"></div>
+  <div class="frame-tick ft-b"></div>
+  <div class="frame-tick ft-l"></div>
+  <div class="frame-tick ft-r"></div>
+</div>
+
+<div class="page">
+
+  <!-- ══ DRAWING HEADER ══ -->
+  <div class="dw-header">
+    <div class="dw-meta">
+      DWG NO: <span>AJ-2026-001</span> &nbsp;│&nbsp;
+      REV: <span>A</span> &nbsp;│&nbsp;
+      SHEET: <span>1 OF 1</span><br>
+      PROJECTION: <span>THIRD ANGLE</span> &nbsp;│&nbsp;
+      SCALE: <span>1:100</span> &nbsp;│&nbsp;
+      UNITS: <span>mm</span>
+    </div>
+    <div class="dw-center">
+      <h1>Alexander J. — Specification</h1>
+      <p>Product &amp; Design Consultant · Classification: Public</p>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#">Work</a></li>
+        <li><a href="#">Approach</a></li>
+        <li><a href="#">Writing</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- ══ HERO ══ -->
+  <div class="hero">
+    <div class="hero-main">
+      <div class="view-label">View: Primary Elevation</div>
+
+      <!-- Horizontal dimension line above name -->
+      <div class="dim-wrap">
+        <svg class="dim-svg" viewBox="0 0 600 28" preserveAspectRatio="none">
+          <defs>
+            <marker id="aL" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto">
+              <path d="M8,0 L1,4 L8,8" fill="none" stroke="#4fc3f7" stroke-width="0.8" opacity="0.6"/>
+            </marker>
+            <marker id="aR" markerWidth="8" markerHeight="8" refX="0" refY="4" orient="auto">
+              <path d="M0,0 L7,4 L0,8" fill="none" stroke="#4fc3f7" stroke-width="0.8" opacity="0.6"/>
+            </marker>
+          </defs>
+          <line x1="12" y1="20" x2="588" y2="20" stroke="#4fc3f7" stroke-width="0.75" opacity="0.55" marker-start="url(#aL)" marker-end="url(#aR)"/>
+          <line x1="12" y1="10" x2="12" y2="28" stroke="#4fc3f7" stroke-width="0.75" opacity="0.4"/>
+          <line x1="588" y1="10" x2="588" y2="28" stroke="#4fc3f7" stroke-width="0.75" opacity="0.4"/>
+          <text x="300" y="14" text-anchor="middle" font-family="'Share Tech Mono', monospace" font-size="10" fill="#4fc3f7" opacity="0.55">∅ WIDTH: 680mm</text>
+        </svg>
+      </div>
+
+      <span class="component-name">ALEX<span class="thin">AN</span>DER<br>J.</span>
+      <div class="component-role">Product &amp; Design Consultant</div>
+
+      <!-- Callout annotations -->
+      <div class="callouts">
+        <div class="callout-row">
+          <div class="cbubble">1</div>
+          <div class="ctext">
+            <strong>Founder-first perspective</strong>
+            <p>Every recommendation filtered through: would I make this call if it was my business?</p>
+            <span class="ref">REF: AJ-PHIL-001 · TOLERANCE ±0%</span>
+          </div>
+          <div class="c-status">CORE</div>
+          <div class="c-tooltip">CONSTRAINT: No exceptions. All advice passes this gate first.</div>
+        </div>
+        <div class="callout-row">
+          <div class="cbubble">2</div>
+          <div class="ctext">
+            <strong>SMB &amp; Owner-led focus</strong>
+            <p>Designed for the pace, budget, and decision-making style of founder-run businesses.</p>
+            <span class="ref">REF: AJ-MKTG-003 · SPEC: NOT ENTERPRISE</span>
+          </div>
+          <div class="c-status">SPEC</div>
+          <div class="c-tooltip">TARGET MARKET: SMB, &lt;200 employees, founder-led.</div>
+        </div>
+        <div class="callout-row">
+          <div class="cbubble">3</div>
+          <div class="ctext">
+            <strong>Commercial realism</strong>
+            <p>Good thinking that actually works within your budget, team size, and time pressure.</p>
+            <span class="ref">REF: AJ-PHIL-003 · OUTPUT: ACTIONABLE BY MON</span>
+          </div>
+          <div class="c-status">CORE</div>
+          <div class="c-tooltip">ALL RECOMMENDATIONS BUILDABLE WITHIN CLIENT CONSTRAINTS.</div>
+        </div>
+        <div class="callout-row">
+          <div class="cbubble">4</div>
+          <div class="ctext">
+            <strong>Honest partnership</strong>
+            <p>If an idea won't work, I'll say so. You're paying for judgment, not validation.</p>
+            <span class="ref">REF: AJ-PHIL-004 · WARNING: MAY CAUSE DISCOMFORT</span>
+          </div>
+          <div class="c-status">CORE</div>
+          <div class="c-tooltip">CLIENT ADVISORY: Some truth may be uncomfortable.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Side panel -->
+    <div class="hero-side">
+      <!-- Isometric canvas -->
+      <div class="iso-wrap">
+        <canvas id="iso"></canvas>
+        <div class="iso-label">AXONOMETRIC PROJECTION · AJ-2026-001</div>
+        <div class="iso-label2">SCALE 1:100</div>
+      </div>
+
+      <!-- Spec mini table -->
+      <div class="spec-table">
+        <div class="spec-table-head">Component Specification</div>
+        <div class="spec-row"><div class="sk">DESIGNATION</div><div class="sv white">Alexander J.</div></div>
+        <div class="spec-row"><div class="sk">FUNCTION</div><div class="sv">Prod. &amp; Design Consult.</div></div>
+        <div class="spec-row"><div class="sk">BACKGROUND</div><div class="sv ok">Ex-Founder</div></div>
+        <div class="spec-row"><div class="sk">MARKET</div><div class="sv">SMB / Owner-led</div></div>
+        <div class="spec-row"><div class="sk">OUTPUT</div><div class="sv">Decisions, not decks</div></div>
+        <div class="spec-row"><div class="sk">AVAILABILITY</div><div class="sv ok">2026 — Available</div></div>
+        <div class="spec-row"><div class="sk">REVISION</div><div class="sv">A</div></div>
+      </div>
+
+      <!-- General notes -->
+      <div class="gen-notes">
+        <strong>GENERAL NOTES:</strong><br>
+        1. ALL ADVICE GROUNDED IN BUILDING EXPERIENCE.<br>
+        2. DO NOT SUBSTITUTE FOR EXEC TEAM JUDGMENT.<br>
+        3. TOLERANCES: ±5% ON TIMELINE ESTIMATES.<br>
+        4. THIRD ANGLE PROJECTION — DO NOT SCALE FROM DRAWING.
+      </div>
+    </div>
+  </div>
+
+  <!-- Section cut line -->
+  <div class="section-cut-line">
+    <div class="sc-mark">A</div>
+    <div class="sc-line"></div>
+    <div class="sc-label">SECTION A-A — SEE DETAIL BELOW</div>
+    <div class="sc-line"></div>
+    <div class="sc-mark flip">A</div>
+  </div>
+
+  <!-- ══ PARTS LIST / BOM ══ -->
+  <div class="bom-section">
+    <div class="sec-head">
+      <span class="sec-num">01 /</span>
+      <h2 class="sec-title">Parts List — Services</h2>
+      <span class="sec-aside">BILL OF MATERIALS · REV A · 3 ITEMS</span>
+    </div>
+    <table class="bom">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Description</th>
+          <th>Specification</th>
+          <th style="text-align:right; padding-right:2rem">Qty</th>
+          <th>Unit</th>
+          <th>Notes</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-no">01</td>
+          <td>
+            <span class="td-name">Product Strategy</span>
+            <span class="td-desc">Founder-level judgment applied to every prioritisation decision. Not just building things — building the right things.</span>
+          </td>
+          <td class="td-spec">AJ-SRV-001<br>INPUT: Business context<br>OUTPUT: Prioritised roadmap</td>
+          <td class="td-qty">1</td>
+          <td class="td-unit">ENGAGEMENT<br>/ RETAINER</td>
+          <td class="td-note">Delivery within client's existing decision cadence. Actionable by Monday.</td>
+          <td><span class="td-tag avail">Available</span></td>
+        </tr>
+        <tr>
+          <td class="td-no">02</td>
+          <td>
+            <span class="td-name">Design Clarity</span>
+            <span class="td-desc">Identify whether your UX is a competitive moat or a leaky bucket. Design the specific changes that turn confusion into confidence.</span>
+          </td>
+          <td class="td-spec">AJ-SRV-002<br>INPUT: Current UX state<br>OUTPUT: Targeted interventions</td>
+          <td class="td-qty">1</td>
+          <td class="td-unit">ENGAGEMENT<br>/ PROJECT</td>
+          <td class="td-note">No full redesigns without clear strategic reason. Minimum viable clarity.</td>
+          <td><span class="td-tag avail">Available</span></td>
+        </tr>
+        <tr>
+          <td class="td-no">03</td>
+          <td>
+            <span class="td-name">Embedded Partnership</span>
+            <span class="td-desc">Not a deck-delivery service. Embed in how the business makes decisions — moving at founder pace with adaptive scope.</span>
+          </td>
+          <td class="td-spec">AJ-SRV-003<br>INPUT: Access to key decisions<br>OUTPUT: Ongoing judgment</td>
+          <td class="td-qty">1</td>
+          <td class="td-unit">RETAINER<br>/ ONGOING</td>
+          <td class="td-note">Requires direct access to founder or decision-maker. Not suitable for committee processes.</td>
+          <td><span class="td-tag avail">Available</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ══ SECTION A-A + DIFF ══ -->
+  <div class="sec-aa">
+    <div class="aa-left">
+      <div class="sec-head" style="margin-bottom:1rem">
+        <span class="sec-num">02 /</span>
+        <h2 class="sec-title">Section A-A</h2>
+      </div>
+      <p style="font-size:0.62rem; color:var(--cdim); line-height:1.7; margin-bottom:0.5rem;">The four structural layers of the approach. Cross-hatch density indicates depth of integration.</p>
+
+      <div class="strata">
+        <div class="stratum s1">
+          <div class="stratum-id">LAYER 01 — SURFACE</div>
+          <div class="stratum-name">Founder-first</div>
+          <div class="stratum-desc">Every recommendation filtered through real building experience. Not theory — applied judgment from the seat.</div>
+          <div class="stratum-depth">DEPTH: 0–200mm</div>
+        </div>
+        <div class="stratum s2">
+          <div class="stratum-id">LAYER 02 — STRUCTURAL</div>
+          <div class="stratum-name">Clarity over complexity</div>
+          <div class="stratum-desc">Clear direction. Prioritised decisions. Actionable by Monday. No 50-slide decks without a decision at the end.</div>
+          <div class="stratum-depth">DEPTH: 200–500mm</div>
+        </div>
+        <div class="stratum s3">
+          <div class="stratum-id">LAYER 03 — LOAD-BEARING</div>
+          <div class="stratum-name">Commercial realism</div>
+          <div class="stratum-desc">Good thinking that works within budget, team size, and time. Designed for what's buildable and what moves the business.</div>
+          <div class="stratum-depth">DEPTH: 500–900mm</div>
+        </div>
+        <div class="stratum s4">
+          <div class="stratum-id">LAYER 04 — FOUNDATION</div>
+          <div class="stratum-name">Honest partnership</div>
+          <div class="stratum-desc">If an idea won't work, I'll say so. You're paying for judgment, not validation. The whole structure rests on this.</div>
+          <div class="stratum-depth">DEPTH: 900mm+</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="aa-right">
+      <div class="sec-head" style="margin-bottom:1rem">
+        <span class="sec-num">03 /</span>
+        <h2 class="sec-title">Tolerance Comparison</h2>
+      </div>
+      <p style="font-size:0.62rem; color:var(--cdim); line-height:1.7; margin-bottom:0.5rem;">Parameter analysis versus market alternatives. Pass = within spec. Fail = out of tolerance.</p>
+
+      <table class="diff">
+        <thead>
+          <tr>
+            <th style="width:80px">Parameter</th>
+            <th>Others (Agencies)</th>
+            <th>Alexander J.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="param">PROCESS</td>
+            <td class="fail">Big agency process</td>
+            <td class="pass">Founder instincts, lean execution</td>
+          </tr>
+          <tr>
+            <td class="param">OUTPUT</td>
+            <td class="fail">Abstract frameworks</td>
+            <td class="pass">Decisions from real building experience</td>
+          </tr>
+          <tr>
+            <td class="param">ENGAGEMENT</td>
+            <td class="fail">Fixed deliverables only</td>
+            <td class="pass">Embedded, adaptive to how you run</td>
+          </tr>
+          <tr>
+            <td class="param">MARKET</td>
+            <td class="fail">Enterprise-optimised</td>
+            <td class="pass">Designed for SMB pace and budget</td>
+          </tr>
+          <tr>
+            <td class="param">HONESTY</td>
+            <td class="fail">Validation on demand</td>
+            <td class="pass">Honest judgment — even when it stings</td>
+          </tr>
+          <tr>
+            <td class="param">SPEED</td>
+            <td class="fail">Weeks for a recommendation</td>
+            <td class="pass">Actionable by Monday</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top:2rem; padding:1.2rem; border:0.5px dashed rgba(79,195,247,0.2);">
+        <div style="font-size:0.55rem; letter-spacing:0.15em; color:var(--cdim); margin-bottom:0.5rem;">INSPECTOR'S NOTE</div>
+        <p style="font-size:0.68rem; color:var(--cdim); line-height:1.8; font-style:italic;">"Most SMBs don't have a product problem. They have a prioritisation problem." — AJ field report, 2026.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ TITLE BLOCK + CTA ══ -->
+  <div class="cta-row">
+    <div class="cta-left">
+      <div class="cta-note">Issue for engagement</div>
+      <h2 class="cta-head">Less guessing.<br><span>More</span> shipping.</h2>
+      <p class="cta-sub">Built from the founder's seat. For business owners who are done guessing and ready to build the right thing. Available for engagements in 2026.</p>
+      <div class="cta-buttons">
+        <a href="mailto:alexj.ash@gmail.com" class="btn-bp">→ Initiate engagement</a>
+        <a href="#" class="btn-bp btn-ghost">→ View work</a>
+      </div>
+    </div>
+
+    <!-- Engineering title block -->
+    <div class="eng-tb">
+      <div class="etb-title-row">
+        <span class="etb-title-label">Drawing title</span>
+        <div class="etb-title-val">Alexander J. — Portfolio</div>
+      </div>
+      <div class="etb-row">
+        <div class="etb-k">Designed by</div>
+        <div class="etb-v white">Alexander J.</div>
+      </div>
+      <div class="etb-row">
+        <div class="etb-k">Contact</div>
+        <div class="etb-v">alexj.ash@gmail.com</div>
+      </div>
+      <div class="etb-row">
+        <div class="etb-k">Date</div>
+        <div class="etb-v white">May 2026</div>
+      </div>
+      <div class="etb-row">
+        <div class="etb-k">Revision</div>
+        <div class="etb-v">A — Initial release</div>
+      </div>
+      <div class="etb-row">
+        <div class="etb-k">Drawing No.</div>
+        <div class="etb-v">AJ-2026-001</div>
+      </div>
+      <div class="etb-row">
+        <div class="etb-k">Scale</div>
+        <div class="etb-v">1:100</div>
+      </div>
+      <div class="etb-row">
+        <div class="etb-k">Sheet</div>
+        <div class="etb-v white">1 of 1</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 Alexander J. · Product &amp; Design Consultant</p>
+    <p>DWG: AJ-2026-001 · REV A · ALL RIGHTS RESERVED · DO NOT REPRODUCE WITHOUT PERMISSION</p>
+    <p>alexj.ash@gmail.com</p>
+  </footer>
+
+</div><!-- /page -->
+
+<script>
+// ── Mouse parallax on grid ──
+document.addEventListener('mousemove', e => {
+  const x = (e.clientX / window.innerWidth  - 0.5) * 18;
+  const y = (e.clientY / window.innerHeight - 0.5) * 18;
+  document.body.style.backgroundPosition =
+    `${x}px ${y}px, ${x}px ${y}px, ${x}px ${y}px, ${x}px ${y}px`;
+});
+
+// ── Isometric rotating wireframe ──
+(function() {
+  const canvas = document.getElementById('iso');
+  const ctx = canvas.getContext('2d');
+  let W, H, cx, cy, scale;
+
+  function resize() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    W = canvas.width  = Math.round(rect.width);
+    H = canvas.height = Math.round(rect.height);
+    cx = W / 2;
+    cy = H / 2;
+    scale = Math.min(W, H) * 0.22;
+  }
+
+  // L-shaped building: footprint (XZ) extruded in Y
+  // Centred around origin
+  const raw = [
+    // bottom (y = -0.9)
+    [-1.5,-0.9,-1.5],[ 1.5,-0.9,-1.5],[ 1.5,-0.9, 0.0],
+    [ 0.0,-0.9, 0.0],[ 0.0,-0.9, 1.5],[-1.5,-0.9, 1.5],
+    // top (y = 0.9)
+    [-1.5, 0.9,-1.5],[ 1.5, 0.9,-1.5],[ 1.5, 0.9, 0.0],
+    [ 0.0, 0.9, 0.0],[ 0.0, 0.9, 1.5],[-1.5, 0.9, 1.5],
+    // interior detail: mid-wall top/bottom
+    [ 0.0,-0.9,-1.5],[-1.5,-0.9, 0.0], // 12,13
+    [ 0.0, 0.9,-1.5],[-1.5, 0.9, 0.0], // 14,15
+  ];
+
+  const edges = [
+    // bottom loop
+    [0,1],[1,2],[2,3],[3,4],[4,5],[5,0],
+    // top loop
+    [6,7],[7,8],[8,9],[9,10],[10,11],[11,6],
+    // verticals
+    [0,6],[1,7],[2,8],[3,9],[4,10],[5,11],
+    // interior walls (vertical)
+    [12,14],[13,15],
+    // interior walls (horizontal bottom)
+    [0,12],[12,2],[0,13],[13,4],
+    // interior walls (horizontal top)
+    [6,14],[14,8],[6,15],[15,10],
+  ];
+
+  // Ground plane grid
+  const groundEdges = [];
+  for (let i = -2; i <= 2; i++) {
+    groundEdges.push([[-2,-0.9, i*0.75],[ 2,-0.9, i*0.75]]);
+    groundEdges.push([[ i*0.75,-0.9,-2],[ i*0.75,-0.9, 2]]);
+  }
+
+  function rotY(v, a) {
+    return [
+      v[0]*Math.cos(a) - v[2]*Math.sin(a),
+      v[1],
+      v[0]*Math.sin(a) + v[2]*Math.cos(a),
+    ];
+  }
+
+  function project(v) {
+    // Standard isometric: tilt 35.26° down, rotate 45° sideways
+    const ix = (v[0] - v[2]) * Math.cos(Math.PI / 6);
+    const iy = (v[0] + v[2]) * Math.sin(Math.PI / 6) - v[1];
+    return [cx + ix * scale, cy + iy * scale];
+  }
+
+  let t = 0;
+  function frame() {
+    ctx.clearRect(0, 0, W, H);
+
+    // Draw ground grid first
+    ctx.strokeStyle = 'rgba(79,195,247,0.08)';
+    ctx.lineWidth = 0.5;
+    for (const ge of groundEdges) {
+      const a = rotY(ge[0], t);
+      const b = rotY(ge[1], t);
+      const pa = project(a), pb = project(b);
+      ctx.beginPath(); ctx.moveTo(pa[0],pa[1]); ctx.lineTo(pb[0],pb[1]); ctx.stroke();
+    }
+
+    // Main structure
+    const rotated = raw.map(v => rotY(v, t));
+    const projected = rotated.map(project);
+
+    // Interior walls — dimmer
+    const interiorSet = new Set([12,13,14,15,16,17,18,19,20,21,22,23]);
+    for (let ei = 0; ei < edges.length; ei++) {
+      const [a,b] = edges[ei];
+      const isInterior = ei >= 15;
+      ctx.strokeStyle = isInterior
+        ? 'rgba(79,195,247,0.22)'
+        : 'rgba(79,195,247,0.7)';
+      ctx.lineWidth = isInterior ? 0.5 : 0.9;
+      ctx.beginPath();
+      ctx.moveTo(projected[a][0], projected[a][1]);
+      ctx.lineTo(projected[b][0], projected[b][1]);
+      ctx.stroke();
+    }
+
+    // Vertex dots at corners
+    ctx.fillStyle = 'rgba(79,195,247,0.8)';
+    [0,1,2,3,4,5,6,7,8,9,10,11].forEach(i => {
+      ctx.beginPath();
+      ctx.arc(projected[i][0], projected[i][1], 1.5, 0, Math.PI*2);
+      ctx.fill();
+    });
+
+    // Compass north arrow — top left of canvas
+    const na = ctx;
+    na.save();
+    na.translate(22, 22);
+    na.strokeStyle = 'rgba(79,195,247,0.5)';
+    na.fillStyle = 'rgba(79,195,247,0.5)';
+    na.lineWidth = 0.8;
+    na.beginPath(); na.moveTo(0,10); na.lineTo(0,-10); na.stroke();
+    na.beginPath(); na.moveTo(0,-10); na.lineTo(-3,-4); na.lineTo(3,-4); na.closePath(); na.fill();
+    na.font = "9px 'Share Tech Mono', monospace";
+    na.textAlign = 'center';
+    na.fillText('N', 0, -13);
+    na.restore();
+
+    // Scale bar — bottom right
+    ctx.save();
+    ctx.strokeStyle = 'rgba(79,195,247,0.4)';
+    ctx.fillStyle  = 'rgba(79,195,247,0.4)';
+    ctx.lineWidth = 0.8;
+    ctx.font = "8px 'Share Tech Mono', monospace";
+    const sbx = W - 70, sby = H - 22, sbw = 50;
+    ctx.beginPath(); ctx.moveTo(sbx, sby); ctx.lineTo(sbx+sbw, sby); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(sbx, sby-4); ctx.lineTo(sbx, sby+4); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(sbx+sbw, sby-4); ctx.lineTo(sbx+sbw, sby+4); ctx.stroke();
+    ctx.textAlign = 'center';
+    ctx.fillText('50m', sbx + sbw/2, sby - 6);
+    ctx.restore();
+
+    t += 0.004;
+    requestAnimationFrame(frame);
+  }
+
+  resize();
+  frame();
+  window.addEventListener('resize', () => { resize(); });
+  new ResizeObserver(resize).observe(canvas.parentElement);
+})();
+
+// ── Count-up animation on BOM quantities ──
+(function() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.td-qty').forEach(el => {
+          const target = parseInt(el.textContent) || 1;
+          let n = 0;
+          const iv = setInterval(() => {
+            n = Math.min(n + 1, target);
+            el.textContent = n;
+            if (n >= target) clearInterval(iv);
+          }, 80);
+        });
+        obs.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  const table = document.querySelector('.bom');
+  if (table) obs.observe(table);
+})();
+</script>
+</body>
+</html>
