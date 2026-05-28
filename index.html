@@ -492,6 +492,73 @@
                   transform 1.6s cubic-bezier(0.25, 0.8, 0.3, 1);
       will-change: transform, opacity;
     }
+
+    /* ===== Mobile / responsive ===== */
+    @media (max-width: 768px) {
+      /* Stack: banner, then horizontal nav, then content */
+      .layout { flex-direction: column; }
+
+      /* Sidebar becomes a horizontal, scrollable nav bar */
+      .sidebar {
+        position: static;
+        width: 100% !important;
+        height: auto;
+        flex-direction: row;
+        align-items: center;
+        gap: 4px;
+        border-right: none;
+        border-bottom: 1px solid #2a2520;
+        padding: 8px 10px;
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
+      .sidebar-head,
+      .sidebar-foot { display: none; }       /* hide collapse toggle + status footer */
+      .sidebar .nav-label { opacity: 1 !important; } /* always show labels on mobile */
+
+      .nav { flex-direction: row; gap: 4px; width: 100%; }
+      .nav-item {
+        padding: 8px 12px;
+        border-left: none;
+        border-bottom: 2px solid transparent;
+        border-radius: 6px 6px 0 0;
+        flex-shrink: 0;
+        font-size: 12px;
+      }
+      .nav-item.active {
+        border-left-color: transparent;
+        border-bottom-color: #c97b1a;
+      }
+
+      /* Content: tighter padding, no fixed max-width pressure */
+      .content { padding: 24px 16px 80px; }
+      .content-bar { margin-bottom: 28px; gap: 8px; }
+      .kbd { display: none; }                /* ⌘K shortcut is desktop-only */
+
+      .section { margin-bottom: 56px; }
+      .section h2 { font-size: 26px; }
+
+      .card { padding: 18px; }
+
+      /* Portrait + bio stack vertically */
+      .card-grid { grid-template-columns: 1fr; gap: 18px; }
+      .photo-div { max-width: 220px; width: 100%; margin: 0 auto; }
+
+      /* Project rows wrap instead of overflowing */
+      .project-row { flex-wrap: wrap; gap: 8px 12px; }
+      .project-name { flex: 1 1 100%; }
+
+      /* Banner: shrink padding + portrait so it fits a phone */
+      #scroll-banner { padding: 12px 14px; min-height: auto; }
+      #scramble-overlay { padding: 12px 14px; }
+      #alex-photo {
+        max-width: 96px;
+        margin: -12px -14px -12px 0;
+      }
+      #scroll-banner.shrunk { padding: 10px 14px; min-height: auto; }
+      #scroll-banner.shrunk #alex-photo { max-width: 76px; }
+      #scroll-pct { font-size: 11px; }
+    }
   </style>
 </head>
 <body>
