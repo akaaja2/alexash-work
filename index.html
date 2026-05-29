@@ -951,21 +951,9 @@
     const MOBILE_BP = 768;
     let lastY = window.scrollY;
     function applyMobileNav() {
-      const y = window.scrollY;
-      // Desktop: never hide — keep the banner pinned and reset state.
-      if (window.innerWidth > MOBILE_BP) {
-        bannerEl.classList.remove("nav-hidden");
-        lastY = y;
-        return;
-      }
-      const delta = y - lastY;
-      if (Math.abs(delta) < 6) return;            // ignore micro-jitter
-      if (delta > 0 && y > bannerEl.offsetHeight) {
-        bannerEl.classList.add("nav-hidden");      // scrolling down → hide
-      } else if (delta < 0) {
-        bannerEl.classList.remove("nav-hidden");   // scrolling up → reveal
-      }
-      lastY = y;
+      // Header stays pinned at all times (mobile + desktop) — never hide on scroll.
+      bannerEl.classList.remove("nav-hidden");
+      lastY = window.scrollY;
     }
 
     // ── Scroll listener ──────────────────────────────────────────
