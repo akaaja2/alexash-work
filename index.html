@@ -549,7 +549,18 @@
       .project-name { flex: 1 1 100%; }
 
       /* Banner: shrink padding + portrait so it fits a phone */
-      #scroll-banner { padding: 12px 14px; min-height: auto; }
+      #scroll-banner {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        padding: 12px 14px;
+        min-height: auto;
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                    padding 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                    min-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      /* Hide-on-scroll-down / reveal-on-scroll-up (toggled by JS) */
+      #scroll-banner.nav-hidden { transform: translateY(-100%); }
       #scramble-overlay { padding: 12px 14px; }
       #alex-photo {
         max-width: 96px;
@@ -936,6 +947,27 @@
       else                                   bannerEl.classList.remove("shrunk");
     }
 
+    // ── Mobile: hide banner on scroll-down, reveal on scroll-up ───
+    const MOBILE_BP = 768;
+    let lastY = window.scrollY;
+    function applyMobileNav() {
+      const y = window.scrollY;
+      // Desktop: never hide — keep the banner pinned and reset state.
+      if (window.innerWidth > MOBILE_BP) {
+        bannerEl.classList.remove("nav-hidden");
+        lastY = y;
+        return;
+      }
+      const delta = y - lastY;
+      if (Math.abs(delta) < 6) return;            // ignore micro-jitter
+      if (delta > 0 && y > bannerEl.offsetHeight) {
+        bannerEl.classList.add("nav-hidden");      // scrolling down → hide
+      } else if (delta < 0) {
+        bannerEl.classList.remove("nav-hidden");   // scrolling up → reveal
+      }
+      lastY = y;
+    }
+
     // ── Scroll listener ──────────────────────────────────────────
     let ticking = false;
     function onScroll() {
@@ -950,6 +982,7 @@
         document.getElementById("scroll-pct").textContent =
           Math.round(progress * 100) + "%";
         applyShrink();
+        applyMobileNav();
         applyProgress();
         applyPhotoReveal();
         ticking = false;
