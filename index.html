@@ -1284,5 +1284,182 @@
     });
   </script>
 
+<!-- ===== Book Flyer: pixel plane towing a waving banner ===== -->
+<style>
+  #book-flyer{
+    position:fixed; left:0; bottom:0; width:100%; height:300px;
+    overflow:hidden; pointer-events:none; z-index:9990;
+  }
+  #book-flyer .bf-group{
+    position:absolute; bottom:22px; left:0;
+    display:inline-flex; align-items:center;
+    will-change:transform; pointer-events:auto; cursor:pointer; text-decoration:none;
+    /* pivot the loop-the-loop around the plane (right side) */
+    transform-origin:calc(100% - 24px) 50%;
+  }
+  /* ---- Banner (trails behind, to the left of the plane) ---- */
+  #book-flyer .bf-banner{
+    --w:178px; --h:66px; --n:16;
+    position:relative; width:var(--w); height:var(--h);
+    display:flex; overflow:visible;
+    filter:drop-shadow(0 4px 6px rgba(0,0,0,.45));
+    /* swallowtail notch on the free (trailing) left edge */
+    clip-path:polygon(0 0, 100% 0, 100% 100%, 0 100%, 9px 50%);
+  }
+  #book-flyer .bf-seg{
+    width:calc(var(--w)/var(--n)); height:100%;
+    overflow:hidden; position:relative;
+    animation:bfWave 1.7s ease-in-out infinite;
+  }
+  #book-flyer .bf-in{
+    position:absolute; top:0; height:100%; width:var(--w);
+    display:flex; align-items:center; gap:8px;
+    padding:6px 10px 6px 16px;
+    background:linear-gradient(180deg,#c8462e 0%, #a8381f 100%);
+    border-top:2px solid #e7a98f; border-bottom:2px solid #7c2614;
+  }
+  #book-flyer .bf-cover{
+    height:calc(var(--h) - 14px); width:auto; display:block;
+    border:1px solid rgba(0,0,0,.4); box-shadow:0 1px 2px rgba(0,0,0,.4);
+    image-rendering:auto;
+  }
+  #book-flyer .bf-txt{
+    font-family:'Bungee', 'Courier New', monospace;
+    font-size:13px; line-height:1.18; letter-spacing:.5px;
+    color:#f3ead7; text-shadow:0 1px 0 rgba(0,0,0,.45);
+    white-space:nowrap;
+  }
+  #book-flyer .bf-txt small{ display:block; font-size:9px; opacity:.85; letter-spacing:1px; }
+  /* ---- Tow rope ---- */
+  #book-flyer .bf-rope{
+    width:26px; height:0; align-self:center; margin:0 -2px 14px 0;
+    border-top:2px dashed #cdbfa6;
+    transform:rotate(-6deg);
+  }
+  /* ---- Plane (leads, on the right) ---- */
+  #book-flyer .bf-plane{ width:52px; height:38px; flex:none; }
+  #book-flyer .bf-prop{ transform-box:fill-box; transform-origin:center; animation:bfProp .12s linear infinite; }
+
+  @keyframes bfWave{
+    0%,100%{ transform:translateY(0) skewY(0deg); }
+    25%    { transform:translateY(calc(var(--amp,3px) * -1)) skewY(2.4deg); }
+    50%    { transform:translateY(0) skewY(0deg); }
+    75%    { transform:translateY(var(--amp,3px)) skewY(-2.4deg); }
+  }
+  @keyframes bfProp{ 0%{transform:scaleX(1);} 50%{transform:scaleX(.15);} 100%{transform:scaleX(1);} }
+
+  @media (prefers-reduced-motion: reduce){
+    #book-flyer{ height:96px; }
+    #book-flyer .bf-seg{ animation:none; }
+    #book-flyer .bf-prop{ animation:none; }
+  }
+</style>
+
+<div id="book-flyer">
+  <a class="bf-group" href="https://claudeskills.co.uk/" target="_blank" rel="noopener" aria-label="New book — Claude Skills for Marketing">
+    <div class="bf-banner" id="bf-banner"></div>
+    <div class="bf-rope"></div>
+    <svg class="bf-plane" viewBox="0 0 52 38" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+      <!-- tail fin -->
+      <rect x="2"  y="8"  width="8"  height="9"  fill="#c8462e" stroke="#1a1714"/>
+      <!-- fuselage -->
+      <rect x="6"  y="15" width="34" height="9"  fill="#c8462e" stroke="#1a1714"/>
+      <!-- nose -->
+      <rect x="40" y="16" width="6"  height="7"  fill="#7c2614" stroke="#1a1714"/>
+      <!-- cockpit window -->
+      <rect x="28" y="16" width="7"  height="4"  fill="#bfe0e6" stroke="#1a1714"/>
+      <!-- lower wing / strut -->
+      <rect x="16" y="23" width="16" height="4"  fill="#1a1714"/>
+      <!-- wheels -->
+      <rect x="18" y="27" width="4"  height="4"  fill="#2a2520"/>
+      <rect x="28" y="27" width="4"  height="4"  fill="#2a2520"/>
+      <!-- propeller (spins) -->
+      <rect class="bf-prop" x="45" y="9" width="3" height="21" fill="#ede3d0" stroke="#1a1714"/>
+    </svg>
+  </a>
+</div>
+
+<script>
+(function(){
+  var wrap   = document.getElementById('book-flyer');
+  var group  = wrap.querySelector('.bf-group');
+  var banner = document.getElementById('bf-banner');
+  var plane  = wrap.querySelector('.bf-plane');
+
+  // Build the waving banner out of vertical strips (flag effect)
+  var N = 16, W = 178, BASE_AMP = 4.5;
+  var innerHTML =
+    '<img class="bf-cover" src="book-cover-mini.png" alt="">' +
+    '<div class="bf-txt">NEW BOOK<br>OUT SOON<small>&#9656; new release</small></div>';
+  for (var i = 0; i < N; i++){
+    var seg = document.createElement('div');
+    seg.className = 'bf-seg';
+    // free (left) end flaps most; attached (right) end barely moves
+    var amp = BASE_AMP * (1 - i / (N - 1));
+    seg.style.setProperty('--amp', amp.toFixed(2) + 'px');
+    seg.style.animationDelay = (-(N - 1 - i) * 0.085).toFixed(3) + 's';
+    var inner = document.createElement('div');
+    inner.className = 'bf-in';
+    inner.style.left = (-(i) * (W / N)) + 'px';
+    inner.innerHTML = innerHTML;
+    seg.appendChild(inner);
+    banner.appendChild(seg);
+  }
+
+  // Respect reduced-motion: park it bottom-left, no flight
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    group.style.transform = 'translate(16px, 0) scale(0.6)';
+    return;
+  }
+
+  var mouseX = -9999, mouseY = -9999;
+  window.addEventListener('mousemove', function(e){ mouseX = e.clientX; mouseY = e.clientY; }, {passive:true});
+
+  var GW = 0;                          // group width (measured)
+  var SPEED = 95;                      // px / second forward
+  var x = -260;                        // start off-screen left
+  var looping = false, loopStart = 0, didLoop = false;
+  var LOOP_DUR = 1700;                 // ms
+  var lastLoopEnd = -99999;
+  var COOLDOWN = 1400, TRIGGER = 120, LOOP_R = 75;
+  var prev = performance.now();
+
+  function frame(now){
+    var dt = Math.min(0.05, (now - prev) / 1000); prev = now;
+    if (!GW) GW = group.offsetWidth || 260;
+
+    x += SPEED * dt;
+    if (x > window.innerWidth + 60) x = -GW - 40;
+
+    var bob = Math.sin(now / 620) * 3;
+    var deg = 0, dxLoop = 0, dyLoop = 0;
+
+    // start a loop if the cursor gets close to the plane
+    if (!looping && !didLoop){
+      var r = plane.getBoundingClientRect();
+      var pcx = r.left + r.width/2, pcy = r.top + r.height/2;
+      var dx = mouseX - pcx, dy = mouseY - pcy;
+      if (Math.sqrt(dx*dx + dy*dy) < TRIGGER){ looping = true; didLoop = true; loopStart = now; }
+    }
+    if (looping){
+      var t = (now - loopStart) / LOOP_DUR;
+      if (t >= 1){ looping = false; lastLoopEnd = now; }
+      else {
+        var a  = Math.PI/180 * (90 - 360 * t); // decreasing angle => anticlockwise
+        dxLoop = LOOP_R * Math.cos(a);          // wide circular flight path
+        dyLoop = LOOP_R * Math.sin(a) - LOOP_R; // rises up to 2*R then back
+        deg    = -360 * t;                      // sprite spins anticlockwise
+      }
+    }
+
+    group.style.transform =
+      'translate(' + (x + dxLoop).toFixed(1) + 'px, ' + (bob + dyLoop).toFixed(1) + 'px) rotate(' + deg.toFixed(1) + 'deg) scale(0.6)';
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+<!-- ===== /Book Flyer ===== -->
+
 </body>
 </html>
