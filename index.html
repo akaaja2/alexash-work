@@ -28,6 +28,17 @@
       --banner-h: 192px; /* live-updated by JS to match real banner height */
     }
 
+    /* ===== Themed scrollbars (page-wide) ===== */
+    html { scrollbar-width: thin; scrollbar-color: #6b4310 #0c0b09; }   /* Firefox */
+    ::-webkit-scrollbar { width: 10px; height: 10px; }
+    ::-webkit-scrollbar-track { background: #0c0b09; }
+    ::-webkit-scrollbar-thumb {
+      background: #6b4310;
+      border-radius: 999px;
+      border: 2px solid #0c0b09;
+    }
+    ::-webkit-scrollbar-thumb:hover { background: #c97b1a; }
+
     body {
       background: #0c0b09;
       color: #ede3d0;
@@ -571,6 +582,20 @@
         padding: 8px 10px;
         overflow-x: auto;
         overflow-y: hidden;
+        scrollbar-width: thin;                       /* Firefox */
+        scrollbar-color: #c97b1a #14120f;
+      }
+      /* Themed horizontal scrollbar on the mobile nav strip (WebKit) */
+      .sidebar::-webkit-scrollbar { height: 6px; }
+      .sidebar::-webkit-scrollbar-track {
+        background: #14120f;
+      }
+      .sidebar::-webkit-scrollbar-thumb {
+        background: #6b4310;
+        border-radius: 999px;
+      }
+      .sidebar::-webkit-scrollbar-thumb:hover {
+        background: #c97b1a;
       }
       .sidebar-head,
       .sidebar-foot { display: none; }       /* hide collapse toggle + status footer */
