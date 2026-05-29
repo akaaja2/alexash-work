@@ -390,6 +390,8 @@
       transition: all 0.2s;
       cursor: pointer;
       color: inherit;
+      position: relative;
+      z-index: 9991;             /* keep above the #book-flyer overlay so clicks land */
     }
     .contact-row:hover {
       border-color: #c97b1a;
@@ -415,7 +417,7 @@
     /* ---- Footer ---- */
     .site-footer {
       margin-top: 64px;
-      padding: 48px 0 56px;
+      padding: 48px 0 140px;       /* extra bottom space so the flying-book promo never overlaps the button */
       border-top: 1px solid #2a2520;
       display: flex;
       flex-direction: column;
@@ -424,8 +426,11 @@
       text-align: center;
     }
     .get-in-touch {
+      position: relative;
+      z-index: 9991;             /* above the #book-flyer overlay (9990) so the click always lands */
       display: inline-block;
       padding: 13px 30px;
+      font-family: inherit;
       font-size: 13px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -433,6 +438,7 @@
       background: #c97b1a;
       border: 1px solid #c97b1a;
       border-radius: 8px;
+      cursor: pointer;
       transition: all 0.2s;
     }
     .get-in-touch:hover {
@@ -440,11 +446,90 @@
       color: #c97b1a;
       text-decoration: none;
     }
+    .get-in-touch[aria-expanded="true"] {
+      background: transparent;
+      color: #c97b1a;
+    }
     .footer-tagline {
       font-size: 12px;
       letter-spacing: 0.08em;
       color: #7a6d5a;
     }
+
+    /* ---- Expanding contact form ---- */
+    .contact-form-wrap {
+      position: relative;
+      z-index: 9991;             /* keep form clickable above the flyer overlay */
+      width: 100%;
+      max-width: 440px;
+      display: grid;
+      grid-template-rows: 0fr;   /* collapsed */
+      opacity: 0;
+      transition: grid-template-rows 0.4s ease, opacity 0.3s ease;
+    }
+    .contact-form-wrap.open {
+      grid-template-rows: 1fr;   /* grows to natural height */
+      opacity: 1;
+    }
+    .contact-form-inner { overflow: hidden; min-height: 0; }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 22px;
+      margin-top: 4px;
+      text-align: left;
+      background: rgba(20, 18, 15, 0.6);
+      border: 1px solid #2a2520;
+      border-radius: 10px;
+    }
+    .cf-field { display: flex; flex-direction: column; gap: 6px; }
+    .cf-field label {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #7a6d5a;
+    }
+    .cf-field input,
+    .cf-field textarea {
+      font-family: inherit;
+      font-size: 13px;
+      color: #ede3d0;
+      background: rgba(12, 11, 9, 0.7);
+      border: 1px solid #2a2520;
+      border-radius: 6px;
+      padding: 10px 12px;
+      transition: border-color 0.2s;
+      resize: vertical;
+    }
+    .cf-field input:focus,
+    .cf-field textarea:focus {
+      outline: none;
+      border-color: #c97b1a;
+    }
+    .cf-submit {
+      align-self: flex-start;
+      font-family: inherit;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #0c0b09;
+      background: #c97b1a;
+      border: 1px solid #c97b1a;
+      border-radius: 8px;
+      padding: 11px 24px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .cf-submit:hover { background: transparent; color: #c97b1a; }
+    .cf-submit:disabled { opacity: 0.5; cursor: default; }
+    .cf-status {
+      font-size: 12px;
+      line-height: 1.5;
+      color: #7a6d5a;
+    }
+    .cf-status.cf-status-ok { color: #4ade80; }
+    .cf-status.cf-status-err { color: #e0793a; }
 
     /* ---- Sticky banner ---- */
     /* sticky already acts as a containing block for abs-positioned children */
@@ -961,7 +1046,36 @@
       </section>
 
       <footer class="site-footer">
-        <a class="get-in-touch" href="mailto:alexj.ash@gmail.com?subject=Hello%20Alexander">Get in touch</a>
+        <button class="get-in-touch" id="getInTouchBtn" type="button"
+                aria-expanded="false" aria-controls="contactFormWrap">Get in touch</button>
+
+        <!-- Expanding Netlify-powered contact form -->
+        <div class="contact-form-wrap" id="contactFormWrap">
+          <div class="contact-form-inner">
+            <form name="contact" method="POST" action="/thanks.html" data-netlify="true"
+                  data-netlify-honeypot="bot-field" id="contactForm" class="contact-form">
+              <input type="hidden" name="form-name" value="contact">
+              <p class="cf-hp" hidden>
+                <label>Leave this empty: <input name="bot-field"></label>
+              </p>
+              <div class="cf-field">
+                <label for="cf-name">Name</label>
+                <input id="cf-name" name="name" type="text" required autocomplete="name">
+              </div>
+              <div class="cf-field">
+                <label for="cf-email">Email</label>
+                <input id="cf-email" name="email" type="email" required autocomplete="email">
+              </div>
+              <div class="cf-field">
+                <label for="cf-message">Message</label>
+                <textarea id="cf-message" name="message" rows="4" required></textarea>
+              </div>
+              <button type="submit" class="cf-submit">Send message</button>
+              <p class="cf-status" id="cfStatus" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+
         <p class="footer-tagline">Proudly built in London with Claude</p>
       </footer>
 
@@ -1443,6 +1557,48 @@
             document.getElementById(keys[idx])
                     .scrollIntoView({ behavior: "smooth", block: "start" });
           }
+        }
+      });
+    })();
+
+    // ── Contact form: expand on click + Netlify AJAX submit ───────
+    (function () {
+      const btn    = document.getElementById("getInTouchBtn");
+      const wrap   = document.getElementById("contactFormWrap");
+      const form   = document.getElementById("contactForm");
+      const status = document.getElementById("cfStatus");
+      if (!btn || !wrap || !form) return;
+
+      btn.addEventListener("click", () => {
+        const open = wrap.classList.toggle("open");
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+        if (open) {
+          wrap.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          setTimeout(() => form.querySelector("#cf-name")?.focus(), 420);
+        }
+      });
+
+      form.addEventListener("submit", async e => {
+        e.preventDefault();
+        const submitBtn = form.querySelector(".cf-submit");
+        status.className = "cf-status";
+        status.textContent = "Sending…";
+        submitBtn.disabled = true;
+        try {
+          const res = await fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(new FormData(form)).toString(),
+          });
+          if (!res.ok) throw new Error("Bad response");
+          form.querySelectorAll(".cf-field, .cf-submit").forEach(el => el.style.display = "none");
+          status.classList.add("cf-status-ok");
+          status.textContent = "Thanks — your message is on its way. I'll reply within ~2 business days.";
+        } catch (err) {
+          submitBtn.disabled = false;
+          status.classList.add("cf-status-err");
+          status.innerHTML = 'Something went wrong. Please email ' +
+            '<a href="mailto:alexj.ash@gmail.com" style="color:#c97b1a">alexj.ash@gmail.com</a> directly.';
         }
       });
     })();
