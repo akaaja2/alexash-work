@@ -756,8 +756,10 @@
 
       /* Content: tighter padding, no fixed max-width pressure */
       .content { padding: 24px 16px 80px; }
+      .site-footer { padding-bottom: 60px; } /* book-flyer offset not needed on mobile */
       .content-bar { margin-bottom: 28px; gap: 8px; }
       .kbd { display: none; }                /* ⌘K shortcut is desktop-only */
+      .nav-key { display: none; }            /* key badges irrelevant on touch */
 
       .section { margin-bottom: 56px; }
       .section h2 { font-size: 26px; }
@@ -843,20 +845,20 @@
         <a href="#about"     class="nav-item active" data-section="about">
           <span class="nav-icon">◉</span><span class="nav-label">About Me</span><span class="nav-key">1</span>
         </a>
-        <a href="#education" class="nav-item" data-section="education">
-          <span class="nav-icon">❖</span><span class="nav-label">Education</span><span class="nav-key">2</span>
-        </a>
         <a href="#ai-pm"     class="nav-item" data-section="ai-pm">
-          <span class="nav-icon">⌘</span><span class="nav-label">AI PM Work</span><span class="nav-key">3</span>
+          <span class="nav-icon">⌘</span><span class="nav-label">AI PM Work</span><span class="nav-key">2</span>
         </a>
         <a href="#books"     class="nav-item" data-section="books">
-          <span class="nav-icon">▤</span><span class="nav-label">Author / Books</span><span class="nav-key">4</span>
+          <span class="nav-icon">▤</span><span class="nav-label">Author / Books</span><span class="nav-key">3</span>
         </a>
-        <a href="#contact"   class="nav-item" data-section="contact">
-          <span class="nav-icon">✉</span><span class="nav-label">Contact</span><span class="nav-key">5</span>
+        <a href="#education" class="nav-item" data-section="education">
+          <span class="nav-icon">❖</span><span class="nav-label">Education</span><span class="nav-key">4</span>
         </a>
         <a href="#econ"      class="nav-item" data-section="econ">
-          <span class="nav-icon">∑</span><span class="nav-label">Econ Musings</span><span class="nav-key">6</span>
+          <span class="nav-icon">∑</span><span class="nav-label">Econ Musings</span><span class="nav-key">5</span>
+        </a>
+        <a href="#contact"   class="nav-item" data-section="contact">
+          <span class="nav-icon">✉</span><span class="nav-label">Contact</span><span class="nav-key">6</span>
         </a>
       </nav>
       <div class="sidebar-foot">
@@ -899,45 +901,9 @@
         </div>
       </section>
 
-      <!-- ===== Education ===== -->
-      <section id="education" class="section">
-        <div class="section-tag">02 / Education</div>
-        <h2>Education</h2>
-
-        <div class="card">
-          <div class="edu-grid">
-
-            <div class="edu-card">
-              <svg class="edu-logo edu-logo-ucl" viewBox="0 0 1394 391" role="img" aria-label="University College London">
-                <path fill="currentColor" d="M866.86 257.16V10.54H734.29V135.63H734.26C714.7 63.47 648.56 0 553.74 0C458.92 0 381.7 64.9 361.67 146.92H361.64V10.54H229.91V206.41C229.91 225.71 227.39 237.45 217.32 248.36C207.25 259.27 193.83 263.46 181.24 263.46C168.65 263.46 155.23 259.26 145.16 248.36C135.09 237.45 132.57 225.71 132.57 206.41V10.54H0V207.25C0 260.11 10.91 302.9 46.15 338.14C73.84 365.83 118.31 391 178.72 391C231.58 391 277.73 372.54 311.29 336.46C339.73 306.35 354.77 268.93 359.65 235.48H359.68C377.14 322.25 454.72 391 553.73 391C641.01 391 711.9 334.26 734.28 255.3V379.79H980.96V257.15H866.85L866.86 257.16ZM612.27 225.72C603.88 248.37 580.6 263.48 553.75 263.48C515.99 263.48 488.09 234.11 488.09 195.52C488.09 156.93 515.99 127.56 553.75 127.56C580.6 127.56 603.88 142.66 612.27 165.32H734.29V225.73H612.27V225.72Z"/>
-                <path fill="currentColor" d="M1393.21 257.485H1350.28V380.125H1393.21V257.485ZM1324.51 257.485H1285.02V380.125H1324.51V257.485ZM1255.81 257.485H1219.75V380.125H1255.81V257.485ZM1187.11 257.485H1154.49V380.125H1187.11V257.485ZM1118.41 257.485H1089.22V380.125H1118.41V257.485ZM1049.72 257.485H1023.96V380.125H1049.72V257.485ZM1195.07 78.195C1172.66 84.005 1155.95 103.925 1154.95 127.915H1154.89V142.365H1144.97V165.635L1023.96 204.955V10.875H1393.21V204.955L1272.2 165.635V142.365H1262.28V127.915H1262.22C1261.22 103.935 1244.51 84.015 1222.1 78.195L1212.8 43.495H1204.35L1195.05 78.195H1195.07Z"/>
-              </svg>
-              <div class="edu-text">
-                <div class="edu-name">University College London</div>
-                <div class="edu-subject">Economics</div>
-              </div>
-            </div>
-
-            <div class="edu-card">
-              <img class="edu-logo edu-logo-chip" src="logos/hbs.png" alt="Harvard Business School logo"
-                   onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
-              <svg class="edu-logo edu-logo-fallback" style="display:none" viewBox="0 0 48 52" aria-hidden="true">
-                <path class="edu-shape" d="M4 4 H44 V28 Q44 46 24 50 Q4 46 4 28 Z"/>
-                <text class="edu-mark" x="24" y="24" text-anchor="middle" dominant-baseline="central"
-                      font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="700" letter-spacing="0.5">HBS</text>
-              </svg>
-              <div class="edu-text">
-                <div class="edu-name">Harvard Business School <span class="edu-mode">(Online)</span></div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
       <!-- ===== AI PM Work ===== -->
       <section id="ai-pm" class="section">
-        <div class="section-tag">03 / Engagements</div>
+        <div class="section-tag">02 / Engagements</div>
         <h2>AI PM Work</h2>
 
         <div class="card">
@@ -983,7 +949,7 @@
 
       <!-- ===== Author / Books ===== -->
       <section id="books" class="section">
-        <div class="section-tag">04 / Library</div>
+        <div class="section-tag">03 / Library</div>
         <h2>Author &amp; Books</h2>
 
         <div class="card">
@@ -1081,9 +1047,71 @@
         </div>
       </section>
 
+      <!-- ===== Education ===== -->
+      <section id="education" class="section">
+        <div class="section-tag">04 / Education</div>
+        <h2>Education</h2>
+
+        <div class="card">
+          <div class="edu-grid">
+
+            <div class="edu-card">
+              <svg class="edu-logo edu-logo-ucl" viewBox="0 0 1394 391" role="img" aria-label="University College London">
+                <path fill="currentColor" d="M866.86 257.16V10.54H734.29V135.63H734.26C714.7 63.47 648.56 0 553.74 0C458.92 0 381.7 64.9 361.67 146.92H361.64V10.54H229.91V206.41C229.91 225.71 227.39 237.45 217.32 248.36C207.25 259.27 193.83 263.46 181.24 263.46C168.65 263.46 155.23 259.26 145.16 248.36C135.09 237.45 132.57 225.71 132.57 206.41V10.54H0V207.25C0 260.11 10.91 302.9 46.15 338.14C73.84 365.83 118.31 391 178.72 391C231.58 391 277.73 372.54 311.29 336.46C339.73 306.35 354.77 268.93 359.65 235.48H359.68C377.14 322.25 454.72 391 553.73 391C641.01 391 711.9 334.26 734.28 255.3V379.79H980.96V257.15H866.85L866.86 257.16ZM612.27 225.72C603.88 248.37 580.6 263.48 553.75 263.48C515.99 263.48 488.09 234.11 488.09 195.52C488.09 156.93 515.99 127.56 553.75 127.56C580.6 127.56 603.88 142.66 612.27 165.32H734.29V225.73H612.27V225.72Z"/>
+                <path fill="currentColor" d="M1393.21 257.485H1350.28V380.125H1393.21V257.485ZM1324.51 257.485H1285.02V380.125H1324.51V257.485ZM1255.81 257.485H1219.75V380.125H1255.81V257.485ZM1187.11 257.485H1154.49V380.125H1187.11V257.485ZM1118.41 257.485H1089.22V380.125H1118.41V257.485ZM1049.72 257.485H1023.96V380.125H1049.72V257.485ZM1195.07 78.195C1172.66 84.005 1155.95 103.925 1154.95 127.915H1154.89V142.365H1144.97V165.635L1023.96 204.955V10.875H1393.21V204.955L1272.2 165.635V142.365H1262.28V127.915H1262.22C1261.22 103.935 1244.51 84.015 1222.1 78.195L1212.8 43.495H1204.35L1195.05 78.195H1195.07Z"/>
+              </svg>
+              <div class="edu-text">
+                <div class="edu-name">University College London</div>
+                <div class="edu-subject">Economics</div>
+              </div>
+            </div>
+
+            <div class="edu-card">
+              <img class="edu-logo edu-logo-chip" src="logos/hbs.png" alt="Harvard Business School logo"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+              <svg class="edu-logo edu-logo-fallback" style="display:none" viewBox="0 0 48 52" aria-hidden="true">
+                <path class="edu-shape" d="M4 4 H44 V28 Q44 46 24 50 Q4 46 4 28 Z"/>
+                <text class="edu-mark" x="24" y="24" text-anchor="middle" dominant-baseline="central"
+                      font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="700" letter-spacing="0.5">HBS</text>
+              </svg>
+              <div class="edu-text">
+                <div class="edu-name">Harvard Business School <span class="edu-mode">(Online)</span></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Econ Musings ===== -->
+      <section id="econ" class="section">
+        <div class="section-tag">05 / Side Quest</div>
+        <h2>Econ Musings</h2>
+
+        <div class="card">
+          <div class="card-body">
+            <p>Lorem ipsum — half-formed ideas at the intersection of economics, AI, and how value gets produced and priced when the marginal cost of intelligence keeps falling. Mostly toy models, scratch visualisations, and the occasional blog post.</p>
+            <p>Currently noodling on <em>Cobb-Douglas AI</em> (what happens to the labour-capital production function when "tokens" become a third input) and <em>Agentic WTP</em> (how willingness-to-pay re-shapes when the buyer is an agent acting on behalf of a human).</p>
+          </div>
+
+          <a class="project-row" href="econ-musings.html" style="text-decoration: none;">
+            <span class="project-dot"></span>
+            <span class="project-name">Read the musings &amp; explore the visualisations →</span>
+            <span class="project-meta">SEPARATE PAGE</span>
+          </a>
+
+          <div class="tag-row">
+            <span class="tag">Cobb-Douglas AI</span>
+            <span class="tag">Agentic WTP</span>
+            <span class="tag">Toy Models</span>
+            <span class="tag">Visualisations</span>
+          </div>
+        </div>
+      </section>
+
       <!-- ===== Contact ===== -->
       <section id="contact" class="section">
-        <div class="section-tag">05 / Reach Out</div>
+        <div class="section-tag">06 / Reach Out</div>
         <h2>Contact</h2>
 
         <div class="card">
@@ -1113,32 +1141,6 @@
               </span>
               <span class="contact-value">alexanderash</span>
             </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- ===== Econ Musings ===== -->
-      <section id="econ" class="section">
-        <div class="section-tag">06 / Side Quest</div>
-        <h2>Econ Musings</h2>
-
-        <div class="card">
-          <div class="card-body">
-            <p>Lorem ipsum — half-formed ideas at the intersection of economics, AI, and how value gets produced and priced when the marginal cost of intelligence keeps falling. Mostly toy models, scratch visualisations, and the occasional blog post.</p>
-            <p>Currently noodling on <em>Cobb-Douglas AI</em> (what happens to the labour-capital production function when "tokens" become a third input) and <em>Agentic WTP</em> (how willingness-to-pay re-shapes when the buyer is an agent acting on behalf of a human).</p>
-          </div>
-
-          <a class="project-row" href="econ-musings.html" style="text-decoration: none;">
-            <span class="project-dot"></span>
-            <span class="project-name">Read the musings &amp; explore the visualisations →</span>
-            <span class="project-meta">SEPARATE PAGE</span>
-          </a>
-
-          <div class="tag-row">
-            <span class="tag">Cobb-Douglas AI</span>
-            <span class="tag">Agentic WTP</span>
-            <span class="tag">Toy Models</span>
-            <span class="tag">Visualisations</span>
           </div>
         </div>
       </section>
@@ -1596,11 +1598,11 @@
 
       const labelMap = {
         about:     "About Me",
-        education: "Education",
         "ai-pm":   "AI PM Work",
         books:     "Author / Books",
-        contact:   "Contact",
+        education: "Education",
         econ:      "Econ Musings",
+        contact:   "Contact",
       };
 
       toggle.addEventListener("click", () => {
@@ -1781,130 +1783,4 @@
     border-top:2px dashed #cdbfa6;
     transform:rotate(-6deg);
   }
-  /* ---- Plane (leads, on the right) ---- */
-  #book-flyer .bf-plane{ width:52px; height:38px; flex:none; }
-  #book-flyer .bf-prop{ transform-box:fill-box; transform-origin:center; animation:bfProp .12s linear infinite; }
-
-  @keyframes bfWave{
-    0%,100%{ transform:translateY(0) skewY(0deg); }
-    25%    { transform:translateY(calc(var(--amp,3px) * -1)) skewY(2.4deg); }
-    50%    { transform:translateY(0) skewY(0deg); }
-    75%    { transform:translateY(var(--amp,3px)) skewY(-2.4deg); }
-  }
-  @keyframes bfProp{ 0%{transform:scaleX(1);} 50%{transform:scaleX(.15);} 100%{transform:scaleX(1);} }
-
-  @media (prefers-reduced-motion: reduce){
-    #book-flyer{ height:96px; }
-    #book-flyer .bf-seg{ animation:none; }
-    #book-flyer .bf-prop{ animation:none; }
-  }
-</style>
-
-<div id="book-flyer">
-  <a class="bf-group" href="https://claudeskills.co.uk/" target="_blank" rel="noopener" aria-label="New book — Claude Skills for Marketing">
-    <div class="bf-banner" id="bf-banner"></div>
-    <div class="bf-rope"></div>
-    <svg class="bf-plane" viewBox="0 0 52 38" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
-      <!-- tail fin -->
-      <rect x="2"  y="8"  width="8"  height="9"  fill="#c8462e" stroke="#1a1714"/>
-      <!-- fuselage -->
-      <rect x="6"  y="15" width="34" height="9"  fill="#c8462e" stroke="#1a1714"/>
-      <!-- nose -->
-      <rect x="40" y="16" width="6"  height="7"  fill="#7c2614" stroke="#1a1714"/>
-      <!-- cockpit window -->
-      <rect x="28" y="16" width="7"  height="4"  fill="#bfe0e6" stroke="#1a1714"/>
-      <!-- lower wing / strut -->
-      <rect x="16" y="23" width="16" height="4"  fill="#1a1714"/>
-      <!-- wheels -->
-      <rect x="18" y="27" width="4"  height="4"  fill="#2a2520"/>
-      <rect x="28" y="27" width="4"  height="4"  fill="#2a2520"/>
-      <!-- propeller (spins) -->
-      <rect class="bf-prop" x="45" y="9" width="3" height="21" fill="#ede3d0" stroke="#1a1714"/>
-    </svg>
-  </a>
-</div>
-
-<script>
-(function(){
-  var wrap   = document.getElementById('book-flyer');
-  var group  = wrap.querySelector('.bf-group');
-  var banner = document.getElementById('bf-banner');
-  var plane  = wrap.querySelector('.bf-plane');
-
-  // Build the waving banner out of vertical strips (flag effect)
-  var N = 16, W = 178, BASE_AMP = 4.5;
-  var innerHTML =
-    '<img class="bf-cover" src="book-cover-mini.png" alt="">' +
-    '<div class="bf-txt">NEW BOOK<br>OUT SOON<small>&#9656; new release</small></div>';
-  for (var i = 0; i < N; i++){
-    var seg = document.createElement('div');
-    seg.className = 'bf-seg';
-    // free (left) end flaps most; attached (right) end barely moves
-    var amp = BASE_AMP * (1 - i / (N - 1));
-    seg.style.setProperty('--amp', amp.toFixed(2) + 'px');
-    seg.style.animationDelay = (-(N - 1 - i) * 0.085).toFixed(3) + 's';
-    var inner = document.createElement('div');
-    inner.className = 'bf-in';
-    inner.style.left = (-(i) * (W / N)) + 'px';
-    inner.innerHTML = innerHTML;
-    seg.appendChild(inner);
-    banner.appendChild(seg);
-  }
-
-  // Respect reduced-motion: park it bottom-left, no flight
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    group.style.transform = 'translate(16px, 0) scale(0.6)';
-    return;
-  }
-
-  var mouseX = -9999, mouseY = -9999;
-  window.addEventListener('mousemove', function(e){ mouseX = e.clientX; mouseY = e.clientY; }, {passive:true});
-
-  var GW = 0;                          // group width (measured)
-  var SPEED = 95;                      // px / second forward
-  var x = -260;                        // start off-screen left
-  var looping = false, loopStart = 0, didLoop = false;
-  var LOOP_DUR = 1700;                 // ms
-  var lastLoopEnd = -99999;
-  var COOLDOWN = 1400, TRIGGER = 120, LOOP_R = 75;
-  var prev = performance.now();
-
-  function frame(now){
-    var dt = Math.min(0.05, (now - prev) / 1000); prev = now;
-    if (!GW) GW = group.offsetWidth || 260;
-
-    x += SPEED * dt;
-    if (x > window.innerWidth + 60) x = -GW - 40;
-
-    var bob = Math.sin(now / 620) * 3;
-    var deg = 0, dxLoop = 0, dyLoop = 0;
-
-    // start a loop if the cursor gets close to the plane
-    if (!looping && !didLoop){
-      var r = plane.getBoundingClientRect();
-      var pcx = r.left + r.width/2, pcy = r.top + r.height/2;
-      var dx = mouseX - pcx, dy = mouseY - pcy;
-      if (Math.sqrt(dx*dx + dy*dy) < TRIGGER){ looping = true; didLoop = true; loopStart = now; }
-    }
-    if (looping){
-      var t = (now - loopStart) / LOOP_DUR;
-      if (t >= 1){ looping = false; lastLoopEnd = now; }
-      else {
-        var a  = Math.PI/180 * (90 - 360 * t); // decreasing angle => anticlockwise
-        dxLoop = LOOP_R * Math.cos(a);          // wide circular flight path
-        dyLoop = LOOP_R * Math.sin(a) - LOOP_R; // rises up to 2*R then back
-        deg    = -360 * t;                      // sprite spins anticlockwise
-      }
-    }
-
-    group.style.transform =
-      'translate(' + (x + dxLoop).toFixed(1) + 'px, ' + (bob + dyLoop).toFixed(1) + 'px) rotate(' + deg.toFixed(1) + 'deg) scale(0.6)';
-    requestAnimationFrame(frame);
-  }
-  requestAnimationFrame(frame);
-})();
-</script>
-<!-- ===== /Book Flyer ===== -->
-
-</body>
-</html>
+  /* ---- Plane (leads, on the right
