@@ -414,6 +414,60 @@
     .contact-row:hover .contact-logo { fill: #c97b1a; }
     .contact-value { font-size: 13px; color: #ede3d0; }
 
+    /* ---- Education ---- */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .edu-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 18px;
+      background: rgba(12, 11, 9, 0.6);
+      border: 1px solid #2a2520;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+    .edu-card:hover {
+      border-color: #c97b1a;
+      background: rgba(201, 123, 26, 0.05);
+    }
+    .edu-logo { height: 42px; width: auto; flex: none; }
+    .edu-shape { fill: none; stroke: #fff; stroke-width: 1.6; transition: stroke 0.2s; }
+    .edu-mark { fill: #fff; transition: fill 0.2s; }
+    .edu-card:hover .edu-shape { stroke: #c97b1a; }
+    .edu-card:hover .edu-mark { fill: #c97b1a; }
+    /* UCL is a wide horizontal lockup — size by width, recolour white */
+    .edu-logo-ucl {
+      height: auto;
+      width: 104px;
+      color: #fff;
+      transition: color 0.2s;
+    }
+    .edu-card:hover .edu-logo-ucl { color: #c97b1a; }
+    /* Colour logos (e.g. HBS shield) sit on a warm-white tile so they read on the dark card */
+    .edu-logo-chip {
+      height: 66px;
+      width: auto;
+      padding: 8px 12px;
+      background: #f4eee2;
+      border-radius: 8px;
+      box-sizing: border-box;
+      transition: box-shadow 0.2s;
+    }
+    .edu-card:hover .edu-logo-chip { box-shadow: 0 0 0 2px rgba(201, 123, 26, 0.5); }
+    .edu-name { font-size: 13px; color: #ede3d0; line-height: 1.3; }
+    .edu-mode { color: #7a6d5a; }
+    .edu-subject {
+      margin-top: 4px;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #7a6d5a;
+    }
+
     /* ---- Footer ---- */
     .site-footer {
       margin-top: 64px;
@@ -786,20 +840,23 @@
         <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">«</button>
       </div>
       <nav class="nav" id="nav">
-        <a href="#about"   class="nav-item active" data-section="about">
+        <a href="#about"     class="nav-item active" data-section="about">
           <span class="nav-icon">◉</span><span class="nav-label">About Me</span><span class="nav-key">1</span>
         </a>
-        <a href="#ai-pm"   class="nav-item" data-section="ai-pm">
-          <span class="nav-icon">⌘</span><span class="nav-label">AI PM Work</span><span class="nav-key">2</span>
+        <a href="#education" class="nav-item" data-section="education">
+          <span class="nav-icon">❖</span><span class="nav-label">Education</span><span class="nav-key">2</span>
         </a>
-        <a href="#books"   class="nav-item" data-section="books">
-          <span class="nav-icon">▤</span><span class="nav-label">Author / Books</span><span class="nav-key">3</span>
+        <a href="#ai-pm"     class="nav-item" data-section="ai-pm">
+          <span class="nav-icon">⌘</span><span class="nav-label">AI PM Work</span><span class="nav-key">3</span>
         </a>
-        <a href="#contact" class="nav-item" data-section="contact">
-          <span class="nav-icon">✉</span><span class="nav-label">Contact</span><span class="nav-key">4</span>
+        <a href="#books"     class="nav-item" data-section="books">
+          <span class="nav-icon">▤</span><span class="nav-label">Author / Books</span><span class="nav-key">4</span>
         </a>
-        <a href="#econ"    class="nav-item" data-section="econ">
-          <span class="nav-icon">∑</span><span class="nav-label">Econ Musings</span><span class="nav-key">5</span>
+        <a href="#contact"   class="nav-item" data-section="contact">
+          <span class="nav-icon">✉</span><span class="nav-label">Contact</span><span class="nav-key">5</span>
+        </a>
+        <a href="#econ"      class="nav-item" data-section="econ">
+          <span class="nav-icon">∑</span><span class="nav-label">Econ Musings</span><span class="nav-key">6</span>
         </a>
       </nav>
       <div class="sidebar-foot">
@@ -823,8 +880,8 @@
         <div class="card">
           <div class="card-grid" style="grid-template-columns:1fr;">
             <div class="card-body">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ex-founder turned product &amp; design consultant working with small and mid-sized teams. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+              <p>I started writing children's books on statistics and infographics, which turned out to be <span style="color:#f97316;font-size:0.8em;font-style:italic;">[PLACEHOLDER: sharpen this clause]</span> for explaining AI to people who'd rather not be. From there: VC, and eventually AI product work with government teams and UK SMEs.</p>
+              <p>The common thread is making complex systems legible without making them simple. I've shipped HR tooling for the Ministry of Justice, built live AI summaries for policy conferences, and written enough PRDs to know that "the AI will handle it" is the most expensive line in any of them. <span style="color:#f97316;font-size:0.8em;font-style:italic;">[NOTE: last line — flag if tone feels too dry/insider for your audience]</span></p>
               <div class="tag-row">
                 <span class="tag">Product Strategy</span>
                 <span class="tag">Design</span>
@@ -834,43 +891,84 @@
             </div>
           </div>
           <div class="stat-grid">
-            <div class="stat"><div class="stat-num">12+</div><div class="stat-label">Years shipping</div></div>
-            <div class="stat"><div class="stat-num">40</div><div class="stat-label">Engagements</div></div>
-            <div class="stat"><div class="stat-num">3</div><div class="stat-label">Companies founded</div></div>
-            <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Wireframes burned</div></div>
+            <div class="stat"><div class="stat-num">2009</div><div class="stat-label">Coding &amp; automating since</div></div>
+            <div class="stat"><div class="stat-num">00</div><div class="stat-label">PLACEHOLDER 1</div></div>
+            <div class="stat"><div class="stat-num">00</div><div class="stat-label">PLACEHOLDER 2</div></div>
+            <div class="stat"><div class="stat-num">00</div><div class="stat-label">PLACEHOLDER 3</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Education ===== -->
+      <section id="education" class="section">
+        <div class="section-tag">02 / Education</div>
+        <h2>Education</h2>
+
+        <div class="card">
+          <div class="edu-grid">
+
+            <div class="edu-card">
+              <svg class="edu-logo edu-logo-ucl" viewBox="0 0 1394 391" role="img" aria-label="University College London">
+                <path fill="currentColor" d="M866.86 257.16V10.54H734.29V135.63H734.26C714.7 63.47 648.56 0 553.74 0C458.92 0 381.7 64.9 361.67 146.92H361.64V10.54H229.91V206.41C229.91 225.71 227.39 237.45 217.32 248.36C207.25 259.27 193.83 263.46 181.24 263.46C168.65 263.46 155.23 259.26 145.16 248.36C135.09 237.45 132.57 225.71 132.57 206.41V10.54H0V207.25C0 260.11 10.91 302.9 46.15 338.14C73.84 365.83 118.31 391 178.72 391C231.58 391 277.73 372.54 311.29 336.46C339.73 306.35 354.77 268.93 359.65 235.48H359.68C377.14 322.25 454.72 391 553.73 391C641.01 391 711.9 334.26 734.28 255.3V379.79H980.96V257.15H866.85L866.86 257.16ZM612.27 225.72C603.88 248.37 580.6 263.48 553.75 263.48C515.99 263.48 488.09 234.11 488.09 195.52C488.09 156.93 515.99 127.56 553.75 127.56C580.6 127.56 603.88 142.66 612.27 165.32H734.29V225.73H612.27V225.72Z"/>
+                <path fill="currentColor" d="M1393.21 257.485H1350.28V380.125H1393.21V257.485ZM1324.51 257.485H1285.02V380.125H1324.51V257.485ZM1255.81 257.485H1219.75V380.125H1255.81V257.485ZM1187.11 257.485H1154.49V380.125H1187.11V257.485ZM1118.41 257.485H1089.22V380.125H1118.41V257.485ZM1049.72 257.485H1023.96V380.125H1049.72V257.485ZM1195.07 78.195C1172.66 84.005 1155.95 103.925 1154.95 127.915H1154.89V142.365H1144.97V165.635L1023.96 204.955V10.875H1393.21V204.955L1272.2 165.635V142.365H1262.28V127.915H1262.22C1261.22 103.935 1244.51 84.015 1222.1 78.195L1212.8 43.495H1204.35L1195.05 78.195H1195.07Z"/>
+              </svg>
+              <div class="edu-text">
+                <div class="edu-name">University College London</div>
+                <div class="edu-subject">Economics</div>
+              </div>
+            </div>
+
+            <div class="edu-card">
+              <img class="edu-logo edu-logo-chip" src="logos/hbs.png" alt="Harvard Business School logo"
+                   onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+              <svg class="edu-logo edu-logo-fallback" style="display:none" viewBox="0 0 48 52" aria-hidden="true">
+                <path class="edu-shape" d="M4 4 H44 V28 Q44 46 24 50 Q4 46 4 28 Z"/>
+                <text class="edu-mark" x="24" y="24" text-anchor="middle" dominant-baseline="central"
+                      font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="700" letter-spacing="0.5">HBS</text>
+              </svg>
+              <div class="edu-text">
+                <div class="edu-name">Harvard Business School <span class="edu-mode">(Online)</span></div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
       <!-- ===== AI PM Work ===== -->
       <section id="ai-pm" class="section">
-        <div class="section-tag">02 / Engagements</div>
+        <div class="section-tag">03 / Engagements</div>
         <h2>AI PM Work</h2>
 
         <div class="card">
           <div class="card-body">
-            <p>Lorem ipsum dolor sit amet — I help SMB product teams scope, validate, and ship AI-native features without burning the runway. Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Five projects. Government departments, policy networks, one self-published. The institutional contexts vary; the approach doesn't.</p>
           </div>
 
           <div class="project-row">
             <span class="project-dot"></span>
-            <span class="project-name">LLM-powered support triage — Series B SaaS</span>
-            <span class="project-meta">2026 · ACTIVE</span>
+            <span class="project-name">Transatlantic Policy Network — Summit live summaries</span>
+            <span class="project-meta">POLICY · LIVE AI</span>
           </div>
           <div class="project-row">
             <span class="project-dot" style="background:#7a6d5a;box-shadow:none;"></span>
-            <span class="project-name">Internal RAG copilot rollout — Fintech</span>
-            <span class="project-meta">2025 · SHIPPED</span>
+            <span class="project-name">Ideas Network 2030 — Steering committee minutes &amp; event summary</span>
+            <span class="project-meta">GOVERNANCE</span>
           </div>
           <div class="project-row">
             <span class="project-dot" style="background:#7a6d5a;box-shadow:none;"></span>
-            <span class="project-name">Agent-first onboarding flow — Devtool</span>
-            <span class="project-meta">2025 · SHIPPED</span>
+            <span class="project-name">Ministry of Justice — HR Toolkit</span>
+            <span class="project-meta">GOV · INTERNAL TOOL</span>
           </div>
           <div class="project-row">
             <span class="project-dot" style="background:#7a6d5a;box-shadow:none;"></span>
-            <span class="project-name">Evals &amp; guardrails workshop — Healthtech</span>
-            <span class="project-meta">2025 · SHIPPED</span>
+            <span class="project-name">Ministry of Justice — Probation Transcription</span>
+            <span class="project-meta">GOV · TRANSCRIPTION</span>
+          </div>
+          <div class="project-row">
+            <span class="project-dot" style="background:#7a6d5a;box-shadow:none;"></span>
+            <span class="project-name">Claude Skills for Marketing — full-stack packaging, publishing &amp; marketing suite</span>
+            <span class="project-meta">SELF-PUBLISHED</span>
           </div>
 
           <div class="tag-row">
@@ -885,7 +983,7 @@
 
       <!-- ===== Author / Books ===== -->
       <section id="books" class="section">
-        <div class="section-tag">03 / Library</div>
+        <div class="section-tag">04 / Library</div>
         <h2>Author &amp; Books</h2>
 
         <div class="card">
@@ -985,7 +1083,7 @@
 
       <!-- ===== Contact ===== -->
       <section id="contact" class="section">
-        <div class="section-tag">04 / Reach Out</div>
+        <div class="section-tag">05 / Reach Out</div>
         <h2>Contact</h2>
 
         <div class="card">
@@ -1021,7 +1119,7 @@
 
       <!-- ===== Econ Musings ===== -->
       <section id="econ" class="section">
-        <div class="section-tag">05 / Side Quest</div>
+        <div class="section-tag">06 / Side Quest</div>
         <h2>Econ Musings</h2>
 
         <div class="card">
@@ -1497,11 +1595,12 @@
       const breadcrumb = document.getElementById("breadcrumb");
 
       const labelMap = {
-        about:   "About Me",
-        "ai-pm": "AI PM Work",
-        books:   "Author / Books",
-        contact: "Contact",
-        econ:    "Econ Musings",
+        about:     "About Me",
+        education: "Education",
+        "ai-pm":   "AI PM Work",
+        books:     "Author / Books",
+        contact:   "Contact",
+        econ:      "Econ Musings",
       };
 
       toggle.addEventListener("click", () => {
@@ -1550,7 +1649,7 @@
         if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
           e.preventDefault();
           const labels = Object.entries(labelMap).map(([k, v], i) => `${i + 1}. ${v}`).join("\n");
-          const pick   = window.prompt(`Jump to section:\n${labels}\n\nEnter 1-5:`);
+          const pick   = window.prompt(`Jump to section:\n${labels}\n\nEnter 1-6:`);
           const keys   = Object.keys(labelMap);
           const idx    = parseInt(pick, 10) - 1;
           if (!isNaN(idx) && keys[idx]) {
