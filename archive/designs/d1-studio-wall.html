@@ -382,6 +382,137 @@
     border: 1px solid var(--rule);
     padding: 0.35rem 0.8rem;
   }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    /* NAV — stack brand over links */
+    nav {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.2rem;
+      padding: 1.3rem 1.25rem;
+    }
+    nav ul {
+      gap: 1.4rem;
+      flex-wrap: wrap;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 3rem 1.25rem 2.75rem;
+    }
+    .hero-eyebrow {
+      margin-bottom: 1.5rem;
+      gap: 0.7rem;
+    }
+    .hero-name {
+      font-size: clamp(3.4rem, 22vw, 5.5rem);
+      line-height: 0.9;
+    }
+    .hero-name .initial {
+      font-size: clamp(2.2rem, 13vw, 3.2rem);
+    }
+    .hero-lower {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+    }
+    .hero-tagline {
+      font-size: 0.82rem;
+      line-height: 1.9;
+      padding-left: 1rem;
+      max-width: 100%;
+    }
+    .hero-stats {
+      text-align: left;
+      gap: 1.1rem;
+    }
+
+    /* TICKER */
+    .ticker {
+      padding: 0.75rem 0;
+    }
+    .ticker-inner span {
+      padding: 0 1.5rem;
+    }
+
+    /* SECTIONS */
+    .section {
+      padding: 2.75rem 1.25rem;
+    }
+    .section-head {
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .s-title {
+      font-size: 1.9rem;
+    }
+
+    /* SERVICES — single column stack */
+    .card-grid {
+      grid-template-columns: 1fr;
+    }
+    .card {
+      padding: 1.6rem 1.25rem;
+    }
+    .card h3 {
+      font-size: 1.45rem;
+    }
+    .card-num {
+      margin-top: 1.4rem;
+    }
+
+    /* ABOUT — single column */
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .about-left p {
+      font-size: 1.3rem;
+      margin-bottom: 1.4rem;
+    }
+
+    /* QUOTE — allow wrap instead of nowrap overflow */
+    .quote-band {
+      padding: 2.75rem 1.25rem;
+    }
+    .quote-text {
+      font-size: clamp(1.6rem, 7vw, 2.4rem);
+      white-space: normal;
+      overflow: visible;
+      text-overflow: clip;
+      line-height: 1.3;
+    }
+
+    /* CTA — stack vertically */
+    .cta {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2rem;
+      padding: 3.5rem 1.25rem;
+    }
+    .cta-head {
+      font-size: clamp(2.1rem, 9vw, 3.2rem);
+      max-width: 100%;
+    }
+    .cta-right {
+      align-items: stretch;
+      width: 100%;
+    }
+    .btn {
+      text-align: center;
+      padding: 0.95rem 1.5rem;
+    }
+
+    /* FOOTER — stack */
+    footer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.8rem;
+      padding: 1.5rem 1.25rem;
+    }
+  }
 </style>
 </head>
 <body>

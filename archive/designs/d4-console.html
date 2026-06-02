@@ -386,6 +386,78 @@
   .sec-prompt { color: var(--green-dim); font-size: 0.68rem; }
   .sec-cmd { font-size: 0.68rem; color: var(--amber); letter-spacing: 0.05em; }
   .sec-out { font-size: 0.68rem; color: var(--muted); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    body { cursor: auto; }
+    #cursor { display: none; }
+
+    .page { padding: 0 1.1rem; }
+
+    /* header stacks into a single column, nav wraps full-width */
+    .terminal-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+    .term-title { font-size: 0.6rem; margin-left: 0.6rem; }
+    .term-nav {
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .boot-output { padding: 1.6rem 0; }
+    .boot-line { font-size: 0.74rem; line-height: 1.7; }
+    .boot-line.big { font-size: clamp(2.2rem, 14vw, 3.4rem); }
+    .boot-line.tagline {
+      font-size: 0.8rem;
+      max-width: 100%;
+      padding-left: 0.9rem;
+    }
+    .prompt { flex-wrap: wrap; }
+
+    .term-section { padding: 2rem 0; }
+    .sec-head { gap: 0.6rem; margin-bottom: 1.3rem; flex-wrap: wrap; }
+
+    /* allow long tree/output lines to wrap instead of overflowing */
+    .tree-line { font-size: 0.72rem; word-break: break-word; }
+    .tree-line .tag { display: block; margin-left: 0; }
+
+    .output-box { padding: 1rem; }
+    .output-line { font-size: 0.72rem; word-break: break-word; }
+
+    /* diff table: drop the least useful column, shrink padding */
+    .term-table th, .term-table td { padding: 0.6rem 0.6rem 0.6rem 0; }
+    .term-table td { font-size: 0.72rem; }
+    .term-table th:nth-child(2), .term-table td:nth-child(2) { display: none; }
+
+    /* log block: collapse 3-col grid to single column */
+    .log-block { padding: 1.2rem; }
+    .log-entry {
+      grid-template-columns: 1fr;
+      gap: 0.3rem;
+      font-size: 0.72rem;
+    }
+    .log-level { justify-self: start; }
+
+    .cmd-block { margin: 1.5rem 0; }
+    .cta-block { padding: 2.5rem 0; gap: 1.5rem; }
+    .input-line { padding: 0.8rem 1rem; max-width: 100%; }
+    .input-field { width: 100%; }
+    .cta-block > div:last-child { flex-wrap: wrap; }
+    .btn-terminal, .btn-ghost-term { padding: 0.8rem 1.4rem; }
+
+    /* status bar stacks so it never overflows horizontally */
+    .status-bar {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.58rem;
+    }
+    .status-left { flex-wrap: wrap; gap: 1rem; }
+  }
 </style>
 </head>
 <body>

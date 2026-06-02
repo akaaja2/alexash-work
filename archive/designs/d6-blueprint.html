@@ -663,6 +663,123 @@ footer {
   align-items: center;
 }
 footer p { font-size: 0.55rem; color: rgba(79,195,247,0.25); letter-spacing: 0.1em; }
+
+/* ── MOBILE RESPONSIVE ── */
+@media (max-width: 768px) {
+  body { overflow-x: hidden; }
+
+  /* Tighten the drawing frame + hide decorative ticks/corners that crowd narrow screens */
+  .frame { inset: 6px; }
+  .frame-corner { width: 14px; height: 14px; }
+  .frame-corner::before { width: 14px; }
+  .frame-corner::after  { height: 14px; }
+  .frame-tick { display: none; }
+
+  /* Page wrapper — reduce oversized padding */
+  .page { padding: 16px 16px; }
+
+  /* Header: stack meta / title / nav into a single column */
+  .dw-header {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    text-align: left;
+    padding-bottom: 12px;
+  }
+  .dw-center { text-align: left; }
+  nav ul { justify-content: flex-start; flex-wrap: wrap; gap: 1rem; }
+
+  /* Hero: stack main + side panel, drop the dividing border */
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .hero-main {
+    padding: 1.5rem 0;
+    border-right: none;
+    border-bottom: 1px solid var(--crule);
+  }
+  .hero-side { padding: 1.5rem 0; }
+
+  /* Dimension SVG above the name can overflow visually — keep contained */
+  .dim-wrap { height: 22px; }
+  .dim-svg { height: 22px; }
+
+  .component-name { font-size: clamp(3rem, 16vw, 5rem); }
+  .component-role {
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+  }
+
+  /* Callouts: drop the trailing status column, hide hover tooltips */
+  .callout-row {
+    grid-template-columns: 22px 1fr;
+    gap: 0.7rem;
+    padding: 0.9rem 0;
+  }
+  .c-status { grid-column: 2; justify-self: start; margin-top: 6px; }
+  .c-tooltip { display: none; }
+  .ctext strong { font-size: 0.8rem; }
+
+  /* Spec mini table: stack key over value */
+  .spec-row { grid-template-columns: 1fr; }
+  .sk { border-right: none; border-bottom: 0.5px solid var(--crule); }
+
+  /* Section cut line: collapse markers + label to single column */
+  .section-cut-line {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+    text-align: center;
+  }
+  .sc-line { display: none; }
+
+  /* BOM / Parts list: let the wide table scroll horizontally */
+  .bom-section { padding: 1.8rem 0; }
+  .sec-head { flex-wrap: wrap; gap: 0.6rem 1rem; margin-bottom: 1.2rem; }
+  .sec-title { font-size: 1.3rem; }
+  .sec-aside { margin-left: 0; }
+  .bom {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    font-size: 0.9em;
+  }
+  .bom thead, .bom tbody, .bom tr { white-space: normal; }
+  .bom td { padding: 0.9rem 0.8rem 0.9rem 0; }
+  .td-name { font-size: 1rem; }
+  .td-note { max-width: 160px; }
+
+  /* Section A-A: stack the two halves */
+  .sec-aa { grid-template-columns: 1fr; }
+  .aa-left {
+    padding: 1.8rem 0;
+    border-right: none;
+    border-bottom: 1px solid var(--crule);
+  }
+  .aa-right { padding: 1.8rem 0; }
+  .diff { display: block; overflow-x: auto; }
+
+  /* CTA + title block: stack */
+  .cta-row {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-top: 1.8rem;
+    padding-bottom: 1.8rem;
+  }
+  .cta-left { padding-right: 0; }
+  .cta-head { font-size: clamp(2rem, 11vw, 3.5rem); }
+  .cta-buttons { flex-wrap: wrap; gap: 0.8rem; }
+  .eng-tb { width: 100%; }
+
+  /* Footer: stack the three lines */
+  footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
 </style>
 </head>
 <body>

@@ -419,6 +419,82 @@
     color: rgba(242,236,226,0.3);
     letter-spacing: 0.05em;
   }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    /* NAV */
+    nav {
+      padding: 1rem 1.25rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    nav ul { gap: 1.25rem; }
+    nav a { font-size: 0.72rem; }
+
+    /* HERO */
+    .hero {
+      min-height: auto;
+      padding: 4rem 1.25rem 3.5rem;
+    }
+    .hero-pre { margin-bottom: 1.5rem; }
+    .hero-name { font-size: clamp(3rem, 18vw, 5rem); }
+    .hero-tagline {
+      margin-top: 2rem;
+      margin-left: 0;
+      padding-left: 1.25rem;
+      max-width: 100%;
+    }
+    .hero-badges {
+      margin-top: 2rem;
+      margin-left: 0;
+    }
+
+    /* MORPH / SECTIONS */
+    .morph-section { padding: 3.5rem 1.25rem; }
+    .section-title-large {
+      font-size: clamp(2rem, 11vw, 3rem);
+      margin-bottom: 2.5rem;
+    }
+
+    /* WORK GRID → single column */
+    .work-grid { grid-template-columns: 1fr; }
+    .work-card { padding: 1.75rem; }
+    .work-card-num { font-size: 2.5rem; }
+    .work-card-title { font-size: 1.35rem; }
+
+    /* PHILOSOPHY → single column */
+    .phil-columns {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .phil-left p { font-size: 1.25rem; }
+    .pillar-card { padding: 1.4rem; }
+
+    /* QUOTE */
+    .quote-section { padding: 3.5rem 1.25rem; }
+    blockquote { max-width: 100%; }
+
+    /* CTA */
+    .cta-section { padding: 4rem 1.25rem; }
+    .cta-head {
+      font-size: clamp(2rem, 11vw, 3.5rem);
+      max-width: 100%;
+    }
+    .cta-buttons { width: 100%; }
+    .btn-warm,
+    .btn-ghost-light {
+      padding: 0.9rem 1.75rem;
+      text-align: center;
+    }
+
+    /* FOOTER → stack */
+    footer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.4rem;
+      padding: 1.75rem 1.25rem;
+    }
+  }
 </style>
 </head>
 <body>

@@ -451,6 +451,113 @@
     text-transform: uppercase;
     color: var(--text-muted);
   }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    #scanline { display: none; }
+
+    nav {
+      grid-template-columns: 1fr;
+      padding: 1.2rem 1.25rem;
+      gap: 1rem;
+    }
+    .nav-line { display: none; }
+    nav ul {
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 1.2rem;
+    }
+
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: 0;
+    }
+    .hero-left {
+      padding: 2.5rem 1.25rem;
+      border-right: none;
+      border-bottom: 2px solid var(--text);
+      gap: 2rem;
+    }
+    .hero-right {
+      padding: 3rem 1.25rem;
+      min-height: 50vh;
+    }
+    .hero-name {
+      font-size: clamp(4rem, 18vw, 6rem);
+      margin-top: 1.5rem;
+    }
+    .hero-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .big-stat {
+      top: 1.25rem;
+      left: 1.25rem;
+      font-size: clamp(4rem, 22vw, 7rem);
+    }
+    .hero-quote { font-size: 1rem; max-width: none; }
+
+    .stats-bar {
+      grid-template-columns: 1fr 1fr;
+    }
+    .stat-cell {
+      padding: 1.25rem;
+    }
+    .stat-cell:nth-child(2) { border-right: none; }
+    .stat-cell:nth-child(1),
+    .stat-cell:nth-child(2) { border-bottom: 1px solid var(--rule); }
+    .stat-big { font-size: 2.5rem; }
+
+    .section {
+      padding: 2.5rem 1.25rem;
+    }
+    .section-head {
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .s-title { font-size: 2.2rem; }
+
+    .service-row {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      padding: 1.5rem 0;
+    }
+    .srow-name { font-size: 1.8rem; }
+    .srow-tag { justify-self: start; }
+
+    .philosophy {
+      grid-template-columns: 1fr;
+    }
+    .phil-left {
+      padding: 2.5rem 1.25rem;
+      border-right: none;
+      border-bottom: 2px solid var(--text);
+    }
+    .phil-headline { font-size: clamp(2.5rem, 11vw, 4rem); }
+    .phil-right { padding: 2.5rem 1.25rem; }
+
+    .cta-section {
+      grid-template-columns: 1fr;
+    }
+    .cta-text {
+      padding: 2.5rem 1.25rem;
+      border-right: none;
+      border-bottom: 2px solid var(--text);
+    }
+    .cta-head { font-size: clamp(2.75rem, 14vw, 5rem); }
+    .cta-actions {
+      padding: 2rem 1.25rem;
+      min-width: 0;
+    }
+
+    footer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+      padding: 1.25rem;
+    }
+  }
 </style>
 </head>
 <body>
