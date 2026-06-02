@@ -11,7 +11,9 @@ Thumbs.db
 
 # Working docs (not part of the site)
 *.md
-interactive-features.md
-linkedin-tracker.md
-portfolio-todo.md
-roles.md
+
+# Generated / tooling
+codebase-map.html
+
+# CV system — personal, never deployed to the public site
+cv/
