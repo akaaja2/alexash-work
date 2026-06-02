@@ -821,6 +821,44 @@
     .bookcase-embed .plank { height:22px; margin:4px -6px 0; border-radius:2px; background: repeating-linear-gradient(90deg, rgba(95,68,31,.18) 0 2px, transparent 2px 9px), linear-gradient(180deg, var(--oak-light), var(--oak) 45%, var(--oak-dark)); box-shadow:0 7px 11px rgba(60,40,15,.45), inset 0 1px 0 rgba(255,255,255,.35); position:relative; }
     .bookcase-embed .plank::after { content:""; position:absolute; left:0; right:0; bottom:-6px; height:6px; background:var(--oak-shadow); border-radius:0 0 3px 3px; }
     @media (max-width:600px){ .bookcase-embed .bookcase{padding:16px 18px;} .bookcase-embed .stage{gap:12px; padding:12px 6px 0;} .bookcase-embed .cover{width:96px;} .bookcase-embed .spine .store{display:none;} .bookcase-embed .spine .txt{font-size:12px;} .bookcase-embed .spine::after{left:11px;} }
+
+    /* ===== Project lightbox ===== */
+    .project-expand { font-size: 11px; color: #7a6d5a; margin-left: 6px; opacity: 0; transition: opacity 0.2s; flex-shrink: 0; }
+    .project-lightbox:hover .project-expand { opacity: 1; }
+
+    #proj-lightbox {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0.72); backdrop-filter: blur(4px);
+      align-items: center; justify-content: center; padding: 24px;
+    }
+    #proj-lightbox.open { display: flex; }
+    #proj-lightbox-card {
+      background: #161310; border: 1px solid #2a2520; border-radius: 10px;
+      max-width: 520px; width: 100%; padding: 32px; position: relative;
+      box-shadow: 0 24px 48px rgba(0,0,0,0.6);
+      animation: lb-in 0.2s cubic-bezier(0.25,0.8,0.3,1);
+    }
+    @keyframes lb-in { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+    #proj-lightbox-close {
+      position: absolute; top: 14px; right: 18px; background: none; border: none;
+      color: #7a6d5a; font-size: 20px; cursor: pointer; line-height: 1;
+      transition: color 0.15s;
+    }
+    #proj-lightbox-close:hover { color: #ede3d0; }
+    #proj-lightbox-tag {
+      font-size: 10px; letter-spacing: 0.12em; color: #c97b1a;
+      font-family: 'Courier New', monospace; margin-bottom: 10px;
+    }
+    #proj-lightbox-title { font-size: 18px; color: #ede3d0; margin-bottom: 16px; font-weight: 600; }
+    .lb-placeholder {
+      border: 1px dashed #3a3228; border-radius: 6px; padding: 16px;
+      margin-bottom: 12px;
+    }
+    .lb-placeholder-label {
+      font-size: 9px; letter-spacing: 0.14em; color: #c97b1a;
+      font-family: 'Courier New', monospace; margin-bottom: 8px;
+    }
+    .lb-placeholder p { font-size: 13px; color: #7a6d5a; line-height: 1.6; margin: 0; }
   </style>
 </head>
 <body>
@@ -911,31 +949,33 @@
             <p>Five projects. Government departments, policy networks, one self-published. The institutional contexts vary; the approach doesn't.</p>
           </div>
 
-          <div class="project-row">
+          <a class="project-row" href="tpn-in2030.html" style="text-decoration:none;">
             <span class="project-dot"></span>
             <span class="project-name">Transatlantic Policy Network — Summit live summaries</span>
             <span class="project-meta">POLICY · LIVE AI</span>
-          </div>
-          <div class="project-row">
+          </a>
+          <a class="project-row" href="tpn-in2030.html" style="text-decoration:none;">
             <span class="project-dot" style="background:#7a6d5a;box-shadow:none;"></span>
             <span class="project-name">Ideas Network 2030 — Steering committee minutes &amp; event summary</span>
             <span class="project-meta">GOVERNANCE</span>
-          </div>
-          <div class="project-row">
+          </a>
+          <div class="project-row project-lightbox" data-project="hr-toolkit" style="cursor:pointer;">
             <span class="project-dot" style="background:#7a6d5a;box-shadow:none;"></span>
             <span class="project-name">Ministry of Justice — HR Toolkit</span>
             <span class="project-meta">GOV · INTERNAL TOOL</span>
+            <span class="project-expand">↗</span>
           </div>
-          <div class="project-row">
+          <div class="project-row project-lightbox" data-project="probation" style="cursor:pointer;">
             <span class="project-dot" style="background:#7a6d5a;box-shadow:none;"></span>
             <span class="project-name">Ministry of Justice — Probation Transcription</span>
             <span class="project-meta">GOV · TRANSCRIPTION</span>
+            <span class="project-expand">↗</span>
           </div>
-          <div class="project-row">
+          <a class="project-row" href="https://claudeskills.co.uk/" target="_blank" rel="noopener" style="text-decoration:none;">
             <span class="project-dot" style="background:#7a6d5a;box-shadow:none;"></span>
             <span class="project-name">Claude Skills for Marketing — full-stack packaging, publishing &amp; marketing suite</span>
             <span class="project-meta">SELF-PUBLISHED</span>
-          </div>
+          </a>
 
           <div class="tag-row">
             <span class="tag">Discovery</span>
@@ -1560,7 +1600,7 @@
         const lens     = group.lengths;
         const totalLen = lens.reduce((s, n) => s + n, 0);
         if (!totalLen) return;
-        const drawn = progress * totalLen;
+        const drawn = Math.min(totalLen, (progress / 0.8) * totalLen);
         let acc = 0, activeIdx = -1, activeLocal = 0;
 
         group.traceEls.forEach((p, idx) => {
@@ -1725,6 +1765,56 @@
       });
     })();
 
+    // ── Project lightbox ──────────────────────────────────────────
+    const LIGHTBOX_CONTENT = {
+      "hr-toolkit": {
+        tag: "GOV · INTERNAL TOOL",
+        title: "Ministry of Justice — HR Toolkit",
+        body: `<div class="lb-placeholder">
+          <div class="lb-placeholder-label">[ PLACEHOLDER — copy to be confirmed ]</div>
+          <p>An internal AI tool built for Ministry of Justice HR teams. Enables staff to query HR policy documents, generate compliant correspondence, and navigate complex employment guidance without specialist support.</p>
+        </div>
+        <div class="lb-placeholder">
+          <div class="lb-placeholder-label">[ PLACEHOLDER — metrics / scope ]</div>
+          <p>Scope: [x]-week engagement · [x] user teams · Built on Claude API · Prompt engineering + evaluation framework included.</p>
+        </div>`
+      },
+      "probation": {
+        tag: "GOV · TRANSCRIPTION",
+        title: "Ministry of Justice — Probation Transcription",
+        body: `<div class="lb-placeholder">
+          <div class="lb-placeholder-label">[ PLACEHOLDER — copy to be confirmed ]</div>
+          <p>Automated transcription and summarisation pipeline for probation officer case recordings. Reduces manual admin time and surfaces key risk indicators for review.</p>
+        </div>
+        <div class="lb-placeholder">
+          <div class="lb-placeholder-label">[ PLACEHOLDER — metrics / scope ]</div>
+          <p>Scope: [x]-week engagement · [x] hours of audio processed · Whisper + Claude pipeline · Structured output for case management system.</p>
+        </div>`
+      }
+    };
+
+    document.querySelectorAll(".project-lightbox").forEach(row => {
+      row.addEventListener("click", () => {
+        const key = row.dataset.project;
+        const data = LIGHTBOX_CONTENT[key];
+        if (!data) return;
+        document.getElementById("proj-lightbox-tag").textContent = data.tag;
+        document.getElementById("proj-lightbox-title").textContent = data.title;
+        document.getElementById("proj-lightbox-body").innerHTML = data.body;
+        document.getElementById("proj-lightbox").classList.add("open");
+      });
+    });
+
+    document.getElementById("proj-lightbox").addEventListener("click", e => {
+      if (e.target === e.currentTarget) e.currentTarget.classList.remove("open");
+    });
+    document.getElementById("proj-lightbox-close").addEventListener("click", () => {
+      document.getElementById("proj-lightbox").classList.remove("open");
+    });
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape") document.getElementById("proj-lightbox").classList.remove("open");
+    });
+
     // ── Load font ─────────────────────────────────────────────────
     opentype.load(FONT_URL, (err, font) => {
       if (err || !font) {
@@ -1751,6 +1841,16 @@
       checkReady();
     });
   </script>
+
+<!-- ===== Project lightbox ===== -->
+<div id="proj-lightbox" role="dialog" aria-modal="true">
+  <div id="proj-lightbox-card">
+    <button id="proj-lightbox-close" aria-label="Close">×</button>
+    <div id="proj-lightbox-tag"></div>
+    <div id="proj-lightbox-title"></div>
+    <div id="proj-lightbox-body"></div>
+  </div>
+</div>
 
 <!-- ===== Book Flyer: pixel plane towing a waving banner ===== -->
 <style>

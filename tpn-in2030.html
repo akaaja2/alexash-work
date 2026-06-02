@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TPN &amp; IN2030 — AI Summaries — Alex Ash</title>
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&display=swap">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #0c0b09;
+      color: #ede3d0;
+      font-family: 'Courier New', monospace;
+      min-height: 100vh;
+    }
+
+    /* ===== Themed scrollbars ===== */
+    html { scrollbar-width: thin; scrollbar-color: #6b4310 #0c0b09; }
+    ::-webkit-scrollbar { width: 10px; height: 10px; }
+    ::-webkit-scrollbar-track { background: #0c0b09; }
+    ::-webkit-scrollbar-thumb {
+      background: #6b4310;
+      border-radius: 999px;
+      border: 2px solid #0c0b09;
+    }
+    ::-webkit-scrollbar-thumb:hover { background: #c97b1a; }
+
+    a { color: #c97b1a; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    p { color: #7a6d5a; font-size: 0.8rem; letter-spacing: 0.1em; }
+
+    /* ===== Sticky top banner (matches index.html scroll-banner) ===== */
+    #scroll-banner {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(12, 11, 9, 0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid #2a2520;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .back-link {
+      font-size: 12px;
+      color: #7a6d5a;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border: 1px solid #2a2520;
+      border-radius: 6px;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .back-link:hover {
+      color: #c97b1a;
+      border-color: #c97b1a;
+      text-decoration: none;
+    }
+    .banner-title {
+      font-family: 'Bungee', sans-serif;
+      font-size: 20px;
+      color: #c97b1a;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+    .banner-subtitle {
+      font-size: 11px;
+      color: #4a3f31;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .banner-meta {
+      margin-left: auto;
+      font-size: 11px;
+      color: #4a3f31;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    /* ===== Page layout ===== */
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 56px 32px 120px;
+    }
+
+    /* ===== Page header / hero ===== */
+    .page-head {
+      margin-bottom: 64px;
+    }
+    .page-tag {
+      font-size: 11px;
+      color: #c97b1a;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .page-head h1 {
+      font-family: 'Bungee', sans-serif;
+      font-size: 48px;
+      color: #ede3d0;
+      margin-bottom: 18px;
+      letter-spacing: 0.01em;
+      line-height: 1.05;
+    }
+    .page-head .hero-desc {
+      color: #7a6d5a;
+      font-size: 14px;
+      line-height: 1.8;
+      max-width: 680px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ===== Project section ===== */
+    .project-section {
+      margin-bottom: 56px;
+    }
+
+    /* ===== Card ===== */
+    .card {
+      background: rgba(20, 18, 15, 0.6);
+      border: 1px solid #2a2520;
+      border-radius: 12px;
+      padding: 36px;
+      transition: border-color 0.3s;
+    }
+    .card:hover { border-color: #4a3f31; }
+
+    /* ===== Card header ===== */
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .card-title-group {}
+    .project-label {
+      font-size: 10px;
+      color: #c97b1a;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .card-title {
+      font-family: 'Bungee', sans-serif;
+      font-size: 32px;
+      color: #ede3d0;
+      letter-spacing: 0.01em;
+      line-height: 1.1;
+    }
+    .card-subtitle {
+      font-size: 13px;
+      color: #7a6d5a;
+      letter-spacing: 0.06em;
+      margin-top: 6px;
+    }
+
+    /* ===== Status badge ===== */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 12px;
+      border: 1px solid #4a3f31;
+      border-radius: 20px;
+      font-size: 10px;
+      color: #7a6d5a;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .status-dot-dim {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #4a3f31;
+      flex-shrink: 0;
+    }
+
+    /* ===== Tag row ===== */
+    .tag-row {
+      display: flex; gap: 8px; flex-wrap: wrap; margin: 18px 0;
+    }
+    .tag {
+      font-size: 10px;
+      padding: 4px 10px;
+      border: 1px solid #4a3f31;
+      border-radius: 20px;
+      color: #c97b1a;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ===== Card body text ===== */
+    .card-body {
+      font-size: 14px;
+      color: #ede3d0;
+      line-height: 1.75;
+      letter-spacing: 0;
+      margin-bottom: 28px;
+    }
+    .card-body p {
+      color: #ede3d0;
+      font-size: 14px;
+      line-height: 1.75;
+      letter-spacing: 0;
+      margin-bottom: 10px;
+    }
+    .card-body p:last-child { margin-bottom: 0; }
+
+    /* ===== Divider ===== */
+    .card-divider {
+      border: none;
+      border-top: 1px solid #2a2520;
+      margin: 28px 0;
+    }
+
+    /* ===== Demo block ===== */
+    .demo-block {
+      background: rgba(12, 11, 9, 0.7);
+      border: 1px dashed #2a2520;
+      border-radius: 8px;
+      padding: 32px 28px;
+    }
+    .demo-block-label {
+      font-size: 10px;
+      color: #4a3f31;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .demo-block-label::after {
+      content: "";
+      flex: 1;
+      border-top: 1px dashed #2a2520;
+    }
+
+    /* terminal-style placeholder */
+    .terminal {
+      background: #0a0908;
+      border: 1px solid #2a2520;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .terminal-bar {
+      background: #1a1714;
+      border-bottom: 1px solid #2a2520;
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .term-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: #2a2520;
+    }
+    .terminal-bar-title {
+      margin-left: 8px;
+      font-size: 11px;
+      color: #4a3f31;
+      letter-spacing: 0.15em;
+    }
+    .terminal-body {
+      padding: 20px 18px;
+      font-size: 12px;
+      line-height: 1.9;
+      color: #4a3f31;
+      letter-spacing: 0.04em;
+    }
+    .terminal-body .prompt { color: #c97b1a; }
+    .terminal-body .comment { color: #2a2520; }
+    .terminal-body .placeholder { color: #4a3f31; font-style: italic; }
+
+    .coming-soon-pill {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 6px 16px;
+      border: 1px solid #2a2520;
+      border-radius: 4px;
+      font-size: 11px;
+      color: #4a3f31;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    /* ===== Context box ===== */
+    .context-box {
+      background: rgba(201, 123, 26, 0.04);
+      border: 1px solid rgba(201, 123, 26, 0.12);
+      border-radius: 8px;
+      padding: 18px 20px;
+      font-size: 12px;
+      color: #7a6d5a;
+      line-height: 1.7;
+      letter-spacing: 0.03em;
+      margin-top: 18px;
+    }
+    .context-box strong { color: #c97b1a; font-weight: normal; }
+
+    /* ===== Footer ===== */
+    .page-footer {
+      margin-top: 80px;
+      padding-top: 40px;
+      border-top: 1px solid #2a2520;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: #7a6d5a;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      border: 1px solid #2a2520;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+    .footer-back:hover {
+      color: #c97b1a;
+      border-color: #c97b1a;
+      text-decoration: none;
+    }
+    .footer-note {
+      font-size: 11px;
+      color: #4a3f31;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 640px) {
+      .wrap { padding: 32px 16px 80px; }
+      .page-head h1 { font-size: 34px; }
+      .card { padding: 22px 18px; }
+      .card-title { font-size: 24px; }
+      #scroll-banner { padding: 14px 16px; gap: 12px; }
+      .banner-title { font-size: 16px; }
+      .banner-meta { display: none; }
+      .card-header { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Sticky banner (mirrors index.html style) ===== -->
+  <div id="scroll-banner">
+    <a class="back-link" href="index.html">← Alex Ash</a>
+    <span class="banner-title">TPN &amp; IN2030</span>
+    <span class="banner-subtitle">AI Summaries</span>
+    <span class="banner-meta">Case Study · AI PM</span>
+  </div>
+
+  <div class="wrap">
+
+    <!-- ===== Hero ===== -->
+    <header class="page-head">
+      <div class="page-tag">AI PM Work / Policy</div>
+      <h1>AI-powered live summaries<br>for policy events</h1>
+      <p class="hero-desc">
+        Two engagements for cross-Atlantic policy organisations: real-time AI summaries
+        of summit talks, debates, and committee sessions — turning hours of live
+        proceedings into structured, searchable briefings. Both apps share a common
+        architecture; the contexts they serve are distinct.
+      </p>
+    </header>
+
+    <!-- ===== Project 1: TPN ===== -->
+    <section class="project-section" id="tpn">
+      <div class="card">
+
+        <div class="card-header">
+          <div class="card-title-group">
+            <div class="project-label">01 / Engagement</div>
+            <div class="card-title">Transatlantic Policy<br>Network</div>
+            <div class="card-subtitle">tpnonline.org &mdash; EU/US politicians, business leaders &amp; think tanks</div>
+          </div>
+          <span class="status-badge">
+            <span class="status-dot-dim"></span>
+            Demo scaffolding
+          </span>
+        </div>
+
+        <div class="tag-row">
+          <span class="tag">Policy</span>
+          <span class="tag">Live AI</span>
+          <span class="tag">EU / US</span>
+          <span class="tag">Summaries</span>
+        </div>
+
+        <div class="card-body">
+          <p>
+            The Transatlantic Policy Network links elected officials, business
+            associations, and think tanks across the EU and US. Their summits and
+            working-group sessions generate dense, fast-moving oral content that
+            attendees and staff struggle to capture in real time.
+          </p>
+          <p>
+            The app ingests live transcription from summit talks and debates,
+            chunks it into topic segments, and produces structured summaries with
+            speaker attribution, key positions, and points of agreement or tension
+            &mdash; all surfaced in near-real-time during the event.
+          </p>
+        </div>
+
+        <div class="context-box">
+          <strong>Context &mdash;</strong> TPN runs the Transatlantic Vision 2030
+          programme, a multi-year initiative aligning EU and US policy priorities.
+          This tool was built to reduce the manual burden on TPN staff during
+          high-volume conference days.
+        </div>
+
+        <hr class="card-divider">
+
+        <!-- Demo placeholder -->
+        <div class="demo-block">
+          <div class="demo-block-label">Quick demo</div>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="term-dot"></span>
+              <span class="term-dot"></span>
+              <span class="term-dot"></span>
+              <span class="terminal-bar-title">tpn-live-summary / session-view</span>
+            </div>
+            <div class="terminal-body">
+              <span class="prompt">$</span> start_session --event "EU-US Digital Trade Summit" --mode live<br>
+              <span class="comment">// connecting to transcription stream...</span><br>
+              <span class="placeholder">[ DEMO — coming soon ]</span><br><br>
+              <span class="comment">// segment 0:00–12:30</span><br>
+              <span class="placeholder">Speaker: &lt;attributed&gt;</span><br>
+              <span class="placeholder">Topic:   &lt;auto-detected from transcript&gt;</span><br>
+              <span class="placeholder">Summary: &lt;structured output here&gt;</span><br>
+              <span class="placeholder">Tension: &lt;positions flagged&gt;</span>
+            </div>
+          </div>
+          <div class="coming-soon-pill">Coming soon — demo scaffolding only</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== Project 2: IN2030 ===== -->
+    <section class="project-section" id="in2030">
+      <div class="card">
+
+        <div class="card-header">
+          <div class="card-title-group">
+            <div class="project-label">02 / Engagement</div>
+            <div class="card-title">Ideas Network 2030</div>
+            <div class="card-subtitle">Steering committee minutes &amp; event summaries</div>
+          </div>
+          <span class="status-badge">
+            <span class="status-dot-dim"></span>
+            Demo scaffolding
+          </span>
+        </div>
+
+        <div class="tag-row">
+          <span class="tag">Governance</span>
+          <span class="tag">Live AI</span>
+          <span class="tag">Committee</span>
+          <span class="tag">Minutes</span>
+        </div>
+
+        <div class="card-body">
+          <p>
+            Ideas Network 2030 brings together senior figures to shape long-range
+            policy thinking on transatlantic priorities. Steering committee sessions
+            are intensive: high participant counts, overlapping threads, and
+            consequential decisions that need to be accurately recorded.
+          </p>
+          <p>
+            The app applies the same live-summary architecture as the TPN tool,
+            adapted for committee-room dynamics &mdash; action-item extraction,
+            decision logging, and a running summary of open questions alongside
+            the narrative digest of each session.
+          </p>
+        </div>
+
+        <div class="context-box">
+          <strong>Context &mdash;</strong> IN2030 is likely connected to TPN&rsquo;s
+          Transatlantic Vision 2030 programme. The two tools share a backend;
+          this instance is configured for closed committee sessions rather than
+          open-stage summits.
+        </div>
+
+        <hr class="card-divider">
+
+        <!-- Demo placeholder -->
+        <div class="demo-block">
+          <div class="demo-block-label">Quick demo</div>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="term-dot"></span>
+              <span class="term-dot"></span>
+              <span class="term-dot"></span>
+              <span class="terminal-bar-title">in2030-minutes / committee-view</span>
+            </div>
+            <div class="terminal-body">
+              <span class="prompt">$</span> start_session --event "IN2030 Steering Q2" --mode committee<br>
+              <span class="comment">// transcription stream active...</span><br>
+              <span class="placeholder">[ DEMO — coming soon ]</span><br><br>
+              <span class="comment">// running output</span><br>
+              <span class="placeholder">Decisions:    &lt;extracted action items&gt;</span><br>
+              <span class="placeholder">Open items:   &lt;flagged questions&gt;</span><br>
+              <span class="placeholder">Session log:  &lt;running narrative digest&gt;</span>
+            </div>
+          </div>
+          <div class="coming-soon-pill">Coming soon — demo scaffolding only</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer class="page-footer">
+      <a class="footer-back" href="index.html">← Back to alexash.work</a>
+      <span class="footer-note">Placeholder &mdash; full case study in progress</span>
+    </footer>
+
+  </div>
+
+</body>
+</html>
