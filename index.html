@@ -859,6 +859,17 @@
       font-family: 'Courier New', monospace; margin-bottom: 8px;
     }
     .lb-placeholder p { font-size: 13px; color: #7a6d5a; line-height: 1.6; margin: 0; }
+
+    /* ===== Reduced motion ===== */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      /* Immediately show photo at full opacity — no blur-reveal */
+      #alex-photo { opacity: 1 !important; filter: none !important; }
+    }
   </style>
 </head>
 <body>
@@ -921,7 +932,7 @@
           <div class="card-grid" style="grid-template-columns:1fr;">
             <div class="card-body">
               <p>I started writing children's books on statistics and infographics, which turned out to be the natural gateway for explaining AI to people who'd rather not be. From there: VC, and eventually AI product work with government teams and UK SMEs.</p>
-              <p>The common thread is making complex systems legible without making them simple. I've shipped HR tooling for the Ministry of Justice, built live AI summaries for policy conferences, and written enough PRDs to know that "the AI will handle it" is the most expensive line in any of them. <span style="color:#f97316;font-size:0.8em;font-style:italic;">[NOTE: last line — flag if tone feels too dry/insider for your audience]</span></p>
+              <p>The common thread is making complex systems legible without making them simple. I've shipped HR tooling for the Ministry of Justice, built live AI summaries for policy conferences, and written enough PRDs to know that "the AI will handle it" is the most expensive line in any of them.</p>
               <div class="tag-row">
                 <span class="tag">Product Strategy</span>
                 <span class="tag">Design</span>
@@ -929,12 +940,6 @@
                 <span class="tag">0→1</span>
               </div>
             </div>
-          </div>
-          <div class="stat-grid">
-            <div class="stat"><div class="stat-num">2009</div><div class="stat-label">Coding &amp; automating since</div></div>
-            <div class="stat"><div class="stat-num">00</div><div class="stat-label">PLACEHOLDER 1</div></div>
-            <div class="stat"><div class="stat-num">00</div><div class="stat-label">PLACEHOLDER 2</div></div>
-            <div class="stat"><div class="stat-num">00</div><div class="stat-label">PLACEHOLDER 3</div></div>
           </div>
         </div>
       </section>
@@ -1362,7 +1367,15 @@
     }
 
     // Kick off scramble immediately (independent of font load)
-    runScramble();
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      // Skip scramble — show name instantly, skip flyer animations
+      document.getElementById("scramble-text").textContent = TEXT;
+      scrambleDone = true;
+      checkReady();
+    } else {
+      runScramble();
+    }
 
     // ─────────────────────────────────────────────────────────────
     const FONT_URL  = "https://fonts.gstatic.com/s/bungee/v14/N0bU2SZBIuF2PU_ECn50Kd_PmA.ttf";
@@ -1770,26 +1783,12 @@
       "hr-toolkit": {
         tag: "GOV · INTERNAL TOOL",
         title: "Ministry of Justice — HR Toolkit",
-        body: `<div class="lb-placeholder">
-          <div class="lb-placeholder-label">[ PLACEHOLDER — copy to be confirmed ]</div>
-          <p>An internal AI tool built for Ministry of Justice HR teams. Enables staff to query HR policy documents, generate compliant correspondence, and navigate complex employment guidance without specialist support.</p>
-        </div>
-        <div class="lb-placeholder">
-          <div class="lb-placeholder-label">[ PLACEHOLDER — metrics / scope ]</div>
-          <p>Scope: [x]-week engagement · [x] user teams · Built on Claude API · Prompt engineering + evaluation framework included.</p>
-        </div>`
+        body: `<p style="font-size:13px;line-height:1.7;color:#ede3d0;">An internal AI tool built for Ministry of Justice HR teams. Enables staff to query HR policy documents, generate compliant correspondence, and navigate complex employment guidance without specialist support.</p>`
       },
       "probation": {
         tag: "GOV · TRANSCRIPTION",
         title: "Ministry of Justice — Probation Transcription",
-        body: `<div class="lb-placeholder">
-          <div class="lb-placeholder-label">[ PLACEHOLDER — copy to be confirmed ]</div>
-          <p>Automated transcription and summarisation pipeline for probation officer case recordings. Reduces manual admin time and surfaces key risk indicators for review.</p>
-        </div>
-        <div class="lb-placeholder">
-          <div class="lb-placeholder-label">[ PLACEHOLDER — metrics / scope ]</div>
-          <p>Scope: [x]-week engagement · [x] hours of audio processed · Whisper + Claude pipeline · Structured output for case management system.</p>
-        </div>`
+        body: `<p style="font-size:13px;line-height:1.7;color:#ede3d0;">A meeting transcription and highlighting tool built for probation officers — capturing and summarising meetings so staff weren't tied up writing them up. Used in 150,000+ meetings, saving roughly 25,000 staff hours in six months, with a 4.7 / 5 staff rating for usability and effectiveness.</p>`
       }
     };
 
@@ -1837,7 +1836,7 @@
       svgBuilt = true;
       // Kick off the HTML flyer pre-flight as soon as the SVG is in the
       // DOM and laid out — they need getScreenCTM on the trace paths.
-      requestAnimationFrame(launchFlyers);
+      if (!prefersReducedMotion) requestAnimationFrame(launchFlyers);
       checkReady();
     });
   </script>
