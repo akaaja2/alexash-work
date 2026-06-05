@@ -112,7 +112,7 @@
       align-items: center;
       gap: 12px;
       padding: 10px 12px;
-      color: #7a6d5a;
+      color: #ede3d0;
       font-size: 13px;
       letter-spacing: 0.05em;
       border-radius: 6px;
@@ -931,7 +931,7 @@
         <div class="card">
           <div class="card-grid" style="grid-template-columns:1fr;">
             <div class="card-body">
-              <p>I started writing children's books on statistics and infographics, which turned out to be the natural gateway for explaining AI to people who'd rather not be. From there: VC, and eventually AI product work with government teams and UK SMEs.</p>
+              <p>I started writing children's books on statistics and infographics, which turned out to be the natural gateway for <mark style="background:#c97b1a;color:#14120f;padding:0 2px;border-radius:2px;">explaining AI to people who'd rather not be. From there: VC,</mark> and eventually AI product work with government teams and UK SMEs.</p>
               <p>The common thread is making complex systems legible without making them simple. I've shipped HR tooling for the Ministry of Justice, built live AI summaries for policy conferences, and written enough PRDs to know that "the AI will handle it" is the most expensive line in any of them.</p>
               <div class="tag-row">
                 <span class="tag">Product Strategy</span>
@@ -951,7 +951,7 @@
 
         <div class="card">
           <div class="card-body">
-            <p>Five projects. Government departments, policy networks, one self-published. The institutional contexts vary; the approach doesn't.</p>
+            <p>Government departments, policy networks, one self-published. The institutional contexts vary; the approach doesn't.</p>
           </div>
 
           <a class="project-row" href="tpn-in2030.html" style="text-decoration:none;">
@@ -1095,7 +1095,7 @@
                       <div class="fallback" style="background:#ffffff;color:#171717;border:1px solid #ddd"><b style="color:#e2231a">IT JUST<br>SLIPPED<br>OUT...</b><span>Russell Ash</span></div>
                     </a>
                     <div class="spines">
-                      <a class="spine" style="background:#171717;height:46px;width:100%" href="https://www.goodreads.com/book/show/10023233-it-just-slipped-out" target="_blank" rel="noopener">
+                      <a class="spine" style="background:#171717;height:46px;width:72%" href="https://www.goodreads.com/book/show/10023233-it-just-slipped-out" target="_blank" rel="noopener">
                         <span class="txt">A bulging encyclopedia of double entendres</span><span class="store">Goodreads</span></a>
                       <a class="spine" style="background:#e2231a;height:40px;width:93%" href="https://www.amazon.com/Just-Slipped-Out-Encyclopaedia-Entendres/dp/0755360869" target="_blank" rel="noopener">
                         <span class="txt">&lsquo;It may well make you laugh like a hyena&rsquo; &mdash; Boyd Tonkin, Independent</span><span class="store">Amazon</span></a>
@@ -1156,8 +1156,8 @@
 
         <div class="card">
           <div class="card-body">
-            <p>Half-formed ideas at the intersection of economics, AI, and how value gets produced and priced when the marginal cost of intelligence keeps falling. Mostly toy models, scratch visualisations, and the occasional blog post.</p>
-            <p>Currently noodling on <em>Cobb-Douglas AI</em> (what happens to the labour-capital production function when "tokens" become a third input) and <em>Agentic WTP</em> (how willingness-to-pay re-shapes when the buyer is an agent acting on behalf of a human).</p>
+            <p>Ideas at the intersection of economics, AI, and how value gets produced and priced when the marginal cost of intelligence and agentic actions keeps falling. <mark style="background:#c97b1a;color:#14120f;padding:0 2px;border-radius:2px;">Mostly toy models, scratch visualisations, and the occasional blog post.</mark></p>
+            <p>Currently testing hypothesis on <em>Cobb-Douglas AI</em> (what happens to the labour-capital production function when "tokens" become a third input) and <em>Agentic WTP</em> (how willingness-to-pay re-shapes when the buyer is an agent acting on behalf of a human).</p>
           </div>
 
           <a class="project-row" href="econ-musings.html" style="text-decoration: none;">
@@ -1904,4 +1904,87 @@
     border-top:2px dashed #cdbfa6;
     transform:rotate(-6deg);
   }
-  /* ---- Plane (leads, on the right
+  /* ---- Plane ---- */
+  #book-flyer .bf-plane{ width:52px; height:38px; flex:none; }
+  #book-flyer .bf-prop{ transform-box:fill-box; transform-origin:center; animation:bfProp .12s linear infinite; }
+  @keyframes bfWave{
+    0%,100%{ transform:translateY(0) skewY(0deg); }
+    25%    { transform:translateY(calc(var(--amp,3px) * -1)) skewY(2.4deg); }
+    50%    { transform:translateY(0) skewY(0deg); }
+    75%    { transform:translateY(var(--amp,3px)) skewY(-2.4deg); }
+  }
+  @keyframes bfProp{ 0%{transform:scaleX(1);} 50%{transform:scaleX(.15);} 100%{transform:scaleX(1);} }
+  @media (prefers-reduced-motion: reduce){
+    #book-flyer{ height:96px; }
+    #book-flyer .bf-seg{ animation:none; }
+    #book-flyer .bf-prop{ animation:none; }
+  }
+</style>
+<div id="book-flyer">
+  <a class="bf-group" href="https://claudeskills.co.uk/" target="_blank" rel="noopener" aria-label="New book">
+    <div class="bf-banner" id="bf-banner"></div>
+    <div class="bf-rope"></div>
+    <svg class="bf-plane" viewBox="0 0 52 38" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2"  y="8"  width="8"  height="9"  fill="#c8462e" stroke="#1a1714"/>
+      <rect x="6"  y="15" width="34" height="9"  fill="#c8462e" stroke="#1a1714"/>
+      <rect x="40" y="16" width="6"  height="7"  fill="#7c2614" stroke="#1a1714"/>
+      <rect x="28" y="16" width="7"  height="4"  fill="#bfe0e6" stroke="#1a1714"/>
+      <rect x="16" y="23" width="16" height="4"  fill="#1a1714"/>
+      <rect x="18" y="27" width="4"  height="4"  fill="#2a2520"/>
+      <rect x="28" y="27" width="4"  height="4"  fill="#2a2520"/>
+      <rect class="bf-prop" x="45" y="9" width="3" height="21" fill="#ede3d0" stroke="#1a1714"/>
+    </svg>
+  </a>
+</div>
+<script>
+(function(){
+  var wrap=document.getElementById('book-flyer');
+  var group=wrap.querySelector('.bf-group');
+  var banner=document.getElementById('bf-banner');
+  var plane=wrap.querySelector('.bf-plane');
+  var N=16,W=178,BASE_AMP=4.5;
+  var html='<img class="bf-cover" src="book-cover-mini.png" alt=""><div class="bf-txt">NEW BOOK<br>OUT SOON<small>new release</small></div>';
+  for(var i=0;i<N;i++){
+    var seg=document.createElement('div'); seg.className='bf-seg';
+    var amp=BASE_AMP*(1-i/(N-1));
+    seg.style.setProperty('--amp',amp.toFixed(2)+'px');
+    seg.style.animationDelay=(-(N-1-i)*0.085).toFixed(3)+'s';
+    var inn=document.createElement('div'); inn.className='bf-in';
+    inn.style.left=(-(i)*(W/N))+'px'; inn.innerHTML=html;
+    seg.appendChild(inn); banner.appendChild(seg);
+  }
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    group.style.transform='translate(16px,0) scale(0.6)'; return;
+  }
+  var mX=-9999,mY=-9999;
+  window.addEventListener('mousemove',function(e){mX=e.clientX;mY=e.clientY;},{passive:true});
+  var GW=0,SPEED=95,x=-260,looping=false,loopStart=0,didLoop=false;
+  var LOOP_DUR=1700,TRIGGER=120,LOOP_R=75,prev=performance.now();
+  function frame(now){
+    var dt=Math.min(0.05,(now-prev)/1000); prev=now;
+    if(!GW) GW=group.offsetWidth||260;
+    x+=SPEED*dt;
+    if(x>window.innerWidth+60) x=-GW-40;
+    var bob=Math.sin(now/620)*3,deg=0,dxL=0,dyL=0;
+    if(!looping&&!didLoop){
+      var r=plane.getBoundingClientRect();
+      var pcx=r.left+r.width/2,pcy=r.top+r.height/2;
+      var dx=mX-pcx,dy=mY-pcy;
+      if(Math.sqrt(dx*dx+dy*dy)<TRIGGER){looping=true;didLoop=true;loopStart=now;}
+    }
+    if(looping){
+      var t=(now-loopStart)/LOOP_DUR;
+      if(t>=1){looping=false;}
+      else{
+        var a=Math.PI/180*(90-360*t);
+        dxL=LOOP_R*Math.cos(a); dyL=LOOP_R*Math.sin(a)-LOOP_R; deg=-360*t;
+      }
+    }
+    group.style.transform='translate('+(x+dxL).toFixed(1)+'px,'+(bob+dyL).toFixed(1)+'px) rotate('+deg.toFixed(1)+'deg) scale(0.6)';
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
