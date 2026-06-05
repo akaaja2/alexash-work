@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TPN &amp; IN2030 — AI Summaries — Alex Ash</title>
+  <title>IN2030 &amp; TPN — Companion App — Alex Ash</title>
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
   <link rel="shortcut icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +18,6 @@
       min-height: 100vh;
     }
 
-    /* ===== Themed scrollbars ===== */
     html { scrollbar-width: thin; scrollbar-color: #6b4310 #0c0b09; }
     ::-webkit-scrollbar { width: 10px; height: 10px; }
     ::-webkit-scrollbar-track { background: #0c0b09; }
@@ -33,7 +32,7 @@
     a:hover { text-decoration: underline; }
     p { color: #7a6d5a; font-size: 0.8rem; letter-spacing: 0.1em; }
 
-    /* ===== Sticky top banner (matches index.html scroll-banner) ===== */
+    /* ===== Sticky top banner ===== */
     #scroll-banner {
       position: sticky;
       top: 0;
@@ -92,9 +91,9 @@
       padding: 56px 32px 120px;
     }
 
-    /* ===== Page header / hero ===== */
+    /* ===== Page hero ===== */
     .page-head {
-      margin-bottom: 64px;
+      margin-bottom: 48px;
     }
     .page-tag {
       font-size: 11px;
@@ -119,9 +118,57 @@
       letter-spacing: 0.04em;
     }
 
+    /* ===== Feature grid ===== */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: #2a2520;
+      border: 1px solid #2a2520;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .feature-item {
+      background: #0c0b09;
+      padding: 18px 16px;
+    }
+    .feature-label {
+      font-size: 10px;
+      color: #c97b1a;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .feature-desc {
+      font-size: 11px;
+      color: #4a3f31;
+      line-height: 1.6;
+      letter-spacing: 0.03em;
+    }
+
+    /* ===== Stack line ===== */
+    .stack-line {
+      font-size: 11px;
+      color: #4a3f31;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 56px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .stack-label {
+      color: #2a2520;
+      border: 1px solid #2a2520;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+    }
+
     /* ===== Project section ===== */
     .project-section {
-      margin-bottom: 56px;
+      margin-bottom: 48px;
     }
 
     /* ===== Card ===== */
@@ -143,7 +190,6 @@
       margin-bottom: 20px;
       flex-wrap: wrap;
     }
-    .card-title-group {}
     .project-label {
       font-size: 10px;
       color: #c97b1a;
@@ -165,7 +211,7 @@
       margin-top: 6px;
     }
 
-    /* ===== Status badge ===== */
+    /* ===== Status badges ===== */
     .status-badge {
       display: inline-flex;
       align-items: center;
@@ -180,11 +226,16 @@
       white-space: nowrap;
       flex-shrink: 0;
     }
-    .status-dot-dim {
+    .status-badge.live {
+      border-color: rgba(74, 222, 128, 0.25);
+      color: #4ade80;
+    }
+    .status-dot {
       width: 6px; height: 6px; border-radius: 50%;
-      background: #4a3f31;
       flex-shrink: 0;
     }
+    .status-dot.green { background: #4ade80; }
+    .status-dot.dim   { background: #4a3f31; }
 
     /* ===== Tag row ===== */
     .tag-row {
@@ -200,7 +251,7 @@
       text-transform: uppercase;
     }
 
-    /* ===== Card body text ===== */
+    /* ===== Card body ===== */
     .card-body {
       font-size: 14px;
       color: #ede3d0;
@@ -224,12 +275,17 @@
       margin: 28px 0;
     }
 
-    /* ===== Demo block ===== */
-    .demo-block {
-      background: rgba(12, 11, 9, 0.7);
-      border: 1px dashed #2a2520;
+    /* ===== Screenshots ===== */
+    .screenshot-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    .screenshot-grid img {
+      width: 100%;
       border-radius: 8px;
-      padding: 32px 28px;
+      border: 1px solid #2a2520;
+      display: block;
     }
     .demo-block-label {
       font-size: 10px;
@@ -245,54 +301,6 @@
       content: "";
       flex: 1;
       border-top: 1px dashed #2a2520;
-    }
-
-    /* terminal-style placeholder */
-    .terminal {
-      background: #0a0908;
-      border: 1px solid #2a2520;
-      border-radius: 6px;
-      overflow: hidden;
-    }
-    .terminal-bar {
-      background: #1a1714;
-      border-bottom: 1px solid #2a2520;
-      padding: 8px 14px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .term-dot {
-      width: 10px; height: 10px; border-radius: 50%;
-      background: #2a2520;
-    }
-    .terminal-bar-title {
-      margin-left: 8px;
-      font-size: 11px;
-      color: #4a3f31;
-      letter-spacing: 0.15em;
-    }
-    .terminal-body {
-      padding: 20px 18px;
-      font-size: 12px;
-      line-height: 1.9;
-      color: #4a3f31;
-      letter-spacing: 0.04em;
-    }
-    .terminal-body .prompt { color: #c97b1a; }
-    .terminal-body .comment { color: #2a2520; }
-    .terminal-body .placeholder { color: #4a3f31; font-style: italic; }
-
-    .coming-soon-pill {
-      display: inline-block;
-      margin-top: 18px;
-      padding: 6px 16px;
-      border: 1px solid #2a2520;
-      border-radius: 4px;
-      font-size: 11px;
-      color: #4a3f31;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
     }
 
     /* ===== Context box ===== */
@@ -355,145 +363,165 @@
       .banner-title { font-size: 16px; }
       .banner-meta { display: none; }
       .card-header { flex-direction: column; align-items: flex-start; }
+      .feature-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
 <body>
 
-  <!-- ===== Hero video — full width, autoplay loop ===== -->
-  <video
-    src="demo-in2030-tpn.mp4"
-    autoplay
-    loop
-    muted
-    playsinline
-    style="width:100%;display:block;background:#0a0908;max-height:520px;object-fit:cover;"
-  ></video>
+  <!-- Hero demo video -->
+  <video src="demo-in2030-tpn.mp4" autoplay loop muted playsinline controls
+    style="width:100%;display:block;background:#0a0908;aspect-ratio:16/9;">
+  </video>
 
-  <!-- ===== Sticky banner (mirrors index.html style) ===== -->
+  <!-- Sticky banner -->
   <div id="scroll-banner">
     <a class="back-link" href="index.html">← Alex Ash</a>
-    <span class="banner-title">TPN &amp; IN2030</span>
-    <span class="banner-subtitle">AI Summaries</span>
-    <span class="banner-meta">Case Study · AI PM</span>
+    <span class="banner-title">IN2030 &amp; TPN</span>
+    <span class="banner-subtitle">Companion App</span>
+    <span class="banner-meta">Case Study · Solo Build</span>
   </div>
 
   <div class="wrap">
 
-    <!-- ===== Hero ===== -->
+    <!-- Hero -->
     <header class="page-head">
-      <div class="page-tag">AI PM Work / Policy</div>
-      <h1>AI-powered live summaries<br>for policy events</h1>
+      <div class="page-tag">AI PM Work · Solo Build · 2026</div>
+      <h1>Live-event companion app,<br>built and deployed twice</h1>
       <p class="hero-desc">
-        Two engagements for cross-Atlantic policy organisations: real-time AI summaries
-        of summit talks, debates, and committee sessions — turning hours of live
-        proceedings into structured, searchable briefings. Both apps share a common
-        architecture; the contexts they serve are distinct.
+        A mobile-first web app giving event attendees a live schedule, real-time
+        session discussion, photo sharing, and AI-generated summaries — all synced
+        without page reloads. Built solo in React + Supabase, shipped for Ideas
+        Network 2030 and redeployed as a configurable template for Transatlantic
+        Policy Network.
       </p>
     </header>
 
-    <!-- ===== Project 1: TPN ===== -->
+    <!-- Feature strip -->
+    <div class="feature-grid">
+      <div class="feature-item">
+        <div class="feature-label">Schedule</div>
+        <div class="feature-desc">Live / upcoming / ended session badges, updated in real time</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-label">Discussion</div>
+        <div class="feature-desc">Per-session comment threads synced live via Supabase realtime</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-label">Photos</div>
+        <div class="feature-desc">Attendee upload + live gallery per session</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-label">AI Summaries</div>
+        <div class="feature-desc">Post-session summaries pushed live — no rebuild required</div>
+      </div>
+    </div>
+
+    <div class="stack-line">
+      <span class="stack-label">Stack</span>
+      React · Vite · Supabase · Netlify · solo build
+    </div>
+
+    <!-- ===== Project 1: IN2030 (primary) ===== -->
+    <section class="project-section" id="in2030">
+      <div class="card">
+
+        <div class="card-header">
+          <div>
+            <div class="project-label">01 / Primary Build</div>
+            <div class="card-title">Ideas Network 2030</div>
+            <div class="card-subtitle">Summer University · Corpus Christi College, Oxford · 3–4 Sept 2026</div>
+          </div>
+          <span class="status-badge live">
+            <span class="status-dot green"></span>
+            Live
+          </span>
+        </div>
+
+        <div class="tag-row">
+          <span class="tag">React + Vite</span>
+          <span class="tag">Supabase</span>
+          <span class="tag">Netlify</span>
+          <span class="tag">Mobile-first</span>
+        </div>
+
+        <div class="card-body">
+          <p>
+            IN2030 brings together emerging leaders across policy, business, and civil
+            society for a residential programme at Oxford. The companion app replaced
+            the printed programme and gave attendees a shared, live view of the event —
+            session by session, updated in real time.
+          </p>
+          <p>
+            Attendees browse the schedule, see session status at a glance, join
+            discussion threads, upload photos to a shared gallery, and read
+            AI-generated summaries once sessions close. All content syncs via
+            Supabase realtime — no rebuilds, no polling.
+          </p>
+        </div>
+
+        <hr class="card-divider">
+
+        <!-- Screenshots — add image files to the same folder and update src values below -->
+        <div class="demo-block-label">Screenshots</div>
+        <div class="screenshot-grid">
+          <!-- Example: <img src="in2030-schedule.png" alt="Live schedule view"> -->
+          <!-- Example: <img src="in2030-session.png" alt="Session detail with comments"> -->
+          <!-- Example: <img src="in2030-gallery.png" alt="Photo gallery"> -->
+          <!-- Drop screenshot files alongside index.html and uncomment above lines -->
+        </div>
+
+        <div class="context-box">
+          <strong>Deployed at</strong> in2030.netlify.app &mdash;
+          theme: "Shaping our future towards 2040"
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== Project 2: TPN (second deployment) ===== -->
     <section class="project-section" id="tpn">
       <div class="card">
 
         <div class="card-header">
-          <div class="card-title-group">
-            <div class="project-label">01 / Engagement</div>
+          <div>
+            <div class="project-label">02 / Second Deployment</div>
             <div class="card-title">Transatlantic Policy<br>Network</div>
             <div class="card-subtitle">tpnonline.org &mdash; EU/US politicians, business leaders &amp; think tanks</div>
           </div>
           <span class="status-badge">
-            <span class="status-dot-dim"></span>
-            Demo scaffolding
+            <span class="status-dot dim"></span>
+            Deployed
           </span>
         </div>
 
         <div class="tag-row">
           <span class="tag">Policy</span>
-          <span class="tag">Live AI</span>
           <span class="tag">EU / US</span>
-          <span class="tag">Summaries</span>
+          <span class="tag">Configurable Template</span>
         </div>
 
         <div class="card-body">
           <p>
             The Transatlantic Policy Network links elected officials, business
-            associations, and think tanks across the EU and US. Their summits and
-            working-group sessions generate dense, fast-moving oral content that
-            attendees and staff struggle to capture in real time.
+            associations, and think tanks across the EU and US. The same codebase
+            was redeployed for TPN events — a configurable template approach,
+            rebrandable without changes to the underlying product.
           </p>
           <p>
-            The app ingests live transcription from summit talks and debates,
-            chunks it into topic segments, and produces structured summaries with
-            speaker attribution, key positions, and points of agreement or tension
-            &mdash; all surfaced in near-real-time during the event.
+            Same features: live schedule, session comments, photo gallery, AI
+            summaries. Different branding, event data, and visual theme — demonstrating
+            the portability of the architecture across distinct client contexts.
           </p>
         </div>
-
-        <div class="context-box">
-          <strong>Context &mdash;</strong> TPN runs the Transatlantic Vision 2030
-          programme, a multi-year initiative aligning EU and US policy priorities.
-          This tool was built to reduce the manual burden on TPN staff during
-          high-volume conference days.
-        </div>
-
 
       </div>
     </section>
 
-    <!-- ===== Project 2: IN2030 ===== -->
-    <section class="project-section" id="in2030">
-      <div class="card">
-
-        <div class="card-header">
-          <div class="card-title-group">
-            <div class="project-label">02 / Engagement</div>
-            <div class="card-title">Ideas Network 2030</div>
-            <div class="card-subtitle">Steering committee minutes &amp; event summaries</div>
-          </div>
-          <span class="status-badge">
-            <span class="status-dot-dim"></span>
-            Demo scaffolding
-          </span>
-        </div>
-
-        <div class="tag-row">
-          <span class="tag">Governance</span>
-          <span class="tag">Live AI</span>
-          <span class="tag">Committee</span>
-          <span class="tag">Minutes</span>
-        </div>
-
-        <div class="card-body">
-          <p>
-            Ideas Network 2030 brings together senior figures to shape long-range
-            policy thinking on transatlantic priorities. Steering committee sessions
-            are intensive: high participant counts, overlapping threads, and
-            consequential decisions that need to be accurately recorded.
-          </p>
-          <p>
-            The app applies the same live-summary architecture as the TPN tool,
-            adapted for committee-room dynamics &mdash; action-item extraction,
-            decision logging, and a running summary of open questions alongside
-            the narrative digest of each session.
-          </p>
-        </div>
-
-        <div class="context-box">
-          <strong>Context &mdash;</strong> IN2030 is likely connected to TPN&rsquo;s
-          Transatlantic Vision 2030 programme. The two tools share a backend;
-          this instance is configured for closed committee sessions rather than
-          open-stage summits.
-        </div>
-
-
-      </div>
-    </section>
-
-    <!-- ===== Footer ===== -->
+    <!-- Footer -->
     <footer class="page-footer">
       <a class="footer-back" href="index.html">← Back to alexash.work</a>
-      <span class="footer-note">Placeholder &mdash; full case study in progress</span>
+      <span class="footer-note">Full case study in progress · demo video coming</span>
     </footer>
 
   </div>
