@@ -1248,6 +1248,15 @@
     </main>
   </div>
 
+<!-- ===== Project lightbox ===== -->
+<div id="proj-lightbox" role="dialog" aria-modal="true">
+  <div id="proj-lightbox-card">
+    <button id="proj-lightbox-close" aria-label="Close">×</button>
+    <div id="proj-lightbox-tag"></div>
+    <div id="proj-lightbox-title"></div>
+    <div id="proj-lightbox-body"></div>
+  </div>
+</div>
 
   <script>
     // ── Constants (TEXT hoisted so scramble can use it) ──────────
@@ -1840,16 +1849,6 @@
       checkReady();
     });
   </script>
-
-<!-- ===== Project lightbox ===== -->
-<div id="proj-lightbox" role="dialog" aria-modal="true">
-  <div id="proj-lightbox-card">
-    <button id="proj-lightbox-close" aria-label="Close">×</button>
-    <div id="proj-lightbox-tag"></div>
-    <div id="proj-lightbox-title"></div>
-    <div id="proj-lightbox-body"></div>
-  </div>
-</div>
 
 <!-- ===== Book Flyer: pixel plane towing a waving banner ===== -->
 <style>
