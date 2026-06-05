@@ -1679,6 +1679,8 @@
       const sections   = Array.from(document.querySelectorAll(".section"));
       const breadcrumb = document.getElementById("breadcrumb");
 
+      if (!sidebar || !toggle) return;
+
       const labelMap = {
         about:     "About Me",
         "ai-pm":   "AI PM Work",
@@ -1813,14 +1815,14 @@
       });
     });
 
-    document.getElementById("proj-lightbox").addEventListener("click", e => {
+    document.getElementById("proj-lightbox")?.addEventListener("click", e => {
       if (e.target === e.currentTarget) e.currentTarget.classList.remove("open");
     });
-    document.getElementById("proj-lightbox-close").addEventListener("click", () => {
-      document.getElementById("proj-lightbox").classList.remove("open");
+    document.getElementById("proj-lightbox-close")?.addEventListener("click", () => {
+      document.getElementById("proj-lightbox")?.classList.remove("open");
     });
     document.addEventListener("keydown", e => {
-      if (e.key === "Escape") document.getElementById("proj-lightbox").classList.remove("open");
+      if (e.key === "Escape") document.getElementById("proj-lightbox")?.classList.remove("open");
     });
 
     // ── Load font ─────────────────────────────────────────────────
