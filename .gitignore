@@ -11,6 +11,7 @@ Thumbs.db
 
 # Working docs (not part of the site)
 *.md
+!CLAUDE.md
 
 # Generated / tooling
 codebase-map.html
