@@ -14,7 +14,7 @@ Any static server from the repo root works, e.g. `python3 -m http.server 8000` (
 
 - `index.html` — the main single-page site (~2000 lines); nearly all work happens here.
 - `tpn-in2030.html`, `econ-musings.html` — standalone detail pages linked from project rows in `index.html`; each links back with `href="index.html"`.
-- `bookshelf.html` — standalone version of the bookcase. **The same markup is duplicated inline** in the Library (`#books`) section of `index.html`, with CSS scoped under `.bookcase-embed`. Changes to books/links usually need making in both files.
+- `bookshelf.html` — redirect stub only; forwards old links to `index.html#books`. The bookcase itself lives solely in the Library (`#books`) section of `index.html`, with CSS scoped under `.bookcase-embed`.
 - `thanks.html` — the no-JS fallback target of the contact form (`action="/thanks.html"`).
 - `archive/designs/` — old design explorations, not linked from the site.
 
