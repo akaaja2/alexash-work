@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Econ Musings — Alex Ash</title>
+  <meta name="description" content="Econ Musings by Alex Ash: working notes on AI, production theory, labour substitution and agentic pricing.">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+  <link rel="shortcut icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&display=swap">
   <style>
@@ -159,7 +162,8 @@
       transition: all 0.2s;
       color: inherit;
     }
-    .resource:hover {
+    .resource--soon { cursor: default; opacity: 0.75; }
+    .resource:not(.resource--soon):hover {
       border-color: #c97b1a;
       background: rgba(201, 123, 26, 0.05);
       transform: translateY(-2px);
@@ -439,21 +443,21 @@
       </div>
 
       <div class="resource-row">
-        <a class="resource" href="#">
+        <div class="resource resource--soon" aria-disabled="true">
           <span class="resource-label">Visualisation</span>
           <span class="resource-value">Two-Mode Production Sandbox</span>
           <span class="resource-meta">PLANNED · Avenue A↔B slider</span>
-        </a>
-        <a class="resource" href="#">
+        </div>
+        <div class="resource resource--soon" aria-disabled="true">
           <span class="resource-label">Blog Post</span>
           <span class="resource-value">A or B? The Token-Budget Tell</span>
           <span class="resource-meta">DRAFT · ~2,400 words</span>
-        </a>
-        <a class="resource" href="#">
+        </div>
+        <div class="resource resource--soon" aria-disabled="true">
           <span class="resource-label">Evidence Tracker</span>
           <span class="resource-value">Augmentation vs Substitution</span>
           <span class="resource-meta">LIVE · 14 studies indexed</span>
-        </a>
+        </div>
       </div>
 
       <div class="tag-row">
@@ -484,21 +488,21 @@
       </div>
 
       <div class="resource-row">
-        <a class="resource" href="#">
+        <div class="resource resource--soon" aria-disabled="true">
           <span class="resource-label">Visualisation</span>
           <span class="resource-value">WTP Simulator</span>
           <span class="resource-meta">COMING SOON</span>
-        </a>
-        <a class="resource" href="#">
+        </div>
+        <div class="resource resource--soon" aria-disabled="true">
           <span class="resource-label">Blog Post</span>
           <span class="resource-value">Pricing for Agents</span>
           <span class="resource-meta">OUTLINE</span>
-        </a>
-        <a class="resource" href="#">
+        </div>
+        <div class="resource resource--soon" aria-disabled="true">
           <span class="resource-label">Reading List</span>
           <span class="resource-value">Related papers &amp; posts</span>
           <span class="resource-meta">12 entries</span>
-        </a>
+        </div>
       </div>
 
       <div class="tag-row">
