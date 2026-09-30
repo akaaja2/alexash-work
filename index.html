@@ -19,7 +19,6 @@
   <meta name="twitter:card"       content="summary_large_image">
   <meta name="twitter:image"      content="https://alexash.work/og-image.jpg">
 
-  <script src="https://cdn.jsdelivr.net/npm/opentype.js@1.3.4/dist/opentype.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&display=swap">
   <style>
@@ -809,7 +808,7 @@
     .bookcase-embed .stage { display:flex; align-items:flex-end; gap:24px; padding:14px 14px 0; }
     .bookcase-embed .cover { flex:0 0 auto; width:142px; text-decoration:none; display:block; transition:transform .25s ease; }
     .bookcase-embed a.cover:hover { transform:translateY(-6px); }
-    .bookcase-embed .cover img { width:100%; display:block; border-radius:2px; box-shadow:0 10px 16px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.25) inset; }
+    .bookcase-embed .cover img { width:100%; height:auto; display:block; border-radius:2px; box-shadow:0 10px 16px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.25) inset; }
     .bookcase-embed .cover .fallback { width:100%; aspect-ratio:142/200; border-radius:2px; background:#d85a30; color:#faece7; display:none; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:12px; box-shadow:0 10px 16px rgba(0,0,0,.4); }
     .bookcase-embed .cover .fallback b { font-size:16px; letter-spacing:1px; line-height:1.25; }
     .bookcase-embed .cover .fallback span { font-size:10px; margin-top:8px; opacity:.85; }
@@ -1022,7 +1021,7 @@
                 <div class="shelf">
                   <div class="stage">
                     <a class="cover" href="https://claudeskills.co.uk" target="_blank" rel="noopener">
-                      <img src="csm-cover.webp" alt="Claude Skills for Marketing cover"
+                      <img src="csm-cover.webp" width="440" height="623" loading="lazy" decoding="async" alt="Claude Skills for Marketing cover"
                            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
                       <div class="fallback" style="background:#1a1a1a;color:#f3ead8"><b>CLAUDE<br>SKILLS FOR<br>MARKETING</b><span>Ash &middot; Jaokar &middot; Jaokar</span></div>
                     </a>
@@ -1042,7 +1041,7 @@
                 <div class="shelf">
                   <div class="stage">
                     <a class="cover" href="https://www.hachette.co.uk/titles/alexander-ash/top-10-of-london/9780600624899/" target="_blank" rel="noopener">
-                      <img src="london-cover.webp" alt="Top 10 of London cover"
+                      <img src="london-cover.webp" width="440" height="604" loading="lazy" decoding="async" alt="Top 10 of London cover"
                            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
                       <div class="fallback" style="background:#cf1f3d"><b>TOP 10<br>OF LONDON</b><span>Alexander Ash</span></div>
                     </a>
@@ -1062,7 +1061,7 @@
                 <div class="shelf">
                   <div class="stage">
                     <a class="cover" href="https://www.goodreads.com/book/show/15929526-top-10-of-everything-2013" target="_blank" rel="noopener">
-                      <img src="everything-2013.webp" alt="Top 10 of Everything 2013 cover"
+                      <img src="everything-2013.webp" width="440" height="591" loading="lazy" decoding="async" alt="Top 10 of Everything 2013 cover"
                            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
                       <div class="fallback" style="background:#1f8a68"><b>TOP 10<br>EVERYTHING<br>2013</b><span>Ash</span></div>
                     </a>
@@ -1082,7 +1081,7 @@
                 <div class="shelf">
                   <div class="stage">
                     <a class="cover" href="https://www.goodreads.com/en/book/show/11055732-top-10-of-everything-2012" target="_blank" rel="noopener">
-                      <img src="everything-2012.webp" alt="Top 10 of Everything 2012 cover"
+                      <img src="everything-2012.webp" width="440" height="590" loading="lazy" decoding="async" alt="Top 10 of Everything 2012 cover"
                            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
                       <div class="fallback" style="background:#4f6f2c"><b>TOP 10<br>EVERYTHING<br>2012</b><span>Ash</span></div>
                     </a>
@@ -1102,7 +1101,7 @@
                 <div class="shelf">
                   <div class="stage">
                     <a class="cover" href="https://www.goodreads.com/book/show/10023233-it-just-slipped-out" target="_blank" rel="noopener">
-                      <img src="slipped-out-cover.webp" alt="It Just Slipped Out cover"
+                      <img src="slipped-out-cover.webp" width="608" height="980" loading="lazy" decoding="async" alt="It Just Slipped Out cover"
                            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
                       <div class="fallback" style="background:#ffffff;color:#171717;border:1px solid #ddd"><b style="color:#e2231a">IT JUST<br>SLIPPED<br>OUT...</b><span>Russell Ash</span></div>
                     </a>
@@ -1144,7 +1143,7 @@
             </div>
 
             <div class="edu-card">
-              <img class="edu-logo edu-logo-chip" src="logos/hbs.png" alt="Harvard Business School logo"
+              <img class="edu-logo edu-logo-chip" src="logos/hbs.webp" width="255" height="126" loading="lazy" decoding="async" alt="Harvard Business School logo"
                    onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
               <svg class="edu-logo edu-logo-fallback" style="display:none" viewBox="0 0 48 52" aria-hidden="true">
                 <path class="edu-shape" d="M4 4 H44 V28 Q44 46 24 50 Q4 46 4 28 Z"/>
@@ -1399,7 +1398,6 @@
     }
 
     // ─────────────────────────────────────────────────────────────
-    const FONT_URL  = "https://fonts.gstatic.com/s/bungee/v14/N0bU2SZBIuF2PU_ECn50Kd_PmA.ttf";
     const FONT_SIZE = 120;
     const COLOUR    = "#c97b1a";   // single colour for everything
 
@@ -1837,31 +1835,22 @@
       if (e.key === "Escape") document.getElementById("proj-lightbox")?.classList.remove("open");
     });
 
-    // ── Load font ─────────────────────────────────────────────────
-    opentype.load(FONT_URL, (err, font) => {
-      if (err || !font) {
-        document.getElementById("banner-svg").innerHTML =
-          `<text y="40" fill="#c00" font-size="14">Couldn't load Bungee: ${err?.message || "unknown"}</text>`;
-        return;
-      }
-      let x = 0;
-      const chars = TEXT.split("").map(ch => {
-        const path    = font.getPath(ch, x, FONT_SIZE, FONT_SIZE);
-        const d       = path.toPathData(2);
-        const glyph   = font.charToGlyph(ch);
-        const advance = (glyph.advanceWidth / font.unitsPerEm) * FONT_SIZE;
-        const entry   = { d, x, advance };
-        x += advance;
-        return entry;
-      });
-      glyphData = { chars, totalWidth: x, height: FONT_SIZE * 1.3 };
+    // ── Glyph outlines ────────────────────────────────────────────
+    // "Alex Ash" in Bungee (fonts.gstatic.com/s/bungee/v14) at FONT_SIZE,
+    // precomputed with opentype.js 1.3.4 (getPath(ch, x, FONT_SIZE, FONT_SIZE)
+    // .toPathData(2); advance = advanceWidth / unitsPerEm * FONT_SIZE) so the
+    // page no longer downloads opentype.js + the TTF on every visit.
+    // Regenerate these if TEXT or FONT_SIZE changes.
+    const GLYPHS = {"chars":[{"d":"M32.76 98.88L32.76 115.68Q32.76 120 28.44 120L28.44 120L10.80 120Q6.48 120 6.48 115.68L6.48 115.68L6.48 84Q6.48 80.40 7.62 75.72Q8.76 71.04 11.16 64.80L11.16 64.80L21.60 37.56Q22.92 33.60 27.72 33.60L27.72 33.60L60 33.60Q64.68 33.60 66 37.56L66 37.56L76.44 64.80Q78.84 71.04 79.98 75.72Q81.12 80.40 81.12 84L81.12 84L81.12 115.68Q81.12 120 76.80 120L76.80 120L58.68 120Q54 120 54 115.68L54 115.68L54 98.88L32.76 98.88ZM39.60 58.80L39.60 58.80L33.96 77.04L52.80 77.04L47.16 58.80Q46.32 56.76 44.88 56.76L44.88 56.76L41.88 56.76Q40.44 56.76 39.60 58.80Z","x":0,"advance":87.6},{"d":"M161.28 120L161.28 120L100.20 120Q95.88 120 95.88 115.68L95.88 115.68L95.88 37.92Q95.88 33.60 100.20 33.60L100.20 33.60L118.80 33.60Q123.12 33.60 123.12 37.92L123.12 37.92L123.12 97.32L139.56 97.32L139.56 77.88Q139.56 73.56 143.88 73.56L143.88 73.56L161.28 73.56Q165.60 73.56 165.60 77.88L165.60 77.88L165.60 115.68Q165.60 120 161.28 120Z","x":87.6,"advance":83.39999999999999},{"d":"M239.28 120L239.28 120L183.60 120Q179.28 120 179.28 115.68L179.28 115.68L179.28 37.92Q179.28 33.60 183.60 33.60L183.60 33.60L239.28 33.60Q243.60 33.60 243.60 37.92L243.60 37.92L243.60 51.96Q243.60 56.28 239.28 56.28L239.28 56.28L206.16 56.28L206.16 65.52L229.56 65.52Q233.88 65.52 233.88 69.84L233.88 69.84L233.88 82.68Q233.88 87 229.56 87L229.56 87L206.16 87L206.16 97.32L239.28 97.32Q243.60 97.32 243.60 101.64L243.60 101.64L243.60 115.68Q243.60 120 239.28 120Z","x":171,"advance":78.48},{"d":"M283.56 103.80L283.56 115.68Q283.56 120 279.24 120L279.24 120L261 120Q256.68 120 256.68 115.68L256.68 115.68L256.68 102.84Q256.68 99.12 257.10 96.78Q257.52 94.44 258.48 92.46Q259.44 90.48 261.24 88.08L261.24 88.08L270.96 75L261.24 61.92Q259.44 59.40 258.42 57.48Q257.40 55.56 257.04 53.22Q256.68 50.88 256.68 47.16L256.68 47.16L256.68 37.92Q256.68 33.60 261 33.60L261 33.60L279.48 33.60Q283.80 33.60 283.80 37.92L283.80 37.92L283.80 46.20Q283.80 47.40 283.92 48.72Q284.04 50.04 284.88 51.24L284.88 51.24L290.16 58.80Q290.76 59.76 291.42 60.30Q292.08 60.84 293.04 60.84L293.04 60.84L294.48 60.84Q295.44 60.84 296.04 60.30Q296.64 59.76 297.36 58.80L297.36 58.80L302.76 51.24Q303.60 50.04 303.72 48.72Q303.84 47.40 303.84 46.20L303.84 46.20L303.84 37.92Q303.84 33.60 308.16 33.60L308.16 33.60L326.40 33.60Q330.72 33.60 330.72 37.92L330.72 37.92L330.72 47.16Q330.72 50.88 330.36 53.22Q330 55.56 328.98 57.48Q327.96 59.40 326.16 61.92L326.16 61.92L316.44 75.12L326.16 88.08Q328.08 90.48 329.04 92.46Q330 94.44 330.36 96.78Q330.72 99.12 330.72 102.84L330.72 102.84L330.72 115.68Q330.72 120 326.40 120L326.40 120L308.16 120Q303.84 120 303.84 115.68L303.84 115.68L303.84 103.80Q303.84 103.68 303.84 103.32L303.84 103.32Q303.84 102.24 303.72 101.10Q303.60 99.96 302.76 98.76L302.76 98.76L297.48 91.20Q296.76 90.12 296.16 89.64Q295.56 89.16 294.60 89.16L294.60 89.16L292.92 89.16Q291.96 89.16 291.36 89.64Q290.76 90.12 290.04 91.20L290.04 91.20L284.64 98.76Q283.80 99.96 283.68 101.10Q283.56 102.24 283.56 103.32L283.56 103.32Q283.56 103.68 283.56 103.80L283.56 103.80Z","x":249.48000000000002,"advance":88.44},{"d":"","x":337.92,"advance":27},{"d":"M397.68 98.88L397.68 115.68Q397.68 120 393.36 120L393.36 120L375.72 120Q371.40 120 371.40 115.68L371.40 115.68L371.40 84Q371.40 80.40 372.54 75.72Q373.68 71.04 376.08 64.80L376.08 64.80L386.52 37.56Q387.84 33.60 392.64 33.60L392.64 33.60L424.92 33.60Q429.60 33.60 430.92 37.56L430.92 37.56L441.36 64.80Q443.76 71.04 444.90 75.72Q446.04 80.40 446.04 84L446.04 84L446.04 115.68Q446.04 120 441.72 120L441.72 120L423.60 120Q418.92 120 418.92 115.68L418.92 115.68L418.92 98.88L397.68 98.88ZM404.52 58.80L404.52 58.80L398.88 77.04L417.72 77.04L412.08 58.80Q411.24 56.76 409.80 56.76L409.80 56.76L406.80 56.76Q405.36 56.76 404.52 58.80Z","x":364.92,"advance":87.6},{"d":"M500.88 120L500.88 120L462.96 120Q458.64 120 458.64 115.68L458.64 115.68L458.64 101.64Q458.64 97.32 462.96 97.32L462.96 97.32L495.24 97.32Q496.80 97.32 497.58 96.30Q498.36 95.28 498.36 93.84L498.36 93.84Q498.36 91.80 497.58 90.84Q496.80 89.88 495.24 89.76L495.24 89.76L477.24 87.24Q468.84 85.92 463.74 81.66Q458.64 77.40 458.64 67.32L458.64 67.32L458.64 54.72Q458.64 44.40 465.24 39Q471.84 33.60 483.48 33.60L483.48 33.60L517.08 33.60Q521.40 33.60 521.40 37.92L521.40 37.92L521.40 52.20Q521.40 56.52 517.08 56.52L517.08 56.52L489.12 56.52Q485.88 56.52 485.88 60.12L485.88 60.12Q485.88 63.60 489.12 63.96L489.12 63.96L507 66.36Q512.64 67.20 516.84 69.30Q521.04 71.40 523.38 75.48Q525.72 79.56 525.72 86.28L525.72 86.28L525.72 98.88Q525.72 109.08 519.12 114.54Q512.52 120 500.88 120Z","x":452.52,"advance":78},{"d":"M561.72 120L561.72 120L543.12 120Q538.80 120 538.80 115.68L538.80 115.68L538.80 37.92Q538.80 33.60 543.12 33.60L543.12 33.60L561.72 33.60Q566.04 33.60 566.04 37.92L566.04 37.92L566.04 63.96L586.08 63.96L586.08 37.92Q586.08 33.60 590.40 33.60L590.40 33.60L609 33.60Q613.32 33.60 613.32 37.92L613.32 37.92L613.32 115.68Q613.32 120 609 120L609 120L590.40 120Q586.08 120 586.08 115.68L586.08 115.68L586.08 89.04L566.04 89.04L566.04 115.68Q566.04 120 561.72 120Z","x":530.52,"advance":91.08}],"totalWidth":621.6,"height":156};
+    setTimeout(() => {
+      glyphData = GLYPHS;
       buildSVG();
       svgBuilt = true;
       // Kick off the HTML flyer pre-flight as soon as the SVG is in the
       // DOM and laid out — they need getScreenCTM on the trace paths.
       if (!prefersReducedMotion) requestAnimationFrame(launchFlyers);
       checkReady();
-    });
+    }, 0);
   </script>
 
 <!-- ===== Book Flyer: pixel plane towing a waving banner ===== -->
@@ -1955,7 +1944,7 @@
   var banner=document.getElementById('bf-banner');
   var plane=wrap.querySelector('.bf-plane');
   var N=16,W=178,BASE_AMP=4.5;
-  var html='<img class="bf-cover" src="book-cover-mini.png" alt="Claude Skills for Marketing cover"><div class="bf-txt">NEW BOOK<br>OUT NOW<small>new release</small></div>';
+  var html='<img class="bf-cover" src="book-cover-mini.webp" width="160" height="226" alt="Claude Skills for Marketing cover"><div class="bf-txt">NEW BOOK<br>OUT NOW<small>new release</small></div>';
   for(var i=0;i<N;i++){
     var seg=document.createElement('div'); seg.className='bf-seg';
     var amp=BASE_AMP*(1-i/(N-1));

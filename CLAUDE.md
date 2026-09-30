@@ -23,7 +23,7 @@ Any static server from the repo root works, e.g. `python3 -m http.server 8000` (
 ## index.html architecture
 
 - **Layout**: fixed scroll banner (`#scroll-banner`) on top, then `.layout` = sticky `.sidebar` nav + content `<section>`s (`#about`, `#ai-pm`, `#books`, `#education`, `#econ`, `#contact`). The CSS variable `--banner-h` is live-updated by JS to the banner's rendered height and drives sticky offsets — don't hard-code banner height elsewhere.
-- **Banner animation** (main `<script>`): the name is first shown via a letter-scramble overlay, then `opentype.js` (CDN) loads the Bungee TTF from `FONT_URL` and `buildSVG` turns the glyphs into SVG paths. Scroll progress drives the path trace, logo markers riding along the trace (preceded by HTML "logo flyers"), the portrait blur-reveal, and the banner shrink. `prefers-reduced-motion` skips scramble/flyers and shows everything immediately.
+- **Banner animation** (main `<script>`): the name is first shown via a letter-scramble overlay, then `buildSVG` draws the name from `GLYPHS` — Bungee outlines precomputed with opentype.js 1.3.4 (no font or library is downloaded at runtime; regenerate `GLYPHS` if `TEXT` or `FONT_SIZE` changes). Scroll progress drives the path trace, logo markers riding along the trace (preceded by HTML "logo flyers"), the portrait blur-reveal, and the banner shrink. `prefers-reduced-motion` skips scramble/flyers and shows everything immediately.
 - **Sidebar/section nav**: highlights the active section, updates the breadcrumb, and number keys jump to sections. On mobile (`@media` block under "Mobile / responsive") the sidebar becomes a horizontal scroll strip.
 - **Project lightbox** (`#proj-lightbox`) and the **contact form** (Netlify Forms: `data-netlify="true"`, honeypot `bot-field`, submitted via `fetch("/")` with a url-encoded body, falling back to `thanks.html`).
 - **Book flyer** (`#book-flyer`): a separate IIFE `<script>` at the bottom of the body for the "new book" banner-plane animation.
@@ -32,6 +32,7 @@ Any static server from the repo root works, e.g. `python3 -m http.server 8000` (
 ## Conventions
 
 - Dark warm palette used across pages: background `#0c0b09`, text `#ede3d0`, accent `#c97b1a`; body font `'Courier New', monospace`, display font Bungee (Google Fonts).
-- Images are mostly `.webp` in the repo root; `og-image.png` is the social preview.
+- Images are mostly `.webp` in the repo root; `og-image.jpg` is the social preview. Below-the-fold `<img>`s carry `width`/`height` + `loading="lazy"`.
+- `netlify.toml` gives listed static assets a 7-day `Cache-Control`; filenames aren't versioned, so rename an asset (and add it to the list) when replacing it.
 - Recent fixes have focused on mobile: avoid anything that causes horizontal overflow (`html`/`body` set `overflow-x: hidden`).
 - `.gitignore` excludes `*.md` working docs (this file is explicitly un-ignored) and `cv/` (personal, must never be deployed).
