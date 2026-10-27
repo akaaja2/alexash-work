@@ -348,48 +348,6 @@
   },
   {
    "@type": "Book",
-   "@id": "urn:russell-ash:RA008",
-   "name": "Talking about Race",
-   "datePublished": "1974",
-   "genre": "reference",
-   "author": {
-    "@id": "https://www.wikidata.org/wiki/Q7381333"
-   },
-   "additionalProperty": [
-    {
-     "@type": "PropertyValue",
-     "name": "role",
-     "value": "author"
-    },
-    {
-     "@type": "PropertyValue",
-     "name": "confidence",
-     "value": "high"
-    },
-    {
-     "@type": "PropertyValue",
-     "name": "lifespanFlag",
-     "value": ""
-    }
-   ],
-   "description": "Wayland",
-   "isBasedOn": [
-    "https://en.wikipedia.org/wiki/Russell_Ash",
-    "https://openlibrary.org/authors/OL25225A"
-   ],
-   "workExample": [
-    {
-     "@type": "Book",
-     "name": "Talking about Race",
-     "publisher": "Wayland",
-     "datePublished": "1974",
-     "inLanguage": "eng",
-     "isbn": "9780853403562"
-    }
-   ]
-  },
-  {
-   "@type": "Book",
    "@id": "urn:russell-ash:RA009",
    "name": "The Wright Brothers",
    "datePublished": "1974",
