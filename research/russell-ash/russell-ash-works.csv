@@ -1,0 +1,92 @@
+work_id,title,first_year,category,role,collaborators,languages,edition_count,lifespan_flag,confidence,sources,notes
+RA001,Discovering Highwaymen,1970,history,author,,eng,2,,high,WP;OL,Shire Discovering series; revised edition 1994
+RA002,Britain's Buried Treasures,1972,history,author,,eng,1,,medium,WP,Only in Wikipedia; not yet matched in a library catalogue
+RA003,Wrecks & Sunken Treasure,1972,history,author,,eng,1,,medium,WP,Only in Wikipedia; not yet matched in a library catalogue
+RA004,Fact or Fiction? A Dossier on Old Beliefs That Die Hard,1973,reference,compiler,,eng,2,,high,WP;OL,Reader's Digest; reissued by Pavilion 1999
+RA005,Talking about the Family,1973,reference,author,,eng,1,,high,WP;OL,Wayland
+RA006,Comets,1973,history,co-author,Ian Grant,eng,3,,high,WP;OL,Ash & Grant / Bounty Books
+RA007,Alma-Tadema: An Illustrated Life of Sir Lawrence Alma-Tadema,1973,art,author,,eng,1,,high,WP;OL,Shire Lifelines
+RA008,Talking about Race,1974,reference,author,,eng,1,,high,WP;OL,Wayland
+RA009,The Wright Brothers,1974,history,author,,eng,1,,high,WP;OL,Wayland
+RA010,Dead Funny,1974,humour,co-author,Ian Grant,eng,1,,medium,WP,Ash & Grant
+RA011,The Vampyre (John William Polidori),1974,literature,introduction,John William Polidori,eng,1,,medium,WP,Introduction only
+RA012,Victorian Studio Photographs,1975,art,co-author,Bevis Hillier et al.,eng,1,,medium,WP,Ash & Grant
+RA013,Epon My Word,1976,humour,author,,eng,1,,low,OL,"NEL paperback credited ""R. Ash""; attribution unverified"
+RA014,The Impressionists and Their Art,1980,art,author,,eng,10,,high,WP;OL;BnF,"Many reissues 1980-2006 (Orbis, Black Cat, Crescent, Longmeadow, Little Brown)"
+RA015,Edward Lear's Book of Nonsense,1980,literature,introduction,Edward Lear,eng,1,,medium,WP,Introduction only
+RA016,The Cynic's Dictionary,1984,humour,author,Tony Escott (ill.),eng,1,,high,WP;OL,Corgi
+RA017,The Official British Yuppie Handbook,1984,humour,co-author,Marissa Piesman; Marilee Hartley,eng,1,,high,WP;OL,British adaptation of the US Yuppie Handbook
+RA018,Last Laughs,1984,humour,compiler,Bill Tidy (ill.),eng,1,,high,WP;OL,Wikipedia says with Ian Grant; Open Library says compiled by Russell Ash
+RA019,Bizarre Books,1985,humour,co-compiler,Brian Lake,eng,6,,high,WP;OL;DNB,Macmillan 1985; Sphere 1987; Pavilion 1998; Harper Perennial (US) 2007
+RA020,Howlers,1985,humour,compiler,,eng,1,,high,WP;OL,Ravette
+RA021,The Pig Book,1985,reference,author,,eng,2,,high,WP;OL,Ebury (UK); Arbor House (US)
+RA022,The Londoner's Almanac,1985,reference,author,,eng,1,,high,WP;OL,Century / Ebury
+RA023,Alice's Adventures Under Ground (Lewis Carroll),1985,literature,introduction,Lewis Carroll,eng,1,,medium,WP,Introduction only
+RA024,The Frog Book,1986,reference,author,,eng,1,,high,WP;OL,Macdonald
+RA025,Dear Cats: The Post Office Letters,1986,history,editor,Kevin W. Maddison (ill.),eng,1,,high,WP;OL,Pavilion / Michael Joseph
+RA026,The Daily Trivia Diary '87,1986,reference,author,,,0,,low,WP,No ISBN found
+RA027,Selections from the Reader's Digest Collection,1986,art,author,,,0,,low,WP,No ISBN found
+RA028,They Didn't Really Mean It! A Book of Boobs and Blunders,1987,humour,co-compiler,Bernard Higton; Ellis Nadler (ill.),eng,1,,high,WP;OL,Corgi
+RA029,I'll Drink to That,1987,humour,co-compiler,Bernard Higton,eng,1,,medium,WP,Corgi
+RA030,Private Parts,1987,humour,co-compiler,Bernard Higton,eng,1,,medium,WP,Corgi
+RA031,The Life and Times of Paddington Bear,1988,literature,co-author,Michael Bond,eng,1,,high,WP;OL,Pavilion / Michael Joseph
+RA032,Sir Lawrence Alma-Tadema,1989,art,author,,"eng,fre",4,,high,WP;OL;BnF,"Pavilion (UK), Abrams (US), Mengès (FR)"
+RA033,Spirit of Place: Provence,1989,art,co-editor,Bernard Higton,eng,2,,high,OL,"Conceived, edited and designed by Russell Ash and Bernard Higton"
+RA034,Spirit of Place: Tuscany,1989,art,co-editor,Bernard Higton,eng,2,,high,OL,Spirit of Place series
+RA035,Spirit of Place: Venice,1989,art,co-editor,Bernard Higton,eng,1,,high,OL,Spirit of Place series
+RA036,Spirit of Place: Paris,1989,art,co-editor,Bernard Higton,eng,2,,high,OL,Spirit of Place series
+RA037,Trees,1989,art,co-editor,Bernard Higton,eng,1,,medium,OL,Aurum
+RA038,Post Cats: Lesley Anne Ivory's Cat Paintings,1989,art,editor,Lesley Anne Ivory,,0,,low,OL,Role unverified
+RA039,Larkrise to Candleford Diary,1989,literature,compiler,,,0,,low,WP,No ISBN found
+RA040,Top 10 of Everything,1989,reference,author,,"eng,fre,ger",59,,high,WP;OL;DNB;BnF;ChatGPT-check,"Annual since 1989 (Queen Anne Press/Macdonald, then Headline, Dorling Kindersley, and Hamlyn from 2006). Russell Ash compiled every edition up to 2011 (published Sept 2010, after his death). Continuation editions are not counted here: 2012 credited to Caroline and Alexander Ash, 2013 to Caroline Ash, 2014-2019 to Paul Terry (Wikipedia; Hachette). Reported translation languages: Czech, Danish, Dutch, Estonian, Finnish, French, German, Greek, Gujarati, Hungarian, Icelandic, Japanese, Norwegian, Polish, Slovak, Swedish (Wikipedia; edition-level records found so far only for French and German)"
+RA041,Aesop's Fables,1990,literature,co-compiler,Bernard Higton; Aesop,"eng,spa",3,,high,OL,Pavilion / Chronicle; Spanish edition 2004
+RA042,A Dictionary of RAF Slang (Eric Partridge),1990,literature,introduction,Eric Partridge,eng,1,,medium,WP,Introduction only
+RA043,The Uncensored Boy's Own,1990,humour,"author (as ""Dick Beresford"")",,eng,1,,medium,WP,Pseudonymous
+RA044,Henry and Caroline at Home,1990,humour,co-author,Joanna Isles,eng,1,,high,WP;OL,Pavilion
+RA045,Toulouse-Lautrec: The Complete Posters,1991,art,author,,eng,3,,high,WP;OL,Pavilion
+RA046,Great Women Artists,1991,art,co-editor,Bernard Higton,eng,2,,high,OL,Chronicle (US) / Aurum Postbox (UK)
+RA047,Spirit of Place: London,1991,art,co-editor,Bernard Higton,eng,2,,high,OL,Spirit of Place series
+RA048,Spirit of Place: Rome,1991,art,co-editor,Bernard Higton,eng,2,,high,OL,Spirit of Place series
+RA049,The Uncensored Guide to the Movies,1991,humour,"author (as ""Dick Beresford"")",,eng,1,,medium,WP,Pseudonymous
+RA050,The Impressionists' River: Views of the Seine,1992,art,author,Bernard Higton,"eng,fre",5,,high,WP;OL;BnF,French edition: La Seine des impressionnistes (Herscher 1993)
+RA051,Van Gogh's Provence,1992,art,author,,"eng,fre",2,,high,WP;OL;BnF,"French edition: Van Gogh, la Provence (Herscher 1993)"
+RA052,James Tissot,1992,art,author,,"eng,fre",4,,high,WP;OL;BnF,Pavilion / Abrams; French edition Herscher 1993
+RA053,Degas at the Ballet,1992,art,author,,eng,1,,medium,OL,Pavilion
+RA054,Gauguin's South Seas,1992,art,author,,eng,1,,medium,OL,Pavilion
+RA055,Top 10 of Sport,1992,reference,co-author,Ian Morrison,eng,3,,high,WP;OL,Headline 1992; new edition DK 2002 (US: The Top 10 of Sports)
+RA056,Sir Edward Burne-Jones,1993,art,author,,"eng,fre",4,,high,WP;OL;BnF,Pavilion / Abrams; French edition Mengès 1993
+RA057,Top 10 of Music,1993,reference,co-author,Luke Crampton; Barry Lazell,eng,1,,high,WP;OL,Headline
+RA058,Perfect Angels,1993,art,editor,,eng,1,,medium,OL,Pavilion
+RA059,Tall Stories: Amazing But True Tales from Around the World,1994,humour,author,,eng,1,,high,WP;OL,Aurum
+RA060,Gardens in Art,1994,art,co-editor,Bernard Higton,eng,1,,high,OL,Aurum
+RA061,Images of Ireland,1994,art,co-editor,Bernard Higton,eng,1,,medium,OL,Aurum Postbox Collection
+RA062,Dante Gabriel Rossetti,1995,art,author,,"eng,fre",4,,high,WP;OL;BnF,Pavilion / Abrams; French edition Mengès 1995
+RA063,Impressionists' Seasons,1995,art,editor,,eng,4,,high,WP;OL,Pavilion / Collins
+RA064,Lord Leighton,1995,art,author,,eng,2,,high,WP;OL,Pavilion
+RA065,Charles Dickens: An Illustrated Anthology,1995,literature,co-editor,Bernard Higton; Charles Dickens,eng,2,,high,OL,Aurum / Crescent
+RA066,Jane Austen: An Illustrated Anthology,1995,literature,co-editor,Bernard Higton; Jane Austen,eng,1,,medium,OL,Gramercy
+RA067,Sir John Everett Millais,1996,art,author,,eng,2,,high,WP;OL,Pavilion
+RA068,Top 10 Quiz Book,1996,reference,author,,eng,2,,high,WP;OL,UK title: The Top 10 of Everything Quiz Book
+RA069,Incredible Comparisons,1996,reference,author,,"eng,fre,ger,spa",6,,high,WP;OL;DNB;BnF,"DK; translated into German, French and Spanish (and others)"
+RA070,Crucial Top 10,1997,reference,author,,eng,1,,high,WP;OL,DK
+RA071,The World in One Day,1997,reference,author,,"eng,ger",4,,high,WP;OL;DNB,DK; German edition 1998
+RA072,The Factastic Book of 1001 Lists,1998,reference,author,,"eng,ger",3,,high,WP;OL;DNB,DK; German edition 1999
+RA073,Factastic Book of Comparisons,1999,reference,author,,eng,2,,high,WP;OL,DK
+RA074,Factastic Millennium Facts,1999,reference,author,,eng,2,,high,WP;OL,DK
+RA075,Victorian Masters and Their Art,1999,art,author,,eng,1,,high,WP;OL,Pavilion
+RA076,Great Wonders of the World,2000,history,author,Richard Bonson (ill.),"eng,fre,ger,spa",10,,high,WP;OL;DNB;BnF,"DK; Spanish, German, French and Mexican-Spanish editions"
+RA077,Top 10 of Film,2003,reference,author,,eng,2,,high,WP;OL,DK
+RA078,Whitaker's World of Facts,2005,reference,author,,eng,9,,high,WP;OL;DNB,"Annual, A&C Black. North America: Firefly's World of Facts; India: Penguin"
+RA079,Fish Who Answer the Telephone and Other Bizarre Books,2006,humour,co-compiler,Brian Lake,eng,1,,high,WP;OL,John Murray. Successor to Bizarre Books
+RA080,"Bigger, Better, Faster",2006,reference,author,,eng,1,,low,OL,Orion 2006; attribution unverified
+RA081,"Potty, Fartwell & Knob",2007,humour,author,,eng,4,,high,WP;OL,"Headline; expanded paperback 2008; US edition as Morecock, Fartwell, & Hoare (2009)"
+RA082,Top 10 for Men,2008,reference,author,,eng,2,,high,WP;OL,Hamlyn; new edition 2010
+RA083,Top 10 of Britain,2009,reference,author,,eng,2,,high,WP;OL,Hamlyn
+RA084,"Busty, Slag and Nob End",2009,humour,author,,eng,1,,high,WP;OL,Headline
+RA085,"Big Pants, Burpy and Bumface",2009,humour,author,,eng,4,,high,WP;OL,Doubleday children's; Red Fox paperback 2010
+RA086,Top 10 of Football,2010,reference,co-author,Ian Morrison,eng,2,death-year,high,WP;OL,"Hamlyn, published April 2010, before his death"
+RA087,It Just Slipped Out: A Bulging Encyclopaedia of Double Entendres,2010,humour,author,,eng,2,death-year,high,WP;OL,Headline. Publication date is at or after his death (Wikipedia says 2010; Open Library says 2011)
+RA088,"Frou-Frou, Frisby & Brick: The Book of Unfortunate Baby Names",2010,humour,author,,eng,1,death-year,medium,OL;Amazon;GooglePlay,"Headline. Open Library lists it as ""What Not to Call Your Baby"" (same ISBN family); the ebook is dated 10 Jun 2010, eleven days before his death"
+RA090,"Folklore, Myths and Legends of Britain",1973,reference,contributor,Reader's Digest editorial team,,0,,low,Amazon,"Reader's Digest, credited ""Russell Ash et al.""; he was a researcher/writer at Reader's Digest Books"
+RA089,"Boring, Botty and Spong",2011,humour,author,,eng,4,posthumous,high,OL,Doubleday children's. Published after his death
+RA091,Alma-Tadema (catalogue of the Funt Collection),1973,art,author,,,0,,low,WP;ChatGPT-check,Exhibition catalogue; no ISBN found
