@@ -1,0 +1,5369 @@
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Person",
+   "@id": "https://www.wikidata.org/wiki/Q7381333",
+   "name": "Russell Ash",
+   "birthDate": "1946-06-18",
+   "deathDate": "2010-06-21",
+   "nationality": "British",
+   "sameAs": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://www.wikidata.org/wiki/Q7381333",
+    "https://viaf.org/viaf/113132837",
+    "https://isni.org/isni/0000000110330140",
+    "https://id.loc.gov/authorities/names/n50001997",
+    "https://d-nb.info/gnd/1152038451",
+    "https://catalogue.bnf.fr/ark:/12148/cb12252322f",
+    "https://openlibrary.org/authors/OL25225A"
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA001",
+   "name": "Discovering Highwaymen",
+   "datePublished": "1970",
+   "genre": "history",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Shire Discovering series; revised edition 1994",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Discovering Highwaymen",
+     "publisher": "Shire Publications",
+     "datePublished": "1970",
+     "inLanguage": "eng",
+     "isbn": "9780852631010",
+     "bookFormat": "https://schema.org/Paperback"
+    },
+    {
+     "@type": "Book",
+     "name": "Discovering Highwaymen (rev. ed.)",
+     "publisher": "Shire Publications",
+     "datePublished": "1994",
+     "inLanguage": "eng",
+     "isbn": "9780747802600",
+     "bookFormat": "https://schema.org/Paperback",
+     "description": "reprinted 1999"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA002",
+   "name": "Britain's Buried Treasures",
+   "datePublished": "1972",
+   "genre": "history",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "medium"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Only in Wikipedia; not yet matched in a library catalogue",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Britain's Buried Treasures",
+     "datePublished": "1972",
+     "inLanguage": "eng",
+     "isbn": "9780903356176"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA003",
+   "name": "Wrecks & Sunken Treasure",
+   "datePublished": "1972",
+   "genre": "history",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "medium"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Only in Wikipedia; not yet matched in a library catalogue",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Wrecks & Sunken Treasure",
+     "datePublished": "1972",
+     "inLanguage": "eng",
+     "isbn": "9780903356046"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA004",
+   "name": "Fact or Fiction? A Dossier on Old Beliefs That Die Hard",
+   "datePublished": "1973",
+   "genre": "reference",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "compiler"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Reader's Digest; reissued by Pavilion 1999",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Fact or Fiction?",
+     "publisher": "Reader's Digest Association",
+     "datePublished": "1973",
+     "inLanguage": "eng",
+     "isbn": "9780276000430"
+    },
+    {
+     "@type": "Book",
+     "name": "Fact or Fiction?",
+     "publisher": "Pavilion Books",
+     "datePublished": "1999",
+     "inLanguage": "eng",
+     "isbn": "9781862052420"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA005",
+   "name": "Talking about the Family",
+   "datePublished": "1973",
+   "genre": "reference",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Wayland",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Talking about the Family",
+     "publisher": "Wayland",
+     "datePublished": "1973",
+     "inLanguage": "eng",
+     "isbn": "9780853402664"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA006",
+   "name": "Comets",
+   "datePublished": "1973",
+   "genre": "history",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "co-author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Ash & Grant / Bounty Books",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Comets",
+     "publisher": "Bounty Books",
+     "datePublished": "1973",
+     "inLanguage": "eng",
+     "isbn": "9780517515556",
+     "description": "with Ian Grant"
+    },
+    {
+     "@type": "Book",
+     "name": "Comets",
+     "publisher": "Bounty Books",
+     "datePublished": "1973",
+     "inLanguage": "eng",
+     "isbn": "9780517515549"
+    },
+    {
+     "@type": "Book",
+     "name": "Comets",
+     "publisher": "Ash & Grant",
+     "datePublished": "1973",
+     "inLanguage": "eng",
+     "isbn": "9780904069006"
+    }
+   ],
+   "contributor_text": "Ian Grant"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA007",
+   "name": "Alma-Tadema: An Illustrated Life of Sir Lawrence Alma-Tadema",
+   "datePublished": "1973",
+   "genre": "art",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Shire Lifelines",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Alma-Tadema",
+     "publisher": "Shire Publications",
+     "datePublished": "1973",
+     "inLanguage": "eng",
+     "isbn": "9780852632376"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA008",
+   "name": "Talking about Race",
+   "datePublished": "1974",
+   "genre": "reference",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Wayland",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Talking about Race",
+     "publisher": "Wayland",
+     "datePublished": "1974",
+     "inLanguage": "eng",
+     "isbn": "9780853403562"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA009",
+   "name": "The Wright Brothers",
+   "datePublished": "1974",
+   "genre": "history",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Wayland",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "The Wright Brothers",
+     "publisher": "Wayland",
+     "datePublished": "1974",
+     "inLanguage": "eng",
+     "isbn": "9780853403425"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA010",
+   "name": "Dead Funny",
+   "datePublished": "1974",
+   "genre": "humour",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "co-author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "medium"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Ash & Grant",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Dead Funny",
+     "publisher": "Ash & Grant",
+     "datePublished": "1974",
+     "inLanguage": "eng",
+     "isbn": "9780904069020"
+    }
+   ],
+   "contributor_text": "Ian Grant"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA011",
+   "name": "The Vampyre (John William Polidori)",
+   "datePublished": "1974",
+   "genre": "literature",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "introduction"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "medium"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Introduction only",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "The Vampyre",
+     "publisher": "Shire",
+     "datePublished": "1974",
+     "inLanguage": "eng",
+     "isbn": "9780852632444",
+     "description": "introduction"
+    }
+   ],
+   "contributor_text": "John William Polidori"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA012",
+   "name": "Victorian Studio Photographs",
+   "datePublished": "1975",
+   "genre": "art",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "co-author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "medium"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Ash & Grant",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Victorian Studio Photographs",
+     "publisher": "Ash & Grant",
+     "datePublished": "1975",
+     "inLanguage": "eng",
+     "isbn": "9780904069037"
+    }
+   ],
+   "contributor_text": "Bevis Hillier et al."
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA013",
+   "name": "Epon My Word",
+   "datePublished": "1976",
+   "genre": "humour",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "low"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "NEL paperback credited \"R. Ash\"; attribution unverified",
+   "isBasedOn": [
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Epon My Word",
+     "publisher": "New English Library",
+     "datePublished": "1976",
+     "inLanguage": "eng",
+     "isbn": "9780450058653",
+     "bookFormat": "https://schema.org/Paperback"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA014",
+   "name": "The Impressionists and Their Art",
+   "datePublished": "1980",
+   "genre": "art",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Many reissues 1980-2006 (Orbis, Black Cat, Crescent, Longmeadow, Little Brown)",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A",
+    "https://catalogue.bnf.fr/ark:/12148/cb12252322f"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "The Impressionists and Their Art",
+     "publisher": "Orbis Publishing",
+     "datePublished": "1980",
+     "inLanguage": "eng",
+     "isbn": "9780856132926",
+     "bookFormat": "https://schema.org/Hardcover"
+    },
+    {
+     "@type": "Book",
+     "name": "The Impressionists and Their Art",
+     "publisher": "Orbis Publishing",
+     "datePublished": "1983",
+     "inLanguage": "eng",
+     "isbn": "9780856133312"
+    },
+    {
+     "@type": "Book",
+     "name": "Impressionists & Their Art",
+     "publisher": "Crescent",
+     "datePublished": "1988",
+     "inLanguage": "eng",
+     "isbn": "9780517318508",
+     "bookFormat": "https://schema.org/Hardcover"
+    },
+    {
+     "@type": "Book",
+     "name": "The Impressionists and Their Art",
+     "publisher": "Black Cat",
+     "datePublished": "1990",
+     "inLanguage": "eng",
+     "isbn": "9780748100668"
+    },
+    {
+     "@type": "Book",
+     "name": "The Impressionists and Their Art",
+     "publisher": "Black Cat",
+     "datePublished": "1993",
+     "inLanguage": "eng",
+     "isbn": "9780316908023"
+    },
+    {
+     "@type": "Book",
+     "name": "The Impressionists and Their Art",
+     "publisher": "Longmeadow Press",
+     "datePublished": "1993",
+     "inLanguage": "eng",
+     "isbn": "9780681453777"
+    },
+    {
+     "@type": "Book",
+     "name": "The Impressionists and Their Art",
+     "publisher": "Time Warner",
+     "datePublished": "2003",
+     "inLanguage": "eng",
+     "isbn": "9780316726955",
+     "bookFormat": "https://schema.org/Hardcover"
+    },
+    {
+     "@type": "Book",
+     "name": "The Impressionists and Their Art",
+     "publisher": "Time Warner",
+     "datePublished": "2003",
+     "inLanguage": "eng",
+     "isbn": "9780316727051",
+     "bookFormat": "https://schema.org/Paperback"
+    },
+    {
+     "@type": "Book",
+     "name": "Impressionists and Their Art (special ed.)",
+     "publisher": "Little, Brown",
+     "datePublished": "2004",
+     "inLanguage": "eng",
+     "isbn": "9780316728249",
+     "bookFormat": "https://schema.org/Hardcover"
+    },
+    {
+     "@type": "Book",
+     "name": "Impressionists and Their Art",
+     "publisher": "Little, Brown",
+     "datePublished": "2006",
+     "inLanguage": "eng",
+     "isbn": "9780316858366",
+     "bookFormat": "https://schema.org/Paperback"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA015",
+   "name": "Edward Lear's Book of Nonsense",
+   "datePublished": "1980",
+   "genre": "literature",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "introduction"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "medium"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Introduction only",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Edward Lear's Book of Nonsense",
+     "publisher": "Dent",
+     "datePublished": "1980",
+     "inLanguage": "eng",
+     "isbn": "9780460044998",
+     "description": "introduction"
+    }
+   ],
+   "contributor_text": "Edward Lear"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA016",
+   "name": "The Cynic's Dictionary",
+   "datePublished": "1984",
+   "genre": "humour",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Corgi",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "The Cynic's Dictionary",
+     "publisher": "Corgi",
+     "datePublished": "1984",
+     "inLanguage": "eng",
+     "isbn": "9780552990523",
+     "bookFormat": "https://schema.org/Paperback"
+    }
+   ],
+   "contributor_text": "Tony Escott (ill.)"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA017",
+   "name": "The Official British Yuppie Handbook",
+   "datePublished": "1984",
+   "genre": "humour",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "co-author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "British adaptation of the US Yuppie Handbook",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "The Official British Yuppie Handbook",
+     "publisher": "Ravette",
+     "datePublished": "1984",
+     "inLanguage": "eng",
+     "isbn": "9780906710562"
+    }
+   ],
+   "contributor_text": "Marissa Piesman; Marilee Hartley"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA018",
+   "name": "Last Laughs",
+   "datePublished": "1984",
+   "genre": "humour",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "compiler"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Wikipedia says with Ian Grant; Open Library says compiled by Russell Ash",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Last Laughs",
+     "publisher": "Unwin Paperbacks",
+     "datePublished": "1984",
+     "inLanguage": "eng",
+     "isbn": "9780048271235",
+     "bookFormat": "https://schema.org/Paperback"
+    }
+   ],
+   "contributor_text": "Bill Tidy (ill.)"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA019",
+   "name": "Bizarre Books",
+   "datePublished": "1985",
+   "genre": "humour",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "co-compiler"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Macmillan 1985; Sphere 1987; Pavilion 1998; Harper Perennial (US) 2007",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A",
+    "https://d-nb.info/gnd/1152038451"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Bizarre Books",
+     "publisher": "Macmillan",
+     "datePublished": "1985",
+     "inLanguage": "eng",
+     "isbn": "9780333383124"
+    },
+    {
+     "@type": "Book",
+     "name": "Bizarre Books",
+     "publisher": "St. Martin's Press",
+     "datePublished": "1985",
+     "inLanguage": "eng",
+     "isbn": "9780312082505",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "Bizarre Books",
+     "publisher": "Sphere",
+     "datePublished": "1987",
+     "inLanguage": "eng",
+     "isbn": "9780722112922",
+     "bookFormat": "https://schema.org/Paperback"
+    },
+    {
+     "@type": "Book",
+     "name": "Bizarre Books",
+     "publisher": "Pavilion Books",
+     "datePublished": "1998",
+     "inLanguage": "eng",
+     "isbn": "9781862051027",
+     "bookFormat": "https://schema.org/Paperback",
+     "description": "new edition"
+    },
+    {
+     "@type": "Book",
+     "name": "Bizarre Books",
+     "publisher": "Jarndyce",
+     "datePublished": "2002",
+     "inLanguage": "eng",
+     "isbn": "9781900718387"
+    },
+    {
+     "@type": "Book",
+     "name": "Bizarre Books: A Compendium of Classic Oddities",
+     "publisher": "Harper Perennial",
+     "datePublished": "2007",
+     "inLanguage": "eng",
+     "isbn": "9780061346651",
+     "bookFormat": "https://schema.org/Paperback",
+     "description": "US"
+    }
+   ],
+   "contributor_text": "Brian Lake"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA020",
+   "name": "Howlers",
+   "datePublished": "1985",
+   "genre": "humour",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "compiler"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Ravette",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Howlers",
+     "publisher": "Ravette",
+     "datePublished": "1985",
+     "inLanguage": "eng",
+     "isbn": "9780906710739",
+     "bookFormat": "https://schema.org/Paperback"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA021",
+   "name": "The Pig Book",
+   "datePublished": "1985",
+   "genre": "reference",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Ebury (UK); Arbor House (US)",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "The Pig Book",
+     "publisher": "Ebury",
+     "datePublished": "1985",
+     "inLanguage": "eng",
+     "isbn": "9780852234174"
+    },
+    {
+     "@type": "Book",
+     "name": "The Pig Book",
+     "publisher": "Arbor House",
+     "datePublished": "1985",
+     "inLanguage": "eng",
+     "isbn": "9780877957515",
+     "description": "US"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA022",
+   "name": "The Londoner's Almanac",
+   "datePublished": "1985",
+   "genre": "reference",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Century / Ebury",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "The Londoner's Almanac",
+     "publisher": "Century / Ebury",
+     "datePublished": "1985",
+     "inLanguage": "eng",
+     "isbn": "9780712609289",
+     "bookFormat": "https://schema.org/Paperback"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA023",
+   "name": "Alice's Adventures Under Ground (Lewis Carroll)",
+   "datePublished": "1985",
+   "genre": "literature",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "introduction"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "medium"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Introduction only",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Alice's Adventures Under Ground",
+     "publisher": "Pavilion",
+     "datePublished": "1985",
+     "inLanguage": "eng",
+     "isbn": "9780907516941",
+     "description": "introduction"
+    }
+   ],
+   "contributor_text": "Lewis Carroll"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA024",
+   "name": "The Frog Book",
+   "datePublished": "1986",
+   "genre": "reference",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Macdonald",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "The Frog Book",
+     "publisher": "Macdonald",
+     "datePublished": "1986",
+     "inLanguage": "eng",
+     "isbn": "9780356125817"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA025",
+   "name": "Dear Cats: The Post Office Letters",
+   "datePublished": "1986",
+   "genre": "history",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "editor"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Pavilion / Michael Joseph",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Dear Cats: The Post Office Letters",
+     "publisher": "Pavilion / Michael Joseph",
+     "datePublished": "1986",
+     "inLanguage": "eng",
+     "isbn": "9781851450855"
+    }
+   ],
+   "contributor_text": "Kevin W. Maddison (ill.)"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA026",
+   "name": "The Daily Trivia Diary '87",
+   "datePublished": "1986",
+   "genre": "reference",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "low"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "No ISBN found",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash"
+   ],
+   "workExample": []
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA027",
+   "name": "Selections from the Reader's Digest Collection",
+   "datePublished": "1986",
+   "genre": "art",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "low"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "No ISBN found",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash"
+   ],
+   "workExample": []
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA028",
+   "name": "They Didn't Really Mean It! A Book of Boobs and Blunders",
+   "datePublished": "1987",
+   "genre": "humour",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "co-compiler"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Corgi",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "They Didn't Really Mean It!",
+     "publisher": "Corgi",
+     "datePublished": "1987",
+     "inLanguage": "eng",
+     "isbn": "9780552133197"
+    }
+   ],
+   "contributor_text": "Bernard Higton; Ellis Nadler (ill.)"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA029",
+   "name": "I'll Drink to That",
+   "datePublished": "1987",
+   "genre": "humour",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "co-compiler"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "medium"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Corgi",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "I'll Drink to That",
+     "publisher": "Corgi",
+     "datePublished": "1987",
+     "inLanguage": "eng",
+     "isbn": "9780552133180"
+    }
+   ],
+   "contributor_text": "Bernard Higton"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA030",
+   "name": "Private Parts",
+   "datePublished": "1987",
+   "genre": "humour",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "co-compiler"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "medium"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Corgi",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Private Parts",
+     "publisher": "Corgi",
+     "datePublished": "1987",
+     "inLanguage": "eng",
+     "isbn": "9780552133173"
+    }
+   ],
+   "contributor_text": "Bernard Higton"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA031",
+   "name": "The Life and Times of Paddington Bear",
+   "datePublished": "1988",
+   "genre": "literature",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "co-author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Pavilion / Michael Joseph",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "The Life and Times of Paddington Bear",
+     "publisher": "Michael Joseph / Pavilion",
+     "datePublished": "1989",
+     "inLanguage": "eng",
+     "isbn": "9781851452866",
+     "bookFormat": "https://schema.org/Hardcover"
+    }
+   ],
+   "contributor_text": "Michael Bond"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA032",
+   "name": "Sir Lawrence Alma-Tadema",
+   "datePublished": "1989",
+   "genre": "art",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Pavilion (UK), Abrams (US), Mengès (FR)",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A",
+    "https://catalogue.bnf.fr/ark:/12148/cb12252322f"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Sir Lawrence Alma-Tadema",
+     "publisher": "Pavilion Books",
+     "datePublished": "1989",
+     "inLanguage": "eng",
+     "isbn": "9781851454228",
+     "bookFormat": "https://schema.org/Hardcover"
+    },
+    {
+     "@type": "Book",
+     "name": "Sir Lawrence Alma-Tadema",
+     "publisher": "H.N. Abrams",
+     "datePublished": "1990",
+     "inLanguage": "eng",
+     "isbn": "9780810918986",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "Sir Lawrence Alma-Tadema",
+     "publisher": "Mengès",
+     "datePublished": "1991",
+     "inLanguage": "fre",
+     "isbn": "9782856203149",
+     "translationOfWork": {
+      "@id": "urn:russell-ash:RA032"
+     },
+     "description": "tr. Agnès de Gorter"
+    },
+    {
+     "@type": "Book",
+     "name": "Sir Lawrence Alma-Tadema",
+     "publisher": "Pavilion Books",
+     "datePublished": "1996",
+     "inLanguage": "eng",
+     "isbn": "9781857936209",
+     "bookFormat": "https://schema.org/Hardcover"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA033",
+   "name": "Spirit of Place: Provence",
+   "datePublished": "1989",
+   "genre": "art",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "co-editor"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Conceived, edited and designed by Russell Ash and Bernard Higton",
+   "isBasedOn": [
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Provence",
+     "publisher": "Pavilion Books",
+     "datePublished": "1989",
+     "inLanguage": "eng",
+     "isbn": "9781851453030",
+     "bookFormat": "https://schema.org/Hardcover"
+    },
+    {
+     "@type": "Book",
+     "name": "Provence",
+     "publisher": "Arcade",
+     "datePublished": "1989",
+     "inLanguage": "eng",
+     "isbn": "9781559700078",
+     "description": "US"
+    }
+   ],
+   "contributor_text": "Bernard Higton"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA034",
+   "name": "Spirit of Place: Tuscany",
+   "datePublished": "1989",
+   "genre": "art",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "co-editor"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Spirit of Place series",
+   "isBasedOn": [
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Tuscany",
+     "publisher": "Pavilion Books",
+     "datePublished": "1989",
+     "inLanguage": "eng",
+     "isbn": "9781851453047",
+     "bookFormat": "https://schema.org/Hardcover"
+    },
+    {
+     "@type": "Book",
+     "name": "Tuscany",
+     "publisher": "Arcade",
+     "datePublished": "1989",
+     "inLanguage": "eng",
+     "isbn": "9781559700085",
+     "description": "US"
+    }
+   ],
+   "contributor_text": "Bernard Higton"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA035",
+   "name": "Spirit of Place: Venice",
+   "datePublished": "1989",
+   "genre": "art",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "co-editor"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Spirit of Place series",
+   "isBasedOn": [
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Venice",
+     "publisher": "Pavilion Books",
+     "datePublished": "1989",
+     "inLanguage": "eng",
+     "isbn": "9781851453054",
+     "bookFormat": "https://schema.org/Hardcover"
+    }
+   ],
+   "contributor_text": "Bernard Higton"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA036",
+   "name": "Spirit of Place: Paris",
+   "datePublished": "1989",
+   "genre": "art",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "co-editor"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Spirit of Place series",
+   "isBasedOn": [
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Paris",
+     "publisher": "Pavilion Books",
+     "datePublished": "1989",
+     "inLanguage": "eng",
+     "isbn": "9781851453061"
+    },
+    {
+     "@type": "Book",
+     "name": "Paris",
+     "publisher": "Arcade",
+     "datePublished": "1989",
+     "inLanguage": "eng",
+     "isbn": "9781559700092",
+     "description": "US"
+    }
+   ],
+   "contributor_text": "Bernard Higton"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA037",
+   "name": "Trees",
+   "datePublished": "1989",
+   "genre": "art",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "co-editor"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "medium"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Aurum",
+   "isBasedOn": [
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Trees",
+     "publisher": "Aurum Press",
+     "datePublished": "1989",
+     "inLanguage": "eng",
+     "isbn": "9781854100740"
+    }
+   ],
+   "contributor_text": "Bernard Higton"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA038",
+   "name": "Post Cats: Lesley Anne Ivory's Cat Paintings",
+   "datePublished": "1989",
+   "genre": "art",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "editor"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "low"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Role unverified",
+   "isBasedOn": [
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [],
+   "contributor_text": "Lesley Anne Ivory"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA039",
+   "name": "Larkrise to Candleford Diary",
+   "datePublished": "1989",
+   "genre": "literature",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "compiler"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "low"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "No ISBN found",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash"
+   ],
+   "workExample": []
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA040",
+   "name": "Top 10 of Everything",
+   "datePublished": "1989",
+   "genre": "reference",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Annual since 1989 (Queen Anne Press/Macdonald, then Headline, Dorling Kindersley, and Hamlyn from 2006). Russell Ash compiled every edition up to 2011 (published Sept 2010, after his death). Continuation editions are not counted here: 2012 credited to Caroline and Alexander Ash, 2013 to Caroline Ash, 2014-2019 to Paul Terry (Wikipedia; Hachette). Reported translation languages: Czech, Danish, Dutch, Estonian, Finnish, French, German, Greek, Gujarati, Hungarian, Icelandic, Japanese, Norwegian, Polish, Slovak, Swedish (Wikipedia; edition-level records found so far only for French and German)",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A",
+    "https://d-nb.info/gnd/1152038451",
+    "https://catalogue.bnf.fr/ark:/12148/cb12252322f"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "The Top 10 of Everything",
+     "publisher": "Queen Anne Press",
+     "datePublished": "1989",
+     "inLanguage": "eng",
+     "isbn": "9780356159836",
+     "bookFormat": "https://schema.org/Hardcover",
+     "description": "first edition"
+    },
+    {
+     "@type": "Book",
+     "name": "The Top 10 of Everything (1991)",
+     "publisher": "Queen Anne Press",
+     "datePublished": "1990",
+     "inLanguage": "eng",
+     "isbn": "9780356192116",
+     "bookFormat": "https://schema.org/Hardcover"
+    },
+    {
+     "@type": "Book",
+     "name": "The Top 10 of Everything (1992)",
+     "publisher": "Queen Anne Press",
+     "datePublished": "1991",
+     "inLanguage": "eng",
+     "isbn": "9780356196077"
+    },
+    {
+     "@type": "Book",
+     "name": "Top 10 of Everything 1993",
+     "publisher": "Headline",
+     "datePublished": "1992",
+     "inLanguage": "eng",
+     "isbn": "9780747207160",
+     "bookFormat": "https://schema.org/Hardcover"
+    },
+    {
+     "@type": "Book",
+     "name": "The Benson and Hedges Top 10 of Everything 1994",
+     "publisher": "Headline",
+     "datePublished": "1993",
+     "inLanguage": "eng",
+     "isbn": "9780747207924",
+     "bookFormat": "https://schema.org/Hardcover"
+    },
+    {
+     "@type": "Book",
+     "name": "Top 10 of Everything (Australian ed.)",
+     "publisher": "Penguin Books",
+     "datePublished": "1993",
+     "inLanguage": "eng",
+     "isbn": "9780670906321",
+     "description": "Australia"
+    },
+    {
+     "@type": "Book",
+     "name": "The Top 10 of Everything 1995",
+     "publisher": "Dorling Kindersley",
+     "datePublished": "1994",
+     "inLanguage": "eng",
+     "isbn": "9780751301373",
+     "bookFormat": "https://schema.org/Paperback"
+    },
+    {
+     "@type": "Book",
+     "name": "The Top 10 of Everything",
+     "publisher": "Hamlyn / Sterling",
+     "datePublished": "1994",
+     "inLanguage": "eng",
+     "isbn": "9780600618164"
+    },
+    {
+     "@type": "Book",
+     "name": "Top Ten of Everything 1995",
+     "publisher": "DK Publishing",
+     "datePublished": "1994",
+     "inLanguage": "eng",
+     "isbn": "9781564587039",
+     "bookFormat": "https://schema.org/Paperback",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "Top 10 of Everything 1996",
+     "publisher": "Dorling Kindersley",
+     "datePublished": "1995",
+     "inLanguage": "eng",
+     "isbn": "9780751302127",
+     "bookFormat": "https://schema.org/Paperback"
+    },
+    {
+     "@type": "Book",
+     "name": "The Top Ten of Everything 1996",
+     "publisher": "DK Publishing",
+     "datePublished": "1995",
+     "inLanguage": "eng",
+     "isbn": "9780789401960",
+     "bookFormat": "https://schema.org/Hardcover",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "The Top Ten of Everything 1996",
+     "publisher": "DK Publishing",
+     "datePublished": "1995",
+     "inLanguage": "eng",
+     "isbn": "9780789403384",
+     "bookFormat": "https://schema.org/Paperback",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "The Top 10 of Everything 1997",
+     "publisher": "Dorling Kindersley",
+     "datePublished": "1996",
+     "inLanguage": "eng",
+     "isbn": "9780751303186"
+    },
+    {
+     "@type": "Book",
+     "name": "Top Ten of Everything 1997",
+     "publisher": "DK Publishing",
+     "datePublished": "1996",
+     "inLanguage": "eng",
+     "isbn": "9780789410832",
+     "bookFormat": "https://schema.org/Hardcover",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "Top Ten of Everything 1997",
+     "publisher": "DK Publishing",
+     "datePublished": "1996",
+     "inLanguage": "eng",
+     "isbn": "9780789412645",
+     "bookFormat": "https://schema.org/Paperback",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "Top 10 of Everything 1998",
+     "publisher": "Dorling Kindersley",
+     "datePublished": "1997",
+     "inLanguage": "eng",
+     "isbn": "9780751324648"
+    },
+    {
+     "@type": "Book",
+     "name": "Top 10 of Everything 1998",
+     "publisher": "Dorling Kindersley",
+     "datePublished": "1997",
+     "inLanguage": "eng",
+     "isbn": "9780751304435",
+     "bookFormat": "https://schema.org/Paperback"
+    },
+    {
+     "@type": "Book",
+     "name": "The Top Ten of Everything 1998",
+     "publisher": "DK Publishing",
+     "datePublished": "1997",
+     "inLanguage": "eng",
+     "isbn": "9780789421999",
+     "bookFormat": "https://schema.org/Hardcover",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "The Top 10 of Everything 1998",
+     "publisher": "DK Publishing",
+     "datePublished": "1997",
+     "inLanguage": "eng",
+     "isbn": "9780789420824",
+     "bookFormat": "https://schema.org/Paperback",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "The Top 10 of Everything 1998",
+     "publisher": "Covent Garden Books",
+     "datePublished": "1997",
+     "inLanguage": "eng",
+     "isbn": "9780789442499",
+     "bookFormat": "https://schema.org/Paperback"
+    },
+    {
+     "@type": "Book",
+     "name": "Top Ten of Everything 1999",
+     "publisher": "Dorling Kindersley",
+     "datePublished": "1998",
+     "inLanguage": "eng",
+     "isbn": "9780751307894"
+    },
+    {
+     "@type": "Book",
+     "name": "Top Ten of Everything 1999",
+     "publisher": "Dorling Kindersley",
+     "datePublished": "1998",
+     "inLanguage": "eng",
+     "isbn": "9780751306095"
+    },
+    {
+     "@type": "Book",
+     "name": "Top Ten of Everything 1999",
+     "publisher": "Dorling Kindersley",
+     "datePublished": "1998",
+     "inLanguage": "eng",
+     "isbn": "9780751325553",
+     "bookFormat": "https://schema.org/Hardcover"
+    },
+    {
+     "@type": "Book",
+     "name": "Top 10 of Everything 1999",
+     "publisher": "Dorling Kindersley Australia",
+     "datePublished": "1998",
+     "inLanguage": "eng",
+     "isbn": "9781864660623",
+     "description": "Australia"
+    },
+    {
+     "@type": "Book",
+     "name": "The Top 10 of Everything 1999",
+     "publisher": "DK Publishing",
+     "datePublished": "1998",
+     "inLanguage": "eng",
+     "isbn": "9780789435231",
+     "bookFormat": "https://schema.org/Paperback",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "The Top 10 of Everything 1999",
+     "publisher": "DK Publishing",
+     "datePublished": "1998",
+     "inLanguage": "eng",
+     "isbn": "9780789435248",
+     "bookFormat": "https://schema.org/Hardcover",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "Top 10 of Everything 2000",
+     "publisher": "DK Publishing",
+     "datePublished": "1999",
+     "inLanguage": "eng",
+     "isbn": "9780789448927",
+     "bookFormat": "https://schema.org/Hardcover",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "Top 10 of Everything 2000",
+     "publisher": "DK Publishing",
+     "datePublished": "1999",
+     "inLanguage": "eng",
+     "isbn": "9780789446329",
+     "bookFormat": "https://schema.org/Paperback",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "Top 10 of Everything 2000",
+     "publisher": "Dorling Kindersley",
+     "datePublished": "1999",
+     "inLanguage": "eng",
+     "isbn": "9780751335842"
+    },
+    {
+     "@type": "Book",
+     "name": "The Top 10 of Everything 2001",
+     "publisher": "Dorling Kindersley",
+     "datePublished": "2000",
+     "inLanguage": "eng",
+     "isbn": "9780751304688"
+    },
+    {
+     "@type": "Book",
+     "name": "Top Ten of Everything 2001",
+     "publisher": "DK Publishing",
+     "datePublished": "2000",
+     "inLanguage": "eng",
+     "isbn": "9780789459602",
+     "bookFormat": "https://schema.org/Hardcover",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "Top Ten of Everything 2001",
+     "publisher": "DK Publishing",
+     "datePublished": "2000",
+     "inLanguage": "eng",
+     "isbn": "9780789461322",
+     "bookFormat": "https://schema.org/Paperback",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "The Top Ten of Everything 2001",
+     "publisher": "DK Australia",
+     "datePublished": "2000",
+     "inLanguage": "eng",
+     "isbn": "9781740330077",
+     "bookFormat": "https://schema.org/Hardcover",
+     "description": "Australia"
+    },
+    {
+     "@type": "Book",
+     "name": "Top Ten 2001",
+     "publisher": "Dorling Kindersley",
+     "datePublished": "2000",
+     "inLanguage": "ger",
+     "isbn": "9783831000463",
+     "bookFormat": "https://schema.org/Paperback",
+     "translationOfWork": {
+      "@id": "urn:russell-ash:RA040"
+     },
+     "description": "tr. Jochen Scheid"
+    },
+    {
+     "@type": "Book",
+     "name": "Top 10 of Everything 2002",
+     "publisher": "Dorling Kindersley",
+     "datePublished": "2001",
+     "inLanguage": "eng",
+     "isbn": "9780751333930"
+    },
+    {
+     "@type": "Book",
+     "name": "Top 10 of Everything 2002",
+     "publisher": "DK Publishing",
+     "datePublished": "2001",
+     "inLanguage": "eng",
+     "isbn": "9780789480422",
+     "bookFormat": "https://schema.org/Hardcover",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "Top 10 of Everything 2002",
+     "publisher": "DK Publishing",
+     "datePublished": "2001",
+     "inLanguage": "eng",
+     "isbn": "9780789480439",
+     "bookFormat": "https://schema.org/Paperback",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "Top Ten of Everything 2002",
+     "publisher": "Dorling Kindersley Canada",
+     "datePublished": "2001",
+     "inLanguage": "eng",
+     "isbn": "9781553630036",
+     "description": "Canada"
+    },
+    {
+     "@type": "Book",
+     "name": "Top 10 of Everything 2003",
+     "publisher": "Dorling Kindersley",
+     "datePublished": "2002",
+     "inLanguage": "eng",
+     "isbn": "9780751338836",
+     "bookFormat": "https://schema.org/Hardcover"
+    },
+    {
+     "@type": "Book",
+     "name": "Top 10 of Everything 2003",
+     "publisher": "DK Publishing",
+     "datePublished": "2002",
+     "inLanguage": "eng",
+     "isbn": "9780789489173",
+     "bookFormat": "https://schema.org/Hardcover",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "The Top 10 of Everything 2004",
+     "publisher": "Dorling Kindersley",
+     "datePublished": "2003",
+     "inLanguage": "eng",
+     "isbn": "9781405300520",
+     "bookFormat": "https://schema.org/Hardcover"
+    },
+    {
+     "@type": "Book",
+     "name": "The Top 10 of Everything 2004",
+     "publisher": "DK Publishing",
+     "datePublished": "2003",
+     "inLanguage": "eng",
+     "isbn": "9780789496393",
+     "bookFormat": "https://schema.org/Hardcover",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "The Top 10 of Everything 2004",
+     "publisher": "DK Publishing",
+     "datePublished": "2003",
+     "inLanguage": "eng",
+     "isbn": "9780789496591",
+     "bookFormat": "https://schema.org/Paperback",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "Top 10 of Everything 2004",
+     "publisher": "Dorling Kindersley Canada",
+     "datePublished": "2003",
+     "inLanguage": "eng",
+     "isbn": "9781553630180",
+     "description": "Canada"
+    },
+    {
+     "@type": "Book",
+     "name": "The Top 10 of Everything 2005",
+     "publisher": "Dorling Kindersley",
+     "datePublished": "2004",
+     "inLanguage": "eng",
+     "isbn": "9781405304061",
+     "bookFormat": "https://schema.org/Hardcover"
+    },
+    {
+     "@type": "Book",
+     "name": "Top Ten of Everything 2005",
+     "publisher": "DK Publishing",
+     "datePublished": "2004",
+     "inLanguage": "eng",
+     "isbn": "9780756605193",
+     "bookFormat": "https://schema.org/Hardcover",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "Top Ten of Everything 2005",
+     "publisher": "DK Publishing",
+     "datePublished": "2004",
+     "inLanguage": "eng",
+     "isbn": "9780756605186",
+     "bookFormat": "https://schema.org/Paperback",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "Top 10 of Everything 2006",
+     "publisher": "Dorling Kindersley",
+     "datePublished": "2005",
+     "inLanguage": "eng",
+     "isbn": "9781405310680"
+    },
+    {
+     "@type": "Book",
+     "name": "Top Ten of Everything 2006",
+     "publisher": "DK Publishing",
+     "datePublished": "2005",
+     "inLanguage": "eng",
+     "isbn": "9780756613211",
+     "bookFormat": "https://schema.org/Hardcover",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "Top Ten of Everything 2006",
+     "publisher": "DK Publishing",
+     "datePublished": "2005",
+     "inLanguage": "eng",
+     "isbn": "9780756613228",
+     "bookFormat": "https://schema.org/Paperback",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "The Top 10 of Everything 2007",
+     "publisher": "Hamlyn",
+     "datePublished": "2006",
+     "inLanguage": "eng",
+     "isbn": "9780600615576",
+     "description": "first Hamlyn edition"
+    },
+    {
+     "@type": "Book",
+     "name": "The Top Ten of Everything",
+     "publisher": "Hamlyn",
+     "datePublished": "2006",
+     "inLanguage": "eng",
+     "isbn": "9780600615323"
+    },
+    {
+     "@type": "Book",
+     "name": "The Top 10 of Everything 2008",
+     "publisher": "Hamlyn",
+     "datePublished": "2007",
+     "inLanguage": "eng",
+     "isbn": "9780600615385",
+     "bookFormat": "https://schema.org/Hardcover"
+    },
+    {
+     "@type": "Book",
+     "name": "Top 10 of Everything 2008",
+     "publisher": "Hamlyn",
+     "datePublished": "2007",
+     "inLanguage": "eng",
+     "isbn": "9780600616788",
+     "bookFormat": "https://schema.org/Hardcover"
+    },
+    {
+     "@type": "Book",
+     "name": "Top 10 of Everything 2009",
+     "publisher": "Hamlyn",
+     "datePublished": "2008",
+     "inLanguage": "eng",
+     "isbn": "9780600617426",
+     "description": "ISBN from Wikipedia"
+    },
+    {
+     "@type": "Book",
+     "name": "Top 10 of Everything 2010",
+     "publisher": "Hamlyn",
+     "datePublished": "2009",
+     "inLanguage": "eng",
+     "isbn": "9780600620488",
+     "bookFormat": "https://schema.org/Hardcover"
+    },
+    {
+     "@type": "Book",
+     "name": "Top 10",
+     "publisher": "Gründ",
+     "datePublished": "2009",
+     "inLanguage": "fre",
+     "isbn": "9782700027341",
+     "translationOfWork": {
+      "@id": "urn:russell-ash:RA040"
+     },
+     "description": "French adaptation by Gabriel Repettati"
+    },
+    {
+     "@type": "Book",
+     "name": "Top 10 of Everything 2011",
+     "publisher": "Hamlyn",
+     "datePublished": "2010",
+     "inLanguage": "eng",
+     "isbn": "9780600621973",
+     "description": "published Sept 2010, after his death; last edition credited to him"
+    },
+    {
+     "@type": "Book",
+     "name": "Top 10 of Everything 2011",
+     "publisher": "Hamlyn",
+     "datePublished": "2010",
+     "inLanguage": "eng",
+     "isbn": "9780600617433"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA041",
+   "name": "Aesop's Fables",
+   "datePublished": "1990",
+   "genre": "literature",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "co-compiler"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Pavilion / Chronicle; Spanish edition 2004",
+   "isBasedOn": [
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Aesop's Fables",
+     "publisher": "Chronicle Books",
+     "datePublished": "1990",
+     "inLanguage": "eng",
+     "isbn": "9780877017806",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "Aesop's Fables",
+     "publisher": "Pavilion Books",
+     "datePublished": "1992",
+     "inLanguage": "eng",
+     "isbn": "9781851459001",
+     "bookFormat": "https://schema.org/Hardcover"
+    },
+    {
+     "@type": "Book",
+     "name": "Fábulas de Esopo",
+     "publisher": "Editorial Juventud",
+     "datePublished": "2004",
+     "inLanguage": "spa",
+     "isbn": "9788426133939",
+     "bookFormat": "https://schema.org/Hardcover",
+     "translationOfWork": {
+      "@id": "urn:russell-ash:RA041"
+     },
+     "description": "Spanish"
+    }
+   ],
+   "contributor_text": "Bernard Higton; Aesop"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA042",
+   "name": "A Dictionary of RAF Slang (Eric Partridge)",
+   "datePublished": "1990",
+   "genre": "literature",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "introduction"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "medium"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Introduction only",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "A Dictionary of RAF Slang",
+     "publisher": "Pavilion",
+     "datePublished": "1990",
+     "inLanguage": "eng",
+     "isbn": "9781851455263",
+     "description": "introduction"
+    }
+   ],
+   "contributor_text": "Eric Partridge"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA043",
+   "name": "The Uncensored Boy's Own",
+   "datePublished": "1990",
+   "genre": "humour",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author (as \"Dick Beresford\")"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "medium"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Pseudonymous",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "The Uncensored Boy's Own",
+     "publisher": "Macdonald / Queen Anne",
+     "datePublished": "1990",
+     "inLanguage": "eng",
+     "isbn": "9780356195087",
+     "description": "as Dick Beresford"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA044",
+   "name": "Henry and Caroline at Home",
+   "datePublished": "1990",
+   "genre": "humour",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "co-author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Pavilion",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Henry and Caroline at Home",
+     "publisher": "Pavilion / Trafalgar Square",
+     "datePublished": "1991",
+     "inLanguage": "eng",
+     "isbn": "9781851453580",
+     "bookFormat": "https://schema.org/Hardcover"
+    }
+   ],
+   "contributor_text": "Joanna Isles"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA045",
+   "name": "Toulouse-Lautrec: The Complete Posters",
+   "datePublished": "1991",
+   "genre": "art",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Pavilion",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Toulouse-Lautrec: The Complete Posters",
+     "publisher": "Pavilion Books",
+     "datePublished": "1991",
+     "inLanguage": "eng",
+     "isbn": "9781851455171",
+     "bookFormat": "https://schema.org/Hardcover"
+    },
+    {
+     "@type": "Book",
+     "name": "Toulouse-Lautrec: The Complete Posters",
+     "publisher": "Trafalgar Square",
+     "datePublished": "1992",
+     "inLanguage": "eng",
+     "isbn": "9781851458974",
+     "bookFormat": "https://schema.org/Paperback"
+    },
+    {
+     "@type": "Book",
+     "name": "Toulouse-Lautrec: The Complete Posters",
+     "publisher": "Godfrey Cave / Bloomsbury Books",
+     "datePublished": "1995",
+     "inLanguage": "eng",
+     "isbn": "9781854714879",
+     "bookFormat": "https://schema.org/Paperback"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA046",
+   "name": "Great Women Artists",
+   "datePublished": "1991",
+   "genre": "art",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "co-editor"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Chronicle (US) / Aurum Postbox (UK)",
+   "isBasedOn": [
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Great Women Artists",
+     "publisher": "Chronicle Books",
+     "datePublished": "1991",
+     "inLanguage": "eng",
+     "isbn": "9780811800716",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "Great Women Artists",
+     "publisher": "Aurum Press",
+     "datePublished": "1991",
+     "inLanguage": "eng",
+     "isbn": "9781854101921",
+     "bookFormat": "https://schema.org/Paperback",
+     "description": "Postbox"
+    }
+   ],
+   "contributor_text": "Bernard Higton"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA047",
+   "name": "Spirit of Place: London",
+   "datePublished": "1991",
+   "genre": "art",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "co-editor"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Spirit of Place series",
+   "isBasedOn": [
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "London",
+     "publisher": "Pavilion Books",
+     "datePublished": "1991",
+     "inLanguage": "eng",
+     "isbn": "9781851457465"
+    },
+    {
+     "@type": "Book",
+     "name": "London",
+     "publisher": "Arcade",
+     "datePublished": "1991",
+     "inLanguage": "eng",
+     "isbn": "9781559701617",
+     "description": "US"
+    }
+   ],
+   "contributor_text": "Bernard Higton"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA048",
+   "name": "Spirit of Place: Rome",
+   "datePublished": "1991",
+   "genre": "art",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "co-editor"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Spirit of Place series",
+   "isBasedOn": [
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Rome",
+     "publisher": "Pavilion Books",
+     "datePublished": "1991",
+     "inLanguage": "eng",
+     "isbn": "9781851457984"
+    },
+    {
+     "@type": "Book",
+     "name": "Rome",
+     "publisher": "Arcade",
+     "datePublished": "1991",
+     "inLanguage": "eng",
+     "isbn": "9781559701624",
+     "bookFormat": "https://schema.org/Hardcover",
+     "description": "US"
+    }
+   ],
+   "contributor_text": "Bernard Higton"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA049",
+   "name": "The Uncensored Guide to the Movies",
+   "datePublished": "1991",
+   "genre": "humour",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author (as \"Dick Beresford\")"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "medium"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Pseudonymous",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "The Uncensored Guide to the Movies",
+     "publisher": "Macdonald / Queen Anne",
+     "datePublished": "1991",
+     "inLanguage": "eng",
+     "isbn": "9780356203065",
+     "description": "as Dick Beresford"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA050",
+   "name": "The Impressionists' River: Views of the Seine",
+   "datePublished": "1992",
+   "genre": "art",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "French edition: La Seine des impressionnistes (Herscher 1993)",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A",
+    "https://catalogue.bnf.fr/ark:/12148/cb12252322f"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "The Impressionists' River",
+     "publisher": "Pavilion Books",
+     "datePublished": "1992",
+     "inLanguage": "eng",
+     "isbn": "9781851455126",
+     "bookFormat": "https://schema.org/Hardcover"
+    },
+    {
+     "@type": "Book",
+     "name": "The Impressionists' River",
+     "publisher": "Universe",
+     "datePublished": "1992",
+     "inLanguage": "eng",
+     "isbn": "9780876636206",
+     "bookFormat": "https://schema.org/Hardcover",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "La Seine des impressionnistes",
+     "publisher": "Herscher",
+     "datePublished": "1993",
+     "inLanguage": "fre",
+     "isbn": "9782733502174",
+     "translationOfWork": {
+      "@id": "urn:russell-ash:RA050"
+     },
+     "description": "tr. Denis-Armand Canal"
+    },
+    {
+     "@type": "Book",
+     "name": "La Seine des impressionnistes",
+     "publisher": "Herscher",
+     "datePublished": "1998",
+     "inLanguage": "fre",
+     "isbn": "9782733502822",
+     "translationOfWork": {
+      "@id": "urn:russell-ash:RA050"
+     }
+    },
+    {
+     "@type": "Book",
+     "name": "The Impressionists' River",
+     "publisher": "Herscher",
+     "datePublished": "1998",
+     "inLanguage": "eng",
+     "isbn": "9782733502839"
+    }
+   ],
+   "contributor_text": "Bernard Higton"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA051",
+   "name": "Van Gogh's Provence",
+   "datePublished": "1992",
+   "genre": "art",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "French edition: Van Gogh, la Provence (Herscher 1993)",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A",
+    "https://catalogue.bnf.fr/ark:/12148/cb12252322f"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Van Gogh's Provence",
+     "publisher": "Pavilion Books",
+     "datePublished": "1992",
+     "inLanguage": "eng",
+     "isbn": "9781851455072",
+     "bookFormat": "https://schema.org/Hardcover"
+    },
+    {
+     "@type": "Book",
+     "name": "Van Gogh, la Provence",
+     "publisher": "Herscher",
+     "datePublished": "1993",
+     "inLanguage": "fre",
+     "isbn": "9782733502150",
+     "translationOfWork": {
+      "@id": "urn:russell-ash:RA051"
+     },
+     "description": "tr. Denis-Armand Canal"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA052",
+   "name": "James Tissot",
+   "datePublished": "1992",
+   "genre": "art",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Pavilion / Abrams; French edition Herscher 1993",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A",
+    "https://catalogue.bnf.fr/ark:/12148/cb12252322f"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "James Tissot",
+     "publisher": "Pavilion",
+     "datePublished": "1992",
+     "inLanguage": "eng",
+     "isbn": "9781851457410"
+    },
+    {
+     "@type": "Book",
+     "name": "James Tissot",
+     "publisher": "H.N. Abrams",
+     "datePublished": "1992",
+     "inLanguage": "eng",
+     "isbn": "9780810938649",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "James Tissot",
+     "publisher": "Herscher",
+     "datePublished": "1993",
+     "inLanguage": "fre",
+     "isbn": "9782733502198",
+     "translationOfWork": {
+      "@id": "urn:russell-ash:RA052"
+     },
+     "description": "tr. Denis-Armand Canal"
+    },
+    {
+     "@type": "Book",
+     "name": "James Tissot",
+     "publisher": "Pavilion Books",
+     "datePublished": "1995",
+     "inLanguage": "eng",
+     "isbn": "9781857936254",
+     "bookFormat": "https://schema.org/Paperback"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA053",
+   "name": "Degas at the Ballet",
+   "datePublished": "1992",
+   "genre": "art",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "medium"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Pavilion",
+   "isBasedOn": [
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Degas at the Ballet",
+     "publisher": "Pavilion Books",
+     "datePublished": "1992",
+     "inLanguage": "eng",
+     "isbn": "9781851459322",
+     "bookFormat": "https://schema.org/Hardcover"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA054",
+   "name": "Gauguin's South Seas",
+   "datePublished": "1992",
+   "genre": "art",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "medium"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Pavilion",
+   "isBasedOn": [
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Gauguin's South Seas",
+     "publisher": "Pavilion Books",
+     "datePublished": "1992",
+     "inLanguage": "eng",
+     "isbn": "9781851459377",
+     "bookFormat": "https://schema.org/Hardcover"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA055",
+   "name": "Top 10 of Sport",
+   "datePublished": "1992",
+   "genre": "reference",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "co-author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Headline 1992; new edition DK 2002 (US: The Top 10 of Sports)",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "The Top 10 of Sport",
+     "publisher": "Headline",
+     "datePublished": "1992",
+     "inLanguage": "eng",
+     "isbn": "9780747207146",
+     "bookFormat": "https://schema.org/Hardcover"
+    },
+    {
+     "@type": "Book",
+     "name": "The Top 10 of Sport",
+     "publisher": "Dorling Kindersley",
+     "datePublished": "2002",
+     "inLanguage": "eng",
+     "isbn": "9780751346428",
+     "bookFormat": "https://schema.org/Hardcover",
+     "description": "new edition"
+    },
+    {
+     "@type": "Book",
+     "name": "The Top 10 of Sports",
+     "publisher": "DK Publishing",
+     "datePublished": "2002",
+     "inLanguage": "eng",
+     "isbn": "9780789489272",
+     "description": "US"
+    }
+   ],
+   "contributor_text": "Ian Morrison"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA056",
+   "name": "Sir Edward Burne-Jones",
+   "datePublished": "1993",
+   "genre": "art",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Pavilion / Abrams; French edition Mengès 1993",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A",
+    "https://catalogue.bnf.fr/ark:/12148/cb12252322f"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Sir Edward Burne-Jones",
+     "publisher": "Pavilion",
+     "datePublished": "1993",
+     "inLanguage": "eng",
+     "isbn": "9781857930177"
+    },
+    {
+     "@type": "Book",
+     "name": "Sir Edward Burne-Jones",
+     "publisher": "H.N. Abrams",
+     "datePublished": "1993",
+     "inLanguage": "eng",
+     "isbn": "9780810931268",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "Sir Edward Burne-Jones",
+     "publisher": "Mengès",
+     "datePublished": "1993",
+     "inLanguage": "fre",
+     "isbn": "9782856203330",
+     "translationOfWork": {
+      "@id": "urn:russell-ash:RA056"
+     },
+     "description": "tr. Agnès de Gorter"
+    },
+    {
+     "@type": "Book",
+     "name": "Sir Edward Burne-Jones",
+     "publisher": "Pavilion Books",
+     "datePublished": "1997",
+     "inLanguage": "eng",
+     "isbn": "9781857939514",
+     "bookFormat": "https://schema.org/Paperback"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA057",
+   "name": "Top 10 of Music",
+   "datePublished": "1993",
+   "genre": "reference",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "co-author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Headline",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "The Top 10 of Music",
+     "publisher": "Headline",
+     "datePublished": "1993",
+     "inLanguage": "eng",
+     "isbn": "9780747207986",
+     "bookFormat": "https://schema.org/Hardcover"
+    }
+   ],
+   "contributor_text": "Luke Crampton; Barry Lazell"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA058",
+   "name": "Perfect Angels",
+   "datePublished": "1993",
+   "genre": "art",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "editor"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "medium"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Pavilion",
+   "isBasedOn": [
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Perfect Angels",
+     "publisher": "Pavilion Books",
+     "datePublished": "1993",
+     "inLanguage": "eng",
+     "isbn": "9781857931266",
+     "bookFormat": "https://schema.org/Hardcover"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA059",
+   "name": "Tall Stories: Amazing But True Tales from Around the World",
+   "datePublished": "1994",
+   "genre": "humour",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Aurum",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Tall Stories",
+     "publisher": "Aurum Press",
+     "datePublished": "1994",
+     "inLanguage": "eng",
+     "isbn": "9781854103352",
+     "bookFormat": "https://schema.org/Hardcover"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA060",
+   "name": "Gardens in Art",
+   "datePublished": "1994",
+   "genre": "art",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "co-editor"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Aurum",
+   "isBasedOn": [
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Gardens in Art",
+     "publisher": "Aurum Press",
+     "datePublished": "1994",
+     "inLanguage": "eng",
+     "isbn": "9781854102768"
+    }
+   ],
+   "contributor_text": "Bernard Higton"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA061",
+   "name": "Images of Ireland",
+   "datePublished": "1994",
+   "genre": "art",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "co-editor"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "medium"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Aurum Postbox Collection",
+   "isBasedOn": [
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Images of Ireland",
+     "publisher": "Aurum Press",
+     "datePublished": "1994",
+     "inLanguage": "eng",
+     "isbn": "9781854102751",
+     "bookFormat": "https://schema.org/Paperback"
+    }
+   ],
+   "contributor_text": "Bernard Higton"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA062",
+   "name": "Dante Gabriel Rossetti",
+   "datePublished": "1995",
+   "genre": "art",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Pavilion / Abrams; French edition Mengès 1995",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A",
+    "https://catalogue.bnf.fr/ark:/12148/cb12252322f"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Dante Gabriel Rossetti",
+     "publisher": "Pavilion",
+     "datePublished": "1995",
+     "inLanguage": "eng",
+     "isbn": "9781857934120"
+    },
+    {
+     "@type": "Book",
+     "name": "Dante Gabriel Rossetti",
+     "publisher": "H.N. Abrams",
+     "datePublished": "1995",
+     "inLanguage": "eng",
+     "isbn": "9780810937840",
+     "bookFormat": "https://schema.org/Hardcover",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "Dante Gabriel Rossetti",
+     "publisher": "Mengès",
+     "datePublished": "1995",
+     "inLanguage": "fre",
+     "isbn": "9782856203804",
+     "translationOfWork": {
+      "@id": "urn:russell-ash:RA062"
+     },
+     "description": "tr. Jézabel Carpi, Agnès de Gorter"
+    },
+    {
+     "@type": "Book",
+     "name": "Dante Gabriel Rossetti",
+     "publisher": "Pavilion Books",
+     "datePublished": "1997",
+     "inLanguage": "eng",
+     "isbn": "9781857939507",
+     "bookFormat": "https://schema.org/Paperback"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA063",
+   "name": "Impressionists' Seasons",
+   "datePublished": "1995",
+   "genre": "art",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "editor"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Pavilion / Collins",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Impressionists' Seasons",
+     "publisher": "Pavilion",
+     "datePublished": "1995",
+     "inLanguage": "eng",
+     "isbn": "9781857936285"
+    },
+    {
+     "@type": "Book",
+     "name": "Impressionists' Seasons",
+     "publisher": "Collins",
+     "datePublished": "1995",
+     "inLanguage": "eng",
+     "isbn": "9780002250467"
+    },
+    {
+     "@type": "Book",
+     "name": "Impressionists' Seasons",
+     "publisher": "Pavilion Books",
+     "datePublished": "1996",
+     "inLanguage": "eng",
+     "isbn": "9781857938531"
+    },
+    {
+     "@type": "Book",
+     "name": "Impressionists' Seasons",
+     "publisher": "Pavilion",
+     "datePublished": "1999",
+     "inLanguage": "eng",
+     "isbn": "9781862052383",
+     "bookFormat": "https://schema.org/Paperback"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA064",
+   "name": "Lord Leighton",
+   "datePublished": "1995",
+   "genre": "art",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Pavilion",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Lord Leighton",
+     "publisher": "Trafalgar Square / Pavilion",
+     "datePublished": "1996",
+     "inLanguage": "eng",
+     "isbn": "9781857937329",
+     "bookFormat": "https://schema.org/Hardcover"
+    },
+    {
+     "@type": "Book",
+     "name": "Lord Leighton",
+     "publisher": "Trafalgar Square",
+     "datePublished": "1998",
+     "inLanguage": "eng",
+     "isbn": "9781862051508",
+     "bookFormat": "https://schema.org/Paperback"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA065",
+   "name": "Charles Dickens: An Illustrated Anthology",
+   "datePublished": "1995",
+   "genre": "literature",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "co-editor"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Aurum / Crescent",
+   "isBasedOn": [
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Charles Dickens",
+     "publisher": "Aurum Press",
+     "datePublished": "1995",
+     "inLanguage": "eng",
+     "isbn": "9781854102614",
+     "bookFormat": "https://schema.org/Hardcover"
+    },
+    {
+     "@type": "Book",
+     "name": "Charles Dickens: An Illustrated Anthology",
+     "publisher": "Crescent Books",
+     "datePublished": "1995",
+     "inLanguage": "eng",
+     "isbn": "9780517142530",
+     "description": "US"
+    }
+   ],
+   "contributor_text": "Bernard Higton; Charles Dickens"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA066",
+   "name": "Jane Austen: An Illustrated Anthology",
+   "datePublished": "1995",
+   "genre": "literature",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "co-editor"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "medium"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Gramercy",
+   "isBasedOn": [
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Jane Austen",
+     "publisher": "Gramercy",
+     "datePublished": "1995",
+     "inLanguage": "eng",
+     "isbn": "9780517142554",
+     "bookFormat": "https://schema.org/Hardcover",
+     "description": "US"
+    }
+   ],
+   "contributor_text": "Bernard Higton; Jane Austen"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA067",
+   "name": "Sir John Everett Millais",
+   "datePublished": "1996",
+   "genre": "art",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Pavilion",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Sir John Everett Millais",
+     "publisher": "Pavilion",
+     "datePublished": "1996",
+     "inLanguage": "eng",
+     "isbn": "9781857937923"
+    },
+    {
+     "@type": "Book",
+     "name": "Sir John Everett Millais",
+     "publisher": "Trafalgar Square",
+     "datePublished": "1998",
+     "inLanguage": "eng",
+     "isbn": "9781862051553",
+     "bookFormat": "https://schema.org/Paperback"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA068",
+   "name": "Top 10 Quiz Book",
+   "datePublished": "1996",
+   "genre": "reference",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "UK title: The Top 10 of Everything Quiz Book",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "The Top 10 of Everything Quiz Book",
+     "publisher": "Dorling Kindersley",
+     "datePublished": "1996",
+     "inLanguage": "eng",
+     "isbn": "9780751354430",
+     "bookFormat": "https://schema.org/Paperback"
+    },
+    {
+     "@type": "Book",
+     "name": "Top 10 Quiz Book",
+     "publisher": "DK Publishing",
+     "datePublished": "1996",
+     "inLanguage": "eng",
+     "isbn": "9780789410221",
+     "bookFormat": "https://schema.org/Paperback",
+     "description": "US"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA069",
+   "name": "Incredible Comparisons",
+   "datePublished": "1996",
+   "genre": "reference",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "DK; translated into German, French and Spanish (and others)",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A",
+    "https://d-nb.info/gnd/1152038451",
+    "https://catalogue.bnf.fr/ark:/12148/cb12252322f"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Incredible Comparisons",
+     "publisher": "Dorling Kindersley",
+     "datePublished": "1996",
+     "inLanguage": "eng",
+     "isbn": "9780751354218"
+    },
+    {
+     "@type": "Book",
+     "name": "Incredible Comparisons",
+     "publisher": "DK / Houghton Mifflin",
+     "datePublished": "1996",
+     "inLanguage": "eng",
+     "isbn": "9780789410092",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "The Incredible Book of Comparisons",
+     "publisher": "Penguin Canada",
+     "datePublished": "1996",
+     "inLanguage": "eng",
+     "isbn": "9780670865741",
+     "bookFormat": "https://schema.org/Hardcover",
+     "description": "Canada"
+    },
+    {
+     "@type": "Book",
+     "name": "Unvergleichliche Vergleiche",
+     "publisher": "Bertelsmann",
+     "datePublished": "1997",
+     "inLanguage": "ger",
+     "isbn": "9783570124246",
+     "translationOfWork": {
+      "@id": "urn:russell-ash:RA069"
+     },
+     "description": "German"
+    },
+    {
+     "@type": "Book",
+     "name": "Le livre de toutes les comparaisons",
+     "publisher": "Gallimard Jeunesse",
+     "datePublished": "1997",
+     "inLanguage": "fre",
+     "isbn": "9782070594115",
+     "translationOfWork": {
+      "@id": "urn:russell-ash:RA069"
+     },
+     "description": "tr. Christine Monnatte"
+    },
+    {
+     "@type": "Book",
+     "name": "Asombroso libro de las comparaciones",
+     "publisher": "Altea",
+     "datePublished": "2001",
+     "inLanguage": "spa",
+     "isbn": "9788437221700",
+     "bookFormat": "https://schema.org/Paperback",
+     "translationOfWork": {
+      "@id": "urn:russell-ash:RA069"
+     },
+     "description": "Spanish"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA070",
+   "name": "Crucial Top 10",
+   "datePublished": "1997",
+   "genre": "reference",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "DK",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Crucial Top 10",
+     "publisher": "Dorling Kindersley",
+     "datePublished": "1997",
+     "inLanguage": "eng",
+     "isbn": "9781862082144",
+     "bookFormat": "https://schema.org/Paperback"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA071",
+   "name": "The World in One Day",
+   "datePublished": "1997",
+   "genre": "reference",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "DK; German edition 1998",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A",
+    "https://d-nb.info/gnd/1152038451"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "The World in One Day",
+     "publisher": "Dorling Kindersley",
+     "datePublished": "1997",
+     "inLanguage": "eng",
+     "isbn": "9780751356182"
+    },
+    {
+     "@type": "Book",
+     "name": "The World in One Day",
+     "publisher": "DK Publishing",
+     "datePublished": "1997",
+     "inLanguage": "eng",
+     "isbn": "9780789420282",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "World in One Day",
+     "publisher": "Firefly Books",
+     "datePublished": "1998",
+     "inLanguage": "eng",
+     "isbn": "9781552091999",
+     "description": "Canada"
+    },
+    {
+     "@type": "Book",
+     "name": "Die Welt an einem Tag",
+     "publisher": "Ars Edition",
+     "datePublished": "1998",
+     "inLanguage": "ger",
+     "isbn": "9783760746678",
+     "translationOfWork": {
+      "@id": "urn:russell-ash:RA071"
+     },
+     "description": "tr. Werner Horwath"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA072",
+   "name": "The Factastic Book of 1001 Lists",
+   "datePublished": "1998",
+   "genre": "reference",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "DK; German edition 1999",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A",
+    "https://d-nb.info/gnd/1152038451"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "The Factastic Book of 1001 Lists",
+     "publisher": "Dorling Kindersley",
+     "datePublished": "1998",
+     "inLanguage": "eng",
+     "isbn": "9780751357998",
+     "bookFormat": "https://schema.org/Hardcover"
+    },
+    {
+     "@type": "Book",
+     "name": "The Factastic Book of 1001 Lists",
+     "publisher": "DK Publishing",
+     "datePublished": "1998",
+     "inLanguage": "eng",
+     "isbn": "9780789434128",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "1001 Fakten, Zahlen und Rekorde",
+     "publisher": "Arena",
+     "datePublished": "1999",
+     "inLanguage": "ger",
+     "isbn": "9783401048505",
+     "translationOfWork": {
+      "@id": "urn:russell-ash:RA072"
+     },
+     "description": "tr. Martin Kliche, Britta Wisser"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA073",
+   "name": "Factastic Book of Comparisons",
+   "datePublished": "1999",
+   "genre": "reference",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "DK",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Factastic Book of Comparisons",
+     "publisher": "Dorling Kindersley",
+     "datePublished": "1999",
+     "inLanguage": "eng",
+     "isbn": "9780751362084"
+    },
+    {
+     "@type": "Book",
+     "name": "Factastic Book of Comparisons",
+     "publisher": "DK Publishing",
+     "datePublished": "1999",
+     "inLanguage": "eng",
+     "isbn": "9780789454003",
+     "description": "US"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA074",
+   "name": "Factastic Millennium Facts",
+   "datePublished": "1999",
+   "genre": "reference",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "DK",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Factastic Millennium Facts",
+     "publisher": "Dorling Kindersley",
+     "datePublished": "1999",
+     "inLanguage": "eng",
+     "isbn": "9780751356632"
+    },
+    {
+     "@type": "Book",
+     "name": "Factastic Millennium Facts",
+     "publisher": "DK Publishing",
+     "datePublished": "1999",
+     "inLanguage": "eng",
+     "isbn": "9780789447104",
+     "description": "US"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA075",
+   "name": "Victorian Masters and Their Art",
+   "datePublished": "1999",
+   "genre": "art",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Pavilion",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Victorian Masters and Their Art",
+     "publisher": "Pavilion Books",
+     "datePublished": "1999",
+     "inLanguage": "eng",
+     "isbn": "9781862053045",
+     "bookFormat": "https://schema.org/Paperback"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA076",
+   "name": "Great Wonders of the World",
+   "datePublished": "2000",
+   "genre": "history",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "DK; Spanish, German, French and Mexican-Spanish editions",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A",
+    "https://d-nb.info/gnd/1152038451",
+    "https://catalogue.bnf.fr/ark:/12148/cb12252322f"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Great Wonders of the World",
+     "publisher": "Dorling Kindersley",
+     "datePublished": "2000",
+     "inLanguage": "eng",
+     "isbn": "9780751328868",
+     "bookFormat": "https://schema.org/Paperback"
+    },
+    {
+     "@type": "Book",
+     "name": "Great Wonders of the World",
+     "publisher": "DK Publishing",
+     "datePublished": "2000",
+     "inLanguage": "eng",
+     "isbn": "9780789465054",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "Die grössten Weltwunder",
+     "publisher": "Dorling Kindersley",
+     "datePublished": "2001",
+     "inLanguage": "ger",
+     "isbn": "9783831000807",
+     "translationOfWork": {
+      "@id": "urn:russell-ash:RA076"
+     },
+     "description": "tr. Britta Rath"
+    },
+    {
+     "@type": "Book",
+     "name": "Las 100 grandes maravillas del mundo",
+     "publisher": "Editorial Molino",
+     "datePublished": "2001",
+     "inLanguage": "spa",
+     "isbn": "9788427258624",
+     "translationOfWork": {
+      "@id": "urn:russell-ash:RA076"
+     },
+     "description": "tr. Rosa Roger"
+    },
+    {
+     "@type": "Book",
+     "name": "Merveilles du monde d'hier et d'aujourd'hui",
+     "publisher": "Dorling Kindersley",
+     "datePublished": "2001",
+     "inLanguage": "fre",
+     "isbn": "9780751334142",
+     "translationOfWork": {
+      "@id": "urn:russell-ash:RA076"
+     },
+     "description": "tr. Claude Lauriot-Prévost"
+    },
+    {
+     "@type": "Book",
+     "name": "Merveilles du monde d'hier et d'aujourd'hui",
+     "publisher": "Hurtubise HMH",
+     "datePublished": "2001",
+     "inLanguage": "fre",
+     "isbn": "9782894284889",
+     "translationOfWork": {
+      "@id": "urn:russell-ash:RA076"
+     },
+     "description": "Canada"
+    },
+    {
+     "@type": "Book",
+     "name": "Grandes maravillas del mundo",
+     "publisher": "Planeta Mexicana",
+     "datePublished": "2003",
+     "inLanguage": "spa",
+     "isbn": "9789706905383",
+     "bookFormat": "https://schema.org/Hardcover",
+     "translationOfWork": {
+      "@id": "urn:russell-ash:RA076"
+     },
+     "description": "Mexico"
+    },
+    {
+     "@type": "Book",
+     "name": "Les 7 merveilles du monde",
+     "publisher": "Gallimard Jeunesse",
+     "datePublished": "2003",
+     "inLanguage": "fre",
+     "isbn": "9782070556205",
+     "translationOfWork": {
+      "@id": "urn:russell-ash:RA076"
+     }
+    },
+    {
+     "@type": "Book",
+     "name": "Great Wonders of the World",
+     "publisher": "DK Children",
+     "datePublished": "2006",
+     "inLanguage": "eng",
+     "isbn": "9780756619367",
+     "bookFormat": "https://schema.org/Paperback",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "Die größten Weltwunder",
+     "publisher": "Dorling Kindersley",
+     "datePublished": "2008",
+     "inLanguage": "ger",
+     "isbn": "9783831013142",
+     "translationOfWork": {
+      "@id": "urn:russell-ash:RA076"
+     }
+    }
+   ],
+   "contributor_text": "Richard Bonson (ill.)"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA077",
+   "name": "Top 10 of Film",
+   "datePublished": "2003",
+   "genre": "reference",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "DK",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "The Top 10 of Film",
+     "publisher": "Dorling Kindersley",
+     "datePublished": "2003",
+     "inLanguage": "eng",
+     "isbn": "9781405300506",
+     "bookFormat": "https://schema.org/Hardcover"
+    },
+    {
+     "@type": "Book",
+     "name": "The Top 10 of Film",
+     "publisher": "DK Publishing",
+     "datePublished": "2003",
+     "inLanguage": "eng",
+     "isbn": "9780789496409",
+     "description": "US"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA078",
+   "name": "Whitaker's World of Facts",
+   "datePublished": "2005",
+   "genre": "reference",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Annual, A&C Black. North America: Firefly's World of Facts; India: Penguin",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A",
+    "https://d-nb.info/gnd/1152038451"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Whitaker's World of Facts",
+     "publisher": "A&C Black",
+     "datePublished": "2005",
+     "inLanguage": "eng",
+     "isbn": "9780713668797",
+     "bookFormat": "https://schema.org/Hardcover"
+    },
+    {
+     "@type": "Book",
+     "name": "Whitaker's World of Facts",
+     "publisher": "A&C Black",
+     "datePublished": "2006",
+     "inLanguage": "eng",
+     "isbn": "9780713678666",
+     "bookFormat": "https://schema.org/Hardcover"
+    },
+    {
+     "@type": "Book",
+     "name": "Whitaker's World of Facts",
+     "publisher": "A&C Black",
+     "datePublished": "2007",
+     "inLanguage": "eng",
+     "isbn": "9780713685565"
+    },
+    {
+     "@type": "Book",
+     "name": "Firefly's World of Facts",
+     "publisher": "Firefly Books",
+     "datePublished": "2007",
+     "inLanguage": "eng",
+     "isbn": "9781554073139",
+     "bookFormat": "https://schema.org/Hardcover",
+     "description": "North America"
+    },
+    {
+     "@type": "Book",
+     "name": "Whitaker's World of Facts 2009",
+     "publisher": "A&C Black",
+     "datePublished": "2008",
+     "inLanguage": "eng",
+     "isbn": "9781408105863"
+    },
+    {
+     "@type": "Book",
+     "name": "Whitaker's World of Facts",
+     "publisher": "A&C Black",
+     "datePublished": "2009",
+     "inLanguage": "eng",
+     "isbn": "9781408115060"
+    },
+    {
+     "@type": "Book",
+     "name": "Firefly's World of Facts",
+     "publisher": "Firefly Books",
+     "datePublished": "2009",
+     "inLanguage": "eng",
+     "isbn": "9781554074990",
+     "description": "North America"
+    },
+    {
+     "@type": "Book",
+     "name": "Whitaker's World of Facts",
+     "publisher": "Penguin India",
+     "datePublished": "2009",
+     "inLanguage": "eng",
+     "isbn": "9780143065968",
+     "description": "India"
+    },
+    {
+     "@type": "Book",
+     "name": "Whitaker's World of Facts 2011",
+     "publisher": "A&C Black",
+     "datePublished": "2010",
+     "inLanguage": "eng",
+     "isbn": "9781408130070",
+     "description": "published after his death"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA079",
+   "name": "Fish Who Answer the Telephone and Other Bizarre Books",
+   "datePublished": "2006",
+   "genre": "humour",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "co-compiler"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "John Murray. Successor to Bizarre Books",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Fish Who Answer the Telephone and Other Bizarre Books",
+     "publisher": "John Murray",
+     "datePublished": "2006",
+     "inLanguage": "eng",
+     "isbn": "9780719560187",
+     "bookFormat": "https://schema.org/Hardcover"
+    }
+   ],
+   "contributor_text": "Brian Lake"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA080",
+   "name": "Bigger, Better, Faster",
+   "datePublished": "2006",
+   "genre": "reference",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "low"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Orion 2006; attribution unverified",
+   "isBasedOn": [
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Bigger, Better, Faster",
+     "publisher": "Orion",
+     "datePublished": "2006",
+     "inLanguage": "eng",
+     "isbn": "9780297852438"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA081",
+   "name": "Potty, Fartwell & Knob",
+   "datePublished": "2007",
+   "genre": "humour",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Headline; expanded paperback 2008; US edition as Morecock, Fartwell, & Hoare (2009)",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Potty, Fartwell & Knob",
+     "publisher": "Headline",
+     "datePublished": "2007",
+     "inLanguage": "eng",
+     "isbn": "9780755316540",
+     "bookFormat": "https://schema.org/Hardcover"
+    },
+    {
+     "@type": "Book",
+     "name": "Potty, Fartwell & Knob (expanded)",
+     "publisher": "Headline",
+     "datePublished": "2008",
+     "inLanguage": "eng",
+     "isbn": "9780755316557",
+     "bookFormat": "https://schema.org/Paperback"
+    },
+    {
+     "@type": "Book",
+     "name": "Morecock, Fartwell, & Hoare",
+     "publisher": "St. Martin's Press",
+     "datePublished": "2009",
+     "inLanguage": "eng",
+     "isbn": "9780312545352",
+     "description": "US"
+    },
+    {
+     "@type": "Book",
+     "name": "Morecock, Fartwell, & Hoare",
+     "publisher": "St. Martin's Press",
+     "datePublished": "2009",
+     "inLanguage": "eng",
+     "isbn": "9781429964579",
+     "bookFormat": "https://schema.org/EBook",
+     "description": "US ebook"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA082",
+   "name": "Top 10 for Men",
+   "datePublished": "2008",
+   "genre": "reference",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Hamlyn; new edition 2010",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Top 10 for Men",
+     "publisher": "Hamlyn",
+     "datePublished": "2008",
+     "inLanguage": "eng",
+     "isbn": "9780600618171"
+    },
+    {
+     "@type": "Book",
+     "name": "Top 10 for Men",
+     "publisher": "Hamlyn",
+     "datePublished": "2010",
+     "inLanguage": "eng",
+     "isbn": "9780600620709"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA083",
+   "name": "Top 10 of Britain",
+   "datePublished": "2009",
+   "genre": "reference",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Hamlyn",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Top 10 of Britain",
+     "publisher": "Hamlyn",
+     "datePublished": "2009",
+     "inLanguage": "eng",
+     "isbn": "9780600619215"
+    },
+    {
+     "@type": "Book",
+     "name": "Top 10 of Britain",
+     "publisher": "Hamlyn",
+     "datePublished": "2009",
+     "inLanguage": "eng",
+     "isbn": "9780600622512"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA084",
+   "name": "Busty, Slag and Nob End",
+   "datePublished": "2009",
+   "genre": "humour",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Headline",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Busty, Slag and Nob End",
+     "publisher": "Headline",
+     "datePublished": "2009",
+     "inLanguage": "eng",
+     "isbn": "9780755318704"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA085",
+   "name": "Big Pants, Burpy and Bumface",
+   "datePublished": "2009",
+   "genre": "humour",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Doubleday children's; Red Fox paperback 2010",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Big Pants, Burpy and Bumface",
+     "publisher": "Doubleday",
+     "datePublished": "2009",
+     "inLanguage": "eng",
+     "isbn": "9780385617239",
+     "bookFormat": "https://schema.org/Hardcover"
+    },
+    {
+     "@type": "Book",
+     "name": "Big Pants, Burpy and Bumface",
+     "publisher": "Red Fox",
+     "datePublished": "2010",
+     "inLanguage": "eng",
+     "isbn": "9781862309814",
+     "bookFormat": "https://schema.org/Paperback"
+    },
+    {
+     "@type": "Book",
+     "name": "Big Pants, Burpy and Bumface",
+     "publisher": "Random House Children's",
+     "datePublished": "2011",
+     "inLanguage": "eng",
+     "isbn": "9781407050812",
+     "bookFormat": "https://schema.org/EBook"
+    },
+    {
+     "@type": "Book",
+     "name": "Big Pants, Burpy and Bumface",
+     "publisher": "Random House Children's",
+     "datePublished": "2013",
+     "inLanguage": "eng",
+     "isbn": "9781849419727"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA086",
+   "name": "Top 10 of Football",
+   "datePublished": "2010",
+   "genre": "reference",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "co-author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": "death-year"
+    }
+   ],
+   "description": "Hamlyn, published April 2010, before his death",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Top 10 of Football",
+     "publisher": "Hamlyn",
+     "datePublished": "2010",
+     "inLanguage": "eng",
+     "isbn": "9780600622529"
+    },
+    {
+     "@type": "Book",
+     "name": "Top 10 of Football",
+     "publisher": "Hamlyn",
+     "datePublished": "2010",
+     "inLanguage": "eng",
+     "isbn": "9780600620679"
+    }
+   ],
+   "contributor_text": "Ian Morrison"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA087",
+   "name": "It Just Slipped Out: A Bulging Encyclopaedia of Double Entendres",
+   "datePublished": "2010",
+   "genre": "humour",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": "death-year"
+    }
+   ],
+   "description": "Headline. Publication date is at or after his death (Wikipedia says 2010; Open Library says 2011)",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash",
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "It Just Slipped Out",
+     "publisher": "Headline",
+     "datePublished": "2010",
+     "inLanguage": "eng",
+     "isbn": "9780755360864"
+    },
+    {
+     "@type": "Book",
+     "name": "It Just Slipped Out",
+     "publisher": "Headline",
+     "inLanguage": "eng",
+     "isbn": "9780755360871"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA088",
+   "name": "Frou-Frou, Frisby & Brick: The Book of Unfortunate Baby Names",
+   "datePublished": "2010",
+   "genre": "humour",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "medium"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": "death-year"
+    }
+   ],
+   "description": "Headline. Open Library lists it as \"What Not to Call Your Baby\" (same ISBN family); the ebook is dated 10 Jun 2010, eleven days before his death",
+   "isBasedOn": [
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Frou-Frou, Frisby & Brick",
+     "publisher": "Headline",
+     "datePublished": "2010",
+     "inLanguage": "eng",
+     "isbn": "9780755360888",
+     "description": "Open Library title: What Not to Call Your Baby"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA090",
+   "name": "Folklore, Myths and Legends of Britain",
+   "datePublished": "1973",
+   "genre": "reference",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "contributor"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "low"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Reader's Digest, credited \"Russell Ash et al.\"; he was a researcher/writer at Reader's Digest Books",
+   "isBasedOn": [],
+   "workExample": [],
+   "contributor_text": "Reader's Digest editorial team"
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA089",
+   "name": "Boring, Botty and Spong",
+   "datePublished": "2011",
+   "genre": "humour",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "high"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": "posthumous"
+    }
+   ],
+   "description": "Doubleday children's. Published after his death",
+   "isBasedOn": [
+    "https://openlibrary.org/authors/OL25225A"
+   ],
+   "workExample": [
+    {
+     "@type": "Book",
+     "name": "Boring, Botty and Spong",
+     "publisher": "Doubleday",
+     "datePublished": "2011",
+     "inLanguage": "eng",
+     "isbn": "9780385618762"
+    },
+    {
+     "@type": "Book",
+     "name": "Boring, Botty and Spong",
+     "publisher": "Random House Children's",
+     "datePublished": "2011",
+     "inLanguage": "eng",
+     "isbn": "9781409097396",
+     "bookFormat": "https://schema.org/EBook"
+    },
+    {
+     "@type": "Book",
+     "name": "Boring, Botty and Spong",
+     "publisher": "Random House Children's",
+     "datePublished": "2012",
+     "inLanguage": "eng",
+     "isbn": "9781849411929",
+     "bookFormat": "https://schema.org/Paperback"
+    },
+    {
+     "@type": "Book",
+     "name": "Boring, Botty and Spong",
+     "publisher": "Random House Children's",
+     "datePublished": "2016",
+     "inLanguage": "eng",
+     "isbn": "9781782957119"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA091",
+   "name": "Alma-Tadema (catalogue of the Funt Collection)",
+   "datePublished": "1973",
+   "genre": "art",
+   "author": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "author"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "low"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Exhibition catalogue; no ISBN found",
+   "isBasedOn": [
+    "https://en.wikipedia.org/wiki/Russell_Ash"
+   ],
+   "workExample": []
+  }
+ ],
+ "_meta": {
+  "title": "Russell Ash bibliography",
+  "version": "1.0",
+  "generated": "2026-10-27",
+  "method": "Open Library works+editions API, English Wikipedia bibliography, Wikidata Q7381333 authority IDs, Deutsche Nationalbibliothek SRU, BnF SRU. WorldCat was rate-limited (Cloudflare 1015), and Google Books/VIAF were not readable from the browser; these remain open checks.",
+  "model": "work > edition (workExample) > ISBN-13; ISBN checksums validated, ISBN-10s converted",
+  "lifespan": "1946-06-18 to 2010-06-21; editions dated 2010 or later are flagged",
+  "excluded": [
+   "Wheeler's Dental Anatomy translations (Major M. Ash - different person)",
+   "Wealth of Nature (Neville Ash)",
+   "Open Court Reading (school anthology, contributor only)",
+   "Top 10 of Everything continuation editions: 2012 (Caroline and Alexander Ash, ISBN 9780600623359), 2013 (Caroline Ash, 9780600623366), 2014-2019 (Paul Terry)",
+   "Top 10 of Everything 2014 (Open Library credits Russell Ash; Paul Terry's own bibliography and Hachette credit Paul Terry)",
+   "Calendars and notecards (Cal 95 Alma-Tadema; Impressionists' Seasons notecards)",
+   "Library rebinds (Econo-Clad, Sagebrush, Tandem, BT Bound)"
+  ],
+  "known_gaps": [
+   "Translations beyond German, French and Spanish: Top 10 of Everything and the DK titles appeared in many more languages",
+   "WorldCat cross-check (rate-limited during this run)",
+   "Edition-level records for the 14 other reported Top 10 of Everything translation languages",
+   "Wikipedia-only titles with no catalogue match yet"
+  ],
+  "related": {
+   "alexash.work": "https://alexash.work",
+   "claudeskills.co.uk": "https://claudeskills.co.uk",
+   "linear": "ERD-385"
+  },
+  "availability_snapshot": {
+   "date": "2026-10-27",
+   "source": "AbeBooks UK total listing counts per ISBN (new/used split only where checked before AbeBooks throttled the sweep); new copies also confirmed on Amazon UK for Potty, Fartwell & Knob and Bizarre Books (US ed.); Kindle UK and Google Play for ebooks",
+   "ebooks": {
+    "RA081": "Kindle UK £2.99; Google Play £2.99; US edition (Morecock, Fartwell & Hoare) also an ebook",
+    "RA082": "Kindle UK £3.99; Google Play £3.99 (the Kindle listing credits other contributors)",
+    "RA083": "Kindle UK £3.99; Google Play £3.99",
+    "RA084": "Kindle UK £3.99; Google Play £3.99",
+    "RA085": "Kindle UK £2.99; Google Play £2.99",
+    "RA086": "Kindle UK £3.99; Google Play £3.99",
+    "RA088": "Kindle UK £3.99; Google Play £3.99",
+    "RA089": "Kindle UK £9.99; Google Play £9.99"
+   }
+  }
+ }
+}
