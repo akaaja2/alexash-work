@@ -5322,6 +5322,37 @@
     "https://en.wikipedia.org/wiki/Russell_Ash"
    ],
    "workExample": []
+  },
+  {
+   "@type": "Book",
+   "@id": "urn:russell-ash:RA092",
+   "name": "Monet's Garden",
+   "datePublished": "1989",
+   "genre": "art",
+   "contributor": {
+    "@id": "https://www.wikidata.org/wiki/Q7381333"
+   },
+   "additionalProperty": [
+    {
+     "@type": "PropertyValue",
+     "name": "role",
+     "value": "co-editor"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "confidence",
+     "value": "medium"
+    },
+    {
+     "@type": "PropertyValue",
+     "name": "lifespanFlag",
+     "value": ""
+    }
+   ],
+   "description": "Chronicle Books (US); probably part of the Ash & Higton illustrated anthology series; no ISBN captured yet",
+   "isBasedOn": [],
+   "workExample": [],
+   "contributor_text": "Bernard Higton"
   }
  ],
  "_meta": {
