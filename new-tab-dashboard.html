@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Tab Dashboard — Alex Ash</title>
+  <meta name="description" content="A free Chrome extension that turns your new tab into a calm dashboard: tasks, notes, a focus timer, links and quotes. Everything stays in your browser.">
+  <meta property="og:title" content="New Tab Dashboard">
+  <meta property="og:description" content="A free Chrome extension: tasks, notes, focus timer, links and quotes on every new tab. No account, no tracking.">
+  <meta property="og:image" content="https://alexash.work/og-image.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { overflow-x: hidden; }
+    body {
+      background: #0c0b09;
+      color: #ede3d0;
+      font-family: 'Courier New', monospace;
+      line-height: 1.6;
+      padding: 24px 16px 64px;
+    }
+    main { max-width: 760px; margin: 0 auto; }
+    a { color: #c97b1a; }
+    .back { display: inline-block; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; margin-bottom: 40px; }
+    .tag { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: #c97b1a; margin-bottom: 12px; }
+    h1 { font-size: 34px; letter-spacing: 0.02em; line-height: 1.2; margin-bottom: 16px; }
+    h2 { font-size: 18px; letter-spacing: 0.04em; margin: 48px 0 16px; }
+    p, li { font-size: 14px; color: #b8ac98; }
+    .lede { font-size: 16px; margin-bottom: 28px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 40px; }
+    .btn {
+      display: inline-block; padding: 12px 24px; font-size: 12px; letter-spacing: 0.08em;
+      text-transform: uppercase; text-decoration: none; border-radius: 8px; border: 1px solid #c97b1a;
+    }
+    .btn-primary { background: #c97b1a; color: #0c0b09; }
+    .btn-primary:hover { background: transparent; color: #c97b1a; }
+    .btn-ghost { color: #c97b1a; }
+    .btn-ghost:hover { background: #c97b1a; color: #0c0b09; }
+    .btn-soon { background: transparent; color: #b8ac98; border-color: #2a2520; cursor: default; }
+    .shot { width: 100%; height: auto; border: 1px solid #2a2520; border-radius: 12px; display: block; }
+    ul { list-style: none; display: grid; gap: 10px; }
+    li { padding-left: 20px; position: relative; }
+    li::before { content: "›"; color: #c97b1a; position: absolute; left: 0; }
+    .card { background: rgba(20, 18, 15, 0.6); border: 1px solid #2a2520; border-radius: 12px; padding: 20px 24px; }
+    .card + .card { margin-top: 12px; }
+    .card h3 { font-size: 14px; color: #ede3d0; margin-bottom: 6px; }
+    footer { margin-top: 56px; font-size: 12px; color: #7d725f; }
+    @media (max-width: 520px) { h1 { font-size: 26px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="back" href="/">← alexash.work</a>
+
+    <div class="tag">Chrome extension · Free</div>
+    <h1>New Tab Dashboard</h1>
+    <p class="lede">Your new tab, but useful. Tasks, notes, a focus timer, favourite links and a daily quote, all on one calm page. No account, no tracking: everything stays in your browser.</p>
+
+    <div class="actions">
+      <!-- When the Chrome Web Store listing is live, replace this span with:
+           <a class="btn btn-primary" href="STORE-URL">Add to Chrome</a> -->
+      <span class="btn btn-soon">Chrome Web Store: coming soon</span>
+      <a class="btn btn-ghost" href="https://ko-fi.com/claudeusage" rel="noopener">Support on Ko-fi</a>
+    </div>
+
+    <img class="shot" src="new-tab-dashboard-preview.webp" width="1280" height="1500" alt="The New Tab Dashboard showing a large clock, a Pomodoro timer, a motivational quote and favourite links.">
+
+    <h2>What it does</h2>
+    <ul>
+      <li>Tasks with priorities. Drag a task onto the timer to start a focus session for it.</li>
+      <li>Pomodoro timer with work, short-break and long-break modes.</li>
+      <li>Notes that autosave as you type.</li>
+      <li>Favourite links, plus quick-launch cards for local HTML dashboards.</li>
+      <li>Daily earnings tracker (GBP totals, USD converted).</li>
+      <li>Rotating quotes, built-in backgrounds, or your own image.</li>
+      <li>Drag, minimise and pin cards to arrange the page your way.</li>
+      <li>Export and import a backup of everything, free.</li>
+    </ul>
+
+    <h2>Your data stays yours</h2>
+    <div class="card">
+      <h3>Local-first</h3>
+      <p>Everything you enter is saved in your browser with <code>chrome.storage.local</code>. The extension has no server, no account and no analytics, and asks for one permission only: <code>storage</code>. <a href="new-tab-dashboard-privacy.html">Read the privacy policy</a>.</p>
+    </div>
+
+    <h2>Works where Chrome works</h2>
+    <div class="card">
+      <h3>Windows, Mac, Linux and ChromeOS</h3>
+      <p>Any desktop Chrome, and Chromium browsers such as Edge, Brave and Vivaldi. Chrome on phones and tablets doesn't support extensions.</p>
+    </div>
+
+    <h2>Install</h2>
+    <div class="card">
+      <h3>From the Chrome Web Store</h3>
+      <p>One click, with automatic updates. The listing is going through review; this page will link to it as soon as it's live.</p>
+    </div>
+
+    <footer>
+      Made by <a href="/">Alex Ash</a>. Questions or feedback: <a href="/#contact">get in touch</a>.
+    </footer>
+  </main>
+</body>
+</html>
