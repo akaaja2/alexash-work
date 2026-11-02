@@ -16,6 +16,7 @@ Any static server from the repo root works, e.g. `python3 -m http.server 8000` (
 - `tpn-in2030.html`, `econ-musings.html` — standalone detail pages linked from project rows in `index.html`; each links back with `href="index.html"`.
 - `bookshelf.html` — redirect stub only; forwards old links to `index.html#books`. The bookcase itself lives solely in the Library (`#books`) section of `index.html`, with CSS scoped under `.bookcase-embed`.
 - `thanks.html` — the no-JS fallback target of the contact form (`action="/thanks.html"`).
+- `clients.html` — private IN2030 client briefing at `/clients`, not linked from the site. Guarded by the edge function `netlify/edge-functions/clients-auth.ts` (HTTP Basic Auth against the Netlify env var `CLIENTS_PASSWORD`; refuses with 503 if the variable is unset). Its pushback form is the Netlify form `clients-pushback`. Never put the password in the repo.
 - `archive/designs/` — old design explorations, not linked from the site.
 
 `netlify.toml` rewrites `/*` to `/index.html` (status 200); Netlify only applies this when no real file matches, so the other pages still resolve.
