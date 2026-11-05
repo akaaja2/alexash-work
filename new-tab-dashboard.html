@@ -45,6 +45,13 @@
     .card { background: rgba(20, 18, 15, 0.6); border: 1px solid #2a2520; border-radius: 12px; padding: 20px 24px; }
     .card + .card { margin-top: 12px; }
     .card h3 { font-size: 14px; color: #ede3d0; margin-bottom: 6px; }
+    ol { list-style: none; counter-reset: step; display: grid; gap: 10px; margin-top: 12px; }
+    ol li { counter-increment: step; padding-left: 32px; }
+    ol li::before { content: counter(step) "."; color: #c97b1a; position: absolute; left: 0; }
+    ol li::marker { content: ""; }
+    code { color: #ede3d0; word-break: break-word; }
+    .hash { font-size: 11px; color: #7d725f; word-break: break-all; margin-top: 12px; }
+    .card p + p { margin-top: 10px; }
     footer { margin-top: 56px; font-size: 12px; color: #7d725f; }
     @media (max-width: 520px) { h1 { font-size: 26px; } }
   </style>
@@ -60,6 +67,7 @@
     <div class="actions">
       <!-- When the Chrome Web Store listing is live, replace this span with:
            <a class="btn btn-primary" href="STORE-URL">Add to Chrome</a> -->
+      <a class="btn btn-primary" href="new-tab-dashboard-1.0.0.zip" download>Download v1.0.0 (ZIP)</a>
       <span class="btn btn-soon">Chrome Web Store: coming soon</span>
       <a class="btn btn-ghost" href="https://ko-fi.com/claudeusage" rel="noopener">Support on Ko-fi</a>
     </div>
@@ -90,6 +98,27 @@
     </div>
 
     <h2>Install</h2>
+    <div class="card">
+      <h3>Install it now (about a minute)</h3>
+      <p>Until the Chrome Web Store listing is live, you can add it by hand. It is the same extension and the source is public on <a href="https://github.com/akaaja2/chrome-newtab-dashboard" rel="noopener">GitHub</a>.</p>
+      <ol>
+        <li><a href="new-tab-dashboard-1.0.0.zip" download>Download the ZIP</a> and extract it to a <strong>permanent folder</strong>. Chrome runs the extension from that folder, so don't move or delete it afterwards.</li>
+        <li>In Chrome, open <code>chrome://extensions</code> and switch on <strong>Developer mode</strong> (top right).</li>
+        <li>Choose <strong>Load unpacked</strong> and select the extracted folder, the one that contains <code>manifest.json</code>.</li>
+        <li>Open a new tab. If Chrome asks about the new tab change, accept it.</li>
+      </ol>
+      <p class="hash">SHA-256 of the ZIP: 68e4926f6a67b61ce841e436b32822c1ff70d2944cece69388056c0db7559cf9<br>PowerShell: <code>Get-FileHash .\new-tab-dashboard-1.0.0.zip</code></p>
+    </div>
+    <div class="card">
+      <h3>Good to know</h3>
+      <ul>
+        <li>Local file links and dashboards need <strong>Allow access to file URLs</strong>, switched on under the extension's <em>Details</em>.</li>
+        <li>Wait for notes to show "Saved locally" before closing a tab, and use <em>Settings &gt; Export backup</em> before updating or moving anything.</li>
+        <li>To update, export a backup, close dashboard tabs, extract the new ZIP over the same folder, then reload the extension on <code>chrome://extensions</code>.</li>
+        <li>Edit in one window at a time. Two visible windows edited together can overwrite each other.</li>
+        <li>Removing the extension deletes its saved data, so export a backup first.</li>
+      </ul>
+    </div>
     <div class="card">
       <h3>From the Chrome Web Store</h3>
       <p>One click, with automatic updates. The listing is going through review; this page will link to it as soon as it's live.</p>
