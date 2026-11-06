@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>2040 Mission Monitor</title>
+<style>
+:root{--bg:#fafaf9;--fg:#1c1917;--mut:#78716c;--card:#fff;--line:#e7e5e4;--acc:#ea580c;--ok:#15803d;--bad:#b91c1c}
+@media (prefers-color-scheme:dark){:root{--bg:#0c0a09;--fg:#f5f5f4;--mut:#a8a29e;--card:#1c1917;--line:#292524;--acc:#fb923c;--ok:#4ade80;--bad:#f87171}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,sans-serif}
+main{max-width:880px;margin:0 auto;padding:24px 16px 48px}
+h1{font-size:1.4rem;margin:0 0 4px}.sub{color:var(--mut);font-size:.875rem;margin-bottom:24px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.card h2{font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin:0 0 8px}
+.big{font-size:2rem;font-weight:700}.pill{display:inline-block;padding:2px 10px;border-radius:99px;font-size:.8rem;font-weight:600;border:1px solid var(--line)}
+.bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin:8px 0}.bar i{display:block;height:100%;background:var(--acc)}
+.ms{display:flex;justify-content:space-between;font-size:.85rem;padding:4px 0;border-top:1px solid var(--line)}
+.ok{color:var(--ok)}.bad{color:var(--bad)}.mut{color:var(--mut);font-size:.85rem}
+</style>
+</head>
+<body>
+<main>
+<h1>2040 Mission Monitor</h1>
+<div class="sub" id="stamp">Loading…</div>
+<div class="grid">
+  <section class="card" id="factory"><h2>Factory Droid</h2><div class="mut">Loading…</div></section>
+  <section class="card" id="cowork"><h2>Cowork</h2><div class="mut">Loading…</div></section>
+</div>
+<section class="card" style="margin-top:16px"><h2>Linear issues <span class="mut">(read-only)</span></h2><div id="lin"></div></section>
+<section class="card" style="margin-top:16px"><h2>Milestones</h2><div id="ms"></div></section>
+</main>
+<script>
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const ago=t=>{const m=Math.round((Date.now()-new Date(t))/60000);return m<1?'just now':m<60?m+' min ago':m<1440?Math.round(m/60)+' h ago':Math.round(m/1440)+' d ago'};
+async function load(){
+  try{
+    const J=u=>fetch(u,{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null);
+    const [d,c,l]=await Promise.all([J('data.json'),J('cowork.json'),J('linear.json')]);
+    const st=document.getElementById('stamp');
+    if(!d&&!c&&!l){st.textContent='No data uploaded yet';return}
+    st.textContent=d?'Snapshot '+ago(d.updated)+' · refreshes every 60s':'Refreshes every 60s';
+    if(d){const f=d.factory,pct=Math.round(100*f.done/f.total);
+      document.getElementById('factory').innerHTML='<h2>Factory Droid</h2><div class="big">'+f.done+'/'+f.total+'</div><span class="pill">'+esc(f.state)+'</span><div class="bar"><i style="width:'+pct+'%"></i></div><div class="mut">Current: '+esc(f.current||'none')+'</div><div class="'+(f.worker_failures?'bad':'ok')+'">Worker failures: '+f.worker_failures+'</div>'+(f.last_failure?'<div class="mut">Last: '+ago(f.last_failure)+'</div>':'');
+      document.getElementById('ms').innerHTML=f.milestones.map(m=>'<div class="ms"><span>'+esc(m.name)+'</span><span class="'+(m.done===m.total?'ok':'')+'">'+m.done+'/'+m.total+'</span></div>').join('');}
+    if(c)document.getElementById('cowork').innerHTML='<h2>Cowork</h2><span class="pill">'+esc(c.status)+'</span><p>'+esc(c.task)+'</p><div class="mut">Updated '+esc(c.updated)+'</div>';
+    if(l)document.getElementById('lin').innerHTML=l.issues.map(i=>'<div class="ms"><span><a href="'+esc(i.url)+'" rel="noopener">'+esc(i.id)+'</a> '+esc(i.title)+'</span><span class="pill">'+esc(i.status)+'</span></div>').join('')+'<div class="mut">Snapshot '+ago(l.updated)+'</div>';
+  }catch(e){document.getElementById('stamp').textContent='Could not load data'}
+}
+load();setInterval(load,60000);
+</script>
+</body>
+</html>
