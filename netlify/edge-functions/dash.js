@@ -62,7 +62,7 @@ export default async (request, context) => {
     return wantsPage ? page() : json('{"error":"unauthorized"}', 401);
   }
 
-  if (path === "/2040") return Response.redirect(new URL("/2040/", url), 302);
+  if (url.pathname === "/2040") return Response.redirect(new URL("/2040/", url), 302);
   const store = getStore("dash2040");
   const m = path.match(/^\/2040\/(data|linear|cowork)\.json$/);
   if (m) {
