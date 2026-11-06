@@ -1,4 +1,5 @@
-<!doctype html>
+// Generated from the dashboard HTML; contains no secrets or data.
+export default String.raw`<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -52,3 +53,4 @@ load();setInterval(load,60000);
 </script>
 </body>
 </html>
+`;

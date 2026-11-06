@@ -1,5 +1,6 @@
 // Password-only gate + private data store for /2040. Contains no secrets: the password is the
 // DASH_PASSWORD env var; data lives in Netlify Blobs (never in this public repo). Fails closed.
+import PAGE from "../edge-lib/page.js";
 import { getStore } from "https://esm.sh/@netlify/blobs@8.1.0";
 
 const NAMES = new Set(["data", "linear", "cowork"]);
@@ -78,8 +79,7 @@ export default async (request, context) => {
     await store.set(name, text);
     return json('{"ok":true}');
   }
-  const res = await context.next();
-  res.headers.set("Cache-Control", "no-store");
-  res.headers.set("X-Robots-Tag", "noindex");
-  return res;
+  if (path === "/2040" || path === "/2040/index.html")
+    return new Response(PAGE, { headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store", "x-robots-tag": "noindex" } });
+  return json('{"error":"not found"}', 404);
 };
