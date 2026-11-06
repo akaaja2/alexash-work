@@ -1,6 +1,19 @@
 [build]
   publish = "."
 
+# 2040 mission dashboard lives (password-gated) on a separate private-repo site.
+[[redirects]]
+  from = "/2040"
+  to = "https://skillsformarketing.co.uk/2040/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/2040/*"
+  to = "https://skillsformarketing.co.uk/2040/:splat"
+  status = 302
+  force = true
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
