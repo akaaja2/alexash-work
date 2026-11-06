@@ -1,7 +1,7 @@
 // Password gate + private data store for /2040. Contains no secrets: the password is the
 // DASH_PASSWORD env var and the data lives in Netlify Blobs (never in this public repo).
 // Fails closed if DASH_PASSWORD is unset.
-import { getStore } from "npm:@netlify/blobs@8.1.0";
+import { getStore } from "https://esm.sh/@netlify/blobs@8.1.0";
 
 const NAMES = new Set(["data", "linear", "cowork"]);
 
