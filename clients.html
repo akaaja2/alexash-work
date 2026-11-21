@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IN2030 client briefing — Alex Ash</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&display=swap">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { overflow-x: hidden; }
+    body { background: #0c0b09; color: #ede3d0; font-family: 'Courier New', monospace; line-height: 1.6;
+      padding: 32px max(16px, env(safe-area-inset-left, 0px)) 64px max(16px, env(safe-area-inset-right, 0px)); }
+    a { color: #c97b1a; }
+    a:hover { color: #e39a3c; }
+    .wrap { max-width: 860px; margin: 0 auto; display: grid; gap: 40px; }
+    .back { font-size: 0.8rem; letter-spacing: 0.1em; text-decoration: none; }
+    h1 { font-family: 'Bungee', 'Courier New', monospace; font-weight: 400; font-size: clamp(1.6rem, 5vw, 2.4rem); line-height: 1.15; color: #ede3d0; }
+    h2 { font-family: 'Bungee', 'Courier New', monospace; font-weight: 400; font-size: 1.15rem; color: #c97b1a; margin-bottom: 14px; letter-spacing: 0.03em; }
+    .lede { color: #b9ab93; max-width: 66ch; margin-top: 10px; }
+    .tag { display: inline-block; margin-top: 14px; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: #0c0b09; background: #c97b1a; padding: 3px 9px; border-radius: 3px; }
+    .links { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+    .link-card { border: 1px solid #3a2f22; border-radius: 6px; padding: 16px; text-decoration: none; display: grid; gap: 6px; }
+    .link-card:hover { border-color: #c97b1a; }
+    .link-card b { color: #ede3d0; }
+    .link-card span { color: #9c8e78; font-size: 0.85rem; }
+    .scroll { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; min-width: 560px; }
+    th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid #2c241a; vertical-align: top; }
+    th { color: #9c8e78; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: normal; }
+    td:first-child { color: #ede3d0; white-space: nowrap; }
+    td { color: #c9bca5; }
+    ol.decisions { list-style: none; display: grid; gap: 14px; counter-reset: d; }
+    ol.decisions li { border: 1px solid #3a2f22; border-left: 3px solid #c97b1a; border-radius: 6px; padding: 16px 18px; counter-increment: d; }
+    ol.decisions li h3 { font-size: 1rem; color: #ede3d0; margin-bottom: 6px; }
+    ol.decisions li h3::before { content: counter(d) ". "; color: #c97b1a; }
+    ol.decisions li p { color: #b9ab93; font-size: 0.9rem; }
+    ol.decisions li .ask { color: #9c8e78; font-size: 0.82rem; margin-top: 8px; }
+    .rule { border: 1px dashed #6b4310; border-radius: 6px; padding: 14px 16px; color: #d8c9ae; font-size: 0.92rem; }
+    form { display: grid; gap: 14px; max-width: 620px; }
+    label { display: grid; gap: 6px; font-size: 0.85rem; color: #d8c9ae; }
+    input, select, textarea { font: inherit; color: #ede3d0; background: #16130f; border: 1px solid #3a2f22; border-radius: 4px; padding: 9px 10px; width: 100%; }
+    textarea { min-height: 110px; resize: vertical; }
+    input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible { outline: 2px solid #c97b1a; outline-offset: 2px; }
+    .radios { display: flex; flex-wrap: wrap; gap: 16px; font-size: 0.88rem; }
+    .radios label { display: flex; align-items: center; gap: 6px; }
+    .radios input { width: auto; }
+    button { font: inherit; background: #c97b1a; color: #0c0b09; border: 0; border-radius: 4px; padding: 10px 18px; cursor: pointer; justify-self: start; }
+    button:hover { background: #e39a3c; }
+    .hidden { display: none; }
+    #formStatus { font-size: 0.85rem; color: #9c8e78; min-height: 1.2em; }
+    footer { color: #6f6352; font-size: 0.78rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div>
+      <a class="back" href="index.html">&larr; alexash.work</a>
+    </div>
+
+    <header>
+      <h1>IN2030 weekly briefing: client briefing</h1>
+      <p class="lede">The details, references and decisions behind the IN2030 weekly briefing pilot, ahead of the Steering Committee on Wednesday 11 November 2026. Please read the three suggested decisions and tell us where you disagree.</p>
+      <span class="tag">Private · prototype · 2 Nov 2026</span>
+    </header>
+
+    <section aria-labelledby="refs">
+      <h2 id="refs">Details and references</h2>
+      <div class="links">
+        <a class="link-card" href="https://claude.ai/artifact/9164454c-31c1-47ed-bd8b-3e07e54c8c83" target="_blank" rel="noopener">
+          <b>Pitch Prep Pack</b>
+          <span>The pitch playbook: answers, the demo plan, decisions and timetable.</span>
+        </a>
+        <a class="link-card" href="https://claude.ai/artifact/2HQFno3Noi9iqyhydbP89r" target="_blank" rel="noopener">
+          <b>Demo reel</b>
+          <span>Three minutes of walkthroughs, with a first-impressions form after 30 seconds.</span>
+        </a>
+      </div>
+    </section>
+
+    <section aria-labelledby="own">
+      <h2 id="own">Ownership and notes</h2>
+      <div class="scroll"><table>
+        <thead><tr><th>Area</th><th>Owner</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Briefing engine and shadow pilot</td><td>Alexander Ash</td><td>Engine built; first run on live sources before 11 Nov. Nothing public before January 2027.</td></tr>
+          <tr><td>Reviewer sign-off</td><td>Ian Collins</td><td>Signs each issue in the pilot; target under 30 minutes an issue, to be measured.</td></tr>
+          <tr><td>Source policy and AI governance</td><td>Ajit Jaokar</td><td>Reviewing the approved-source list; February 2027 Annual Lecture theme.</td></tr>
+          <tr><td>Membership offer and readers</td><td>Frank Nigriello</td><td>Offer wording, names and strapline tests, an external reader from the Summer University.</td></tr>
+          <tr><td>Chair and education series</td><td>James Elles</td><td>Brings the papers together for the Steering Committee; scoping the education series.</td></tr>
+          <tr><td>Costs, data protection, licensing</td><td>Aditya Jaokar</td><td>Cost per issue, hosting and data roles, source licensing, email deliverability.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section aria-labelledby="dec">
+      <h2 id="dec">Key decisions: the top three suggested</h2>
+      <ol class="decisions">
+        <li>
+          <h3>Start the shadow pilot</h3>
+          <p>Send the weekly briefing to Steering Committee members and a few trusted readers for three to four weeks, with Ian Collins as the named reviewer. Nothing is posted publicly before January 2027.</p>
+          <p class="ask">To agree: the start date and the reader list.</p>
+        </li>
+        <li>
+          <h3>Pricing and trial</h3>
+          <p>Two paid tiers: £10 a month online (briefing and online events) and £20 a month adding in-person events. Email-first sign-up: four free issues, the price shown from the start, no automatic charge, and direct debit (GoCardless) only after an explicit choice.</p>
+          <p class="ask">To agree: the annual price and whether AI training sits in the £20 tier.</p>
+        </li>
+        <li>
+          <h3>Supplier terms</h3>
+          <p>A low entry cost for the build and running of the pilot, plus a share of membership income that rises as membership passes 100 and 200 paying members.</p>
+          <p class="ask">To agree: the entry figure and the share at each level.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="rule-h">
+      <h2 id="rule-h">How these are decided</h2>
+      <p class="rule">Decisions pass by simple majority. If you think any decision must be unanimous, tell us which and why using the form below, and push back on anything you disagree with or need clarified.</p>
+    </section>
+
+    <section aria-labelledby="fb">
+      <h2 id="fb">Push back or ask for clarification</h2>
+      <form name="clients-pushback" method="POST" action="/thanks.html" data-netlify="true" data-netlify-honeypot="bot-field" id="pushbackForm">
+        <input type="hidden" name="form-name" value="clients-pushback">
+        <p class="hidden"><label>Leave this empty: <input name="bot-field"></label></p>
+        <label for="pb-name">Your name and organisation
+          <input id="pb-name" name="name" type="text" autocomplete="name" required>
+        </label>
+        <label for="pb-decision">Which decision
+          <select id="pb-decision" name="decision">
+            <option>1. Start the shadow pilot</option>
+            <option>2. Pricing and trial</option>
+            <option>3. Supplier terms</option>
+            <option>Ownership and notes</option>
+            <option>Something else</option>
+          </select>
+        </label>
+        <fieldset style="border:0">
+          <legend style="font-size:0.85rem;color:#d8c9ae;margin-bottom:6px">Should this one be decided unanimously?</legend>
+          <div class="radios">
+            <label><input type="radio" name="unanimous" value="simple majority is fine" checked> Simple majority is fine</label>
+            <label><input type="radio" name="unanimous" value="must be unanimous"> Must be unanimous</label>
+          </div>
+        </fieldset>
+        <label for="pb-comment">Your pushback or question
+          <textarea id="pb-comment" name="comment" required></textarea>
+        </label>
+        <button type="submit">Send</button>
+        <p id="formStatus" role="status"></p>
+      </form>
+    </section>
+
+    <footer>Shared privately with invited clients. Please don't forward this page or its password.</footer>
+  </div>
+
+  <script>
+    (function () {
+      var form = document.getElementById('pushbackForm');
+      var status = document.getElementById('formStatus');
+      form?.addEventListener('submit', function (e) {
+        if (!form.checkValidity()) return;
+        e.preventDefault();
+        var body = new URLSearchParams(new FormData(form)).toString();
+        fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
+          .then(function (r) {
+            if (!r.ok) throw new Error();
+            form.reset();
+            status.textContent = 'Sent. Thank you, Alexander will reply before the Steering Committee.';
+          })
+          .catch(function () { form.submit(); });
+      });
+    })();
+  </script>
+</body>
+</html>
