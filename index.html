@@ -3,21 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alex Ash - AI PM and Author</title>
+  <title>Alexander Ash – AI Product Manager, Author &amp; Advisor</title>
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
   <link rel="shortcut icon" href="favicon.ico">
 
   <!-- OG / Social -->
-  <meta name="description" content="Alex Ash: AI product manager, ex-founder and author of Claude Skills for Marketing. AI product strategy for government teams and UK SMEs.">
-  <meta property="og:title"       content="Alex Ash - AI PM and Author">
+  <meta name="description" content="Alexander Ash: AI product manager, ex-founder and co-author of Claude Skills for Marketing. AI product strategy for government teams and UK SMEs.">
+  <meta property="og:title"       content="Alexander Ash – AI Product Manager, Author &amp; Advisor">
   <meta property="og:description" content="Ex-founder. AI product strategy for teams that ship.">
   <meta property="og:url"         content="https://alexash.work">
   <meta property="og:image"       content="https://alexash.work/og-image.jpg">
   <meta property="og:type"        content="website">
   <meta name="twitter:card"       content="summary_large_image">
   <meta name="twitter:image"      content="https://alexash.work/og-image.jpg">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"Alexander Ash","alternateName":"Alex Ash","url":"https://alexash.work","jobTitle":"AI Product Manager","sameAs":["https://linkedin.com/in/alexanderash","https://github.com/akaaja2"]}
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&display=swap">
@@ -507,6 +511,34 @@
       background: transparent;
       color: #c97b1a;
     }
+    .card-body p.lead { font-size: 15px; color: #ede3d0; }
+    a:focus-visible, button:focus-visible, .project-row:focus-visible {
+      outline: 2px solid #c97b1a; outline-offset: 3px;
+    }
+    /* ---- Featured book ---- */
+    .book-feature {
+      display: flex; gap: 24px; align-items: center;
+      margin: 16px 0 22px; padding: 18px;
+      background: rgba(12, 11, 9, 0.6);
+      border: 1px solid #2a2520; border-radius: 8px;
+    }
+    .book-feature-cover { flex: 0 0 132px; display: block; }
+    .book-feature-cover img { width: 100%; height: auto; display: block; border-radius: 3px; box-shadow: 0 10px 18px rgba(0,0,0,.5); }
+    .book-feature-tag { font-size: 10px; letter-spacing: 0.18em; color: #c97b1a; text-transform: uppercase; }
+    .book-feature-title { font-family: 'Bungee', sans-serif; font-size: 20px; line-height: 1.2; color: #ede3d0; margin: 8px 0 4px; }
+    .book-feature-by { font-size: 11px; letter-spacing: 0.1em; color: #7a6d5a; margin-bottom: 10px; }
+    .book-feature-desc { font-size: 13px; line-height: 1.7; color: #ede3d0; margin-bottom: 14px; }
+    .book-feature-cta {
+      display: inline-block; padding: 9px 16px; border-radius: 6px;
+      background: #c97b1a; color: #14120f; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.08em; text-decoration: none; transition: background 0.2s;
+    }
+    .book-feature-cta:hover { background: #e0902a; }
+    @media (max-width: 600px) {
+      .book-feature { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .book-feature-cover { flex-basis: auto; width: 120px; }
+    }
+    .footer-updated { font-size: 10px; letter-spacing: 0.12em; color: #7a6d5a; margin-top: 8px; text-transform: uppercase; }
     .footer-tagline {
       font-size: 12px;
       letter-spacing: 0.08em;
@@ -758,7 +790,7 @@
       }
 
       /* Content: tighter padding, no fixed max-width pressure */
-      .content { padding: 24px 16px 80px; }
+      .content { padding: 24px 16px 80px; width: 100%; }
       .site-footer { padding-bottom: 60px; } /* book-flyer offset not needed on mobile */
       .content-bar { margin-bottom: 28px; gap: 8px; }
       .kbd { display: none; }                /* ⌘K shortcut is desktop-only */
@@ -893,7 +925,7 @@
     <img class="logo-flyer" data-idx="1" src="claudelogo_transparent.png" alt="" />
     <img class="logo-flyer" data-idx="2" src="openai_transparent.png"    alt="" />
     <div id="scroll-pct">0%</div>
-    <img id="alex-photo" src="alex.webp" alt="Alex Ash" />
+    <img id="alex-photo" src="alex.webp" alt="Alexander Ash" />
   </div>
 
   <div class="layout">
@@ -943,6 +975,7 @@
         <div class="card">
           <div class="card-grid" style="grid-template-columns:1fr;">
             <div class="card-body">
+              <p class="lead">AI product manager, author and builder. I help organisations move beyond AI experimentation towards practical, reliable products, workflows and systems.</p>
               <p>I started writing children's books on statistics and infographics, which turned out to be the natural gateway for <mark style="background:#c97b1a;color:#14120f;padding:0 2px;border-radius:2px;">explaining AI to people who'd rather not be. From there: VC,</mark> and eventually AI product work with government teams and UK SMEs.</p>
               <p>The common thread is making complex systems legible without making them simple. I've piloted HR tooling at the Ministry of Justice, worked in the team behind its deployed probation transcription tool, built live AI summaries for policy conferences, and written enough PRDs to know that "the AI will handle it" is the most expensive line in any of them.</p>
               <div class="tag-row">
@@ -981,13 +1014,13 @@
             <span class="project-name">Ideas Network 2030 — Steering committee minutes &amp; event summary</span>
             <span class="project-meta">GOVERNANCE · DEPLOYED</span>
           </a>
-          <div class="project-row project-lightbox" data-project="hr-toolkit" style="cursor:pointer;">
+          <div class="project-row project-lightbox" data-project="hr-toolkit" role="button" tabindex="0" style="cursor:pointer;">
             <span class="project-dot" style="background:#7a6d5a;box-shadow:none;"></span>
             <span class="project-name">Ministry of Justice — HR Toolkit</span>
             <span class="project-meta">GOV · PILOT</span>
             <span class="project-expand">↗</span>
           </div>
-          <div class="project-row project-lightbox" data-project="probation" style="cursor:pointer;">
+          <div class="project-row project-lightbox" data-project="probation" role="button" tabindex="0" style="cursor:pointer;">
             <span class="project-dot" style="background:#7a6d5a;box-shadow:none;"></span>
             <span class="project-name">Ministry of Justice — Probation Transcription</span>
             <span class="project-meta">GOV · DEPLOYED · TEAM</span>
@@ -1016,7 +1049,20 @@
 
         <div class="card">
           <div class="card-body">
-            <p>I co-author and write practical books — from <em>Claude Skills for Marketing</em>, a 322-page system for turning Claude into team infrastructure, to the bestselling <em>Top 10</em> trivia series. Hover a spine to jump to where you can read or buy each one.</p>
+            <p>I co-author and write practical books — from <em>Claude Skills for Marketing</em>, a 322-page system for turning Claude into team infrastructure, to the bestselling <em>Top 10</em> trivia series. Select a cover or spine to jump to where you can read or buy each one.</p>
+          </div>
+
+          <div class="book-feature">
+            <a class="book-feature-cover" href="https://claudeskills.co.uk" target="_blank" rel="noopener">
+              <img src="csm-cover.webp" width="440" height="623" loading="lazy" decoding="async" alt="Claude Skills for Marketing cover">
+            </a>
+            <div class="book-feature-text">
+              <div class="book-feature-tag">Featured book · Co-authored</div>
+              <div class="book-feature-title">Claude Skills for Marketing</div>
+              <div class="book-feature-by">Alexander Ash · Ajit Jaokar · Aditya Jaokar · 322 pages</div>
+              <p class="book-feature-desc">A practical system for turning Claude into team infrastructure: 42 deployable skills, ready to run, across 10 marketing disciplines.</p>
+              <a class="book-feature-cta" href="https://claudeskills.co.uk" target="_blank" rel="noopener">Get the book at claudeskills.co.uk →</a>
+            </div>
           </div>
 
           <div class="bookcase-embed">
@@ -1198,7 +1244,7 @@
 
       <!-- ===== Econ Musings ===== -->
       <section id="econ" class="section">
-        <div class="section-tag">05 / Side Quest</div>
+        <div class="section-tag">05 / AI Economics</div>
         <h2>Econ Musings</h2>
 
         <div class="card">
@@ -1229,7 +1275,7 @@
 
         <div class="card">
           <div class="card-body">
-            <p>Limited availability alongside existing commitments: open to occasional short-cycle advisory and workshop work. Reply within ~2 business days.</p>
+            <p>Available for selected AI product advisory engagements, workshops and fractional product management, subject to existing commitments. Reply within ~2 business days.</p>
           </div>
 
           <div class="contact-grid">
@@ -1290,6 +1336,7 @@
         </div>
 
         <p class="footer-tagline">Proudly built in London with Claude</p>
+        <p class="footer-updated">Last updated November 2026</p>
       </footer>
 
     </main>
@@ -1858,6 +1905,10 @@
         document.getElementById("proj-lightbox-title").textContent = data.title;
         document.getElementById("proj-lightbox-body").innerHTML = data.body;
         document.getElementById("proj-lightbox").classList.add("open");
+        document.getElementById("proj-lightbox-close")?.focus();
+      });
+      row.addEventListener("keydown", e => {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); row.click(); }
       });
     });
 
