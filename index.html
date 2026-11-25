@@ -178,6 +178,7 @@
       box-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
       flex-shrink: 0;
     }
+    .status-dot-limited { background: #c97b1a; box-shadow: 0 0 8px rgba(201, 123, 26, 0.6); }
     .sidebar.collapsed .sidebar-foot span:not(.status-dot) { opacity: 0; }
 
     /* ===== Content ===== */
@@ -922,7 +923,7 @@
         </a>
       </nav>
       <div class="sidebar-foot">
-        <span class="status-dot"></span><span>AVAILABLE · NOW</span>
+        <span class="status-dot status-dot-limited"></span><span>LIMITED AVAILABILITY</span>
       </div>
     </aside>
 
@@ -943,7 +944,7 @@
           <div class="card-grid" style="grid-template-columns:1fr;">
             <div class="card-body">
               <p>I started writing children's books on statistics and infographics, which turned out to be the natural gateway for <mark style="background:#c97b1a;color:#14120f;padding:0 2px;border-radius:2px;">explaining AI to people who'd rather not be. From there: VC,</mark> and eventually AI product work with government teams and UK SMEs.</p>
-              <p>The common thread is making complex systems legible without making them simple. I've shipped HR tooling for the Ministry of Justice, built live AI summaries for policy conferences, and written enough PRDs to know that "the AI will handle it" is the most expensive line in any of them.</p>
+              <p>The common thread is making complex systems legible without making them simple. I've piloted HR tooling at the Ministry of Justice, worked in the team behind its deployed probation transcription tool, built live AI summaries for policy conferences, and written enough PRDs to know that "the AI will handle it" is the most expensive line in any of them.</p>
               <div class="tag-row">
                 <span class="tag">Product Strategy</span>
                 <span class="tag">Design</span>
@@ -962,40 +963,40 @@
 
         <div class="card">
           <div class="card-body">
-            <p>Government departments, policy networks, one self-published. The institutional contexts vary; the approach doesn't.</p>
+            <p>Work for government departments and policy networks, alongside two self-published products. Each row is labelled with the stage it reached: pilot, deployed system or commercial product. The institutional contexts vary; the approach doesn't.</p>
           </div>
 
           <a class="project-row" href="new-tab-dashboard.html" style="text-decoration:none;">
             <span class="project-dot"></span>
             <span class="project-name">New Tab Dashboard — free Chrome extension: tasks, notes &amp; focus timer</span>
-            <span class="project-meta">SELF-PUBLISHED · NEW</span>
+            <span class="project-meta">SELF-PUBLISHED · FREE RELEASE</span>
           </a>
           <a class="project-row" href="tpn-in2030.html" style="text-decoration:none;">
             <span class="project-dot"></span>
             <span class="project-name">Transatlantic Policy Network — Summit live summaries</span>
-            <span class="project-meta">POLICY · LIVE AI</span>
+            <span class="project-meta">POLICY · DEPLOYED</span>
           </a>
           <a class="project-row" href="tpn-in2030.html" style="text-decoration:none;">
             <span class="project-dot" style="background:#7a6d5a;box-shadow:none;"></span>
             <span class="project-name">Ideas Network 2030 — Steering committee minutes &amp; event summary</span>
-            <span class="project-meta">GOVERNANCE</span>
+            <span class="project-meta">GOVERNANCE · DEPLOYED</span>
           </a>
           <div class="project-row project-lightbox" data-project="hr-toolkit" style="cursor:pointer;">
             <span class="project-dot" style="background:#7a6d5a;box-shadow:none;"></span>
             <span class="project-name">Ministry of Justice — HR Toolkit</span>
-            <span class="project-meta">GOV · INTERNAL TOOL</span>
+            <span class="project-meta">GOV · PILOT</span>
             <span class="project-expand">↗</span>
           </div>
           <div class="project-row project-lightbox" data-project="probation" style="cursor:pointer;">
             <span class="project-dot" style="background:#7a6d5a;box-shadow:none;"></span>
             <span class="project-name">Ministry of Justice — Probation Transcription</span>
-            <span class="project-meta">GOV · TRANSCRIPTION</span>
+            <span class="project-meta">GOV · DEPLOYED · TEAM</span>
             <span class="project-expand">↗</span>
           </div>
           <a class="project-row" href="https://claudeskills.co.uk/" target="_blank" rel="noopener" style="text-decoration:none;">
             <span class="project-dot" style="background:#7a6d5a;box-shadow:none;"></span>
             <span class="project-name">Claude Skills for Marketing — full-stack packaging, publishing &amp; marketing suite</span>
-            <span class="project-meta">SELF-PUBLISHED</span>
+            <span class="project-meta">SELF-PUBLISHED · COMMERCIAL PRODUCT</span>
           </a>
 
           <div class="tag-row">
@@ -1174,8 +1175,20 @@
                       font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="700" letter-spacing="0.5">HBS</text>
               </svg>
               <div class="edu-text">
-                <div class="edu-name">Harvard Business School <span class="edu-mode">(Online)</span></div>
-                <div class="edu-subject">Financial Accounting · CS50</div>
+                <div class="edu-name">Harvard Business School Online</div>
+                <div class="edu-subject">Financial Accounting</div>
+              </div>
+            </div>
+
+            <div class="edu-card">
+              <svg class="edu-logo" viewBox="0 0 48 52" role="img" aria-label="HarvardX">
+                <path class="edu-shape" d="M4 4 H44 V28 Q44 46 24 50 Q4 46 4 28 Z"/>
+                <text class="edu-mark" x="24" y="24" text-anchor="middle" dominant-baseline="central"
+                      font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="700" letter-spacing="0.5">HX</text>
+              </svg>
+              <div class="edu-text">
+                <div class="edu-name">Harvard University <span class="edu-mode">(HarvardX, via edX)</span></div>
+                <div class="edu-subject">CS50 · Certificate</div>
               </div>
             </div>
 
@@ -1216,7 +1229,7 @@
 
         <div class="card">
           <div class="card-body">
-            <p>Open to short-cycle advisory, fractional PM, and workshop work. Reply within ~2 business days.</p>
+            <p>Limited availability alongside existing commitments: open to occasional short-cycle advisory and workshop work. Reply within ~2 business days.</p>
           </div>
 
           <div class="contact-grid">
@@ -1825,14 +1838,14 @@
     // ── Project lightbox ──────────────────────────────────────────
     const LIGHTBOX_CONTENT = {
       "hr-toolkit": {
-        tag: "GOV · INTERNAL TOOL",
+        tag: "GOV · PILOT",
         title: "Ministry of Justice — HR Toolkit",
-        body: `<p style="font-size:13px;line-height:1.7;color:#ede3d0;">An internal AI tool built for Ministry of Justice HR teams. Enables staff to query HR policy documents, generate compliant correspondence, and navigate complex employment guidance without specialist support.</p>`
+        body: `<p style="font-size:13px;line-height:1.7;color:#ede3d0;">An internal AI tool piloted with Ministry of Justice HR teams. The pilot let staff query HR policy documents, generate compliant correspondence, and navigate complex employment guidance without specialist support.</p>`
       },
       "probation": {
-        tag: "GOV · TRANSCRIPTION",
+        tag: "GOV · DEPLOYED · TEAM",
         title: "Ministry of Justice — Probation Transcription",
-        body: `<p style="font-size:13px;line-height:1.7;color:#ede3d0;">A meeting transcription and highlighting tool built for probation officers — capturing and summarising meetings so staff weren't tied up writing them up. Used in 150,000+ meetings, saving roughly 25,000 staff hours in six months, with a 4.7 / 5 staff rating for usability and effectiveness.</p>`
+        body: `<p style="font-size:13px;line-height:1.7;color:#ede3d0;">A deployed meeting transcription and highlighting tool for probation officers, built by a wider Ministry of Justice team that I worked in — capturing and summarising meetings so staff weren't tied up writing them up. Across the programme it was used in 150,000+ meetings, saving roughly 25,000 staff hours in six months, with a 4.7 / 5 staff rating for usability and effectiveness.</p>`
       }
     };
 
