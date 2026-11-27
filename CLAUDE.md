@@ -36,3 +36,12 @@ Any static server from the repo root works, e.g. `python3 -m http.server 8000` (
 - `netlify.toml` gives listed static assets a 7-day `Cache-Control`; filenames aren't versioned, so rename an asset (and add it to the list) when replacing it.
 - Recent fixes have focused on mobile: avoid anything that causes horizontal overflow (`html`/`body` set `overflow-x: hidden`).
 - `.gitignore` excludes `*.md` working docs (this file is explicitly un-ignored) and `cv/` (personal, must never be deployed).
+
+## Links
+
+Book buy links and social channels live in one file: `claude-skills-landing/links/csfm-links.json` (published at https://claudeskills.co.uk/links/csfm-links.json). They are rendered into every site between `<!-- CSFM-LINKS:START ... -->` and `<!-- CSFM-LINKS:END -->` markers.
+
+- Never hand-edit inside the `CSFM-LINKS` markers; the next sync overwrites it.
+- To change a link: edit the JSON, then from `claude-skills-landing` run `node scripts/sync-links.mjs` (defaults to the sibling folders `../csfm-splash` and `../alexash-work`; pass paths if your clones live elsewhere). Commit the result in each repo.
+- `node scripts/sync-links.mjs --check` exits non-zero if any block is out of date; CI runs it on every PR to claude-skills-landing.
+- A `null` value in the JSON is skipped, never shown as a dead link.
